@@ -5,7 +5,7 @@ description = "Telegram Bot API"
 authors = [
   {name = "ΣX",email = "gitctrlx@gmail.com"},
 ]
-license = "NoLicense"
+license = "Apache-2.0"
 readme = "README.md"
 keywords = ["Telegram Bot API"]
 requires-python = ">=3.9"

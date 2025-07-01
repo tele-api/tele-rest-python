@@ -2,14 +2,14 @@
 
 """
 Telegram Bot API - REST API Client
-Auto-generated OpenAPI schema
+The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram. To learn how to create and set up a bot, please consult our Introduction to Bots and Bot FAQ.
 
 ## Metadata
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
 - **Version**: 9.0.0
-- **Modified**: 2025-07-01T14:15:10.340422036Z[Etc/UTC]
+- **Modified**: 2025-07-01T14:36:24.755929598Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -47,45 +47,40 @@ Auto-generated OpenAPI schema
 
 
 from __future__ import annotations
-from inspect import getfullargspec
 import json
 import pprint
-import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
-from typing import Optional
+from typing import Any, List, Optional
 from tele_rest.models.force_reply import ForceReply
 from tele_rest.models.inline_keyboard_markup import InlineKeyboardMarkup
 from tele_rest.models.reply_keyboard_markup import ReplyKeyboardMarkup
 from tele_rest.models.reply_keyboard_remove import ReplyKeyboardRemove
-from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
+from pydantic import StrictStr, Field
+from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
-from pydantic import Field
 
-SENDMESSAGEPOSTREQUESTREPLYMARKUP_ANY_OF_SCHEMAS = ["ForceReply", "InlineKeyboardMarkup", "ReplyKeyboardMarkup", "ReplyKeyboardRemove"]
+SENDMESSAGEPOSTREQUESTREPLYMARKUP_ONE_OF_SCHEMAS = ["ForceReply", "InlineKeyboardMarkup", "ReplyKeyboardMarkup", "ReplyKeyboardRemove"]
 
 class SendMessagePostRequestReplyMarkup(BaseModel):
     """
     Additional interface options. A JSON-serialized object for an [inline keyboard](https://core.telegram.org/bots/features#inline-keyboards), [custom reply keyboard](https://core.telegram.org/bots/features#keyboards), instructions to remove a reply keyboard or to force a reply from the user
     """
-
     # data type: InlineKeyboardMarkup
-    anyof_schema_1_validator: Optional[InlineKeyboardMarkup] = None
+    oneof_schema_1_validator: Optional[InlineKeyboardMarkup] = None
     # data type: ReplyKeyboardMarkup
-    anyof_schema_2_validator: Optional[ReplyKeyboardMarkup] = None
+    oneof_schema_2_validator: Optional[ReplyKeyboardMarkup] = None
     # data type: ReplyKeyboardRemove
-    anyof_schema_3_validator: Optional[ReplyKeyboardRemove] = None
+    oneof_schema_3_validator: Optional[ReplyKeyboardRemove] = None
     # data type: ForceReply
-    anyof_schema_4_validator: Optional[ForceReply] = None
-    if TYPE_CHECKING:
-        actual_instance: Optional[Union[ForceReply, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove]] = None
-    else:
-        actual_instance: Any = None
-    any_of_schemas: Set[str] = { "ForceReply", "InlineKeyboardMarkup", "ReplyKeyboardMarkup", "ReplyKeyboardRemove" }
+    oneof_schema_4_validator: Optional[ForceReply] = None
+    actual_instance: Optional[Union[ForceReply, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove]] = None
+    one_of_schemas: Set[str] = { "ForceReply", "InlineKeyboardMarkup", "ReplyKeyboardMarkup", "ReplyKeyboardRemove" }
 
-    model_config = {
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -98,41 +93,41 @@ class SendMessagePostRequestReplyMarkup(BaseModel):
             super().__init__(**kwargs)
 
     @field_validator('actual_instance')
-    def actual_instance_must_validate_anyof(cls, v):
+    def actual_instance_must_validate_oneof(cls, v):
         instance = SendMessagePostRequestReplyMarkup.model_construct()
         error_messages = []
+        match = 0
         # validate data type: InlineKeyboardMarkup
         if not isinstance(v, InlineKeyboardMarkup):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineKeyboardMarkup`")
         else:
-            return v
-
+            match += 1
         # validate data type: ReplyKeyboardMarkup
         if not isinstance(v, ReplyKeyboardMarkup):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ReplyKeyboardMarkup`")
         else:
-            return v
-
+            match += 1
         # validate data type: ReplyKeyboardRemove
         if not isinstance(v, ReplyKeyboardRemove):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ReplyKeyboardRemove`")
         else:
-            return v
-
+            match += 1
         # validate data type: ForceReply
         if not isinstance(v, ForceReply):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ForceReply`")
         else:
-            return v
-
-        if error_messages:
+            match += 1
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when setting `actual_instance` in SendMessagePostRequestReplyMarkup with oneOf schemas: ForceReply, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove. Details: " + ", ".join(error_messages))
+        elif match == 0:
             # no match
-            raise ValueError("No match found when setting the actual_instance in SendMessagePostRequestReplyMarkup with anyOf schemas: ForceReply, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in SendMessagePostRequestReplyMarkup with oneOf schemas: ForceReply, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove. Details: " + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls, obj: Dict[str, Any]) -> Self:
+    def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
@@ -140,34 +135,39 @@ class SendMessagePostRequestReplyMarkup(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[InlineKeyboardMarkup] = None
+        match = 0
+
+        # deserialize data into InlineKeyboardMarkup
         try:
             instance.actual_instance = InlineKeyboardMarkup.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[ReplyKeyboardMarkup] = None
+            error_messages.append(str(e))
+        # deserialize data into ReplyKeyboardMarkup
         try:
             instance.actual_instance = ReplyKeyboardMarkup.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_3_validator: Optional[ReplyKeyboardRemove] = None
+            error_messages.append(str(e))
+        # deserialize data into ReplyKeyboardRemove
         try:
             instance.actual_instance = ReplyKeyboardRemove.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_4_validator: Optional[ForceReply] = None
+            error_messages.append(str(e))
+        # deserialize data into ForceReply
         try:
             instance.actual_instance = ForceReply.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
+            error_messages.append(str(e))
 
-        if error_messages:
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when deserializing the JSON string into SendMessagePostRequestReplyMarkup with oneOf schemas: ForceReply, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove. Details: " + ", ".join(error_messages))
+        elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into SendMessagePostRequestReplyMarkup with anyOf schemas: ForceReply, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into SendMessagePostRequestReplyMarkup with oneOf schemas: ForceReply, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -189,6 +189,7 @@ class SendMessagePostRequestReplyMarkup(BaseModel):
         if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
             return self.actual_instance.to_dict()
         else:
+            # primitive type
             return self.actual_instance
 
     def to_str(self) -> str:

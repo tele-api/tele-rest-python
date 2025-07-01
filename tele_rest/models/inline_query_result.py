@@ -2,14 +2,14 @@
 
 """
 Telegram Bot API - REST API Client
-Auto-generated OpenAPI schema
+The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram. To learn how to create and set up a bot, please consult our Introduction to Bots and Bot FAQ.
 
 ## Metadata
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
 - **Version**: 9.0.0
-- **Modified**: 2025-07-01T14:15:10.340422036Z[Etc/UTC]
+- **Modified**: 2025-07-01T14:36:24.755929598Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -47,12 +47,10 @@ Auto-generated OpenAPI schema
 
 
 from __future__ import annotations
-from inspect import getfullargspec
 import json
 import pprint
-import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
-from typing import Optional
+from typing import Any, List, Optional
 from tele_rest.models.inline_query_result_article import InlineQueryResultArticle
 from tele_rest.models.inline_query_result_audio import InlineQueryResultAudio
 from tele_rest.models.inline_query_result_cached_audio import InlineQueryResultCachedAudio
@@ -73,67 +71,64 @@ from tele_rest.models.inline_query_result_photo import InlineQueryResultPhoto
 from tele_rest.models.inline_query_result_venue import InlineQueryResultVenue
 from tele_rest.models.inline_query_result_video import InlineQueryResultVideo
 from tele_rest.models.inline_query_result_voice import InlineQueryResultVoice
-from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
+from pydantic import StrictStr, Field
+from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
-from pydantic import Field
 
-INLINEQUERYRESULT_ANY_OF_SCHEMAS = ["InlineQueryResultArticle", "InlineQueryResultAudio", "InlineQueryResultCachedAudio", "InlineQueryResultCachedDocument", "InlineQueryResultCachedGif", "InlineQueryResultCachedMpeg4Gif", "InlineQueryResultCachedPhoto", "InlineQueryResultCachedSticker", "InlineQueryResultCachedVideo", "InlineQueryResultCachedVoice", "InlineQueryResultContact", "InlineQueryResultDocument", "InlineQueryResultGame", "InlineQueryResultGif", "InlineQueryResultLocation", "InlineQueryResultMpeg4Gif", "InlineQueryResultPhoto", "InlineQueryResultVenue", "InlineQueryResultVideo", "InlineQueryResultVoice"]
+INLINEQUERYRESULT_ONE_OF_SCHEMAS = ["InlineQueryResultArticle", "InlineQueryResultAudio", "InlineQueryResultCachedAudio", "InlineQueryResultCachedDocument", "InlineQueryResultCachedGif", "InlineQueryResultCachedMpeg4Gif", "InlineQueryResultCachedPhoto", "InlineQueryResultCachedSticker", "InlineQueryResultCachedVideo", "InlineQueryResultCachedVoice", "InlineQueryResultContact", "InlineQueryResultDocument", "InlineQueryResultGame", "InlineQueryResultGif", "InlineQueryResultLocation", "InlineQueryResultMpeg4Gif", "InlineQueryResultPhoto", "InlineQueryResultVenue", "InlineQueryResultVideo", "InlineQueryResultVoice"]
 
 class InlineQueryResult(BaseModel):
     """
     This object represents one result of an inline query. Telegram clients currently support results of the following 20 types:  * [InlineQueryResultCachedAudio](https://core.telegram.org/bots/api/#inlinequeryresultcachedaudio) * [InlineQueryResultCachedDocument](https://core.telegram.org/bots/api/#inlinequeryresultcacheddocument) * [InlineQueryResultCachedGif](https://core.telegram.org/bots/api/#inlinequeryresultcachedgif) * [InlineQueryResultCachedMpeg4Gif](https://core.telegram.org/bots/api/#inlinequeryresultcachedmpeg4gif) * [InlineQueryResultCachedPhoto](https://core.telegram.org/bots/api/#inlinequeryresultcachedphoto) * [InlineQueryResultCachedSticker](https://core.telegram.org/bots/api/#inlinequeryresultcachedsticker) * [InlineQueryResultCachedVideo](https://core.telegram.org/bots/api/#inlinequeryresultcachedvideo) * [InlineQueryResultCachedVoice](https://core.telegram.org/bots/api/#inlinequeryresultcachedvoice) * [InlineQueryResultArticle](https://core.telegram.org/bots/api/#inlinequeryresultarticle) * [InlineQueryResultAudio](https://core.telegram.org/bots/api/#inlinequeryresultaudio) * [InlineQueryResultContact](https://core.telegram.org/bots/api/#inlinequeryresultcontact) * [InlineQueryResultGame](https://core.telegram.org/bots/api/#inlinequeryresultgame) * [InlineQueryResultDocument](https://core.telegram.org/bots/api/#inlinequeryresultdocument) * [InlineQueryResultGif](https://core.telegram.org/bots/api/#inlinequeryresultgif) * [InlineQueryResultLocation](https://core.telegram.org/bots/api/#inlinequeryresultlocation) * [InlineQueryResultMpeg4Gif](https://core.telegram.org/bots/api/#inlinequeryresultmpeg4gif) * [InlineQueryResultPhoto](https://core.telegram.org/bots/api/#inlinequeryresultphoto) * [InlineQueryResultVenue](https://core.telegram.org/bots/api/#inlinequeryresultvenue) * [InlineQueryResultVideo](https://core.telegram.org/bots/api/#inlinequeryresultvideo) * [InlineQueryResultVoice](https://core.telegram.org/bots/api/#inlinequeryresultvoice)
     """
-
     # data type: InlineQueryResultCachedAudio
-    anyof_schema_1_validator: Optional[InlineQueryResultCachedAudio] = None
+    oneof_schema_1_validator: Optional[InlineQueryResultCachedAudio] = None
     # data type: InlineQueryResultCachedDocument
-    anyof_schema_2_validator: Optional[InlineQueryResultCachedDocument] = None
+    oneof_schema_2_validator: Optional[InlineQueryResultCachedDocument] = None
     # data type: InlineQueryResultCachedGif
-    anyof_schema_3_validator: Optional[InlineQueryResultCachedGif] = None
+    oneof_schema_3_validator: Optional[InlineQueryResultCachedGif] = None
     # data type: InlineQueryResultCachedMpeg4Gif
-    anyof_schema_4_validator: Optional[InlineQueryResultCachedMpeg4Gif] = None
+    oneof_schema_4_validator: Optional[InlineQueryResultCachedMpeg4Gif] = None
     # data type: InlineQueryResultCachedPhoto
-    anyof_schema_5_validator: Optional[InlineQueryResultCachedPhoto] = None
+    oneof_schema_5_validator: Optional[InlineQueryResultCachedPhoto] = None
     # data type: InlineQueryResultCachedSticker
-    anyof_schema_6_validator: Optional[InlineQueryResultCachedSticker] = None
+    oneof_schema_6_validator: Optional[InlineQueryResultCachedSticker] = None
     # data type: InlineQueryResultCachedVideo
-    anyof_schema_7_validator: Optional[InlineQueryResultCachedVideo] = None
+    oneof_schema_7_validator: Optional[InlineQueryResultCachedVideo] = None
     # data type: InlineQueryResultCachedVoice
-    anyof_schema_8_validator: Optional[InlineQueryResultCachedVoice] = None
+    oneof_schema_8_validator: Optional[InlineQueryResultCachedVoice] = None
     # data type: InlineQueryResultArticle
-    anyof_schema_9_validator: Optional[InlineQueryResultArticle] = None
+    oneof_schema_9_validator: Optional[InlineQueryResultArticle] = None
     # data type: InlineQueryResultAudio
-    anyof_schema_10_validator: Optional[InlineQueryResultAudio] = None
+    oneof_schema_10_validator: Optional[InlineQueryResultAudio] = None
     # data type: InlineQueryResultContact
-    anyof_schema_11_validator: Optional[InlineQueryResultContact] = None
+    oneof_schema_11_validator: Optional[InlineQueryResultContact] = None
     # data type: InlineQueryResultGame
-    anyof_schema_12_validator: Optional[InlineQueryResultGame] = None
+    oneof_schema_12_validator: Optional[InlineQueryResultGame] = None
     # data type: InlineQueryResultDocument
-    anyof_schema_13_validator: Optional[InlineQueryResultDocument] = None
+    oneof_schema_13_validator: Optional[InlineQueryResultDocument] = None
     # data type: InlineQueryResultGif
-    anyof_schema_14_validator: Optional[InlineQueryResultGif] = None
+    oneof_schema_14_validator: Optional[InlineQueryResultGif] = None
     # data type: InlineQueryResultLocation
-    anyof_schema_15_validator: Optional[InlineQueryResultLocation] = None
+    oneof_schema_15_validator: Optional[InlineQueryResultLocation] = None
     # data type: InlineQueryResultMpeg4Gif
-    anyof_schema_16_validator: Optional[InlineQueryResultMpeg4Gif] = None
+    oneof_schema_16_validator: Optional[InlineQueryResultMpeg4Gif] = None
     # data type: InlineQueryResultPhoto
-    anyof_schema_17_validator: Optional[InlineQueryResultPhoto] = None
+    oneof_schema_17_validator: Optional[InlineQueryResultPhoto] = None
     # data type: InlineQueryResultVenue
-    anyof_schema_18_validator: Optional[InlineQueryResultVenue] = None
+    oneof_schema_18_validator: Optional[InlineQueryResultVenue] = None
     # data type: InlineQueryResultVideo
-    anyof_schema_19_validator: Optional[InlineQueryResultVideo] = None
+    oneof_schema_19_validator: Optional[InlineQueryResultVideo] = None
     # data type: InlineQueryResultVoice
-    anyof_schema_20_validator: Optional[InlineQueryResultVoice] = None
-    if TYPE_CHECKING:
-        actual_instance: Optional[Union[InlineQueryResultArticle, InlineQueryResultAudio, InlineQueryResultCachedAudio, InlineQueryResultCachedDocument, InlineQueryResultCachedGif, InlineQueryResultCachedMpeg4Gif, InlineQueryResultCachedPhoto, InlineQueryResultCachedSticker, InlineQueryResultCachedVideo, InlineQueryResultCachedVoice, InlineQueryResultContact, InlineQueryResultDocument, InlineQueryResultGame, InlineQueryResultGif, InlineQueryResultLocation, InlineQueryResultMpeg4Gif, InlineQueryResultPhoto, InlineQueryResultVenue, InlineQueryResultVideo, InlineQueryResultVoice]] = None
-    else:
-        actual_instance: Any = None
-    any_of_schemas: Set[str] = { "InlineQueryResultArticle", "InlineQueryResultAudio", "InlineQueryResultCachedAudio", "InlineQueryResultCachedDocument", "InlineQueryResultCachedGif", "InlineQueryResultCachedMpeg4Gif", "InlineQueryResultCachedPhoto", "InlineQueryResultCachedSticker", "InlineQueryResultCachedVideo", "InlineQueryResultCachedVoice", "InlineQueryResultContact", "InlineQueryResultDocument", "InlineQueryResultGame", "InlineQueryResultGif", "InlineQueryResultLocation", "InlineQueryResultMpeg4Gif", "InlineQueryResultPhoto", "InlineQueryResultVenue", "InlineQueryResultVideo", "InlineQueryResultVoice" }
+    oneof_schema_20_validator: Optional[InlineQueryResultVoice] = None
+    actual_instance: Optional[Union[InlineQueryResultArticle, InlineQueryResultAudio, InlineQueryResultCachedAudio, InlineQueryResultCachedDocument, InlineQueryResultCachedGif, InlineQueryResultCachedMpeg4Gif, InlineQueryResultCachedPhoto, InlineQueryResultCachedSticker, InlineQueryResultCachedVideo, InlineQueryResultCachedVoice, InlineQueryResultContact, InlineQueryResultDocument, InlineQueryResultGame, InlineQueryResultGif, InlineQueryResultLocation, InlineQueryResultMpeg4Gif, InlineQueryResultPhoto, InlineQueryResultVenue, InlineQueryResultVideo, InlineQueryResultVoice]] = None
+    one_of_schemas: Set[str] = { "InlineQueryResultArticle", "InlineQueryResultAudio", "InlineQueryResultCachedAudio", "InlineQueryResultCachedDocument", "InlineQueryResultCachedGif", "InlineQueryResultCachedMpeg4Gif", "InlineQueryResultCachedPhoto", "InlineQueryResultCachedSticker", "InlineQueryResultCachedVideo", "InlineQueryResultCachedVoice", "InlineQueryResultContact", "InlineQueryResultDocument", "InlineQueryResultGame", "InlineQueryResultGif", "InlineQueryResultLocation", "InlineQueryResultMpeg4Gif", "InlineQueryResultPhoto", "InlineQueryResultVenue", "InlineQueryResultVideo", "InlineQueryResultVoice" }
 
-    model_config = {
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -146,137 +141,121 @@ class InlineQueryResult(BaseModel):
             super().__init__(**kwargs)
 
     @field_validator('actual_instance')
-    def actual_instance_must_validate_anyof(cls, v):
+    def actual_instance_must_validate_oneof(cls, v):
         instance = InlineQueryResult.model_construct()
         error_messages = []
+        match = 0
         # validate data type: InlineQueryResultCachedAudio
         if not isinstance(v, InlineQueryResultCachedAudio):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultCachedAudio`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultCachedDocument
         if not isinstance(v, InlineQueryResultCachedDocument):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultCachedDocument`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultCachedGif
         if not isinstance(v, InlineQueryResultCachedGif):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultCachedGif`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultCachedMpeg4Gif
         if not isinstance(v, InlineQueryResultCachedMpeg4Gif):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultCachedMpeg4Gif`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultCachedPhoto
         if not isinstance(v, InlineQueryResultCachedPhoto):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultCachedPhoto`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultCachedSticker
         if not isinstance(v, InlineQueryResultCachedSticker):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultCachedSticker`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultCachedVideo
         if not isinstance(v, InlineQueryResultCachedVideo):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultCachedVideo`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultCachedVoice
         if not isinstance(v, InlineQueryResultCachedVoice):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultCachedVoice`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultArticle
         if not isinstance(v, InlineQueryResultArticle):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultArticle`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultAudio
         if not isinstance(v, InlineQueryResultAudio):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultAudio`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultContact
         if not isinstance(v, InlineQueryResultContact):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultContact`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultGame
         if not isinstance(v, InlineQueryResultGame):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultGame`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultDocument
         if not isinstance(v, InlineQueryResultDocument):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultDocument`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultGif
         if not isinstance(v, InlineQueryResultGif):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultGif`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultLocation
         if not isinstance(v, InlineQueryResultLocation):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultLocation`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultMpeg4Gif
         if not isinstance(v, InlineQueryResultMpeg4Gif):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultMpeg4Gif`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultPhoto
         if not isinstance(v, InlineQueryResultPhoto):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultPhoto`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultVenue
         if not isinstance(v, InlineQueryResultVenue):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultVenue`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultVideo
         if not isinstance(v, InlineQueryResultVideo):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultVideo`")
         else:
-            return v
-
+            match += 1
         # validate data type: InlineQueryResultVoice
         if not isinstance(v, InlineQueryResultVoice):
             error_messages.append(f"Error! Input type `{type(v)}` is not `InlineQueryResultVoice`")
         else:
-            return v
-
-        if error_messages:
+            match += 1
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when setting `actual_instance` in InlineQueryResult with oneOf schemas: InlineQueryResultArticle, InlineQueryResultAudio, InlineQueryResultCachedAudio, InlineQueryResultCachedDocument, InlineQueryResultCachedGif, InlineQueryResultCachedMpeg4Gif, InlineQueryResultCachedPhoto, InlineQueryResultCachedSticker, InlineQueryResultCachedVideo, InlineQueryResultCachedVoice, InlineQueryResultContact, InlineQueryResultDocument, InlineQueryResultGame, InlineQueryResultGif, InlineQueryResultLocation, InlineQueryResultMpeg4Gif, InlineQueryResultPhoto, InlineQueryResultVenue, InlineQueryResultVideo, InlineQueryResultVoice. Details: " + ", ".join(error_messages))
+        elif match == 0:
             # no match
-            raise ValueError("No match found when setting the actual_instance in InlineQueryResult with anyOf schemas: InlineQueryResultArticle, InlineQueryResultAudio, InlineQueryResultCachedAudio, InlineQueryResultCachedDocument, InlineQueryResultCachedGif, InlineQueryResultCachedMpeg4Gif, InlineQueryResultCachedPhoto, InlineQueryResultCachedSticker, InlineQueryResultCachedVideo, InlineQueryResultCachedVoice, InlineQueryResultContact, InlineQueryResultDocument, InlineQueryResultGame, InlineQueryResultGif, InlineQueryResultLocation, InlineQueryResultMpeg4Gif, InlineQueryResultPhoto, InlineQueryResultVenue, InlineQueryResultVideo, InlineQueryResultVoice. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in InlineQueryResult with oneOf schemas: InlineQueryResultArticle, InlineQueryResultAudio, InlineQueryResultCachedAudio, InlineQueryResultCachedDocument, InlineQueryResultCachedGif, InlineQueryResultCachedMpeg4Gif, InlineQueryResultCachedPhoto, InlineQueryResultCachedSticker, InlineQueryResultCachedVideo, InlineQueryResultCachedVoice, InlineQueryResultContact, InlineQueryResultDocument, InlineQueryResultGame, InlineQueryResultGif, InlineQueryResultLocation, InlineQueryResultMpeg4Gif, InlineQueryResultPhoto, InlineQueryResultVenue, InlineQueryResultVideo, InlineQueryResultVoice. Details: " + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls, obj: Dict[str, Any]) -> Self:
+    def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
@@ -284,130 +263,135 @@ class InlineQueryResult(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[InlineQueryResultCachedAudio] = None
+        match = 0
+
+        # deserialize data into InlineQueryResultCachedAudio
         try:
             instance.actual_instance = InlineQueryResultCachedAudio.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[InlineQueryResultCachedDocument] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultCachedDocument
         try:
             instance.actual_instance = InlineQueryResultCachedDocument.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_3_validator: Optional[InlineQueryResultCachedGif] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultCachedGif
         try:
             instance.actual_instance = InlineQueryResultCachedGif.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_4_validator: Optional[InlineQueryResultCachedMpeg4Gif] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultCachedMpeg4Gif
         try:
             instance.actual_instance = InlineQueryResultCachedMpeg4Gif.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_5_validator: Optional[InlineQueryResultCachedPhoto] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultCachedPhoto
         try:
             instance.actual_instance = InlineQueryResultCachedPhoto.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_6_validator: Optional[InlineQueryResultCachedSticker] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultCachedSticker
         try:
             instance.actual_instance = InlineQueryResultCachedSticker.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_7_validator: Optional[InlineQueryResultCachedVideo] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultCachedVideo
         try:
             instance.actual_instance = InlineQueryResultCachedVideo.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_8_validator: Optional[InlineQueryResultCachedVoice] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultCachedVoice
         try:
             instance.actual_instance = InlineQueryResultCachedVoice.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_9_validator: Optional[InlineQueryResultArticle] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultArticle
         try:
             instance.actual_instance = InlineQueryResultArticle.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_10_validator: Optional[InlineQueryResultAudio] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultAudio
         try:
             instance.actual_instance = InlineQueryResultAudio.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_11_validator: Optional[InlineQueryResultContact] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultContact
         try:
             instance.actual_instance = InlineQueryResultContact.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_12_validator: Optional[InlineQueryResultGame] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultGame
         try:
             instance.actual_instance = InlineQueryResultGame.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_13_validator: Optional[InlineQueryResultDocument] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultDocument
         try:
             instance.actual_instance = InlineQueryResultDocument.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_14_validator: Optional[InlineQueryResultGif] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultGif
         try:
             instance.actual_instance = InlineQueryResultGif.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_15_validator: Optional[InlineQueryResultLocation] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultLocation
         try:
             instance.actual_instance = InlineQueryResultLocation.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_16_validator: Optional[InlineQueryResultMpeg4Gif] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultMpeg4Gif
         try:
             instance.actual_instance = InlineQueryResultMpeg4Gif.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_17_validator: Optional[InlineQueryResultPhoto] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultPhoto
         try:
             instance.actual_instance = InlineQueryResultPhoto.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_18_validator: Optional[InlineQueryResultVenue] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultVenue
         try:
             instance.actual_instance = InlineQueryResultVenue.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_19_validator: Optional[InlineQueryResultVideo] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultVideo
         try:
             instance.actual_instance = InlineQueryResultVideo.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_20_validator: Optional[InlineQueryResultVoice] = None
+            error_messages.append(str(e))
+        # deserialize data into InlineQueryResultVoice
         try:
             instance.actual_instance = InlineQueryResultVoice.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
+            error_messages.append(str(e))
 
-        if error_messages:
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when deserializing the JSON string into InlineQueryResult with oneOf schemas: InlineQueryResultArticle, InlineQueryResultAudio, InlineQueryResultCachedAudio, InlineQueryResultCachedDocument, InlineQueryResultCachedGif, InlineQueryResultCachedMpeg4Gif, InlineQueryResultCachedPhoto, InlineQueryResultCachedSticker, InlineQueryResultCachedVideo, InlineQueryResultCachedVoice, InlineQueryResultContact, InlineQueryResultDocument, InlineQueryResultGame, InlineQueryResultGif, InlineQueryResultLocation, InlineQueryResultMpeg4Gif, InlineQueryResultPhoto, InlineQueryResultVenue, InlineQueryResultVideo, InlineQueryResultVoice. Details: " + ", ".join(error_messages))
+        elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into InlineQueryResult with anyOf schemas: InlineQueryResultArticle, InlineQueryResultAudio, InlineQueryResultCachedAudio, InlineQueryResultCachedDocument, InlineQueryResultCachedGif, InlineQueryResultCachedMpeg4Gif, InlineQueryResultCachedPhoto, InlineQueryResultCachedSticker, InlineQueryResultCachedVideo, InlineQueryResultCachedVoice, InlineQueryResultContact, InlineQueryResultDocument, InlineQueryResultGame, InlineQueryResultGif, InlineQueryResultLocation, InlineQueryResultMpeg4Gif, InlineQueryResultPhoto, InlineQueryResultVenue, InlineQueryResultVideo, InlineQueryResultVoice. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into InlineQueryResult with oneOf schemas: InlineQueryResultArticle, InlineQueryResultAudio, InlineQueryResultCachedAudio, InlineQueryResultCachedDocument, InlineQueryResultCachedGif, InlineQueryResultCachedMpeg4Gif, InlineQueryResultCachedPhoto, InlineQueryResultCachedSticker, InlineQueryResultCachedVideo, InlineQueryResultCachedVoice, InlineQueryResultContact, InlineQueryResultDocument, InlineQueryResultGame, InlineQueryResultGif, InlineQueryResultLocation, InlineQueryResultMpeg4Gif, InlineQueryResultPhoto, InlineQueryResultVenue, InlineQueryResultVideo, InlineQueryResultVoice. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -429,6 +413,7 @@ class InlineQueryResult(BaseModel):
         if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
             return self.actual_instance.to_dict()
         else:
+            # primitive type
             return self.actual_instance
 
     def to_str(self) -> str:
