@@ -2,14 +2,14 @@
 
 """
 Telegram Bot API - REST API Client
-Auto-generated OpenAPI schema
+The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram. To learn how to create and set up a bot, please consult our Introduction to Bots and Bot FAQ.
 
 ## Metadata
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
 - **Version**: 9.0.0
-- **Modified**: 2025-07-01T14:15:10.340422036Z[Etc/UTC]
+- **Modified**: 2025-07-01T14:36:24.755929598Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -47,51 +47,46 @@ Auto-generated OpenAPI schema
 
 
 from __future__ import annotations
-from inspect import getfullargspec
 import json
 import pprint
-import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
-from typing import Optional
+from typing import Any, List, Optional
 from tele_rest.models.chat_member_administrator import ChatMemberAdministrator
 from tele_rest.models.chat_member_banned import ChatMemberBanned
 from tele_rest.models.chat_member_left import ChatMemberLeft
 from tele_rest.models.chat_member_member import ChatMemberMember
 from tele_rest.models.chat_member_owner import ChatMemberOwner
 from tele_rest.models.chat_member_restricted import ChatMemberRestricted
-from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
+from pydantic import StrictStr, Field
+from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
-from pydantic import Field
 
-CHATMEMBER_ANY_OF_SCHEMAS = ["ChatMemberAdministrator", "ChatMemberBanned", "ChatMemberLeft", "ChatMemberMember", "ChatMemberOwner", "ChatMemberRestricted"]
+CHATMEMBER_ONE_OF_SCHEMAS = ["ChatMemberAdministrator", "ChatMemberBanned", "ChatMemberLeft", "ChatMemberMember", "ChatMemberOwner", "ChatMemberRestricted"]
 
 class ChatMember(BaseModel):
     """
     This object contains information about one member of a chat. Currently, the following 6 types of chat members are supported:  * [ChatMemberOwner](https://core.telegram.org/bots/api/#chatmemberowner) * [ChatMemberAdministrator](https://core.telegram.org/bots/api/#chatmemberadministrator) * [ChatMemberMember](https://core.telegram.org/bots/api/#chatmembermember) * [ChatMemberRestricted](https://core.telegram.org/bots/api/#chatmemberrestricted) * [ChatMemberLeft](https://core.telegram.org/bots/api/#chatmemberleft) * [ChatMemberBanned](https://core.telegram.org/bots/api/#chatmemberbanned)
     """
-
     # data type: ChatMemberOwner
-    anyof_schema_1_validator: Optional[ChatMemberOwner] = None
+    oneof_schema_1_validator: Optional[ChatMemberOwner] = None
     # data type: ChatMemberAdministrator
-    anyof_schema_2_validator: Optional[ChatMemberAdministrator] = None
+    oneof_schema_2_validator: Optional[ChatMemberAdministrator] = None
     # data type: ChatMemberMember
-    anyof_schema_3_validator: Optional[ChatMemberMember] = None
+    oneof_schema_3_validator: Optional[ChatMemberMember] = None
     # data type: ChatMemberRestricted
-    anyof_schema_4_validator: Optional[ChatMemberRestricted] = None
+    oneof_schema_4_validator: Optional[ChatMemberRestricted] = None
     # data type: ChatMemberLeft
-    anyof_schema_5_validator: Optional[ChatMemberLeft] = None
+    oneof_schema_5_validator: Optional[ChatMemberLeft] = None
     # data type: ChatMemberBanned
-    anyof_schema_6_validator: Optional[ChatMemberBanned] = None
-    if TYPE_CHECKING:
-        actual_instance: Optional[Union[ChatMemberAdministrator, ChatMemberBanned, ChatMemberLeft, ChatMemberMember, ChatMemberOwner, ChatMemberRestricted]] = None
-    else:
-        actual_instance: Any = None
-    any_of_schemas: Set[str] = { "ChatMemberAdministrator", "ChatMemberBanned", "ChatMemberLeft", "ChatMemberMember", "ChatMemberOwner", "ChatMemberRestricted" }
+    oneof_schema_6_validator: Optional[ChatMemberBanned] = None
+    actual_instance: Optional[Union[ChatMemberAdministrator, ChatMemberBanned, ChatMemberLeft, ChatMemberMember, ChatMemberOwner, ChatMemberRestricted]] = None
+    one_of_schemas: Set[str] = { "ChatMemberAdministrator", "ChatMemberBanned", "ChatMemberLeft", "ChatMemberMember", "ChatMemberOwner", "ChatMemberRestricted" }
 
-    model_config = {
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -104,53 +99,51 @@ class ChatMember(BaseModel):
             super().__init__(**kwargs)
 
     @field_validator('actual_instance')
-    def actual_instance_must_validate_anyof(cls, v):
+    def actual_instance_must_validate_oneof(cls, v):
         instance = ChatMember.model_construct()
         error_messages = []
+        match = 0
         # validate data type: ChatMemberOwner
         if not isinstance(v, ChatMemberOwner):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ChatMemberOwner`")
         else:
-            return v
-
+            match += 1
         # validate data type: ChatMemberAdministrator
         if not isinstance(v, ChatMemberAdministrator):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ChatMemberAdministrator`")
         else:
-            return v
-
+            match += 1
         # validate data type: ChatMemberMember
         if not isinstance(v, ChatMemberMember):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ChatMemberMember`")
         else:
-            return v
-
+            match += 1
         # validate data type: ChatMemberRestricted
         if not isinstance(v, ChatMemberRestricted):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ChatMemberRestricted`")
         else:
-            return v
-
+            match += 1
         # validate data type: ChatMemberLeft
         if not isinstance(v, ChatMemberLeft):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ChatMemberLeft`")
         else:
-            return v
-
+            match += 1
         # validate data type: ChatMemberBanned
         if not isinstance(v, ChatMemberBanned):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ChatMemberBanned`")
         else:
-            return v
-
-        if error_messages:
+            match += 1
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when setting `actual_instance` in ChatMember with oneOf schemas: ChatMemberAdministrator, ChatMemberBanned, ChatMemberLeft, ChatMemberMember, ChatMemberOwner, ChatMemberRestricted. Details: " + ", ".join(error_messages))
+        elif match == 0:
             # no match
-            raise ValueError("No match found when setting the actual_instance in ChatMember with anyOf schemas: ChatMemberAdministrator, ChatMemberBanned, ChatMemberLeft, ChatMemberMember, ChatMemberOwner, ChatMemberRestricted. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in ChatMember with oneOf schemas: ChatMemberAdministrator, ChatMemberBanned, ChatMemberLeft, ChatMemberMember, ChatMemberOwner, ChatMemberRestricted. Details: " + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls, obj: Dict[str, Any]) -> Self:
+    def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
@@ -158,46 +151,51 @@ class ChatMember(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[ChatMemberOwner] = None
+        match = 0
+
+        # deserialize data into ChatMemberOwner
         try:
             instance.actual_instance = ChatMemberOwner.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[ChatMemberAdministrator] = None
+            error_messages.append(str(e))
+        # deserialize data into ChatMemberAdministrator
         try:
             instance.actual_instance = ChatMemberAdministrator.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_3_validator: Optional[ChatMemberMember] = None
+            error_messages.append(str(e))
+        # deserialize data into ChatMemberMember
         try:
             instance.actual_instance = ChatMemberMember.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_4_validator: Optional[ChatMemberRestricted] = None
+            error_messages.append(str(e))
+        # deserialize data into ChatMemberRestricted
         try:
             instance.actual_instance = ChatMemberRestricted.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_5_validator: Optional[ChatMemberLeft] = None
+            error_messages.append(str(e))
+        # deserialize data into ChatMemberLeft
         try:
             instance.actual_instance = ChatMemberLeft.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_6_validator: Optional[ChatMemberBanned] = None
+            error_messages.append(str(e))
+        # deserialize data into ChatMemberBanned
         try:
             instance.actual_instance = ChatMemberBanned.from_json(json_str)
-            return instance
+            match += 1
         except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
+            error_messages.append(str(e))
 
-        if error_messages:
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when deserializing the JSON string into ChatMember with oneOf schemas: ChatMemberAdministrator, ChatMemberBanned, ChatMemberLeft, ChatMemberMember, ChatMemberOwner, ChatMemberRestricted. Details: " + ", ".join(error_messages))
+        elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into ChatMember with anyOf schemas: ChatMemberAdministrator, ChatMemberBanned, ChatMemberLeft, ChatMemberMember, ChatMemberOwner, ChatMemberRestricted. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into ChatMember with oneOf schemas: ChatMemberAdministrator, ChatMemberBanned, ChatMemberLeft, ChatMemberMember, ChatMemberOwner, ChatMemberRestricted. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -219,6 +217,7 @@ class ChatMember(BaseModel):
         if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
             return self.actual_instance.to_dict()
         else:
+            # primitive type
             return self.actual_instance
 
     def to_str(self) -> str:

@@ -2,14 +2,14 @@
 
 """
 Telegram Bot API - REST API Client
-Auto-generated OpenAPI schema
+The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram. To learn how to create and set up a bot, please consult our Introduction to Bots and Bot FAQ.
 
 ## Metadata
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
 - **Version**: 9.0.0
-- **Modified**: 2025-07-01T14:15:10.340422036Z[Etc/UTC]
+- **Modified**: 2025-07-01T14:36:24.755929598Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -77,9 +77,10 @@ setup(
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
+    license="Apache-2.0",
     long_description_content_type='text/markdown',
     long_description="""\
-    Auto-generated OpenAPI schema
+    The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram. To learn how to create and set up a bot, please consult our Introduction to Bots and Bot FAQ.
     """,  # noqa: E501
     package_data={"tele_rest": ["py.typed"]},
 )
