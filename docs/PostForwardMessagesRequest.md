@@ -1,0 +1,34 @@
+# PostForwardMessagesRequest
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md) |  | 
+**message_thread_id** | **int** | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+**from_chat_id** | [**PostForwardMessagesRequestFromChatId**](PostForwardMessagesRequestFromChatId.md) |  | 
+**message_ids** | **List[int]** | A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\_chat\\_id* to forward. The identifiers must be specified in a strictly increasing order. | 
+**disable_notification** | **bool** | Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
+**protect_content** | **bool** | Protects the contents of the forwarded messages from forwarding and saving | [optional] 
+
+## Example
+
+```python
+from tele_rest.models.post_forward_messages_request import PostForwardMessagesRequest
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of PostForwardMessagesRequest from a JSON string
+post_forward_messages_request_instance = PostForwardMessagesRequest.from_json(json)
+# print the JSON string representation of the object
+print(PostForwardMessagesRequest.to_json())
+
+# convert the object into a dict
+post_forward_messages_request_dict = post_forward_messages_request_instance.to_dict()
+# create an instance of PostForwardMessagesRequest from a dict
+post_forward_messages_request_from_dict = PostForwardMessagesRequest.from_dict(post_forward_messages_request_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
