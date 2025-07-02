@@ -9,7 +9,7 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
 - **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Modified**: 2025-07-02T09:16:58.218987030Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -89,7 +89,7 @@ class TestBusinessConnection(unittest.TestCase):
                 rights = tele_rest.models.business_bot_rights.BusinessBotRights(
                     can_reply = True, 
                     can_read_messages = True, 
-                    can_delete_sent_messages = True, 
+                    can_delete_outgoing_messages = True, 
                     can_delete_all_messages = True, 
                     can_edit_name = True, 
                     can_edit_bio = True, 

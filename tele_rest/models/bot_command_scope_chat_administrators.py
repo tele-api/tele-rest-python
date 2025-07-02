@@ -9,7 +9,7 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
 - **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Modified**: 2025-07-02T09:16:58.218987030Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -53,7 +53,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -62,7 +62,7 @@ class BotCommandScopeChatAdministrators(BaseModel):
     Represents the [scope](https://core.telegram.org/bots/api/#botcommandscope) of bot commands, covering all administrators of a specific group or supergroup chat.
     """ # noqa: E501
     type: StrictStr = Field(description="Scope type, must be *chat\\_administrators*")
-    chat_id: PostRestrictChatMemberRequestChatId
+    chat_id: BotCommandScopeChatChatId
     __properties: ClassVar[List[str]] = ["type", "chat_id"]
 
     model_config = ConfigDict(
@@ -125,7 +125,7 @@ class BotCommandScopeChatAdministrators(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type") if obj.get("type") is not None else 'chat_administrators',
-            "chat_id": PostRestrictChatMemberRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None
+            "chat_id": BotCommandScopeChatChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None
         })
         return _obj
 

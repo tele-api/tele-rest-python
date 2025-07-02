@@ -160,7 +160,7 @@ Method | HTTP request | Description
 
 
 # **post_add_sticker_to_set**
-> PostSetWebhook200Response post_add_sticker_to_set(user_id, name, sticker)
+> AddStickerToSetResponse post_add_sticker_to_set(user_id, name, sticker)
 
 addStickerToSet
 
@@ -171,8 +171,8 @@ Use this method to add a new sticker to a set created by the bot. Emoji sticker 
 
 ```python
 import tele_rest
+from tele_rest.models.add_sticker_to_set_response import AddStickerToSetResponse
 from tele_rest.models.input_sticker import InputSticker
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**AddStickerToSetResponse**](AddStickerToSetResponse.md)
 
 ### Authorization
 
@@ -221,7 +221,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -235,7 +235,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_answer_callback_query**
-> PostSetWebhook200Response post_answer_callback_query(callback_query_id, text=text, show_alert=show_alert, url=url, cache_time=cache_time)
+> AnswerCallbackQueryResponse post_answer_callback_query(callback_query_id, text=text, show_alert=show_alert, url=url, cache_time=cache_time)
 
 answerCallbackQuery
 
@@ -248,7 +248,7 @@ Alternatively, the user can be redirected to the specified Game URL. For this op
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.answer_callback_query_response import AnswerCallbackQueryResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**AnswerCallbackQueryResponse**](AnswerCallbackQueryResponse.md)
 
 ### Authorization
 
@@ -315,7 +315,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_answer_inline_query**
-> PostSetWebhook200Response post_answer_inline_query(inline_query_id, results, cache_time=cache_time, is_personal=is_personal, next_offset=next_offset, button=button)
+> AnswerInlineQueryResponse post_answer_inline_query(inline_query_id, results, cache_time=cache_time, is_personal=is_personal, next_offset=next_offset, button=button)
 
 answerInlineQuery
 
@@ -327,9 +327,9 @@ No more than **50** results per query are allowed.
 
 ```python
 import tele_rest
+from tele_rest.models.answer_inline_query_response import AnswerInlineQueryResponse
 from tele_rest.models.inline_query_result import InlineQueryResult
 from tele_rest.models.inline_query_results_button import InlineQueryResultsButton
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**AnswerInlineQueryResponse**](AnswerInlineQueryResponse.md)
 
 ### Authorization
 
@@ -398,7 +398,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_answer_pre_checkout_query**
-> PostSetWebhook200Response post_answer_pre_checkout_query(pre_checkout_query_id, ok, error_message=error_message)
+> AnswerPreCheckoutQueryResponse post_answer_pre_checkout_query(pre_checkout_query_id, ok, error_message=error_message)
 
 answerPreCheckoutQuery
 
@@ -409,7 +409,7 @@ Once the user has confirmed their payment and shipping details, the Bot API send
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.answer_pre_checkout_query_response import AnswerPreCheckoutQueryResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -450,7 +450,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**AnswerPreCheckoutQueryResponse**](AnswerPreCheckoutQueryResponse.md)
 
 ### Authorization
 
@@ -472,7 +472,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_answer_shipping_query**
-> PostSetWebhook200Response post_answer_shipping_query(shipping_query_id, ok, shipping_options=shipping_options, error_message=error_message)
+> AnswerShippingQueryResponse post_answer_shipping_query(shipping_query_id, ok, shipping_options=shipping_options, error_message=error_message)
 
 answerShippingQuery
 
@@ -483,7 +483,7 @@ If you sent an invoice requesting a shipping address and the parameter *is\_flex
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.answer_shipping_query_response import AnswerShippingQueryResponse
 from tele_rest.models.shipping_option import ShippingOption
 from tele_rest.rest import ApiException
 from pprint import pprint
@@ -527,7 +527,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**AnswerShippingQueryResponse**](AnswerShippingQueryResponse.md)
 
 ### Authorization
 
@@ -549,7 +549,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_answer_web_app_query**
-> PostAnswerWebAppQuery200Response post_answer_web_app_query(web_app_query_id, result)
+> AnswerWebAppQueryResponse post_answer_web_app_query(web_app_query_id, result)
 
 answerWebAppQuery
 
@@ -560,8 +560,8 @@ Use this method to set the result of an interaction with a [Web App](https://cor
 
 ```python
 import tele_rest
+from tele_rest.models.answer_web_app_query_response import AnswerWebAppQueryResponse
 from tele_rest.models.inline_query_result import InlineQueryResult
-from tele_rest.models.post_answer_web_app_query200_response import PostAnswerWebAppQuery200Response
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -600,7 +600,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostAnswerWebAppQuery200Response**](PostAnswerWebAppQuery200Response.md)
+[**AnswerWebAppQueryResponse**](AnswerWebAppQueryResponse.md)
 
 ### Authorization
 
@@ -622,7 +622,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_approve_chat_join_request**
-> PostSetWebhook200Response post_approve_chat_join_request(chat_id, user_id)
+> ApproveChatJoinRequestResponse post_approve_chat_join_request(chat_id, user_id)
 
 approveChatJoinRequest
 
@@ -633,8 +633,8 @@ Use this method to approve a chat join request. The bot must be an administrator
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.approve_chat_join_request_response import ApproveChatJoinRequestResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -649,7 +649,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     user_id = 56 # int | Unique identifier of the target user
 
     try:
@@ -668,12 +668,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **user_id** | **int**| Unique identifier of the target user | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**ApproveChatJoinRequestResponse**](ApproveChatJoinRequestResponse.md)
 
 ### Authorization
 
@@ -695,7 +695,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_ban_chat_member**
-> PostSetWebhook200Response post_ban_chat_member(chat_id, user_id, until_date=until_date, revoke_messages=revoke_messages)
+> BanChatMemberResponse post_ban_chat_member(chat_id, user_id, until_date=until_date, revoke_messages=revoke_messages)
 
 banChatMember
 
@@ -706,8 +706,8 @@ Use this method to ban a user in a group, a supergroup or a channel. In the case
 
 ```python
 import tele_rest
-from tele_rest.models.post_ban_chat_member_request_chat_id import PostBanChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.ban_chat_member_request_chat_id import BanChatMemberRequestChatId
+from tele_rest.models.ban_chat_member_response import BanChatMemberResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -722,7 +722,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostBanChatMemberRequestChatId() # PostBanChatMemberRequestChatId | 
+    chat_id = tele_rest.BanChatMemberRequestChatId() # BanChatMemberRequestChatId | 
     user_id = 56 # int | Unique identifier of the target user
     until_date = 56 # int | Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only. (optional)
     revoke_messages = True # bool | Pass *True* to delete all messages from the chat for the user that is being removed. If *False*, the user will be able to see messages in the group that were sent before the user was removed. Always *True* for supergroups and channels. (optional)
@@ -743,14 +743,14 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostBanChatMemberRequestChatId**](PostBanChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BanChatMemberRequestChatId**](BanChatMemberRequestChatId.md)|  | 
  **user_id** | **int**| Unique identifier of the target user | 
  **until_date** | **int**| Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only. | [optional] 
  **revoke_messages** | **bool**| Pass *True* to delete all messages from the chat for the user that is being removed. If *False*, the user will be able to see messages in the group that were sent before the user was removed. Always *True* for supergroups and channels. | [optional] 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**BanChatMemberResponse**](BanChatMemberResponse.md)
 
 ### Authorization
 
@@ -772,7 +772,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_ban_chat_sender_chat**
-> PostSetWebhook200Response post_ban_chat_sender_chat(chat_id, sender_chat_id)
+> BanChatSenderChatResponse post_ban_chat_sender_chat(chat_id, sender_chat_id)
 
 banChatSenderChat
 
@@ -783,8 +783,8 @@ Use this method to ban a channel chat in a supergroup or a channel. Until the ch
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.ban_chat_sender_chat_response import BanChatSenderChatResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -799,7 +799,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     sender_chat_id = 56 # int | Unique identifier of the target sender chat
 
     try:
@@ -818,12 +818,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **sender_chat_id** | **int**| Unique identifier of the target sender chat | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**BanChatSenderChatResponse**](BanChatSenderChatResponse.md)
 
 ### Authorization
 
@@ -845,7 +845,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_close**
-> PostSetWebhook200Response post_close()
+> CloseResponse post_close()
 
 close
 
@@ -856,7 +856,7 @@ Use this method to close the bot instance before moving it from one local server
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.close_response import CloseResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -889,7 +889,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**CloseResponse**](CloseResponse.md)
 
 ### Authorization
 
@@ -911,7 +911,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_close_forum_topic**
-> PostSetWebhook200Response post_close_forum_topic(chat_id, message_thread_id)
+> CloseForumTopicResponse post_close_forum_topic(chat_id, message_thread_id)
 
 closeForumTopic
 
@@ -922,8 +922,8 @@ Use this method to close an open topic in a forum supergroup chat. The bot must 
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.close_forum_topic_response import CloseForumTopicResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -938,7 +938,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
     message_thread_id = 56 # int | Unique identifier for the target message thread of the forum topic
 
     try:
@@ -957,12 +957,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
  **message_thread_id** | **int**| Unique identifier for the target message thread of the forum topic | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**CloseForumTopicResponse**](CloseForumTopicResponse.md)
 
 ### Authorization
 
@@ -984,7 +984,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_close_general_forum_topic**
-> PostSetWebhook200Response post_close_general_forum_topic(chat_id)
+> CloseGeneralForumTopicResponse post_close_general_forum_topic(chat_id)
 
 closeGeneralForumTopic
 
@@ -995,8 +995,8 @@ Use this method to close an open 'General' topic in a forum supergroup chat. The
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.close_general_forum_topic_response import CloseGeneralForumTopicResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1011,7 +1011,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
 
     try:
         # closeGeneralForumTopic
@@ -1029,11 +1029,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**CloseGeneralForumTopicResponse**](CloseGeneralForumTopicResponse.md)
 
 ### Authorization
 
@@ -1055,7 +1055,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_convert_gift_to_stars**
-> PostSetWebhook200Response post_convert_gift_to_stars(business_connection_id, owned_gift_id)
+> ConvertGiftToStarsResponse post_convert_gift_to_stars(business_connection_id, owned_gift_id)
 
 convertGiftToStars
 
@@ -1066,7 +1066,7 @@ Converts a given regular gift to Telegram Stars. Requires the *can\_convert\_gif
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.convert_gift_to_stars_response import ConvertGiftToStarsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1105,7 +1105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**ConvertGiftToStarsResponse**](ConvertGiftToStarsResponse.md)
 
 ### Authorization
 
@@ -1127,7 +1127,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_copy_message**
-> PostCopyMessage200Response post_copy_message(chat_id, from_chat_id, message_id, message_thread_id=message_thread_id, video_start_timestamp=video_start_timestamp, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> CopyMessageResponse post_copy_message(chat_id, from_chat_id, message_id, message_thread_id=message_thread_id, video_start_timestamp=video_start_timestamp, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 copyMessage
 
@@ -1138,12 +1138,12 @@ Use this method to copy messages of any kind. Service messages, paid media messa
 
 ```python
 import tele_rest
+from tele_rest.models.copy_message_response import CopyMessageResponse
+from tele_rest.models.forward_message_request_from_chat_id import ForwardMessageRequestFromChatId
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_copy_message200_response import PostCopyMessage200Response
-from tele_rest.models.post_forward_message_request_from_chat_id import PostForwardMessageRequestFromChatId
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1158,8 +1158,8 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
-    from_chat_id = tele_rest.PostForwardMessageRequestFromChatId() # PostForwardMessageRequestFromChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    from_chat_id = tele_rest.ForwardMessageRequestFromChatId() # ForwardMessageRequestFromChatId | 
     message_id = 56 # int | Message identifier in the chat specified in *from\\\\_chat\\\\_id*
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
     video_start_timestamp = 56 # int | New start timestamp for the copied video in the message (optional)
@@ -1171,7 +1171,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # copyMessage
@@ -1189,8 +1189,8 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
- **from_chat_id** | [**PostForwardMessageRequestFromChatId**](PostForwardMessageRequestFromChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **from_chat_id** | [**ForwardMessageRequestFromChatId**](ForwardMessageRequestFromChatId.md)|  | 
  **message_id** | **int**| Message identifier in the chat specified in *from\\\\_chat\\\\_id* | 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
  **video_start_timestamp** | **int**| New start timestamp for the copied video in the message | [optional] 
@@ -1202,11 +1202,11 @@ Name | Type | Description  | Notes
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostCopyMessage200Response**](PostCopyMessage200Response.md)
+[**CopyMessageResponse**](CopyMessageResponse.md)
 
 ### Authorization
 
@@ -1228,7 +1228,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_copy_messages**
-> PostForwardMessages200Response post_copy_messages(chat_id, from_chat_id, message_ids, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content, remove_caption=remove_caption)
+> CopyMessagesResponse post_copy_messages(chat_id, from_chat_id, message_ids, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content, remove_caption=remove_caption)
 
 copyMessages
 
@@ -1239,9 +1239,9 @@ Use this method to copy messages of any kind. If some of the specified messages 
 
 ```python
 import tele_rest
-from tele_rest.models.post_forward_messages200_response import PostForwardMessages200Response
-from tele_rest.models.post_forward_messages_request_from_chat_id import PostForwardMessagesRequestFromChatId
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
+from tele_rest.models.copy_messages_response import CopyMessagesResponse
+from tele_rest.models.forward_messages_request_from_chat_id import ForwardMessagesRequestFromChatId
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1256,8 +1256,8 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
-    from_chat_id = tele_rest.PostForwardMessagesRequestFromChatId() # PostForwardMessagesRequestFromChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    from_chat_id = tele_rest.ForwardMessagesRequestFromChatId() # ForwardMessagesRequestFromChatId | 
     message_ids = [56] # List[int] | A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to copy. The identifiers must be specified in a strictly increasing order.
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
     disable_notification = True # bool | Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
@@ -1280,8 +1280,8 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
- **from_chat_id** | [**PostForwardMessagesRequestFromChatId**](PostForwardMessagesRequestFromChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **from_chat_id** | [**ForwardMessagesRequestFromChatId**](ForwardMessagesRequestFromChatId.md)|  | 
  **message_ids** | [**List[int]**](int.md)| A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to copy. The identifiers must be specified in a strictly increasing order. | 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
  **disable_notification** | **bool**| Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
@@ -1290,7 +1290,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostForwardMessages200Response**](PostForwardMessages200Response.md)
+[**CopyMessagesResponse**](CopyMessagesResponse.md)
 
 ### Authorization
 
@@ -1312,7 +1312,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_create_chat_invite_link**
-> PostCreateChatInviteLink200Response post_create_chat_invite_link(chat_id, name=name, expire_date=expire_date, member_limit=member_limit, creates_join_request=creates_join_request)
+> CreateChatInviteLinkResponse post_create_chat_invite_link(chat_id, name=name, expire_date=expire_date, member_limit=member_limit, creates_join_request=creates_join_request)
 
 createChatInviteLink
 
@@ -1323,8 +1323,8 @@ Use this method to create an additional invite link for a chat. The bot must be 
 
 ```python
 import tele_rest
-from tele_rest.models.post_create_chat_invite_link200_response import PostCreateChatInviteLink200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
+from tele_rest.models.create_chat_invite_link_response import CreateChatInviteLinkResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1339,7 +1339,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     name = 'name_example' # str | Invite link name; 0-32 characters (optional)
     expire_date = 56 # int | Point in time (Unix timestamp) when the link will expire (optional)
     member_limit = 56 # int | The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999 (optional)
@@ -1361,7 +1361,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **name** | **str**| Invite link name; 0-32 characters | [optional] 
  **expire_date** | **int**| Point in time (Unix timestamp) when the link will expire | [optional] 
  **member_limit** | **int**| The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999 | [optional] 
@@ -1369,7 +1369,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostCreateChatInviteLink200Response**](PostCreateChatInviteLink200Response.md)
+[**CreateChatInviteLinkResponse**](CreateChatInviteLinkResponse.md)
 
 ### Authorization
 
@@ -1391,7 +1391,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_create_chat_subscription_invite_link**
-> PostCreateChatInviteLink200Response post_create_chat_subscription_invite_link(chat_id, subscription_period, subscription_price, name=name)
+> CreateChatSubscriptionInviteLinkResponse post_create_chat_subscription_invite_link(chat_id, subscription_period, subscription_price, name=name)
 
 createChatSubscriptionInviteLink
 
@@ -1402,8 +1402,8 @@ Use this method to create a [subscription invite link](https://telegram.org/blog
 
 ```python
 import tele_rest
-from tele_rest.models.post_create_chat_invite_link200_response import PostCreateChatInviteLink200Response
-from tele_rest.models.post_create_chat_subscription_invite_link_request_chat_id import PostCreateChatSubscriptionInviteLinkRequestChatId
+from tele_rest.models.create_chat_subscription_invite_link_request_chat_id import CreateChatSubscriptionInviteLinkRequestChatId
+from tele_rest.models.create_chat_subscription_invite_link_response import CreateChatSubscriptionInviteLinkResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1418,7 +1418,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostCreateChatSubscriptionInviteLinkRequestChatId() # PostCreateChatSubscriptionInviteLinkRequestChatId | 
+    chat_id = tele_rest.CreateChatSubscriptionInviteLinkRequestChatId() # CreateChatSubscriptionInviteLinkRequestChatId | 
     subscription_period = 56 # int | The number of seconds the subscription will be active for before the next payment. Currently, it must always be 2592000 (30 days).
     subscription_price = 56 # int | The amount of Telegram Stars a user must pay initially and after each subsequent subscription period to be a member of the chat; 1-10000
     name = 'name_example' # str | Invite link name; 0-32 characters (optional)
@@ -1439,14 +1439,14 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostCreateChatSubscriptionInviteLinkRequestChatId**](PostCreateChatSubscriptionInviteLinkRequestChatId.md)|  | 
+ **chat_id** | [**CreateChatSubscriptionInviteLinkRequestChatId**](CreateChatSubscriptionInviteLinkRequestChatId.md)|  | 
  **subscription_period** | **int**| The number of seconds the subscription will be active for before the next payment. Currently, it must always be 2592000 (30 days). | 
  **subscription_price** | **int**| The amount of Telegram Stars a user must pay initially and after each subsequent subscription period to be a member of the chat; 1-10000 | 
  **name** | **str**| Invite link name; 0-32 characters | [optional] 
 
 ### Return type
 
-[**PostCreateChatInviteLink200Response**](PostCreateChatInviteLink200Response.md)
+[**CreateChatSubscriptionInviteLinkResponse**](CreateChatSubscriptionInviteLinkResponse.md)
 
 ### Authorization
 
@@ -1468,7 +1468,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_create_forum_topic**
-> PostCreateForumTopic200Response post_create_forum_topic(chat_id, name, icon_color=icon_color, icon_custom_emoji_id=icon_custom_emoji_id)
+> CreateForumTopicResponse post_create_forum_topic(chat_id, name, icon_color=icon_color, icon_custom_emoji_id=icon_custom_emoji_id)
 
 createForumTopic
 
@@ -1479,8 +1479,8 @@ Use this method to create a topic in a forum supergroup chat. The bot must be an
 
 ```python
 import tele_rest
-from tele_rest.models.post_create_forum_topic200_response import PostCreateForumTopic200Response
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.create_forum_topic_response import CreateForumTopicResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1495,7 +1495,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
     name = 'name_example' # str | Topic name, 1-128 characters
     icon_color = 56 # int | Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F) (optional)
     icon_custom_emoji_id = 'icon_custom_emoji_id_example' # str | Unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. (optional)
@@ -1516,14 +1516,14 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
  **name** | **str**| Topic name, 1-128 characters | 
  **icon_color** | **int**| Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F) | [optional] 
  **icon_custom_emoji_id** | **str**| Unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. | [optional] 
 
 ### Return type
 
-[**PostCreateForumTopic200Response**](PostCreateForumTopic200Response.md)
+[**CreateForumTopicResponse**](CreateForumTopicResponse.md)
 
 ### Authorization
 
@@ -1545,7 +1545,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_create_invoice_link**
-> PostExportChatInviteLink200Response post_create_invoice_link(title, description, payload, currency, prices, business_connection_id=business_connection_id, provider_token=provider_token, subscription_period=subscription_period, max_tip_amount=max_tip_amount, suggested_tip_amounts=suggested_tip_amounts, provider_data=provider_data, photo_url=photo_url, photo_size=photo_size, photo_width=photo_width, photo_height=photo_height, need_name=need_name, need_phone_number=need_phone_number, need_email=need_email, need_shipping_address=need_shipping_address, send_phone_number_to_provider=send_phone_number_to_provider, send_email_to_provider=send_email_to_provider, is_flexible=is_flexible)
+> CreateInvoiceLinkResponse post_create_invoice_link(title, description, payload, currency, prices, business_connection_id=business_connection_id, provider_token=provider_token, subscription_period=subscription_period, max_tip_amount=max_tip_amount, suggested_tip_amounts=suggested_tip_amounts, provider_data=provider_data, photo_url=photo_url, photo_size=photo_size, photo_width=photo_width, photo_height=photo_height, need_name=need_name, need_phone_number=need_phone_number, need_email=need_email, need_shipping_address=need_shipping_address, send_phone_number_to_provider=send_phone_number_to_provider, send_email_to_provider=send_email_to_provider, is_flexible=is_flexible)
 
 createInvoiceLink
 
@@ -1556,8 +1556,8 @@ Use this method to create a link for an invoice. Returns the created invoice lin
 
 ```python
 import tele_rest
+from tele_rest.models.create_invoice_link_response import CreateInvoiceLinkResponse
 from tele_rest.models.labeled_price import LabeledPrice
-from tele_rest.models.post_export_chat_invite_link200_response import PostExportChatInviteLink200Response
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1636,7 +1636,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostExportChatInviteLink200Response**](PostExportChatInviteLink200Response.md)
+[**CreateInvoiceLinkResponse**](CreateInvoiceLinkResponse.md)
 
 ### Authorization
 
@@ -1658,7 +1658,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_create_new_sticker_set**
-> PostSetWebhook200Response post_create_new_sticker_set(user_id, name, title, stickers, sticker_type=sticker_type, needs_repainting=needs_repainting)
+> CreateNewStickerSetResponse post_create_new_sticker_set(user_id, name, title, stickers, sticker_type=sticker_type, needs_repainting=needs_repainting)
 
 createNewStickerSet
 
@@ -1669,8 +1669,8 @@ Use this method to create a new sticker set owned by a user. The bot will be abl
 
 ```python
 import tele_rest
+from tele_rest.models.create_new_sticker_set_response import CreateNewStickerSetResponse
 from tele_rest.models.input_sticker import InputSticker
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1717,7 +1717,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**CreateNewStickerSetResponse**](CreateNewStickerSetResponse.md)
 
 ### Authorization
 
@@ -1725,7 +1725,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -1739,7 +1739,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_decline_chat_join_request**
-> PostSetWebhook200Response post_decline_chat_join_request(chat_id, user_id)
+> DeclineChatJoinRequestResponse post_decline_chat_join_request(chat_id, user_id)
 
 declineChatJoinRequest
 
@@ -1750,8 +1750,8 @@ Use this method to decline a chat join request. The bot must be an administrator
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.decline_chat_join_request_response import DeclineChatJoinRequestResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1766,7 +1766,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     user_id = 56 # int | Unique identifier of the target user
 
     try:
@@ -1785,12 +1785,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **user_id** | **int**| Unique identifier of the target user | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**DeclineChatJoinRequestResponse**](DeclineChatJoinRequestResponse.md)
 
 ### Authorization
 
@@ -1812,18 +1812,18 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_delete_business_messages**
-> PostSetWebhook200Response post_delete_business_messages(business_connection_id, message_ids)
+> DeleteBusinessMessagesResponse post_delete_business_messages(business_connection_id, message_ids)
 
 deleteBusinessMessages
 
-Delete messages on behalf of a business account. Requires the *can\_delete\_sent\_messages* business bot right to delete messages sent by the bot itself, or the *can\_delete\_all\_messages* business bot right to delete any message. Returns *True* on success.
+Delete messages on behalf of a business account. Requires the *can\_delete\_outgoing\_messages* business bot right to delete messages sent by the bot itself, or the *can\_delete\_all\_messages* business bot right to delete any message. Returns *True* on success.
 
 ### Example
 
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.delete_business_messages_response import DeleteBusinessMessagesResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1862,7 +1862,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**DeleteBusinessMessagesResponse**](DeleteBusinessMessagesResponse.md)
 
 ### Authorization
 
@@ -1884,7 +1884,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_delete_chat_photo**
-> PostSetWebhook200Response post_delete_chat_photo(chat_id)
+> DeleteChatPhotoResponse post_delete_chat_photo(chat_id)
 
 deleteChatPhoto
 
@@ -1895,8 +1895,8 @@ Use this method to delete a chat photo. Photos can't be changed for private chat
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.delete_chat_photo_response import DeleteChatPhotoResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1911,7 +1911,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
 
     try:
         # deleteChatPhoto
@@ -1929,11 +1929,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**DeleteChatPhotoResponse**](DeleteChatPhotoResponse.md)
 
 ### Authorization
 
@@ -1955,7 +1955,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_delete_chat_sticker_set**
-> PostSetWebhook200Response post_delete_chat_sticker_set(chat_id)
+> DeleteChatStickerSetResponse post_delete_chat_sticker_set(chat_id)
 
 deleteChatStickerSet
 
@@ -1966,8 +1966,8 @@ Use this method to delete a group sticker set from a supergroup. The bot must be
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.delete_chat_sticker_set_response import DeleteChatStickerSetResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1982,7 +1982,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
 
     try:
         # deleteChatStickerSet
@@ -2000,11 +2000,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**DeleteChatStickerSetResponse**](DeleteChatStickerSetResponse.md)
 
 ### Authorization
 
@@ -2026,7 +2026,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_delete_forum_topic**
-> PostSetWebhook200Response post_delete_forum_topic(chat_id, message_thread_id)
+> DeleteForumTopicResponse post_delete_forum_topic(chat_id, message_thread_id)
 
 deleteForumTopic
 
@@ -2037,8 +2037,8 @@ Use this method to delete a forum topic along with all its messages in a forum s
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.delete_forum_topic_response import DeleteForumTopicResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2053,7 +2053,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
     message_thread_id = 56 # int | Unique identifier for the target message thread of the forum topic
 
     try:
@@ -2072,12 +2072,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
  **message_thread_id** | **int**| Unique identifier for the target message thread of the forum topic | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**DeleteForumTopicResponse**](DeleteForumTopicResponse.md)
 
 ### Authorization
 
@@ -2099,7 +2099,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_delete_message**
-> PostSetWebhook200Response post_delete_message(chat_id, message_id)
+> DeleteMessageResponse post_delete_message(chat_id, message_id)
 
 deleteMessage
 
@@ -2119,8 +2119,8 @@ Returns *True* on success.
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.delete_message_response import DeleteMessageResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2135,7 +2135,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     message_id = 56 # int | Identifier of the message to delete
 
     try:
@@ -2154,12 +2154,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **message_id** | **int**| Identifier of the message to delete | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**DeleteMessageResponse**](DeleteMessageResponse.md)
 
 ### Authorization
 
@@ -2181,7 +2181,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_delete_messages**
-> PostSetWebhook200Response post_delete_messages(chat_id, message_ids)
+> DeleteMessagesResponse post_delete_messages(chat_id, message_ids)
 
 deleteMessages
 
@@ -2192,8 +2192,8 @@ Use this method to delete multiple messages simultaneously. If some of the speci
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.delete_messages_response import DeleteMessagesResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2208,7 +2208,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     message_ids = [56] # List[int] | A JSON-serialized list of 1-100 identifiers of messages to delete. See [deleteMessage](https://core.telegram.org/bots/api/#deletemessage) for limitations on which messages can be deleted
 
     try:
@@ -2227,12 +2227,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **message_ids** | [**List[int]**](int.md)| A JSON-serialized list of 1-100 identifiers of messages to delete. See [deleteMessage](https://core.telegram.org/bots/api/#deletemessage) for limitations on which messages can be deleted | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**DeleteMessagesResponse**](DeleteMessagesResponse.md)
 
 ### Authorization
 
@@ -2254,7 +2254,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_delete_my_commands**
-> PostSetWebhook200Response post_delete_my_commands(scope=scope, language_code=language_code)
+> DeleteMyCommandsResponse post_delete_my_commands(scope=scope, language_code=language_code)
 
 deleteMyCommands
 
@@ -2266,7 +2266,7 @@ Use this method to delete the list of the bot's commands for the given scope and
 ```python
 import tele_rest
 from tele_rest.models.bot_command_scope import BotCommandScope
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.delete_my_commands_response import DeleteMyCommandsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2305,7 +2305,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**DeleteMyCommandsResponse**](DeleteMyCommandsResponse.md)
 
 ### Authorization
 
@@ -2327,7 +2327,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_delete_sticker_from_set**
-> PostSetWebhook200Response post_delete_sticker_from_set(sticker)
+> DeleteStickerFromSetResponse post_delete_sticker_from_set(sticker)
 
 deleteStickerFromSet
 
@@ -2338,7 +2338,7 @@ Use this method to delete a sticker from a set created by the bot. Returns *True
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.delete_sticker_from_set_response import DeleteStickerFromSetResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2375,7 +2375,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**DeleteStickerFromSetResponse**](DeleteStickerFromSetResponse.md)
 
 ### Authorization
 
@@ -2397,7 +2397,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_delete_sticker_set**
-> PostSetWebhook200Response post_delete_sticker_set(name)
+> DeleteStickerSetResponse post_delete_sticker_set(name)
 
 deleteStickerSet
 
@@ -2408,7 +2408,7 @@ Use this method to delete a sticker set that was created by the bot. Returns *Tr
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.delete_sticker_set_response import DeleteStickerSetResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2445,7 +2445,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**DeleteStickerSetResponse**](DeleteStickerSetResponse.md)
 
 ### Authorization
 
@@ -2467,7 +2467,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_delete_story**
-> PostSetWebhook200Response post_delete_story(business_connection_id, story_id)
+> DeleteStoryResponse post_delete_story(business_connection_id, story_id)
 
 deleteStory
 
@@ -2478,7 +2478,7 @@ Deletes a story previously posted by the bot on behalf of a managed business acc
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.delete_story_response import DeleteStoryResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2517,7 +2517,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**DeleteStoryResponse**](DeleteStoryResponse.md)
 
 ### Authorization
 
@@ -2539,7 +2539,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_delete_webhook**
-> PostSetWebhook200Response post_delete_webhook(drop_pending_updates=drop_pending_updates)
+> DeleteWebhookResponse post_delete_webhook(drop_pending_updates=drop_pending_updates)
 
 deleteWebhook
 
@@ -2550,7 +2550,7 @@ Use this method to remove webhook integration if you decide to switch back to [g
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.delete_webhook_response import DeleteWebhookResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2587,7 +2587,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**DeleteWebhookResponse**](DeleteWebhookResponse.md)
 
 ### Authorization
 
@@ -2609,7 +2609,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_edit_chat_invite_link**
-> PostCreateChatInviteLink200Response post_edit_chat_invite_link(chat_id, invite_link, name=name, expire_date=expire_date, member_limit=member_limit, creates_join_request=creates_join_request)
+> EditChatInviteLinkResponse post_edit_chat_invite_link(chat_id, invite_link, name=name, expire_date=expire_date, member_limit=member_limit, creates_join_request=creates_join_request)
 
 editChatInviteLink
 
@@ -2620,8 +2620,8 @@ Use this method to edit a non-primary invite link created by the bot. The bot mu
 
 ```python
 import tele_rest
-from tele_rest.models.post_create_chat_invite_link200_response import PostCreateChatInviteLink200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
+from tele_rest.models.edit_chat_invite_link_response import EditChatInviteLinkResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2636,7 +2636,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     invite_link = 'invite_link_example' # str | The invite link to edit
     name = 'name_example' # str | Invite link name; 0-32 characters (optional)
     expire_date = 56 # int | Point in time (Unix timestamp) when the link will expire (optional)
@@ -2659,7 +2659,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **invite_link** | **str**| The invite link to edit | 
  **name** | **str**| Invite link name; 0-32 characters | [optional] 
  **expire_date** | **int**| Point in time (Unix timestamp) when the link will expire | [optional] 
@@ -2668,7 +2668,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostCreateChatInviteLink200Response**](PostCreateChatInviteLink200Response.md)
+[**EditChatInviteLinkResponse**](EditChatInviteLinkResponse.md)
 
 ### Authorization
 
@@ -2690,7 +2690,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_edit_chat_subscription_invite_link**
-> PostCreateChatInviteLink200Response post_edit_chat_subscription_invite_link(chat_id, invite_link, name=name)
+> EditChatSubscriptionInviteLinkResponse post_edit_chat_subscription_invite_link(chat_id, invite_link, name=name)
 
 editChatSubscriptionInviteLink
 
@@ -2701,8 +2701,8 @@ Use this method to edit a subscription invite link created by the bot. The bot m
 
 ```python
 import tele_rest
-from tele_rest.models.post_create_chat_invite_link200_response import PostCreateChatInviteLink200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
+from tele_rest.models.edit_chat_subscription_invite_link_response import EditChatSubscriptionInviteLinkResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2717,7 +2717,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     invite_link = 'invite_link_example' # str | The invite link to edit
     name = 'name_example' # str | Invite link name; 0-32 characters (optional)
 
@@ -2737,13 +2737,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **invite_link** | **str**| The invite link to edit | 
  **name** | **str**| Invite link name; 0-32 characters | [optional] 
 
 ### Return type
 
-[**PostCreateChatInviteLink200Response**](PostCreateChatInviteLink200Response.md)
+[**EditChatSubscriptionInviteLinkResponse**](EditChatSubscriptionInviteLinkResponse.md)
 
 ### Authorization
 
@@ -2765,7 +2765,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_edit_forum_topic**
-> PostSetWebhook200Response post_edit_forum_topic(chat_id, message_thread_id, name=name, icon_custom_emoji_id=icon_custom_emoji_id)
+> EditForumTopicResponse post_edit_forum_topic(chat_id, message_thread_id, name=name, icon_custom_emoji_id=icon_custom_emoji_id)
 
 editForumTopic
 
@@ -2776,8 +2776,8 @@ Use this method to edit name and icon of a topic in a forum supergroup chat. The
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.edit_forum_topic_response import EditForumTopicResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2792,7 +2792,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
     message_thread_id = 56 # int | Unique identifier for the target message thread of the forum topic
     name = 'name_example' # str | New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept (optional)
     icon_custom_emoji_id = 'icon_custom_emoji_id_example' # str | New unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept (optional)
@@ -2813,14 +2813,14 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
  **message_thread_id** | **int**| Unique identifier for the target message thread of the forum topic | 
  **name** | **str**| New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept | [optional] 
  **icon_custom_emoji_id** | **str**| New unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept | [optional] 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**EditForumTopicResponse**](EditForumTopicResponse.md)
 
 ### Authorization
 
@@ -2842,7 +2842,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_edit_general_forum_topic**
-> PostSetWebhook200Response post_edit_general_forum_topic(chat_id, name)
+> EditGeneralForumTopicResponse post_edit_general_forum_topic(chat_id, name)
 
 editGeneralForumTopic
 
@@ -2853,8 +2853,8 @@ Use this method to edit the name of the 'General' topic in a forum supergroup ch
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.edit_general_forum_topic_response import EditGeneralForumTopicResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2869,7 +2869,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
     name = 'name_example' # str | New topic name, 1-128 characters
 
     try:
@@ -2888,12 +2888,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
  **name** | **str**| New topic name, 1-128 characters | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**EditGeneralForumTopicResponse**](EditGeneralForumTopicResponse.md)
 
 ### Authorization
 
@@ -2915,7 +2915,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_edit_message_caption**
-> PostEditMessageText200Response post_edit_message_caption(business_connection_id=business_connection_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, reply_markup=reply_markup)
+> EditMessageCaptionResponse post_edit_message_caption(business_connection_id=business_connection_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, reply_markup=reply_markup)
 
 editMessageCaption
 
@@ -2926,10 +2926,10 @@ Use this method to edit captions of messages. On success, if the edited message 
 
 ```python
 import tele_rest
+from tele_rest.models.edit_message_caption_response import EditMessageCaptionResponse
+from tele_rest.models.edit_message_text_request_chat_id import EditMessageTextRequestChatId
 from tele_rest.models.inline_keyboard_markup import InlineKeyboardMarkup
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_edit_message_text200_response import PostEditMessageText200Response
-from tele_rest.models.post_edit_message_text_request_chat_id import PostEditMessageTextRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2945,7 +2945,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message to be edited was sent (optional)
-    chat_id = tele_rest.PostEditMessageTextRequestChatId() # PostEditMessageTextRequestChatId |  (optional)
+    chat_id = tele_rest.EditMessageTextRequestChatId() # EditMessageTextRequestChatId |  (optional)
     message_id = 56 # int | Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit (optional)
     inline_message_id = 'inline_message_id_example' # str | Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message (optional)
     caption = 'caption_example' # str | New caption of the message, 0-1024 characters after entities parsing (optional)
@@ -2971,7 +2971,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message to be edited was sent | [optional] 
- **chat_id** | [**PostEditMessageTextRequestChatId**](PostEditMessageTextRequestChatId.md)|  | [optional] 
+ **chat_id** | [**EditMessageTextRequestChatId**](EditMessageTextRequestChatId.md)|  | [optional] 
  **message_id** | **int**| Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit | [optional] 
  **inline_message_id** | **str**| Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message | [optional] 
  **caption** | **str**| New caption of the message, 0-1024 characters after entities parsing | [optional] 
@@ -2982,7 +2982,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostEditMessageText200Response**](PostEditMessageText200Response.md)
+[**EditMessageCaptionResponse**](EditMessageCaptionResponse.md)
 
 ### Authorization
 
@@ -3004,7 +3004,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_edit_message_live_location**
-> PostEditMessageText200Response post_edit_message_live_location(latitude, longitude, business_connection_id=business_connection_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id, live_period=live_period, horizontal_accuracy=horizontal_accuracy, heading=heading, proximity_alert_radius=proximity_alert_radius, reply_markup=reply_markup)
+> EditMessageLiveLocationResponse post_edit_message_live_location(latitude, longitude, business_connection_id=business_connection_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id, live_period=live_period, horizontal_accuracy=horizontal_accuracy, heading=heading, proximity_alert_radius=proximity_alert_radius, reply_markup=reply_markup)
 
 editMessageLiveLocation
 
@@ -3015,9 +3015,9 @@ Use this method to edit live location messages. A location can be edited until i
 
 ```python
 import tele_rest
+from tele_rest.models.edit_message_live_location_response import EditMessageLiveLocationResponse
+from tele_rest.models.edit_message_text_request_chat_id import EditMessageTextRequestChatId
 from tele_rest.models.inline_keyboard_markup import InlineKeyboardMarkup
-from tele_rest.models.post_edit_message_text200_response import PostEditMessageText200Response
-from tele_rest.models.post_edit_message_text_request_chat_id import PostEditMessageTextRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -3035,7 +3035,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     latitude = 3.4 # float | Latitude of new location
     longitude = 3.4 # float | Longitude of new location
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message to be edited was sent (optional)
-    chat_id = tele_rest.PostEditMessageTextRequestChatId() # PostEditMessageTextRequestChatId |  (optional)
+    chat_id = tele_rest.EditMessageTextRequestChatId() # EditMessageTextRequestChatId |  (optional)
     message_id = 56 # int | Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit (optional)
     inline_message_id = 'inline_message_id_example' # str | Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message (optional)
     live_period = 56 # int | New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current *live\\\\_period* by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then *live\\\\_period* remains unchanged (optional)
@@ -3063,7 +3063,7 @@ Name | Type | Description  | Notes
  **latitude** | **float**| Latitude of new location | 
  **longitude** | **float**| Longitude of new location | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message to be edited was sent | [optional] 
- **chat_id** | [**PostEditMessageTextRequestChatId**](PostEditMessageTextRequestChatId.md)|  | [optional] 
+ **chat_id** | [**EditMessageTextRequestChatId**](EditMessageTextRequestChatId.md)|  | [optional] 
  **message_id** | **int**| Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit | [optional] 
  **inline_message_id** | **str**| Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message | [optional] 
  **live_period** | **int**| New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current *live\\\\_period* by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then *live\\\\_period* remains unchanged | [optional] 
@@ -3074,7 +3074,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostEditMessageText200Response**](PostEditMessageText200Response.md)
+[**EditMessageLiveLocationResponse**](EditMessageLiveLocationResponse.md)
 
 ### Authorization
 
@@ -3096,7 +3096,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_edit_message_media**
-> PostEditMessageText200Response post_edit_message_media(media, business_connection_id=business_connection_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id, reply_markup=reply_markup)
+> EditMessageMediaResponse post_edit_message_media(media, business_connection_id=business_connection_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id, reply_markup=reply_markup)
 
 editMessageMedia
 
@@ -3107,10 +3107,10 @@ Use this method to edit animation, audio, document, photo, or video messages, or
 
 ```python
 import tele_rest
+from tele_rest.models.edit_message_media_response import EditMessageMediaResponse
+from tele_rest.models.edit_message_text_request_chat_id import EditMessageTextRequestChatId
 from tele_rest.models.inline_keyboard_markup import InlineKeyboardMarkup
 from tele_rest.models.input_media import InputMedia
-from tele_rest.models.post_edit_message_text200_response import PostEditMessageText200Response
-from tele_rest.models.post_edit_message_text_request_chat_id import PostEditMessageTextRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -3127,7 +3127,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     api_instance = tele_rest.DefaultApi(api_client)
     media = tele_rest.InputMedia() # InputMedia | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message to be edited was sent (optional)
-    chat_id = tele_rest.PostEditMessageTextRequestChatId() # PostEditMessageTextRequestChatId |  (optional)
+    chat_id = tele_rest.EditMessageTextRequestChatId() # EditMessageTextRequestChatId |  (optional)
     message_id = 56 # int | Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit (optional)
     inline_message_id = 'inline_message_id_example' # str | Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message (optional)
     reply_markup = tele_rest.InlineKeyboardMarkup() # InlineKeyboardMarkup |  (optional)
@@ -3150,14 +3150,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **media** | [**InputMedia**](InputMedia.md)|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message to be edited was sent | [optional] 
- **chat_id** | [**PostEditMessageTextRequestChatId**](PostEditMessageTextRequestChatId.md)|  | [optional] 
+ **chat_id** | [**EditMessageTextRequestChatId**](EditMessageTextRequestChatId.md)|  | [optional] 
  **message_id** | **int**| Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit | [optional] 
  **inline_message_id** | **str**| Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message | [optional] 
  **reply_markup** | [**InlineKeyboardMarkup**](InlineKeyboardMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostEditMessageText200Response**](PostEditMessageText200Response.md)
+[**EditMessageMediaResponse**](EditMessageMediaResponse.md)
 
 ### Authorization
 
@@ -3165,7 +3165,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -3179,7 +3179,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_edit_message_reply_markup**
-> PostEditMessageText200Response post_edit_message_reply_markup(business_connection_id=business_connection_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id, reply_markup=reply_markup)
+> EditMessageReplyMarkupResponse post_edit_message_reply_markup(business_connection_id=business_connection_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id, reply_markup=reply_markup)
 
 editMessageReplyMarkup
 
@@ -3190,9 +3190,9 @@ Use this method to edit only the reply markup of messages. On success, if the ed
 
 ```python
 import tele_rest
+from tele_rest.models.edit_message_reply_markup_response import EditMessageReplyMarkupResponse
+from tele_rest.models.edit_message_text_request_chat_id import EditMessageTextRequestChatId
 from tele_rest.models.inline_keyboard_markup import InlineKeyboardMarkup
-from tele_rest.models.post_edit_message_text200_response import PostEditMessageText200Response
-from tele_rest.models.post_edit_message_text_request_chat_id import PostEditMessageTextRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -3208,7 +3208,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message to be edited was sent (optional)
-    chat_id = tele_rest.PostEditMessageTextRequestChatId() # PostEditMessageTextRequestChatId |  (optional)
+    chat_id = tele_rest.EditMessageTextRequestChatId() # EditMessageTextRequestChatId |  (optional)
     message_id = 56 # int | Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit (optional)
     inline_message_id = 'inline_message_id_example' # str | Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message (optional)
     reply_markup = tele_rest.InlineKeyboardMarkup() # InlineKeyboardMarkup |  (optional)
@@ -3230,14 +3230,14 @@ async with tele_rest.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message to be edited was sent | [optional] 
- **chat_id** | [**PostEditMessageTextRequestChatId**](PostEditMessageTextRequestChatId.md)|  | [optional] 
+ **chat_id** | [**EditMessageTextRequestChatId**](EditMessageTextRequestChatId.md)|  | [optional] 
  **message_id** | **int**| Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit | [optional] 
  **inline_message_id** | **str**| Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message | [optional] 
  **reply_markup** | [**InlineKeyboardMarkup**](InlineKeyboardMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostEditMessageText200Response**](PostEditMessageText200Response.md)
+[**EditMessageReplyMarkupResponse**](EditMessageReplyMarkupResponse.md)
 
 ### Authorization
 
@@ -3259,7 +3259,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_edit_message_text**
-> PostEditMessageText200Response post_edit_message_text(text, business_connection_id=business_connection_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id, parse_mode=parse_mode, entities=entities, link_preview_options=link_preview_options, reply_markup=reply_markup)
+> EditMessageTextResponse post_edit_message_text(text, business_connection_id=business_connection_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id, parse_mode=parse_mode, entities=entities, link_preview_options=link_preview_options, reply_markup=reply_markup)
 
 editMessageText
 
@@ -3270,11 +3270,11 @@ Use this method to edit text and [game](https://core.telegram.org/bots/api/#game
 
 ```python
 import tele_rest
+from tele_rest.models.edit_message_text_request_chat_id import EditMessageTextRequestChatId
+from tele_rest.models.edit_message_text_response import EditMessageTextResponse
 from tele_rest.models.inline_keyboard_markup import InlineKeyboardMarkup
 from tele_rest.models.link_preview_options import LinkPreviewOptions
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_edit_message_text200_response import PostEditMessageText200Response
-from tele_rest.models.post_edit_message_text_request_chat_id import PostEditMessageTextRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -3291,7 +3291,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     api_instance = tele_rest.DefaultApi(api_client)
     text = 'text_example' # str | New text of the message, 1-4096 characters after entities parsing
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message to be edited was sent (optional)
-    chat_id = tele_rest.PostEditMessageTextRequestChatId() # PostEditMessageTextRequestChatId |  (optional)
+    chat_id = tele_rest.EditMessageTextRequestChatId() # EditMessageTextRequestChatId |  (optional)
     message_id = 56 # int | Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit (optional)
     inline_message_id = 'inline_message_id_example' # str | Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message (optional)
     parse_mode = 'parse_mode_example' # str | Mode for parsing entities in the message text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. (optional)
@@ -3317,7 +3317,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **text** | **str**| New text of the message, 1-4096 characters after entities parsing | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message to be edited was sent | [optional] 
- **chat_id** | [**PostEditMessageTextRequestChatId**](PostEditMessageTextRequestChatId.md)|  | [optional] 
+ **chat_id** | [**EditMessageTextRequestChatId**](EditMessageTextRequestChatId.md)|  | [optional] 
  **message_id** | **int**| Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit | [optional] 
  **inline_message_id** | **str**| Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message | [optional] 
  **parse_mode** | **str**| Mode for parsing entities in the message text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
@@ -3327,7 +3327,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostEditMessageText200Response**](PostEditMessageText200Response.md)
+[**EditMessageTextResponse**](EditMessageTextResponse.md)
 
 ### Authorization
 
@@ -3349,7 +3349,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_edit_story**
-> PostPostStory200Response post_edit_story(business_connection_id, story_id, content, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, areas=areas)
+> EditStoryResponse post_edit_story(business_connection_id, story_id, content, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, areas=areas)
 
 editStory
 
@@ -3360,9 +3360,9 @@ Edits a story previously posted by the bot on behalf of a managed business accou
 
 ```python
 import tele_rest
+from tele_rest.models.edit_story_response import EditStoryResponse
 from tele_rest.models.input_story_content import InputStoryContent
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_post_story200_response import PostPostStory200Response
 from tele_rest.models.story_area import StoryArea
 from tele_rest.rest import ApiException
 from pprint import pprint
@@ -3412,7 +3412,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostPostStory200Response**](PostPostStory200Response.md)
+[**EditStoryResponse**](EditStoryResponse.md)
 
 ### Authorization
 
@@ -3420,7 +3420,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -3434,7 +3434,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_edit_user_star_subscription**
-> PostSetWebhook200Response post_edit_user_star_subscription(user_id, telegram_payment_charge_id, is_canceled)
+> EditUserStarSubscriptionResponse post_edit_user_star_subscription(user_id, telegram_payment_charge_id, is_canceled)
 
 editUserStarSubscription
 
@@ -3445,7 +3445,7 @@ Allows the bot to cancel or re-enable extension of a subscription paid in Telegr
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.edit_user_star_subscription_response import EditUserStarSubscriptionResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -3486,7 +3486,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**EditUserStarSubscriptionResponse**](EditUserStarSubscriptionResponse.md)
 
 ### Authorization
 
@@ -3508,7 +3508,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_export_chat_invite_link**
-> PostExportChatInviteLink200Response post_export_chat_invite_link(chat_id)
+> ExportChatInviteLinkResponse post_export_chat_invite_link(chat_id)
 
 exportChatInviteLink
 
@@ -3519,8 +3519,8 @@ Use this method to generate a new primary invite link for a chat; any previously
 
 ```python
 import tele_rest
-from tele_rest.models.post_export_chat_invite_link200_response import PostExportChatInviteLink200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
+from tele_rest.models.export_chat_invite_link_response import ExportChatInviteLinkResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -3535,7 +3535,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
 
     try:
         # exportChatInviteLink
@@ -3553,11 +3553,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
 
 ### Return type
 
-[**PostExportChatInviteLink200Response**](PostExportChatInviteLink200Response.md)
+[**ExportChatInviteLinkResponse**](ExportChatInviteLinkResponse.md)
 
 ### Authorization
 
@@ -3579,7 +3579,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_forward_message**
-> PostSendMessage200Response post_forward_message(chat_id, from_chat_id, message_id, message_thread_id=message_thread_id, video_start_timestamp=video_start_timestamp, disable_notification=disable_notification, protect_content=protect_content)
+> ForwardMessageResponse post_forward_message(chat_id, from_chat_id, message_id, message_thread_id=message_thread_id, video_start_timestamp=video_start_timestamp, disable_notification=disable_notification, protect_content=protect_content)
 
 forwardMessage
 
@@ -3590,9 +3590,9 @@ Use this method to forward messages of any kind. Service messages and messages w
 
 ```python
 import tele_rest
-from tele_rest.models.post_forward_message_request_from_chat_id import PostForwardMessageRequestFromChatId
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
+from tele_rest.models.forward_message_request_from_chat_id import ForwardMessageRequestFromChatId
+from tele_rest.models.forward_message_response import ForwardMessageResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -3607,8 +3607,8 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
-    from_chat_id = tele_rest.PostForwardMessageRequestFromChatId() # PostForwardMessageRequestFromChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    from_chat_id = tele_rest.ForwardMessageRequestFromChatId() # ForwardMessageRequestFromChatId | 
     message_id = 56 # int | Message identifier in the chat specified in *from\\\\_chat\\\\_id*
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
     video_start_timestamp = 56 # int | New start timestamp for the forwarded video in the message (optional)
@@ -3631,8 +3631,8 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
- **from_chat_id** | [**PostForwardMessageRequestFromChatId**](PostForwardMessageRequestFromChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **from_chat_id** | [**ForwardMessageRequestFromChatId**](ForwardMessageRequestFromChatId.md)|  | 
  **message_id** | **int**| Message identifier in the chat specified in *from\\\\_chat\\\\_id* | 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
  **video_start_timestamp** | **int**| New start timestamp for the forwarded video in the message | [optional] 
@@ -3641,7 +3641,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**ForwardMessageResponse**](ForwardMessageResponse.md)
 
 ### Authorization
 
@@ -3663,7 +3663,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_forward_messages**
-> PostForwardMessages200Response post_forward_messages(chat_id, from_chat_id, message_ids, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content)
+> ForwardMessagesResponse post_forward_messages(chat_id, from_chat_id, message_ids, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content)
 
 forwardMessages
 
@@ -3674,9 +3674,9 @@ Use this method to forward multiple messages of any kind. If some of the specifi
 
 ```python
 import tele_rest
-from tele_rest.models.post_forward_messages200_response import PostForwardMessages200Response
-from tele_rest.models.post_forward_messages_request_from_chat_id import PostForwardMessagesRequestFromChatId
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
+from tele_rest.models.forward_messages_request_from_chat_id import ForwardMessagesRequestFromChatId
+from tele_rest.models.forward_messages_response import ForwardMessagesResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -3691,8 +3691,8 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
-    from_chat_id = tele_rest.PostForwardMessagesRequestFromChatId() # PostForwardMessagesRequestFromChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    from_chat_id = tele_rest.ForwardMessagesRequestFromChatId() # ForwardMessagesRequestFromChatId | 
     message_ids = [56] # List[int] | A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to forward. The identifiers must be specified in a strictly increasing order.
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
     disable_notification = True # bool | Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
@@ -3714,8 +3714,8 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
- **from_chat_id** | [**PostForwardMessagesRequestFromChatId**](PostForwardMessagesRequestFromChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **from_chat_id** | [**ForwardMessagesRequestFromChatId**](ForwardMessagesRequestFromChatId.md)|  | 
  **message_ids** | [**List[int]**](int.md)| A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to forward. The identifiers must be specified in a strictly increasing order. | 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
  **disable_notification** | **bool**| Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
@@ -3723,7 +3723,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostForwardMessages200Response**](PostForwardMessages200Response.md)
+[**ForwardMessagesResponse**](ForwardMessagesResponse.md)
 
 ### Authorization
 
@@ -3745,7 +3745,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_available_gifts**
-> PostGetAvailableGifts200Response post_get_available_gifts()
+> GetAvailableGiftsResponse post_get_available_gifts()
 
 getAvailableGifts
 
@@ -3756,7 +3756,7 @@ Returns the list of gifts that can be sent by the bot to users and channel chats
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_available_gifts200_response import PostGetAvailableGifts200Response
+from tele_rest.models.get_available_gifts_response import GetAvailableGiftsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -3789,7 +3789,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**PostGetAvailableGifts200Response**](PostGetAvailableGifts200Response.md)
+[**GetAvailableGiftsResponse**](GetAvailableGiftsResponse.md)
 
 ### Authorization
 
@@ -3811,7 +3811,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_business_account_gifts**
-> PostGetBusinessAccountGifts200Response post_get_business_account_gifts(business_connection_id, exclude_unsaved=exclude_unsaved, exclude_saved=exclude_saved, exclude_unlimited=exclude_unlimited, exclude_limited=exclude_limited, exclude_unique=exclude_unique, sort_by_price=sort_by_price, offset=offset, limit=limit)
+> GetBusinessAccountGiftsResponse post_get_business_account_gifts(business_connection_id, exclude_unsaved=exclude_unsaved, exclude_saved=exclude_saved, exclude_unlimited=exclude_unlimited, exclude_limited=exclude_limited, exclude_unique=exclude_unique, sort_by_price=sort_by_price, offset=offset, limit=limit)
 
 getBusinessAccountGifts
 
@@ -3822,7 +3822,7 @@ Returns the gifts received and owned by a managed business account. Requires the
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_business_account_gifts200_response import PostGetBusinessAccountGifts200Response
+from tele_rest.models.get_business_account_gifts_response import GetBusinessAccountGiftsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -3875,7 +3875,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetBusinessAccountGifts200Response**](PostGetBusinessAccountGifts200Response.md)
+[**GetBusinessAccountGiftsResponse**](GetBusinessAccountGiftsResponse.md)
 
 ### Authorization
 
@@ -3897,7 +3897,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_business_account_star_balance**
-> PostGetBusinessAccountStarBalance200Response post_get_business_account_star_balance(business_connection_id)
+> GetBusinessAccountStarBalanceResponse post_get_business_account_star_balance(business_connection_id)
 
 getBusinessAccountStarBalance
 
@@ -3908,7 +3908,7 @@ Returns the amount of Telegram Stars owned by a managed business account. Requir
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_business_account_star_balance200_response import PostGetBusinessAccountStarBalance200Response
+from tele_rest.models.get_business_account_star_balance_response import GetBusinessAccountStarBalanceResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -3945,7 +3945,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetBusinessAccountStarBalance200Response**](PostGetBusinessAccountStarBalance200Response.md)
+[**GetBusinessAccountStarBalanceResponse**](GetBusinessAccountStarBalanceResponse.md)
 
 ### Authorization
 
@@ -3967,7 +3967,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_business_connection**
-> PostGetBusinessConnection200Response post_get_business_connection(business_connection_id)
+> GetBusinessConnectionResponse post_get_business_connection(business_connection_id)
 
 getBusinessConnection
 
@@ -3978,7 +3978,7 @@ Use this method to get information about the connection of the bot with a busine
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_business_connection200_response import PostGetBusinessConnection200Response
+from tele_rest.models.get_business_connection_response import GetBusinessConnectionResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4015,7 +4015,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetBusinessConnection200Response**](PostGetBusinessConnection200Response.md)
+[**GetBusinessConnectionResponse**](GetBusinessConnectionResponse.md)
 
 ### Authorization
 
@@ -4037,7 +4037,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_chat**
-> PostGetChat200Response post_get_chat(chat_id)
+> GetChatResponse post_get_chat(chat_id)
 
 getChat
 
@@ -4048,8 +4048,8 @@ Use this method to get up-to-date information about the chat. Returns a [ChatFul
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_chat200_response import PostGetChat200Response
-from tele_rest.models.post_leave_chat_request_chat_id import PostLeaveChatRequestChatId
+from tele_rest.models.get_chat_response import GetChatResponse
+from tele_rest.models.leave_chat_request_chat_id import LeaveChatRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4064,7 +4064,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostLeaveChatRequestChatId() # PostLeaveChatRequestChatId | 
+    chat_id = tele_rest.LeaveChatRequestChatId() # LeaveChatRequestChatId | 
 
     try:
         # getChat
@@ -4082,11 +4082,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostLeaveChatRequestChatId**](PostLeaveChatRequestChatId.md)|  | 
+ **chat_id** | [**LeaveChatRequestChatId**](LeaveChatRequestChatId.md)|  | 
 
 ### Return type
 
-[**PostGetChat200Response**](PostGetChat200Response.md)
+[**GetChatResponse**](GetChatResponse.md)
 
 ### Authorization
 
@@ -4108,7 +4108,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_chat_administrators**
-> PostGetChatAdministrators200Response post_get_chat_administrators(chat_id)
+> GetChatAdministratorsResponse post_get_chat_administrators(chat_id)
 
 getChatAdministrators
 
@@ -4119,8 +4119,8 @@ Use this method to get a list of administrators in a chat, which aren't bots. Re
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_chat_administrators200_response import PostGetChatAdministrators200Response
-from tele_rest.models.post_leave_chat_request_chat_id import PostLeaveChatRequestChatId
+from tele_rest.models.get_chat_administrators_response import GetChatAdministratorsResponse
+from tele_rest.models.leave_chat_request_chat_id import LeaveChatRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4135,7 +4135,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostLeaveChatRequestChatId() # PostLeaveChatRequestChatId | 
+    chat_id = tele_rest.LeaveChatRequestChatId() # LeaveChatRequestChatId | 
 
     try:
         # getChatAdministrators
@@ -4153,11 +4153,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostLeaveChatRequestChatId**](PostLeaveChatRequestChatId.md)|  | 
+ **chat_id** | [**LeaveChatRequestChatId**](LeaveChatRequestChatId.md)|  | 
 
 ### Return type
 
-[**PostGetChatAdministrators200Response**](PostGetChatAdministrators200Response.md)
+[**GetChatAdministratorsResponse**](GetChatAdministratorsResponse.md)
 
 ### Authorization
 
@@ -4179,7 +4179,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_chat_member**
-> PostGetChatMember200Response post_get_chat_member(chat_id, user_id)
+> GetChatMemberResponse post_get_chat_member(chat_id, user_id)
 
 getChatMember
 
@@ -4190,8 +4190,8 @@ Use this method to get information about a member of a chat. The method is only 
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_chat_member200_response import PostGetChatMember200Response
-from tele_rest.models.post_leave_chat_request_chat_id import PostLeaveChatRequestChatId
+from tele_rest.models.get_chat_member_response import GetChatMemberResponse
+from tele_rest.models.leave_chat_request_chat_id import LeaveChatRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4206,7 +4206,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostLeaveChatRequestChatId() # PostLeaveChatRequestChatId | 
+    chat_id = tele_rest.LeaveChatRequestChatId() # LeaveChatRequestChatId | 
     user_id = 56 # int | Unique identifier of the target user
 
     try:
@@ -4225,12 +4225,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostLeaveChatRequestChatId**](PostLeaveChatRequestChatId.md)|  | 
+ **chat_id** | [**LeaveChatRequestChatId**](LeaveChatRequestChatId.md)|  | 
  **user_id** | **int**| Unique identifier of the target user | 
 
 ### Return type
 
-[**PostGetChatMember200Response**](PostGetChatMember200Response.md)
+[**GetChatMemberResponse**](GetChatMemberResponse.md)
 
 ### Authorization
 
@@ -4252,7 +4252,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_chat_member_count**
-> PostGetChatMemberCount200Response post_get_chat_member_count(chat_id)
+> GetChatMemberCountResponse post_get_chat_member_count(chat_id)
 
 getChatMemberCount
 
@@ -4263,8 +4263,8 @@ Use this method to get the number of members in a chat. Returns *Int* on success
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_chat_member_count200_response import PostGetChatMemberCount200Response
-from tele_rest.models.post_leave_chat_request_chat_id import PostLeaveChatRequestChatId
+from tele_rest.models.get_chat_member_count_response import GetChatMemberCountResponse
+from tele_rest.models.leave_chat_request_chat_id import LeaveChatRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4279,7 +4279,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostLeaveChatRequestChatId() # PostLeaveChatRequestChatId | 
+    chat_id = tele_rest.LeaveChatRequestChatId() # LeaveChatRequestChatId | 
 
     try:
         # getChatMemberCount
@@ -4297,11 +4297,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostLeaveChatRequestChatId**](PostLeaveChatRequestChatId.md)|  | 
+ **chat_id** | [**LeaveChatRequestChatId**](LeaveChatRequestChatId.md)|  | 
 
 ### Return type
 
-[**PostGetChatMemberCount200Response**](PostGetChatMemberCount200Response.md)
+[**GetChatMemberCountResponse**](GetChatMemberCountResponse.md)
 
 ### Authorization
 
@@ -4323,7 +4323,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_chat_menu_button**
-> PostGetChatMenuButton200Response post_get_chat_menu_button(chat_id=chat_id)
+> GetChatMenuButtonResponse post_get_chat_menu_button(chat_id=chat_id)
 
 getChatMenuButton
 
@@ -4334,7 +4334,7 @@ Use this method to get the current value of the bot's menu button in a private c
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_chat_menu_button200_response import PostGetChatMenuButton200Response
+from tele_rest.models.get_chat_menu_button_response import GetChatMenuButtonResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4371,7 +4371,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetChatMenuButton200Response**](PostGetChatMenuButton200Response.md)
+[**GetChatMenuButtonResponse**](GetChatMenuButtonResponse.md)
 
 ### Authorization
 
@@ -4393,7 +4393,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_custom_emoji_stickers**
-> PostGetForumTopicIconStickers200Response post_get_custom_emoji_stickers(custom_emoji_ids)
+> GetCustomEmojiStickersResponse post_get_custom_emoji_stickers(custom_emoji_ids)
 
 getCustomEmojiStickers
 
@@ -4404,7 +4404,7 @@ Use this method to get information about custom emoji stickers by their identifi
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_forum_topic_icon_stickers200_response import PostGetForumTopicIconStickers200Response
+from tele_rest.models.get_custom_emoji_stickers_response import GetCustomEmojiStickersResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4441,7 +4441,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetForumTopicIconStickers200Response**](PostGetForumTopicIconStickers200Response.md)
+[**GetCustomEmojiStickersResponse**](GetCustomEmojiStickersResponse.md)
 
 ### Authorization
 
@@ -4463,7 +4463,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_file**
-> PostGetFile200Response post_get_file(file_id)
+> GetFileResponse post_get_file(file_id)
 
 getFile
 
@@ -4474,7 +4474,7 @@ Use this method to get basic information about a file and prepare it for downloa
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_file200_response import PostGetFile200Response
+from tele_rest.models.get_file_response import GetFileResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4511,7 +4511,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetFile200Response**](PostGetFile200Response.md)
+[**GetFileResponse**](GetFileResponse.md)
 
 ### Authorization
 
@@ -4533,7 +4533,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_forum_topic_icon_stickers**
-> PostGetForumTopicIconStickers200Response post_get_forum_topic_icon_stickers()
+> GetForumTopicIconStickersResponse post_get_forum_topic_icon_stickers()
 
 getForumTopicIconStickers
 
@@ -4544,7 +4544,7 @@ Use this method to get custom emoji stickers, which can be used as a forum topic
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_forum_topic_icon_stickers200_response import PostGetForumTopicIconStickers200Response
+from tele_rest.models.get_forum_topic_icon_stickers_response import GetForumTopicIconStickersResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4577,7 +4577,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**PostGetForumTopicIconStickers200Response**](PostGetForumTopicIconStickers200Response.md)
+[**GetForumTopicIconStickersResponse**](GetForumTopicIconStickersResponse.md)
 
 ### Authorization
 
@@ -4599,7 +4599,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_game_high_scores**
-> PostGetGameHighScores200Response post_get_game_high_scores(user_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id)
+> GetGameHighScoresResponse post_get_game_high_scores(user_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id)
 
 getGameHighScores
 
@@ -4612,7 +4612,7 @@ This method will currently return scores for the target user, plus two of their 
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_game_high_scores200_response import PostGetGameHighScores200Response
+from tele_rest.models.get_game_high_scores_response import GetGameHighScoresResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4655,7 +4655,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetGameHighScores200Response**](PostGetGameHighScores200Response.md)
+[**GetGameHighScoresResponse**](GetGameHighScoresResponse.md)
 
 ### Authorization
 
@@ -4677,7 +4677,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_me**
-> PostGetMe200Response post_get_me()
+> GetMeResponse post_get_me()
 
 getMe
 
@@ -4688,7 +4688,7 @@ A simple method for testing your bot's authentication token. Requires no paramet
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_me200_response import PostGetMe200Response
+from tele_rest.models.get_me_response import GetMeResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4721,7 +4721,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**PostGetMe200Response**](PostGetMe200Response.md)
+[**GetMeResponse**](GetMeResponse.md)
 
 ### Authorization
 
@@ -4743,7 +4743,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_my_commands**
-> PostGetMyCommands200Response post_get_my_commands(scope=scope, language_code=language_code)
+> GetMyCommandsResponse post_get_my_commands(scope=scope, language_code=language_code)
 
 getMyCommands
 
@@ -4755,7 +4755,7 @@ Use this method to get the current list of the bot's commands for the given scop
 ```python
 import tele_rest
 from tele_rest.models.bot_command_scope import BotCommandScope
-from tele_rest.models.post_get_my_commands200_response import PostGetMyCommands200Response
+from tele_rest.models.get_my_commands_response import GetMyCommandsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4794,7 +4794,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetMyCommands200Response**](PostGetMyCommands200Response.md)
+[**GetMyCommandsResponse**](GetMyCommandsResponse.md)
 
 ### Authorization
 
@@ -4816,7 +4816,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_my_default_administrator_rights**
-> PostGetMyDefaultAdministratorRights200Response post_get_my_default_administrator_rights(for_channels=for_channels)
+> GetMyDefaultAdministratorRightsResponse post_get_my_default_administrator_rights(for_channels=for_channels)
 
 getMyDefaultAdministratorRights
 
@@ -4827,7 +4827,7 @@ Use this method to get the current default administrator rights of the bot. Retu
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_my_default_administrator_rights200_response import PostGetMyDefaultAdministratorRights200Response
+from tele_rest.models.get_my_default_administrator_rights_response import GetMyDefaultAdministratorRightsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4864,7 +4864,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetMyDefaultAdministratorRights200Response**](PostGetMyDefaultAdministratorRights200Response.md)
+[**GetMyDefaultAdministratorRightsResponse**](GetMyDefaultAdministratorRightsResponse.md)
 
 ### Authorization
 
@@ -4886,7 +4886,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_my_description**
-> PostGetMyDescription200Response post_get_my_description(language_code=language_code)
+> GetMyDescriptionResponse post_get_my_description(language_code=language_code)
 
 getMyDescription
 
@@ -4897,7 +4897,7 @@ Use this method to get the current bot description for the given user language. 
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_my_description200_response import PostGetMyDescription200Response
+from tele_rest.models.get_my_description_response import GetMyDescriptionResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4934,7 +4934,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetMyDescription200Response**](PostGetMyDescription200Response.md)
+[**GetMyDescriptionResponse**](GetMyDescriptionResponse.md)
 
 ### Authorization
 
@@ -4956,7 +4956,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_my_name**
-> PostGetMyName200Response post_get_my_name(language_code=language_code)
+> GetMyNameResponse post_get_my_name(language_code=language_code)
 
 getMyName
 
@@ -4967,7 +4967,7 @@ Use this method to get the current bot name for the given user language. Returns
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_my_name200_response import PostGetMyName200Response
+from tele_rest.models.get_my_name_response import GetMyNameResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5004,7 +5004,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetMyName200Response**](PostGetMyName200Response.md)
+[**GetMyNameResponse**](GetMyNameResponse.md)
 
 ### Authorization
 
@@ -5026,7 +5026,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_my_short_description**
-> PostGetMyShortDescription200Response post_get_my_short_description(language_code=language_code)
+> GetMyShortDescriptionResponse post_get_my_short_description(language_code=language_code)
 
 getMyShortDescription
 
@@ -5037,7 +5037,7 @@ Use this method to get the current bot short description for the given user lang
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_my_short_description200_response import PostGetMyShortDescription200Response
+from tele_rest.models.get_my_short_description_response import GetMyShortDescriptionResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5074,7 +5074,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetMyShortDescription200Response**](PostGetMyShortDescription200Response.md)
+[**GetMyShortDescriptionResponse**](GetMyShortDescriptionResponse.md)
 
 ### Authorization
 
@@ -5096,7 +5096,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_star_transactions**
-> PostGetStarTransactions200Response post_get_star_transactions(offset=offset, limit=limit)
+> GetStarTransactionsResponse post_get_star_transactions(offset=offset, limit=limit)
 
 getStarTransactions
 
@@ -5107,7 +5107,7 @@ Returns the bot's Telegram Star transactions in chronological order. On success,
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_star_transactions200_response import PostGetStarTransactions200Response
+from tele_rest.models.get_star_transactions_response import GetStarTransactionsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5146,7 +5146,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetStarTransactions200Response**](PostGetStarTransactions200Response.md)
+[**GetStarTransactionsResponse**](GetStarTransactionsResponse.md)
 
 ### Authorization
 
@@ -5168,7 +5168,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_sticker_set**
-> PostGetStickerSet200Response post_get_sticker_set(name)
+> GetStickerSetResponse post_get_sticker_set(name)
 
 getStickerSet
 
@@ -5179,7 +5179,7 @@ Use this method to get a sticker set. On success, a [StickerSet](https://core.te
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_sticker_set200_response import PostGetStickerSet200Response
+from tele_rest.models.get_sticker_set_response import GetStickerSetResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5216,7 +5216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetStickerSet200Response**](PostGetStickerSet200Response.md)
+[**GetStickerSetResponse**](GetStickerSetResponse.md)
 
 ### Authorization
 
@@ -5238,7 +5238,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_updates**
-> PostGetUpdates200Response post_get_updates(offset=offset, limit=limit, timeout=timeout, allowed_updates=allowed_updates)
+> GetUpdatesResponse post_get_updates(offset=offset, limit=limit, timeout=timeout, allowed_updates=allowed_updates)
 
 getUpdates
 
@@ -5249,7 +5249,7 @@ Use this method to receive incoming updates using long polling ([wiki](https://e
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_updates200_response import PostGetUpdates200Response
+from tele_rest.models.get_updates_response import GetUpdatesResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5292,7 +5292,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetUpdates200Response**](PostGetUpdates200Response.md)
+[**GetUpdatesResponse**](GetUpdatesResponse.md)
 
 ### Authorization
 
@@ -5314,7 +5314,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_user_chat_boosts**
-> PostGetUserChatBoosts200Response post_get_user_chat_boosts(chat_id, user_id)
+> GetUserChatBoostsResponse post_get_user_chat_boosts(chat_id, user_id)
 
 getUserChatBoosts
 
@@ -5325,8 +5325,8 @@ Use this method to get the list of boosts added to a chat by a user. Requires ad
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_user_chat_boosts200_response import PostGetUserChatBoosts200Response
-from tele_rest.models.post_get_user_chat_boosts_request_chat_id import PostGetUserChatBoostsRequestChatId
+from tele_rest.models.get_user_chat_boosts_request_chat_id import GetUserChatBoostsRequestChatId
+from tele_rest.models.get_user_chat_boosts_response import GetUserChatBoostsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5341,7 +5341,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostGetUserChatBoostsRequestChatId() # PostGetUserChatBoostsRequestChatId | 
+    chat_id = tele_rest.GetUserChatBoostsRequestChatId() # GetUserChatBoostsRequestChatId | 
     user_id = 56 # int | Unique identifier of the target user
 
     try:
@@ -5360,12 +5360,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostGetUserChatBoostsRequestChatId**](PostGetUserChatBoostsRequestChatId.md)|  | 
+ **chat_id** | [**GetUserChatBoostsRequestChatId**](GetUserChatBoostsRequestChatId.md)|  | 
  **user_id** | **int**| Unique identifier of the target user | 
 
 ### Return type
 
-[**PostGetUserChatBoosts200Response**](PostGetUserChatBoosts200Response.md)
+[**GetUserChatBoostsResponse**](GetUserChatBoostsResponse.md)
 
 ### Authorization
 
@@ -5387,7 +5387,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_user_profile_photos**
-> PostGetUserProfilePhotos200Response post_get_user_profile_photos(user_id, offset=offset, limit=limit)
+> GetUserProfilePhotosResponse post_get_user_profile_photos(user_id, offset=offset, limit=limit)
 
 getUserProfilePhotos
 
@@ -5398,7 +5398,7 @@ Use this method to get a list of profile pictures for a user. Returns a [UserPro
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_user_profile_photos200_response import PostGetUserProfilePhotos200Response
+from tele_rest.models.get_user_profile_photos_response import GetUserProfilePhotosResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5439,7 +5439,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetUserProfilePhotos200Response**](PostGetUserProfilePhotos200Response.md)
+[**GetUserProfilePhotosResponse**](GetUserProfilePhotosResponse.md)
 
 ### Authorization
 
@@ -5461,7 +5461,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_get_webhook_info**
-> PostGetWebhookInfo200Response post_get_webhook_info()
+> GetWebhookInfoResponse post_get_webhook_info()
 
 getWebhookInfo
 
@@ -5472,7 +5472,7 @@ Use this method to get current webhook status. Requires no parameters. On succes
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_webhook_info200_response import PostGetWebhookInfo200Response
+from tele_rest.models.get_webhook_info_response import GetWebhookInfoResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5505,7 +5505,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**PostGetWebhookInfo200Response**](PostGetWebhookInfo200Response.md)
+[**GetWebhookInfoResponse**](GetWebhookInfoResponse.md)
 
 ### Authorization
 
@@ -5527,7 +5527,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_gift_premium_subscription**
-> PostSetWebhook200Response post_gift_premium_subscription(user_id, month_count, star_count, text=text, text_parse_mode=text_parse_mode, text_entities=text_entities)
+> GiftPremiumSubscriptionResponse post_gift_premium_subscription(user_id, month_count, star_count, text=text, text_parse_mode=text_parse_mode, text_entities=text_entities)
 
 giftPremiumSubscription
 
@@ -5538,8 +5538,8 @@ Gifts a Telegram Premium subscription to the given user. Returns *True* on succe
 
 ```python
 import tele_rest
+from tele_rest.models.gift_premium_subscription_response import GiftPremiumSubscriptionResponse
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5586,7 +5586,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**GiftPremiumSubscriptionResponse**](GiftPremiumSubscriptionResponse.md)
 
 ### Authorization
 
@@ -5608,7 +5608,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_hide_general_forum_topic**
-> PostSetWebhook200Response post_hide_general_forum_topic(chat_id)
+> HideGeneralForumTopicResponse post_hide_general_forum_topic(chat_id)
 
 hideGeneralForumTopic
 
@@ -5619,8 +5619,8 @@ Use this method to hide the 'General' topic in a forum supergroup chat. The bot 
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.hide_general_forum_topic_response import HideGeneralForumTopicResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5635,7 +5635,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
 
     try:
         # hideGeneralForumTopic
@@ -5653,11 +5653,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**HideGeneralForumTopicResponse**](HideGeneralForumTopicResponse.md)
 
 ### Authorization
 
@@ -5679,7 +5679,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_leave_chat**
-> PostSetWebhook200Response post_leave_chat(chat_id)
+> LeaveChatResponse post_leave_chat(chat_id)
 
 leaveChat
 
@@ -5690,8 +5690,8 @@ Use this method for your bot to leave a group, supergroup or channel. Returns *T
 
 ```python
 import tele_rest
-from tele_rest.models.post_leave_chat_request_chat_id import PostLeaveChatRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.leave_chat_request_chat_id import LeaveChatRequestChatId
+from tele_rest.models.leave_chat_response import LeaveChatResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5706,7 +5706,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostLeaveChatRequestChatId() # PostLeaveChatRequestChatId | 
+    chat_id = tele_rest.LeaveChatRequestChatId() # LeaveChatRequestChatId | 
 
     try:
         # leaveChat
@@ -5724,11 +5724,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostLeaveChatRequestChatId**](PostLeaveChatRequestChatId.md)|  | 
+ **chat_id** | [**LeaveChatRequestChatId**](LeaveChatRequestChatId.md)|  | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**LeaveChatResponse**](LeaveChatResponse.md)
 
 ### Authorization
 
@@ -5750,7 +5750,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_log_out**
-> PostSetWebhook200Response post_log_out()
+> LogOutResponse post_log_out()
 
 logOut
 
@@ -5761,7 +5761,7 @@ Use this method to log out from the cloud Bot API server before launching the bo
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.log_out_response import LogOutResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5794,7 +5794,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**LogOutResponse**](LogOutResponse.md)
 
 ### Authorization
 
@@ -5816,7 +5816,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_pin_chat_message**
-> PostSetWebhook200Response post_pin_chat_message(chat_id, message_id, business_connection_id=business_connection_id, disable_notification=disable_notification)
+> PinChatMessageResponse post_pin_chat_message(chat_id, message_id, business_connection_id=business_connection_id, disable_notification=disable_notification)
 
 pinChatMessage
 
@@ -5827,8 +5827,8 @@ Use this method to add a message to the list of pinned messages in a chat. If th
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.pin_chat_message_response import PinChatMessageResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5843,7 +5843,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     message_id = 56 # int | Identifier of a message to pin
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be pinned (optional)
     disable_notification = True # bool | Pass *True* if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels and private chats. (optional)
@@ -5864,14 +5864,14 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **message_id** | **int**| Identifier of a message to pin | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be pinned | [optional] 
  **disable_notification** | **bool**| Pass *True* if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels and private chats. | [optional] 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**PinChatMessageResponse**](PinChatMessageResponse.md)
 
 ### Authorization
 
@@ -5893,7 +5893,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_post_story**
-> PostPostStory200Response post_post_story(business_connection_id, content, active_period, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, areas=areas, post_to_chat_page=post_to_chat_page, protect_content=protect_content)
+> PostStoryResponse post_post_story(business_connection_id, content, active_period, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, areas=areas, post_to_chat_page=post_to_chat_page, protect_content=protect_content)
 
 postStory
 
@@ -5906,7 +5906,7 @@ Posts a story on behalf of a managed business account. Requires the *can\_manage
 import tele_rest
 from tele_rest.models.input_story_content import InputStoryContent
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_post_story200_response import PostPostStory200Response
+from tele_rest.models.post_story_response import PostStoryResponse
 from tele_rest.models.story_area import StoryArea
 from tele_rest.rest import ApiException
 from pprint import pprint
@@ -5960,7 +5960,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostPostStory200Response**](PostPostStory200Response.md)
+[**PostStoryResponse**](PostStoryResponse.md)
 
 ### Authorization
 
@@ -5968,7 +5968,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -5982,7 +5982,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_promote_chat_member**
-> PostSetWebhook200Response post_promote_chat_member(chat_id, user_id, is_anonymous=is_anonymous, can_manage_chat=can_manage_chat, can_delete_messages=can_delete_messages, can_manage_video_chats=can_manage_video_chats, can_restrict_members=can_restrict_members, can_promote_members=can_promote_members, can_change_info=can_change_info, can_invite_users=can_invite_users, can_post_stories=can_post_stories, can_edit_stories=can_edit_stories, can_delete_stories=can_delete_stories, can_post_messages=can_post_messages, can_edit_messages=can_edit_messages, can_pin_messages=can_pin_messages, can_manage_topics=can_manage_topics)
+> PromoteChatMemberResponse post_promote_chat_member(chat_id, user_id, is_anonymous=is_anonymous, can_manage_chat=can_manage_chat, can_delete_messages=can_delete_messages, can_manage_video_chats=can_manage_video_chats, can_restrict_members=can_restrict_members, can_promote_members=can_promote_members, can_change_info=can_change_info, can_invite_users=can_invite_users, can_post_stories=can_post_stories, can_edit_stories=can_edit_stories, can_delete_stories=can_delete_stories, can_post_messages=can_post_messages, can_edit_messages=can_edit_messages, can_pin_messages=can_pin_messages, can_manage_topics=can_manage_topics)
 
 promoteChatMember
 
@@ -5993,8 +5993,8 @@ Use this method to promote or demote a user in a supergroup or a channel. The bo
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.promote_chat_member_response import PromoteChatMemberResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6009,7 +6009,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     user_id = 56 # int | Unique identifier of the target user
     is_anonymous = True # bool | Pass *True* if the administrator's presence in the chat is hidden (optional)
     can_manage_chat = True # bool | Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege. (optional)
@@ -6043,7 +6043,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **user_id** | **int**| Unique identifier of the target user | 
  **is_anonymous** | **bool**| Pass *True* if the administrator&#39;s presence in the chat is hidden | [optional] 
  **can_manage_chat** | **bool**| Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege. | [optional] 
@@ -6063,7 +6063,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**PromoteChatMemberResponse**](PromoteChatMemberResponse.md)
 
 ### Authorization
 
@@ -6085,7 +6085,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_read_business_message**
-> PostSetWebhook200Response post_read_business_message(business_connection_id, chat_id, message_id)
+> ReadBusinessMessageResponse post_read_business_message(business_connection_id, chat_id, message_id)
 
 readBusinessMessage
 
@@ -6096,7 +6096,7 @@ Marks incoming message as read on behalf of a business account. Requires the *ca
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.read_business_message_response import ReadBusinessMessageResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6137,7 +6137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**ReadBusinessMessageResponse**](ReadBusinessMessageResponse.md)
 
 ### Authorization
 
@@ -6159,7 +6159,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_refund_star_payment**
-> PostSetWebhook200Response post_refund_star_payment(user_id, telegram_payment_charge_id)
+> RefundStarPaymentResponse post_refund_star_payment(user_id, telegram_payment_charge_id)
 
 refundStarPayment
 
@@ -6170,7 +6170,7 @@ Refunds a successful payment in [Telegram Stars](https://t.me/BotNews/90). Retur
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.refund_star_payment_response import RefundStarPaymentResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6209,7 +6209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**RefundStarPaymentResponse**](RefundStarPaymentResponse.md)
 
 ### Authorization
 
@@ -6231,7 +6231,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_remove_business_account_profile_photo**
-> PostSetWebhook200Response post_remove_business_account_profile_photo(business_connection_id, is_public=is_public)
+> RemoveBusinessAccountProfilePhotoResponse post_remove_business_account_profile_photo(business_connection_id, is_public=is_public)
 
 removeBusinessAccountProfilePhoto
 
@@ -6242,7 +6242,7 @@ Removes the current profile photo of a managed business account. Requires the *c
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.remove_business_account_profile_photo_response import RemoveBusinessAccountProfilePhotoResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6281,7 +6281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**RemoveBusinessAccountProfilePhotoResponse**](RemoveBusinessAccountProfilePhotoResponse.md)
 
 ### Authorization
 
@@ -6303,7 +6303,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_remove_chat_verification**
-> PostSetWebhook200Response post_remove_chat_verification(chat_id)
+> RemoveChatVerificationResponse post_remove_chat_verification(chat_id)
 
 removeChatVerification
 
@@ -6314,8 +6314,8 @@ Removes verification from a chat that is currently verified [on behalf of the or
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.remove_chat_verification_response import RemoveChatVerificationResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6330,7 +6330,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
 
     try:
         # removeChatVerification
@@ -6348,11 +6348,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**RemoveChatVerificationResponse**](RemoveChatVerificationResponse.md)
 
 ### Authorization
 
@@ -6374,7 +6374,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_remove_user_verification**
-> PostSetWebhook200Response post_remove_user_verification(user_id)
+> RemoveUserVerificationResponse post_remove_user_verification(user_id)
 
 removeUserVerification
 
@@ -6385,7 +6385,7 @@ Removes verification from a user who is currently verified [on behalf of the org
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.remove_user_verification_response import RemoveUserVerificationResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6422,7 +6422,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**RemoveUserVerificationResponse**](RemoveUserVerificationResponse.md)
 
 ### Authorization
 
@@ -6444,7 +6444,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_reopen_forum_topic**
-> PostSetWebhook200Response post_reopen_forum_topic(chat_id, message_thread_id)
+> ReopenForumTopicResponse post_reopen_forum_topic(chat_id, message_thread_id)
 
 reopenForumTopic
 
@@ -6455,8 +6455,8 @@ Use this method to reopen a closed topic in a forum supergroup chat. The bot mus
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.reopen_forum_topic_response import ReopenForumTopicResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6471,7 +6471,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
     message_thread_id = 56 # int | Unique identifier for the target message thread of the forum topic
 
     try:
@@ -6490,12 +6490,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
  **message_thread_id** | **int**| Unique identifier for the target message thread of the forum topic | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**ReopenForumTopicResponse**](ReopenForumTopicResponse.md)
 
 ### Authorization
 
@@ -6517,7 +6517,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_reopen_general_forum_topic**
-> PostSetWebhook200Response post_reopen_general_forum_topic(chat_id)
+> ReopenGeneralForumTopicResponse post_reopen_general_forum_topic(chat_id)
 
 reopenGeneralForumTopic
 
@@ -6528,8 +6528,8 @@ Use this method to reopen a closed 'General' topic in a forum supergroup chat. T
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.reopen_general_forum_topic_response import ReopenGeneralForumTopicResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6544,7 +6544,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
 
     try:
         # reopenGeneralForumTopic
@@ -6562,11 +6562,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**ReopenGeneralForumTopicResponse**](ReopenGeneralForumTopicResponse.md)
 
 ### Authorization
 
@@ -6588,7 +6588,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_replace_sticker_in_set**
-> PostSetWebhook200Response post_replace_sticker_in_set(user_id, name, old_sticker, sticker)
+> ReplaceStickerInSetResponse post_replace_sticker_in_set(user_id, name, old_sticker, sticker)
 
 replaceStickerInSet
 
@@ -6600,7 +6600,7 @@ Use this method to replace an existing sticker in a sticker set with a new one. 
 ```python
 import tele_rest
 from tele_rest.models.input_sticker import InputSticker
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.replace_sticker_in_set_response import ReplaceStickerInSetResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6643,7 +6643,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**ReplaceStickerInSetResponse**](ReplaceStickerInSetResponse.md)
 
 ### Authorization
 
@@ -6651,7 +6651,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -6665,7 +6665,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_restrict_chat_member**
-> PostSetWebhook200Response post_restrict_chat_member(chat_id, user_id, permissions, use_independent_chat_permissions=use_independent_chat_permissions, until_date=until_date)
+> RestrictChatMemberResponse post_restrict_chat_member(chat_id, user_id, permissions, use_independent_chat_permissions=use_independent_chat_permissions, until_date=until_date)
 
 restrictChatMember
 
@@ -6676,9 +6676,9 @@ Use this method to restrict a user in a supergroup. The bot must be an administr
 
 ```python
 import tele_rest
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.chat_permissions import ChatPermissions
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.restrict_chat_member_response import RestrictChatMemberResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6693,7 +6693,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
     user_id = 56 # int | Unique identifier of the target user
     permissions = tele_rest.ChatPermissions() # ChatPermissions | 
     use_independent_chat_permissions = True # bool | Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission. (optional)
@@ -6715,7 +6715,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
  **user_id** | **int**| Unique identifier of the target user | 
  **permissions** | [**ChatPermissions**](ChatPermissions.md)|  | 
  **use_independent_chat_permissions** | **bool**| Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission. | [optional] 
@@ -6723,7 +6723,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**RestrictChatMemberResponse**](RestrictChatMemberResponse.md)
 
 ### Authorization
 
@@ -6745,7 +6745,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_revoke_chat_invite_link**
-> PostCreateChatInviteLink200Response post_revoke_chat_invite_link(chat_id, invite_link)
+> RevokeChatInviteLinkResponse post_revoke_chat_invite_link(chat_id, invite_link)
 
 revokeChatInviteLink
 
@@ -6756,8 +6756,8 @@ Use this method to revoke an invite link created by the bot. If the primary link
 
 ```python
 import tele_rest
-from tele_rest.models.post_create_chat_invite_link200_response import PostCreateChatInviteLink200Response
-from tele_rest.models.post_revoke_chat_invite_link_request_chat_id import PostRevokeChatInviteLinkRequestChatId
+from tele_rest.models.revoke_chat_invite_link_request_chat_id import RevokeChatInviteLinkRequestChatId
+from tele_rest.models.revoke_chat_invite_link_response import RevokeChatInviteLinkResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6772,7 +6772,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRevokeChatInviteLinkRequestChatId() # PostRevokeChatInviteLinkRequestChatId | 
+    chat_id = tele_rest.RevokeChatInviteLinkRequestChatId() # RevokeChatInviteLinkRequestChatId | 
     invite_link = 'invite_link_example' # str | The invite link to revoke
 
     try:
@@ -6791,12 +6791,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRevokeChatInviteLinkRequestChatId**](PostRevokeChatInviteLinkRequestChatId.md)|  | 
+ **chat_id** | [**RevokeChatInviteLinkRequestChatId**](RevokeChatInviteLinkRequestChatId.md)|  | 
  **invite_link** | **str**| The invite link to revoke | 
 
 ### Return type
 
-[**PostCreateChatInviteLink200Response**](PostCreateChatInviteLink200Response.md)
+[**RevokeChatInviteLinkResponse**](RevokeChatInviteLinkResponse.md)
 
 ### Authorization
 
@@ -6818,7 +6818,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_save_prepared_inline_message**
-> PostSavePreparedInlineMessage200Response post_save_prepared_inline_message(user_id, result, allow_user_chats=allow_user_chats, allow_bot_chats=allow_bot_chats, allow_group_chats=allow_group_chats, allow_channel_chats=allow_channel_chats)
+> SavePreparedInlineMessageResponse post_save_prepared_inline_message(user_id, result, allow_user_chats=allow_user_chats, allow_bot_chats=allow_bot_chats, allow_group_chats=allow_group_chats, allow_channel_chats=allow_channel_chats)
 
 savePreparedInlineMessage
 
@@ -6830,7 +6830,7 @@ Stores a message that can be sent by a user of a Mini App. Returns a [PreparedIn
 ```python
 import tele_rest
 from tele_rest.models.inline_query_result import InlineQueryResult
-from tele_rest.models.post_save_prepared_inline_message200_response import PostSavePreparedInlineMessage200Response
+from tele_rest.models.save_prepared_inline_message_response import SavePreparedInlineMessageResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6877,7 +6877,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSavePreparedInlineMessage200Response**](PostSavePreparedInlineMessage200Response.md)
+[**SavePreparedInlineMessageResponse**](SavePreparedInlineMessageResponse.md)
 
 ### Authorization
 
@@ -6899,7 +6899,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_animation**
-> PostSendMessage200Response post_send_animation(chat_id, animation, business_connection_id=business_connection_id, message_thread_id=message_thread_id, duration=duration, width=width, height=height, thumbnail=thumbnail, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendAnimationResponse post_send_animation(chat_id, animation, business_connection_id=business_connection_id, message_thread_id=message_thread_id, duration=duration, width=width, height=height, thumbnail=thumbnail, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendAnimation
 
@@ -6911,12 +6911,10 @@ Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without s
 ```python
 import tele_rest
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_send_animation_request_animation import PostSendAnimationRequestAnimation
-from tele_rest.models.post_send_audio_request_thumbnail import PostSendAudioRequestThumbnail
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_animation_response import SendAnimationResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6931,14 +6929,14 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
-    animation = tele_rest.PostSendAnimationRequestAnimation() # PostSendAnimationRequestAnimation | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    animation = 'animation_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
     duration = 56 # int | Duration of sent animation in seconds (optional)
     width = 56 # int | Animation width (optional)
     height = 56 # int | Animation height (optional)
-    thumbnail = tele_rest.PostSendAudioRequestThumbnail() # PostSendAudioRequestThumbnail |  (optional)
+    thumbnail = 'thumbnail_example' # str |  (optional)
     caption = 'caption_example' # str | Animation caption (may also be used when resending animation by *file\\\\_id*), 0-1024 characters after entities parsing (optional)
     parse_mode = 'parse_mode_example' # str | Mode for parsing entities in the animation caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. (optional)
     caption_entities = [tele_rest.MessageEntity()] # List[MessageEntity] | A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode* (optional)
@@ -6949,7 +6947,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendAnimation
@@ -6967,14 +6965,14 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
- **animation** | [**PostSendAnimationRequestAnimation**](PostSendAnimationRequestAnimation.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **animation** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
  **duration** | **int**| Duration of sent animation in seconds | [optional] 
  **width** | **int**| Animation width | [optional] 
  **height** | **int**| Animation height | [optional] 
- **thumbnail** | [**PostSendAudioRequestThumbnail**](PostSendAudioRequestThumbnail.md)|  | [optional] 
+ **thumbnail** | **str**|  | [optional] 
  **caption** | **str**| Animation caption (may also be used when resending animation by *file\\\\_id*), 0-1024 characters after entities parsing | [optional] 
  **parse_mode** | **str**| Mode for parsing entities in the animation caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
  **caption_entities** | [**List[MessageEntity]**](MessageEntity.md)| A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode* | [optional] 
@@ -6985,11 +6983,11 @@ Name | Type | Description  | Notes
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendAnimationResponse**](SendAnimationResponse.md)
 
 ### Authorization
 
@@ -6997,7 +6995,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -7011,7 +7009,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_audio**
-> PostSendMessage200Response post_send_audio(chat_id, audio, business_connection_id=business_connection_id, message_thread_id=message_thread_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, duration=duration, performer=performer, title=title, thumbnail=thumbnail, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendAudioResponse post_send_audio(chat_id, audio, business_connection_id=business_connection_id, message_thread_id=message_thread_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, duration=duration, performer=performer, title=title, thumbnail=thumbnail, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendAudio
 
@@ -7025,12 +7023,10 @@ For sending voice messages, use the [sendVoice](https://core.telegram.org/bots/a
 ```python
 import tele_rest
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_send_audio_request_audio import PostSendAudioRequestAudio
-from tele_rest.models.post_send_audio_request_thumbnail import PostSendAudioRequestThumbnail
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_audio_response import SendAudioResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7045,8 +7041,8 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
-    audio = tele_rest.PostSendAudioRequestAudio() # PostSendAudioRequestAudio | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    audio = 'audio_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
     caption = 'caption_example' # str | Audio caption, 0-1024 characters after entities parsing (optional)
@@ -7055,13 +7051,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     duration = 56 # int | Duration of the audio in seconds (optional)
     performer = 'performer_example' # str | Performer (optional)
     title = 'title_example' # str | Track name (optional)
-    thumbnail = tele_rest.PostSendAudioRequestThumbnail() # PostSendAudioRequestThumbnail |  (optional)
+    thumbnail = 'thumbnail_example' # str |  (optional)
     disable_notification = True # bool | Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendAudio
@@ -7079,8 +7075,8 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
- **audio** | [**PostSendAudioRequestAudio**](PostSendAudioRequestAudio.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **audio** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
  **caption** | **str**| Audio caption, 0-1024 characters after entities parsing | [optional] 
@@ -7089,17 +7085,17 @@ Name | Type | Description  | Notes
  **duration** | **int**| Duration of the audio in seconds | [optional] 
  **performer** | **str**| Performer | [optional] 
  **title** | **str**| Track name | [optional] 
- **thumbnail** | [**PostSendAudioRequestThumbnail**](PostSendAudioRequestThumbnail.md)|  | [optional] 
+ **thumbnail** | **str**|  | [optional] 
  **disable_notification** | **bool**| Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendAudioResponse**](SendAudioResponse.md)
 
 ### Authorization
 
@@ -7107,7 +7103,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -7121,7 +7117,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_chat_action**
-> PostSetWebhook200Response post_send_chat_action(chat_id, action, business_connection_id=business_connection_id, message_thread_id=message_thread_id)
+> SendChatActionResponse post_send_chat_action(chat_id, action, business_connection_id=business_connection_id, message_thread_id=message_thread_id)
 
 sendChatAction
 
@@ -7136,8 +7132,8 @@ We only recommend using this method when a response from the bot will take a **n
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.send_chat_action_response import SendChatActionResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7152,7 +7148,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     action = 'action_example' # str | Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote).
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the action will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread; for supergroups only (optional)
@@ -7173,14 +7169,14 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **action** | **str**| Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote). | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the action will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread; for supergroups only | [optional] 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SendChatActionResponse**](SendChatActionResponse.md)
 
 ### Authorization
 
@@ -7202,7 +7198,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_contact**
-> PostSendMessage200Response post_send_contact(chat_id, phone_number, first_name, business_connection_id=business_connection_id, message_thread_id=message_thread_id, last_name=last_name, vcard=vcard, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendContactResponse post_send_contact(chat_id, phone_number, first_name, business_connection_id=business_connection_id, message_thread_id=message_thread_id, last_name=last_name, vcard=vcard, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendContact
 
@@ -7213,10 +7209,10 @@ Use this method to send phone contacts. On success, the sent [Message](https://c
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_contact_response import SendContactResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7231,7 +7227,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     phone_number = 'phone_number_example' # str | Contact's phone number
     first_name = 'first_name_example' # str | Contact's first name
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
@@ -7243,7 +7239,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendContact
@@ -7261,7 +7257,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **phone_number** | **str**| Contact&#39;s phone number | 
  **first_name** | **str**| Contact&#39;s first name | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
@@ -7273,11 +7269,11 @@ Name | Type | Description  | Notes
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendContactResponse**](SendContactResponse.md)
 
 ### Authorization
 
@@ -7299,7 +7295,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_dice**
-> PostSendMessage200Response post_send_dice(chat_id, business_connection_id=business_connection_id, message_thread_id=message_thread_id, emoji=emoji, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendDiceResponse post_send_dice(chat_id, business_connection_id=business_connection_id, message_thread_id=message_thread_id, emoji=emoji, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendDice
 
@@ -7310,10 +7306,10 @@ Use this method to send an animated emoji that will display a random value. On s
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_dice_response import SendDiceResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7328,7 +7324,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
     emoji = 🎲 # str | Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲” (optional) (default to 🎲)
@@ -7337,7 +7333,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendDice
@@ -7355,7 +7351,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
  **emoji** | **str**| Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲” | [optional] [default to 🎲]
@@ -7364,11 +7360,11 @@ Name | Type | Description  | Notes
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendDiceResponse**](SendDiceResponse.md)
 
 ### Authorization
 
@@ -7390,7 +7386,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_document**
-> PostSendMessage200Response post_send_document(chat_id, document, business_connection_id=business_connection_id, message_thread_id=message_thread_id, thumbnail=thumbnail, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, disable_content_type_detection=disable_content_type_detection, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendDocumentResponse post_send_document(chat_id, document, business_connection_id=business_connection_id, message_thread_id=message_thread_id, thumbnail=thumbnail, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, disable_content_type_detection=disable_content_type_detection, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendDocument
 
@@ -7402,12 +7398,10 @@ Use this method to send general files. On success, the sent [Message](https://co
 ```python
 import tele_rest
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_send_audio_request_thumbnail import PostSendAudioRequestThumbnail
-from tele_rest.models.post_send_document_request_document import PostSendDocumentRequestDocument
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_document_response import SendDocumentResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7422,11 +7416,11 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
-    document = tele_rest.PostSendDocumentRequestDocument() # PostSendDocumentRequestDocument | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    document = 'document_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
-    thumbnail = tele_rest.PostSendAudioRequestThumbnail() # PostSendAudioRequestThumbnail |  (optional)
+    thumbnail = 'thumbnail_example' # str |  (optional)
     caption = 'caption_example' # str | Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing (optional)
     parse_mode = 'parse_mode_example' # str | Mode for parsing entities in the document caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. (optional)
     caption_entities = [tele_rest.MessageEntity()] # List[MessageEntity] | A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode* (optional)
@@ -7436,7 +7430,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendDocument
@@ -7454,11 +7448,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
- **document** | [**PostSendDocumentRequestDocument**](PostSendDocumentRequestDocument.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **document** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
- **thumbnail** | [**PostSendAudioRequestThumbnail**](PostSendAudioRequestThumbnail.md)|  | [optional] 
+ **thumbnail** | **str**|  | [optional] 
  **caption** | **str**| Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing | [optional] 
  **parse_mode** | **str**| Mode for parsing entities in the document caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
  **caption_entities** | [**List[MessageEntity]**](MessageEntity.md)| A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode* | [optional] 
@@ -7468,11 +7462,11 @@ Name | Type | Description  | Notes
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendDocumentResponse**](SendDocumentResponse.md)
 
 ### Authorization
 
@@ -7480,7 +7474,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -7494,7 +7488,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_game**
-> PostSendMessage200Response post_send_game(chat_id, game_short_name, business_connection_id=business_connection_id, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendGameResponse post_send_game(chat_id, game_short_name, business_connection_id=business_connection_id, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendGame
 
@@ -7506,8 +7500,8 @@ Use this method to send a game. On success, the sent [Message](https://core.tele
 ```python
 import tele_rest
 from tele_rest.models.inline_keyboard_markup import InlineKeyboardMarkup
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_game_response import SendGameResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7562,7 +7556,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendGameResponse**](SendGameResponse.md)
 
 ### Authorization
 
@@ -7584,7 +7578,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_gift**
-> PostSetWebhook200Response post_send_gift(gift_id, user_id=user_id, chat_id=chat_id, pay_for_upgrade=pay_for_upgrade, text=text, text_parse_mode=text_parse_mode, text_entities=text_entities)
+> SendGiftResponse post_send_gift(gift_id, user_id=user_id, chat_id=chat_id, pay_for_upgrade=pay_for_upgrade, text=text, text_parse_mode=text_parse_mode, text_entities=text_entities)
 
 sendGift
 
@@ -7596,8 +7590,8 @@ Sends a gift to the given user or channel chat. The gift can't be converted to T
 ```python
 import tele_rest
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_send_gift_request_chat_id import PostSendGiftRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.send_gift_request_chat_id import SendGiftRequestChatId
+from tele_rest.models.send_gift_response import SendGiftResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7614,7 +7608,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     api_instance = tele_rest.DefaultApi(api_client)
     gift_id = 'gift_id_example' # str | Identifier of the gift
     user_id = 56 # int | Required if *chat\\\\_id* is not specified. Unique identifier of the target user who will receive the gift. (optional)
-    chat_id = tele_rest.PostSendGiftRequestChatId() # PostSendGiftRequestChatId |  (optional)
+    chat_id = tele_rest.SendGiftRequestChatId() # SendGiftRequestChatId |  (optional)
     pay_for_upgrade = True # bool | Pass *True* to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver (optional)
     text = 'text_example' # str | Text that will be shown along with the gift; 0-128 characters (optional)
     text_parse_mode = 'text_parse_mode_example' # str | Mode for parsing entities in the text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom\\\\_emoji” are ignored. (optional)
@@ -7638,7 +7632,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gift_id** | **str**| Identifier of the gift | 
  **user_id** | **int**| Required if *chat\\\\_id* is not specified. Unique identifier of the target user who will receive the gift. | [optional] 
- **chat_id** | [**PostSendGiftRequestChatId**](PostSendGiftRequestChatId.md)|  | [optional] 
+ **chat_id** | [**SendGiftRequestChatId**](SendGiftRequestChatId.md)|  | [optional] 
  **pay_for_upgrade** | **bool**| Pass *True* to pay for the gift upgrade from the bot&#39;s balance, thereby making the upgrade free for the receiver | [optional] 
  **text** | **str**| Text that will be shown along with the gift; 0-128 characters | [optional] 
  **text_parse_mode** | **str**| Mode for parsing entities in the text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom\\\\_emoji” are ignored. | [optional] 
@@ -7646,7 +7640,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SendGiftResponse**](SendGiftResponse.md)
 
 ### Authorization
 
@@ -7668,7 +7662,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_invoice**
-> PostSendMessage200Response post_send_invoice(chat_id, title, description, payload, currency, prices, message_thread_id=message_thread_id, provider_token=provider_token, max_tip_amount=max_tip_amount, suggested_tip_amounts=suggested_tip_amounts, start_parameter=start_parameter, provider_data=provider_data, photo_url=photo_url, photo_size=photo_size, photo_width=photo_width, photo_height=photo_height, need_name=need_name, need_phone_number=need_phone_number, need_email=need_email, need_shipping_address=need_shipping_address, send_phone_number_to_provider=send_phone_number_to_provider, send_email_to_provider=send_email_to_provider, is_flexible=is_flexible, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendInvoiceResponse post_send_invoice(chat_id, title, description, payload, currency, prices, message_thread_id=message_thread_id, provider_token=provider_token, max_tip_amount=max_tip_amount, suggested_tip_amounts=suggested_tip_amounts, start_parameter=start_parameter, provider_data=provider_data, photo_url=photo_url, photo_size=photo_size, photo_width=photo_width, photo_height=photo_height, need_name=need_name, need_phone_number=need_phone_number, need_email=need_email, need_shipping_address=need_shipping_address, send_phone_number_to_provider=send_phone_number_to_provider, send_email_to_provider=send_email_to_provider, is_flexible=is_flexible, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendInvoice
 
@@ -7681,9 +7675,9 @@ Use this method to send invoices. On success, the sent [Message](https://core.te
 import tele_rest
 from tele_rest.models.inline_keyboard_markup import InlineKeyboardMarkup
 from tele_rest.models.labeled_price import LabeledPrice
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_invoice_response import SendInvoiceResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7698,7 +7692,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     title = 'title_example' # str | Product name, 1-32 characters
     description = 'description_example' # str | Product description, 1-255 characters
     payload = 'payload_example' # str | Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes.
@@ -7744,7 +7738,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **title** | **str**| Product name, 1-32 characters | 
  **description** | **str**| Product description, 1-255 characters | 
  **payload** | **str**| Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes. | 
@@ -7776,7 +7770,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendInvoiceResponse**](SendInvoiceResponse.md)
 
 ### Authorization
 
@@ -7798,7 +7792,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_location**
-> PostSendMessage200Response post_send_location(chat_id, latitude, longitude, business_connection_id=business_connection_id, message_thread_id=message_thread_id, horizontal_accuracy=horizontal_accuracy, live_period=live_period, heading=heading, proximity_alert_radius=proximity_alert_radius, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendLocationResponse post_send_location(chat_id, latitude, longitude, business_connection_id=business_connection_id, message_thread_id=message_thread_id, horizontal_accuracy=horizontal_accuracy, live_period=live_period, heading=heading, proximity_alert_radius=proximity_alert_radius, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendLocation
 
@@ -7809,10 +7803,10 @@ Use this method to send point on the map. On success, the sent [Message](https:/
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_location_response import SendLocationResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7827,7 +7821,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     latitude = 3.4 # float | Latitude of the location
     longitude = 3.4 # float | Longitude of the location
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
@@ -7841,7 +7835,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendLocation
@@ -7859,7 +7853,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **latitude** | **float**| Latitude of the location | 
  **longitude** | **float**| Longitude of the location | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
@@ -7873,11 +7867,11 @@ Name | Type | Description  | Notes
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendLocationResponse**](SendLocationResponse.md)
 
 ### Authorization
 
@@ -7899,7 +7893,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_media_group**
-> PostSendMediaGroup200Response post_send_media_group(chat_id, media, business_connection_id=business_connection_id, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters)
+> SendMediaGroupResponse post_send_media_group(chat_id, media, business_connection_id=business_connection_id, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters)
 
 sendMediaGroup
 
@@ -7910,10 +7904,10 @@ Use this method to send a group of photos, videos, documents or audios as an alb
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_media_group200_response import PostSendMediaGroup200Response
-from tele_rest.models.post_send_media_group_request_media_inner import PostSendMediaGroupRequestMediaInner
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_media_group_request_media_inner import SendMediaGroupRequestMediaInner
+from tele_rest.models.send_media_group_response import SendMediaGroupResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7928,8 +7922,8 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
-    media = [tele_rest.PostSendMediaGroupRequestMediaInner()] # List[PostSendMediaGroupRequestMediaInner] | A JSON-serialized array describing messages to be sent, must include 2-10 items
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    media = [tele_rest.SendMediaGroupRequestMediaInner()] # List[SendMediaGroupRequestMediaInner] | A JSON-serialized array describing messages to be sent, must include 2-10 items
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
     disable_notification = True # bool | Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
@@ -7954,8 +7948,8 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
- **media** | [**List[PostSendMediaGroupRequestMediaInner]**](PostSendMediaGroupRequestMediaInner.md)| A JSON-serialized array describing messages to be sent, must include 2-10 items | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **media** | [**List[SendMediaGroupRequestMediaInner]**](SendMediaGroupRequestMediaInner.md)| A JSON-serialized array describing messages to be sent, must include 2-10 items | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
  **disable_notification** | **bool**| Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
@@ -7966,7 +7960,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSendMediaGroup200Response**](PostSendMediaGroup200Response.md)
+[**SendMediaGroupResponse**](SendMediaGroupResponse.md)
 
 ### Authorization
 
@@ -7974,7 +7968,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -7988,7 +7982,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_message**
-> PostSendMessage200Response post_send_message(chat_id, text, business_connection_id=business_connection_id, message_thread_id=message_thread_id, parse_mode=parse_mode, entities=entities, link_preview_options=link_preview_options, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendMessageResponse post_send_message(chat_id, text, business_connection_id=business_connection_id, message_thread_id=message_thread_id, parse_mode=parse_mode, entities=entities, link_preview_options=link_preview_options, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendMessage
 
@@ -8001,10 +7995,10 @@ Use this method to send text messages. On success, the sent [Message](https://co
 import tele_rest
 from tele_rest.models.link_preview_options import LinkPreviewOptions
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.send_message_response import SendMessageResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8019,7 +8013,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     text = 'text_example' # str | Text of the message to be sent, 1-4096 characters after entities parsing
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
@@ -8031,7 +8025,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendMessage
@@ -8049,7 +8043,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **text** | **str**| Text of the message to be sent, 1-4096 characters after entities parsing | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
@@ -8061,11 +8055,11 @@ Name | Type | Description  | Notes
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendMessageResponse**](SendMessageResponse.md)
 
 ### Authorization
 
@@ -8087,7 +8081,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_paid_media**
-> PostSendMessage200Response post_send_paid_media(chat_id, star_count, media, business_connection_id=business_connection_id, payload=payload, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendPaidMediaResponse post_send_paid_media(chat_id, star_count, media, business_connection_id=business_connection_id, payload=payload, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendPaidMedia
 
@@ -8100,10 +8094,10 @@ Use this method to send paid media. On success, the sent [Message](https://core.
 import tele_rest
 from tele_rest.models.input_paid_media import InputPaidMedia
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
-from tele_rest.models.post_send_paid_media_request_chat_id import PostSendPaidMediaRequestChatId
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.send_paid_media_request_chat_id import SendPaidMediaRequestChatId
+from tele_rest.models.send_paid_media_response import SendPaidMediaResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8118,7 +8112,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendPaidMediaRequestChatId() # PostSendPaidMediaRequestChatId | 
+    chat_id = tele_rest.SendPaidMediaRequestChatId() # SendPaidMediaRequestChatId | 
     star_count = 56 # int | The number of Telegram Stars that must be paid to buy access to the media; 1-10000
     media = [tele_rest.InputPaidMedia()] # List[InputPaidMedia] | A JSON-serialized array describing the media to be sent; up to 10 items
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
@@ -8131,7 +8125,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendPaidMedia
@@ -8149,7 +8143,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendPaidMediaRequestChatId**](PostSendPaidMediaRequestChatId.md)|  | 
+ **chat_id** | [**SendPaidMediaRequestChatId**](SendPaidMediaRequestChatId.md)|  | 
  **star_count** | **int**| The number of Telegram Stars that must be paid to buy access to the media; 1-10000 | 
  **media** | [**List[InputPaidMedia]**](InputPaidMedia.md)| A JSON-serialized array describing the media to be sent; up to 10 items | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
@@ -8162,11 +8156,11 @@ Name | Type | Description  | Notes
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendPaidMediaResponse**](SendPaidMediaResponse.md)
 
 ### Authorization
 
@@ -8174,7 +8168,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -8188,7 +8182,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_photo**
-> PostSendMessage200Response post_send_photo(chat_id, photo, business_connection_id=business_connection_id, message_thread_id=message_thread_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendPhotoResponse post_send_photo(chat_id, photo, business_connection_id=business_connection_id, message_thread_id=message_thread_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendPhoto
 
@@ -8200,11 +8194,10 @@ Use this method to send photos. On success, the sent [Message](https://core.tele
 ```python
 import tele_rest
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
-from tele_rest.models.post_send_photo_request_photo import PostSendPhotoRequestPhoto
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.send_photo_response import SendPhotoResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8219,8 +8212,8 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
-    photo = tele_rest.PostSendPhotoRequestPhoto() # PostSendPhotoRequestPhoto | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    photo = 'photo_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
     caption = 'caption_example' # str | Photo caption (may also be used when resending photos by *file\\\\_id*), 0-1024 characters after entities parsing (optional)
@@ -8233,7 +8226,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendPhoto
@@ -8251,8 +8244,8 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
- **photo** | [**PostSendPhotoRequestPhoto**](PostSendPhotoRequestPhoto.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **photo** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
  **caption** | **str**| Photo caption (may also be used when resending photos by *file\\\\_id*), 0-1024 characters after entities parsing | [optional] 
@@ -8265,11 +8258,11 @@ Name | Type | Description  | Notes
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendPhotoResponse**](SendPhotoResponse.md)
 
 ### Authorization
 
@@ -8277,7 +8270,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -8291,7 +8284,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_poll**
-> PostSendMessage200Response post_send_poll(chat_id, question, options, business_connection_id=business_connection_id, message_thread_id=message_thread_id, question_parse_mode=question_parse_mode, question_entities=question_entities, is_anonymous=is_anonymous, type=type, allows_multiple_answers=allows_multiple_answers, correct_option_id=correct_option_id, explanation=explanation, explanation_parse_mode=explanation_parse_mode, explanation_entities=explanation_entities, open_period=open_period, close_date=close_date, is_closed=is_closed, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendPollResponse post_send_poll(chat_id, question, options, business_connection_id=business_connection_id, message_thread_id=message_thread_id, question_parse_mode=question_parse_mode, question_entities=question_entities, is_anonymous=is_anonymous, type=type, allows_multiple_answers=allows_multiple_answers, correct_option_id=correct_option_id, explanation=explanation, explanation_parse_mode=explanation_parse_mode, explanation_entities=explanation_entities, open_period=open_period, close_date=close_date, is_closed=is_closed, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendPoll
 
@@ -8304,10 +8297,10 @@ Use this method to send a native poll. On success, the sent [Message](https://co
 import tele_rest
 from tele_rest.models.input_poll_option import InputPollOption
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.send_poll_response import SendPollResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8322,7 +8315,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     question = 'question_example' # str | Poll question, 1-300 characters
     options = [tele_rest.InputPollOption()] # List[InputPollOption] | A JSON-serialized list of 2-10 answer options
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
@@ -8344,7 +8337,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendPoll
@@ -8362,7 +8355,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **question** | **str**| Poll question, 1-300 characters | 
  **options** | [**List[InputPollOption]**](InputPollOption.md)| A JSON-serialized list of 2-10 answer options | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
@@ -8384,11 +8377,11 @@ Name | Type | Description  | Notes
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendPollResponse**](SendPollResponse.md)
 
 ### Authorization
 
@@ -8410,7 +8403,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_sticker**
-> PostSendMessage200Response post_send_sticker(chat_id, sticker, business_connection_id=business_connection_id, message_thread_id=message_thread_id, emoji=emoji, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendStickerResponse post_send_sticker(chat_id, sticker, business_connection_id=business_connection_id, message_thread_id=message_thread_id, emoji=emoji, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendSticker
 
@@ -8421,11 +8414,10 @@ Use this method to send static .WEBP, [animated](https://telegram.org/blog/anima
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
-from tele_rest.models.post_send_sticker_request_sticker import PostSendStickerRequestSticker
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.send_sticker_response import SendStickerResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8440,8 +8432,8 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
-    sticker = tele_rest.PostSendStickerRequestSticker() # PostSendStickerRequestSticker | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    sticker = 'sticker_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
     emoji = 'emoji_example' # str | Emoji associated with the sticker; only for just uploaded stickers (optional)
@@ -8450,7 +8442,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendSticker
@@ -8468,8 +8460,8 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
- **sticker** | [**PostSendStickerRequestSticker**](PostSendStickerRequestSticker.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **sticker** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
  **emoji** | **str**| Emoji associated with the sticker; only for just uploaded stickers | [optional] 
@@ -8478,11 +8470,11 @@ Name | Type | Description  | Notes
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendStickerResponse**](SendStickerResponse.md)
 
 ### Authorization
 
@@ -8490,7 +8482,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -8504,7 +8496,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_venue**
-> PostSendMessage200Response post_send_venue(chat_id, latitude, longitude, title, address, business_connection_id=business_connection_id, message_thread_id=message_thread_id, foursquare_id=foursquare_id, foursquare_type=foursquare_type, google_place_id=google_place_id, google_place_type=google_place_type, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendVenueResponse post_send_venue(chat_id, latitude, longitude, title, address, business_connection_id=business_connection_id, message_thread_id=message_thread_id, foursquare_id=foursquare_id, foursquare_type=foursquare_type, google_place_id=google_place_id, google_place_type=google_place_type, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendVenue
 
@@ -8515,10 +8507,10 @@ Use this method to send information about a venue. On success, the sent [Message
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.send_venue_response import SendVenueResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8533,7 +8525,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     latitude = 3.4 # float | Latitude of the venue
     longitude = 3.4 # float | Longitude of the venue
     title = 'title_example' # str | Name of the venue
@@ -8549,7 +8541,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendVenue
@@ -8567,7 +8559,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **latitude** | **float**| Latitude of the venue | 
  **longitude** | **float**| Longitude of the venue | 
  **title** | **str**| Name of the venue | 
@@ -8583,11 +8575,11 @@ Name | Type | Description  | Notes
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendVenueResponse**](SendVenueResponse.md)
 
 ### Authorization
 
@@ -8609,7 +8601,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_video**
-> PostSendMessage200Response post_send_video(chat_id, video, business_connection_id=business_connection_id, message_thread_id=message_thread_id, duration=duration, width=width, height=height, thumbnail=thumbnail, cover=cover, start_timestamp=start_timestamp, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, supports_streaming=supports_streaming, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendVideoResponse post_send_video(chat_id, video, business_connection_id=business_connection_id, message_thread_id=message_thread_id, duration=duration, width=width, height=height, thumbnail=thumbnail, cover=cover, start_timestamp=start_timestamp, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, supports_streaming=supports_streaming, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendVideo
 
@@ -8621,13 +8613,10 @@ Use this method to send video files, Telegram clients support MPEG4 videos (othe
 ```python
 import tele_rest
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_send_audio_request_thumbnail import PostSendAudioRequestThumbnail
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
-from tele_rest.models.post_send_video_request_cover import PostSendVideoRequestCover
-from tele_rest.models.post_send_video_request_video import PostSendVideoRequestVideo
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.send_video_response import SendVideoResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8642,15 +8631,15 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
-    video = tele_rest.PostSendVideoRequestVideo() # PostSendVideoRequestVideo | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    video = 'video_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
     duration = 56 # int | Duration of sent video in seconds (optional)
     width = 56 # int | Video width (optional)
     height = 56 # int | Video height (optional)
-    thumbnail = tele_rest.PostSendAudioRequestThumbnail() # PostSendAudioRequestThumbnail |  (optional)
-    cover = tele_rest.PostSendVideoRequestCover() # PostSendVideoRequestCover |  (optional)
+    thumbnail = 'thumbnail_example' # str |  (optional)
+    cover = 'cover_example' # str |  (optional)
     start_timestamp = 56 # int | Start timestamp for the video in the message (optional)
     caption = 'caption_example' # str | Video caption (may also be used when resending videos by *file\\\\_id*), 0-1024 characters after entities parsing (optional)
     parse_mode = 'parse_mode_example' # str | Mode for parsing entities in the video caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. (optional)
@@ -8663,7 +8652,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendVideo
@@ -8681,15 +8670,15 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
- **video** | [**PostSendVideoRequestVideo**](PostSendVideoRequestVideo.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **video** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
  **duration** | **int**| Duration of sent video in seconds | [optional] 
  **width** | **int**| Video width | [optional] 
  **height** | **int**| Video height | [optional] 
- **thumbnail** | [**PostSendAudioRequestThumbnail**](PostSendAudioRequestThumbnail.md)|  | [optional] 
- **cover** | [**PostSendVideoRequestCover**](PostSendVideoRequestCover.md)|  | [optional] 
+ **thumbnail** | **str**|  | [optional] 
+ **cover** | **str**|  | [optional] 
  **start_timestamp** | **int**| Start timestamp for the video in the message | [optional] 
  **caption** | **str**| Video caption (may also be used when resending videos by *file\\\\_id*), 0-1024 characters after entities parsing | [optional] 
  **parse_mode** | **str**| Mode for parsing entities in the video caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
@@ -8702,11 +8691,11 @@ Name | Type | Description  | Notes
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendVideoResponse**](SendVideoResponse.md)
 
 ### Authorization
 
@@ -8714,7 +8703,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -8728,7 +8717,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_video_note**
-> PostSendMessage200Response post_send_video_note(chat_id, video_note, business_connection_id=business_connection_id, message_thread_id=message_thread_id, duration=duration, length=length, thumbnail=thumbnail, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendVideoNoteResponse post_send_video_note(chat_id, video_note, business_connection_id=business_connection_id, message_thread_id=message_thread_id, duration=duration, length=length, thumbnail=thumbnail, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendVideoNote
 
@@ -8739,12 +8728,10 @@ As of [v.4.0](https://telegram.org/blog/video-messages-and-telescope), Telegram 
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_audio_request_thumbnail import PostSendAudioRequestThumbnail
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
-from tele_rest.models.post_send_video_note_request_video_note import PostSendVideoNoteRequestVideoNote
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.send_video_note_response import SendVideoNoteResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8759,19 +8746,19 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
-    video_note = tele_rest.PostSendVideoNoteRequestVideoNote() # PostSendVideoNoteRequestVideoNote | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    video_note = 'video_note_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
     duration = 56 # int | Duration of sent video in seconds (optional)
     length = 56 # int | Video width and height, i.e. diameter of the video message (optional)
-    thumbnail = tele_rest.PostSendAudioRequestThumbnail() # PostSendAudioRequestThumbnail |  (optional)
+    thumbnail = 'thumbnail_example' # str |  (optional)
     disable_notification = True # bool | Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendVideoNote
@@ -8789,23 +8776,23 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
- **video_note** | [**PostSendVideoNoteRequestVideoNote**](PostSendVideoNoteRequestVideoNote.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **video_note** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
  **duration** | **int**| Duration of sent video in seconds | [optional] 
  **length** | **int**| Video width and height, i.e. diameter of the video message | [optional] 
- **thumbnail** | [**PostSendAudioRequestThumbnail**](PostSendAudioRequestThumbnail.md)|  | [optional] 
+ **thumbnail** | **str**|  | [optional] 
  **disable_notification** | **bool**| Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendVideoNoteResponse**](SendVideoNoteResponse.md)
 
 ### Authorization
 
@@ -8813,7 +8800,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -8827,7 +8814,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_voice**
-> PostSendMessage200Response post_send_voice(chat_id, voice, business_connection_id=business_connection_id, message_thread_id=message_thread_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, duration=duration, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendVoiceResponse post_send_voice(chat_id, voice, business_connection_id=business_connection_id, message_thread_id=message_thread_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, duration=duration, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendVoice
 
@@ -8839,11 +8826,10 @@ Use this method to send audio files, if you want Telegram clients to display the
 ```python
 import tele_rest
 from tele_rest.models.message_entity import MessageEntity
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
-from tele_rest.models.post_send_voice_request_voice import PostSendVoiceRequestVoice
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.send_voice_response import SendVoiceResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8858,8 +8844,8 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
-    voice = tele_rest.PostSendVoiceRequestVoice() # PostSendVoiceRequestVoice | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    voice = 'voice_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
     caption = 'caption_example' # str | Voice message caption, 0-1024 characters after entities parsing (optional)
@@ -8871,7 +8857,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
-    reply_markup = tele_rest.PostSendMessageRequestReplyMarkup() # PostSendMessageRequestReplyMarkup |  (optional)
+    reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendVoice
@@ -8889,8 +8875,8 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
- **voice** | [**PostSendVoiceRequestVoice**](PostSendVoiceRequestVoice.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **voice** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
  **caption** | **str**| Voice message caption, 0-1024 characters after entities parsing | [optional] 
@@ -8902,11 +8888,11 @@ Name | Type | Description  | Notes
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
- **reply_markup** | [**PostSendMessageRequestReplyMarkup**](PostSendMessageRequestReplyMarkup.md)|  | [optional] 
+ **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostSendMessage200Response**](PostSendMessage200Response.md)
+[**SendVoiceResponse**](SendVoiceResponse.md)
 
 ### Authorization
 
@@ -8914,7 +8900,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -8928,7 +8914,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_business_account_bio**
-> PostSetWebhook200Response post_set_business_account_bio(business_connection_id, bio=bio)
+> SetBusinessAccountBioResponse post_set_business_account_bio(business_connection_id, bio=bio)
 
 setBusinessAccountBio
 
@@ -8939,7 +8925,7 @@ Changes the bio of a managed business account. Requires the *can\_change\_bio* b
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_business_account_bio_response import SetBusinessAccountBioResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8978,7 +8964,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetBusinessAccountBioResponse**](SetBusinessAccountBioResponse.md)
 
 ### Authorization
 
@@ -9000,7 +8986,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_business_account_gift_settings**
-> PostSetWebhook200Response post_set_business_account_gift_settings(business_connection_id, show_gift_button, accepted_gift_types)
+> SetBusinessAccountGiftSettingsResponse post_set_business_account_gift_settings(business_connection_id, show_gift_button, accepted_gift_types)
 
 setBusinessAccountGiftSettings
 
@@ -9012,7 +8998,7 @@ Changes the privacy settings pertaining to incoming gifts in a managed business 
 ```python
 import tele_rest
 from tele_rest.models.accepted_gift_types import AcceptedGiftTypes
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_business_account_gift_settings_response import SetBusinessAccountGiftSettingsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9053,7 +9039,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetBusinessAccountGiftSettingsResponse**](SetBusinessAccountGiftSettingsResponse.md)
 
 ### Authorization
 
@@ -9075,7 +9061,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_business_account_name**
-> PostSetWebhook200Response post_set_business_account_name(business_connection_id, first_name, last_name=last_name)
+> SetBusinessAccountNameResponse post_set_business_account_name(business_connection_id, first_name, last_name=last_name)
 
 setBusinessAccountName
 
@@ -9086,7 +9072,7 @@ Changes the first and last name of a managed business account. Requires the *can
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_business_account_name_response import SetBusinessAccountNameResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9127,7 +9113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetBusinessAccountNameResponse**](SetBusinessAccountNameResponse.md)
 
 ### Authorization
 
@@ -9149,7 +9135,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_business_account_profile_photo**
-> PostSetWebhook200Response post_set_business_account_profile_photo(business_connection_id, photo, is_public=is_public)
+> SetBusinessAccountProfilePhotoResponse post_set_business_account_profile_photo(business_connection_id, photo, is_public=is_public)
 
 setBusinessAccountProfilePhoto
 
@@ -9161,7 +9147,7 @@ Changes the profile photo of a managed business account. Requires the *can\_edit
 ```python
 import tele_rest
 from tele_rest.models.input_profile_photo import InputProfilePhoto
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_business_account_profile_photo_response import SetBusinessAccountProfilePhotoResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9202,7 +9188,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetBusinessAccountProfilePhotoResponse**](SetBusinessAccountProfilePhotoResponse.md)
 
 ### Authorization
 
@@ -9210,7 +9196,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -9224,7 +9210,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_business_account_username**
-> PostSetWebhook200Response post_set_business_account_username(business_connection_id, username=username)
+> SetBusinessAccountUsernameResponse post_set_business_account_username(business_connection_id, username=username)
 
 setBusinessAccountUsername
 
@@ -9235,7 +9221,7 @@ Changes the username of a managed business account. Requires the *can\_change\_u
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_business_account_username_response import SetBusinessAccountUsernameResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9274,7 +9260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetBusinessAccountUsernameResponse**](SetBusinessAccountUsernameResponse.md)
 
 ### Authorization
 
@@ -9296,7 +9282,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_chat_administrator_custom_title**
-> PostSetWebhook200Response post_set_chat_administrator_custom_title(chat_id, user_id, custom_title)
+> SetChatAdministratorCustomTitleResponse post_set_chat_administrator_custom_title(chat_id, user_id, custom_title)
 
 setChatAdministratorCustomTitle
 
@@ -9307,8 +9293,8 @@ Use this method to set a custom title for an administrator in a supergroup promo
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.set_chat_administrator_custom_title_response import SetChatAdministratorCustomTitleResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9323,7 +9309,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
     user_id = 56 # int | Unique identifier of the target user
     custom_title = 'custom_title_example' # str | New custom title for the administrator; 0-16 characters, emoji are not allowed
 
@@ -9343,13 +9329,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
  **user_id** | **int**| Unique identifier of the target user | 
  **custom_title** | **str**| New custom title for the administrator; 0-16 characters, emoji are not allowed | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetChatAdministratorCustomTitleResponse**](SetChatAdministratorCustomTitleResponse.md)
 
 ### Authorization
 
@@ -9371,7 +9357,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_chat_description**
-> PostSetWebhook200Response post_set_chat_description(chat_id, description=description)
+> SetChatDescriptionResponse post_set_chat_description(chat_id, description=description)
 
 setChatDescription
 
@@ -9382,8 +9368,8 @@ Use this method to change the description of a group, a supergroup or a channel.
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.set_chat_description_response import SetChatDescriptionResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9398,7 +9384,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     description = 'description_example' # str | New chat description, 0-255 characters (optional)
 
     try:
@@ -9417,12 +9403,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **description** | **str**| New chat description, 0-255 characters | [optional] 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetChatDescriptionResponse**](SetChatDescriptionResponse.md)
 
 ### Authorization
 
@@ -9444,7 +9430,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_chat_menu_button**
-> PostSetWebhook200Response post_set_chat_menu_button(chat_id=chat_id, menu_button=menu_button)
+> SetChatMenuButtonResponse post_set_chat_menu_button(chat_id=chat_id, menu_button=menu_button)
 
 setChatMenuButton
 
@@ -9456,7 +9442,7 @@ Use this method to change the bot's menu button in a private chat, or the defaul
 ```python
 import tele_rest
 from tele_rest.models.menu_button import MenuButton
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_chat_menu_button_response import SetChatMenuButtonResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9495,7 +9481,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetChatMenuButtonResponse**](SetChatMenuButtonResponse.md)
 
 ### Authorization
 
@@ -9517,7 +9503,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_chat_permissions**
-> PostSetWebhook200Response post_set_chat_permissions(chat_id, permissions, use_independent_chat_permissions=use_independent_chat_permissions)
+> SetChatPermissionsResponse post_set_chat_permissions(chat_id, permissions, use_independent_chat_permissions=use_independent_chat_permissions)
 
 setChatPermissions
 
@@ -9528,9 +9514,9 @@ Use this method to set default chat permissions for all members. The bot must be
 
 ```python
 import tele_rest
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.chat_permissions import ChatPermissions
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_chat_permissions_response import SetChatPermissionsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9545,7 +9531,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
     permissions = tele_rest.ChatPermissions() # ChatPermissions | 
     use_independent_chat_permissions = True # bool | Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission. (optional)
 
@@ -9565,13 +9551,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
  **permissions** | [**ChatPermissions**](ChatPermissions.md)|  | 
  **use_independent_chat_permissions** | **bool**| Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission. | [optional] 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetChatPermissionsResponse**](SetChatPermissionsResponse.md)
 
 ### Authorization
 
@@ -9593,7 +9579,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_chat_photo**
-> PostSetWebhook200Response post_set_chat_photo(chat_id, photo)
+> SetChatPhotoResponse post_set_chat_photo(chat_id, photo)
 
 setChatPhoto
 
@@ -9604,8 +9590,8 @@ Use this method to set a new profile photo for the chat. Photos can't be changed
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.set_chat_photo_response import SetChatPhotoResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9620,7 +9606,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     photo = None # object | 
 
     try:
@@ -9639,12 +9625,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **photo** | [**object**](object.md)|  | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetChatPhotoResponse**](SetChatPhotoResponse.md)
 
 ### Authorization
 
@@ -9652,7 +9638,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -9666,7 +9652,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_chat_sticker_set**
-> PostSetWebhook200Response post_set_chat_sticker_set(chat_id, sticker_set_name)
+> SetChatStickerSetResponse post_set_chat_sticker_set(chat_id, sticker_set_name)
 
 setChatStickerSet
 
@@ -9677,8 +9663,8 @@ Use this method to set a new group sticker set for a supergroup. The bot must be
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.set_chat_sticker_set_response import SetChatStickerSetResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9693,7 +9679,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
     sticker_set_name = 'sticker_set_name_example' # str | Name of the sticker set to be set as the group sticker set
 
     try:
@@ -9712,12 +9698,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
  **sticker_set_name** | **str**| Name of the sticker set to be set as the group sticker set | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetChatStickerSetResponse**](SetChatStickerSetResponse.md)
 
 ### Authorization
 
@@ -9739,7 +9725,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_chat_title**
-> PostSetWebhook200Response post_set_chat_title(chat_id, title)
+> SetChatTitleResponse post_set_chat_title(chat_id, title)
 
 setChatTitle
 
@@ -9750,8 +9736,8 @@ Use this method to change the title of a chat. Titles can't be changed for priva
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.set_chat_title_response import SetChatTitleResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9766,7 +9752,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     title = 'title_example' # str | New chat title, 1-128 characters
 
     try:
@@ -9785,12 +9771,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **title** | **str**| New chat title, 1-128 characters | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetChatTitleResponse**](SetChatTitleResponse.md)
 
 ### Authorization
 
@@ -9812,7 +9798,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_custom_emoji_sticker_set_thumbnail**
-> PostSetWebhook200Response post_set_custom_emoji_sticker_set_thumbnail(name, custom_emoji_id=custom_emoji_id)
+> SetCustomEmojiStickerSetThumbnailResponse post_set_custom_emoji_sticker_set_thumbnail(name, custom_emoji_id=custom_emoji_id)
 
 setCustomEmojiStickerSetThumbnail
 
@@ -9823,7 +9809,7 @@ Use this method to set the thumbnail of a custom emoji sticker set. Returns *Tru
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_custom_emoji_sticker_set_thumbnail_response import SetCustomEmojiStickerSetThumbnailResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9862,7 +9848,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetCustomEmojiStickerSetThumbnailResponse**](SetCustomEmojiStickerSetThumbnailResponse.md)
 
 ### Authorization
 
@@ -9884,7 +9870,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_game_score**
-> PostEditMessageText200Response post_set_game_score(user_id, score, force=force, disable_edit_message=disable_edit_message, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id)
+> SetGameScoreResponse post_set_game_score(user_id, score, force=force, disable_edit_message=disable_edit_message, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id)
 
 setGameScore
 
@@ -9895,7 +9881,7 @@ Use this method to set the score of the specified user in a game message. On suc
 
 ```python
 import tele_rest
-from tele_rest.models.post_edit_message_text200_response import PostEditMessageText200Response
+from tele_rest.models.set_game_score_response import SetGameScoreResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9944,7 +9930,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostEditMessageText200Response**](PostEditMessageText200Response.md)
+[**SetGameScoreResponse**](SetGameScoreResponse.md)
 
 ### Authorization
 
@@ -9966,7 +9952,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_message_reaction**
-> PostSetWebhook200Response post_set_message_reaction(chat_id, message_id, reaction=reaction, is_big=is_big)
+> SetMessageReactionResponse post_set_message_reaction(chat_id, message_id, reaction=reaction, is_big=is_big)
 
 setMessageReaction
 
@@ -9977,9 +9963,9 @@ Use this method to change the chosen reactions on a message. Service messages of
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
 from tele_rest.models.reaction_type import ReactionType
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.set_message_reaction_response import SetMessageReactionResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9994,7 +9980,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     message_id = 56 # int | Identifier of the target message. If the message belongs to a media group, the reaction is set to the first non-deleted message in the group instead.
     reaction = [tele_rest.ReactionType()] # List[ReactionType] | A JSON-serialized list of reaction types to set on the message. Currently, as non-premium users, bots can set up to one reaction per message. A custom emoji reaction can be used if it is either already present on the message or explicitly allowed by chat administrators. Paid reactions can't be used by bots. (optional)
     is_big = True # bool | Pass *True* to set the reaction with a big animation (optional)
@@ -10015,14 +10001,14 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **message_id** | **int**| Identifier of the target message. If the message belongs to a media group, the reaction is set to the first non-deleted message in the group instead. | 
  **reaction** | [**List[ReactionType]**](ReactionType.md)| A JSON-serialized list of reaction types to set on the message. Currently, as non-premium users, bots can set up to one reaction per message. A custom emoji reaction can be used if it is either already present on the message or explicitly allowed by chat administrators. Paid reactions can&#39;t be used by bots. | [optional] 
  **is_big** | **bool**| Pass *True* to set the reaction with a big animation | [optional] 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetMessageReactionResponse**](SetMessageReactionResponse.md)
 
 ### Authorization
 
@@ -10044,7 +10030,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_my_commands**
-> PostSetWebhook200Response post_set_my_commands(commands, scope=scope, language_code=language_code)
+> SetMyCommandsResponse post_set_my_commands(commands, scope=scope, language_code=language_code)
 
 setMyCommands
 
@@ -10057,7 +10043,7 @@ Use this method to change the list of the bot's commands. See [this manual](http
 import tele_rest
 from tele_rest.models.bot_command import BotCommand
 from tele_rest.models.bot_command_scope import BotCommandScope
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_my_commands_response import SetMyCommandsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -10098,7 +10084,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetMyCommandsResponse**](SetMyCommandsResponse.md)
 
 ### Authorization
 
@@ -10120,7 +10106,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_my_default_administrator_rights**
-> PostSetWebhook200Response post_set_my_default_administrator_rights(rights=rights, for_channels=for_channels)
+> SetMyDefaultAdministratorRightsResponse post_set_my_default_administrator_rights(rights=rights, for_channels=for_channels)
 
 setMyDefaultAdministratorRights
 
@@ -10132,7 +10118,7 @@ Use this method to change the default administrator rights requested by the bot 
 ```python
 import tele_rest
 from tele_rest.models.chat_administrator_rights import ChatAdministratorRights
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_my_default_administrator_rights_response import SetMyDefaultAdministratorRightsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -10171,7 +10157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetMyDefaultAdministratorRightsResponse**](SetMyDefaultAdministratorRightsResponse.md)
 
 ### Authorization
 
@@ -10193,7 +10179,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_my_description**
-> PostSetWebhook200Response post_set_my_description(description=description, language_code=language_code)
+> SetMyDescriptionResponse post_set_my_description(description=description, language_code=language_code)
 
 setMyDescription
 
@@ -10204,7 +10190,7 @@ Use this method to change the bot's description, which is shown in the chat with
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_my_description_response import SetMyDescriptionResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -10243,7 +10229,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetMyDescriptionResponse**](SetMyDescriptionResponse.md)
 
 ### Authorization
 
@@ -10265,7 +10251,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_my_name**
-> PostSetWebhook200Response post_set_my_name(name=name, language_code=language_code)
+> SetMyNameResponse post_set_my_name(name=name, language_code=language_code)
 
 setMyName
 
@@ -10276,7 +10262,7 @@ Use this method to change the bot's name. Returns *True* on success.
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_my_name_response import SetMyNameResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -10315,7 +10301,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetMyNameResponse**](SetMyNameResponse.md)
 
 ### Authorization
 
@@ -10337,7 +10323,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_my_short_description**
-> PostSetWebhook200Response post_set_my_short_description(short_description=short_description, language_code=language_code)
+> SetMyShortDescriptionResponse post_set_my_short_description(short_description=short_description, language_code=language_code)
 
 setMyShortDescription
 
@@ -10348,7 +10334,7 @@ Use this method to change the bot's short description, which is shown on the bot
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_my_short_description_response import SetMyShortDescriptionResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -10387,7 +10373,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetMyShortDescriptionResponse**](SetMyShortDescriptionResponse.md)
 
 ### Authorization
 
@@ -10409,7 +10395,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_passport_data_errors**
-> PostSetWebhook200Response post_set_passport_data_errors(user_id, errors)
+> SetPassportDataErrorsResponse post_set_passport_data_errors(user_id, errors)
 
 setPassportDataErrors
 
@@ -10423,7 +10409,7 @@ Use this if the data submitted by the user doesn't satisfy the standards your se
 ```python
 import tele_rest
 from tele_rest.models.passport_element_error import PassportElementError
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_passport_data_errors_response import SetPassportDataErrorsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -10462,7 +10448,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetPassportDataErrorsResponse**](SetPassportDataErrorsResponse.md)
 
 ### Authorization
 
@@ -10484,7 +10470,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_sticker_emoji_list**
-> PostSetWebhook200Response post_set_sticker_emoji_list(sticker, emoji_list)
+> SetStickerEmojiListResponse post_set_sticker_emoji_list(sticker, emoji_list)
 
 setStickerEmojiList
 
@@ -10495,7 +10481,7 @@ Use this method to change the list of emoji assigned to a regular or custom emoj
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_sticker_emoji_list_response import SetStickerEmojiListResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -10534,7 +10520,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetStickerEmojiListResponse**](SetStickerEmojiListResponse.md)
 
 ### Authorization
 
@@ -10556,7 +10542,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_sticker_keywords**
-> PostSetWebhook200Response post_set_sticker_keywords(sticker, keywords=keywords)
+> SetStickerKeywordsResponse post_set_sticker_keywords(sticker, keywords=keywords)
 
 setStickerKeywords
 
@@ -10567,7 +10553,7 @@ Use this method to change search keywords assigned to a regular or custom emoji 
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_sticker_keywords_response import SetStickerKeywordsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -10606,7 +10592,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetStickerKeywordsResponse**](SetStickerKeywordsResponse.md)
 
 ### Authorization
 
@@ -10628,7 +10614,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_sticker_mask_position**
-> PostSetWebhook200Response post_set_sticker_mask_position(sticker, mask_position=mask_position)
+> SetStickerMaskPositionResponse post_set_sticker_mask_position(sticker, mask_position=mask_position)
 
 setStickerMaskPosition
 
@@ -10640,7 +10626,7 @@ Use this method to change the [mask position](https://core.telegram.org/bots/api
 ```python
 import tele_rest
 from tele_rest.models.mask_position import MaskPosition
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_sticker_mask_position_response import SetStickerMaskPositionResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -10679,7 +10665,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetStickerMaskPositionResponse**](SetStickerMaskPositionResponse.md)
 
 ### Authorization
 
@@ -10701,7 +10687,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_sticker_position_in_set**
-> PostSetWebhook200Response post_set_sticker_position_in_set(sticker, position)
+> SetStickerPositionInSetResponse post_set_sticker_position_in_set(sticker, position)
 
 setStickerPositionInSet
 
@@ -10712,7 +10698,7 @@ Use this method to move a sticker in a set created by the bot to a specific posi
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_sticker_position_in_set_response import SetStickerPositionInSetResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -10751,7 +10737,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetStickerPositionInSetResponse**](SetStickerPositionInSetResponse.md)
 
 ### Authorization
 
@@ -10773,7 +10759,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_sticker_set_thumbnail**
-> PostSetWebhook200Response post_set_sticker_set_thumbnail(name, user_id, format, thumbnail=thumbnail)
+> SetStickerSetThumbnailResponse post_set_sticker_set_thumbnail(name, user_id, format, thumbnail=thumbnail)
 
 setStickerSetThumbnail
 
@@ -10784,8 +10770,7 @@ Use this method to set the thumbnail of a regular or mask sticker set. The forma
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_sticker_set_thumbnail_request_thumbnail import PostSetStickerSetThumbnailRequestThumbnail
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_sticker_set_thumbnail_response import SetStickerSetThumbnailResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -10803,7 +10788,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     name = 'name_example' # str | Sticker set name
     user_id = 56 # int | User identifier of the sticker set owner
     format = 'format_example' # str | Format of the thumbnail, must be one of “static” for a **.WEBP** or **.PNG** image, “animated” for a **.TGS** animation, or “video” for a **.WEBM** video
-    thumbnail = tele_rest.PostSetStickerSetThumbnailRequestThumbnail() # PostSetStickerSetThumbnailRequestThumbnail |  (optional)
+    thumbnail = 'thumbnail_example' # str |  (optional)
 
     try:
         # setStickerSetThumbnail
@@ -10824,11 +10809,11 @@ Name | Type | Description  | Notes
  **name** | **str**| Sticker set name | 
  **user_id** | **int**| User identifier of the sticker set owner | 
  **format** | **str**| Format of the thumbnail, must be one of “static” for a **.WEBP** or **.PNG** image, “animated” for a **.TGS** animation, or “video” for a **.WEBM** video | 
- **thumbnail** | [**PostSetStickerSetThumbnailRequestThumbnail**](PostSetStickerSetThumbnailRequestThumbnail.md)|  | [optional] 
+ **thumbnail** | **str**|  | [optional] 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetStickerSetThumbnailResponse**](SetStickerSetThumbnailResponse.md)
 
 ### Authorization
 
@@ -10836,7 +10821,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -10850,7 +10835,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_sticker_set_title**
-> PostSetWebhook200Response post_set_sticker_set_title(name, title)
+> SetStickerSetTitleResponse post_set_sticker_set_title(name, title)
 
 setStickerSetTitle
 
@@ -10861,7 +10846,7 @@ Use this method to set the title of a created sticker set. Returns *True* on suc
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_sticker_set_title_response import SetStickerSetTitleResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -10900,7 +10885,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetStickerSetTitleResponse**](SetStickerSetTitleResponse.md)
 
 ### Authorization
 
@@ -10922,7 +10907,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_user_emoji_status**
-> PostSetWebhook200Response post_set_user_emoji_status(user_id, emoji_status_custom_emoji_id=emoji_status_custom_emoji_id, emoji_status_expiration_date=emoji_status_expiration_date)
+> SetUserEmojiStatusResponse post_set_user_emoji_status(user_id, emoji_status_custom_emoji_id=emoji_status_custom_emoji_id, emoji_status_expiration_date=emoji_status_expiration_date)
 
 setUserEmojiStatus
 
@@ -10933,7 +10918,7 @@ Changes the emoji status for a given user that previously allowed the bot to man
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_user_emoji_status_response import SetUserEmojiStatusResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -10974,7 +10959,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetUserEmojiStatusResponse**](SetUserEmojiStatusResponse.md)
 
 ### Authorization
 
@@ -10996,7 +10981,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_set_webhook**
-> PostSetWebhook200Response post_set_webhook(url, certificate=certificate, ip_address=ip_address, max_connections=max_connections, allowed_updates=allowed_updates, drop_pending_updates=drop_pending_updates, secret_token=secret_token)
+> SetWebhookResponse post_set_webhook(url, certificate=certificate, ip_address=ip_address, max_connections=max_connections, allowed_updates=allowed_updates, drop_pending_updates=drop_pending_updates, secret_token=secret_token)
 
 setWebhook
 
@@ -11009,7 +10994,7 @@ If you'd like to make sure that the webhook was set by you, you can specify secr
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.set_webhook_response import SetWebhookResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -11058,7 +11043,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**SetWebhookResponse**](SetWebhookResponse.md)
 
 ### Authorization
 
@@ -11066,7 +11051,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -11080,7 +11065,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_stop_message_live_location**
-> PostEditMessageText200Response post_stop_message_live_location(business_connection_id=business_connection_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id, reply_markup=reply_markup)
+> StopMessageLiveLocationResponse post_stop_message_live_location(business_connection_id=business_connection_id, chat_id=chat_id, message_id=message_id, inline_message_id=inline_message_id, reply_markup=reply_markup)
 
 stopMessageLiveLocation
 
@@ -11091,9 +11076,9 @@ Use this method to stop updating a live location message before *live\_period* e
 
 ```python
 import tele_rest
+from tele_rest.models.edit_message_text_request_chat_id import EditMessageTextRequestChatId
 from tele_rest.models.inline_keyboard_markup import InlineKeyboardMarkup
-from tele_rest.models.post_edit_message_text200_response import PostEditMessageText200Response
-from tele_rest.models.post_edit_message_text_request_chat_id import PostEditMessageTextRequestChatId
+from tele_rest.models.stop_message_live_location_response import StopMessageLiveLocationResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -11109,7 +11094,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message to be edited was sent (optional)
-    chat_id = tele_rest.PostEditMessageTextRequestChatId() # PostEditMessageTextRequestChatId |  (optional)
+    chat_id = tele_rest.EditMessageTextRequestChatId() # EditMessageTextRequestChatId |  (optional)
     message_id = 56 # int | Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message with live location to stop (optional)
     inline_message_id = 'inline_message_id_example' # str | Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message (optional)
     reply_markup = tele_rest.InlineKeyboardMarkup() # InlineKeyboardMarkup |  (optional)
@@ -11131,14 +11116,14 @@ async with tele_rest.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message to be edited was sent | [optional] 
- **chat_id** | [**PostEditMessageTextRequestChatId**](PostEditMessageTextRequestChatId.md)|  | [optional] 
+ **chat_id** | [**EditMessageTextRequestChatId**](EditMessageTextRequestChatId.md)|  | [optional] 
  **message_id** | **int**| Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message with live location to stop | [optional] 
  **inline_message_id** | **str**| Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message | [optional] 
  **reply_markup** | [**InlineKeyboardMarkup**](InlineKeyboardMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostEditMessageText200Response**](PostEditMessageText200Response.md)
+[**StopMessageLiveLocationResponse**](StopMessageLiveLocationResponse.md)
 
 ### Authorization
 
@@ -11160,7 +11145,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_stop_poll**
-> PostStopPoll200Response post_stop_poll(chat_id, message_id, business_connection_id=business_connection_id, reply_markup=reply_markup)
+> StopPollResponse post_stop_poll(chat_id, message_id, business_connection_id=business_connection_id, reply_markup=reply_markup)
 
 stopPoll
 
@@ -11172,8 +11157,8 @@ Use this method to stop a poll which was sent by the bot. On success, the stoppe
 ```python
 import tele_rest
 from tele_rest.models.inline_keyboard_markup import InlineKeyboardMarkup
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_stop_poll200_response import PostStopPoll200Response
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.stop_poll_response import StopPollResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -11188,7 +11173,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     message_id = 56 # int | Identifier of the original message with the poll
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message to be edited was sent (optional)
     reply_markup = tele_rest.InlineKeyboardMarkup() # InlineKeyboardMarkup |  (optional)
@@ -11209,14 +11194,14 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **message_id** | **int**| Identifier of the original message with the poll | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message to be edited was sent | [optional] 
  **reply_markup** | [**InlineKeyboardMarkup**](InlineKeyboardMarkup.md)|  | [optional] 
 
 ### Return type
 
-[**PostStopPoll200Response**](PostStopPoll200Response.md)
+[**StopPollResponse**](StopPollResponse.md)
 
 ### Authorization
 
@@ -11238,7 +11223,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_transfer_business_account_stars**
-> PostSetWebhook200Response post_transfer_business_account_stars(business_connection_id, star_count)
+> TransferBusinessAccountStarsResponse post_transfer_business_account_stars(business_connection_id, star_count)
 
 transferBusinessAccountStars
 
@@ -11249,7 +11234,7 @@ Transfers Telegram Stars from the business account balance to the bot's balance.
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.transfer_business_account_stars_response import TransferBusinessAccountStarsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -11288,7 +11273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**TransferBusinessAccountStarsResponse**](TransferBusinessAccountStarsResponse.md)
 
 ### Authorization
 
@@ -11310,7 +11295,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_transfer_gift**
-> PostSetWebhook200Response post_transfer_gift(business_connection_id, owned_gift_id, new_owner_chat_id, star_count=star_count)
+> TransferGiftResponse post_transfer_gift(business_connection_id, owned_gift_id, new_owner_chat_id, star_count=star_count)
 
 transferGift
 
@@ -11321,7 +11306,7 @@ Transfers an owned unique gift to another user. Requires the *can\_transfer\_and
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.transfer_gift_response import TransferGiftResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -11364,7 +11349,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**TransferGiftResponse**](TransferGiftResponse.md)
 
 ### Authorization
 
@@ -11386,7 +11371,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_unban_chat_member**
-> PostSetWebhook200Response post_unban_chat_member(chat_id, user_id, only_if_banned=only_if_banned)
+> UnbanChatMemberResponse post_unban_chat_member(chat_id, user_id, only_if_banned=only_if_banned)
 
 unbanChatMember
 
@@ -11397,8 +11382,8 @@ Use this method to unban a previously banned user in a supergroup or channel. Th
 
 ```python
 import tele_rest
-from tele_rest.models.post_ban_chat_member_request_chat_id import PostBanChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.ban_chat_member_request_chat_id import BanChatMemberRequestChatId
+from tele_rest.models.unban_chat_member_response import UnbanChatMemberResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -11413,7 +11398,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostBanChatMemberRequestChatId() # PostBanChatMemberRequestChatId | 
+    chat_id = tele_rest.BanChatMemberRequestChatId() # BanChatMemberRequestChatId | 
     user_id = 56 # int | Unique identifier of the target user
     only_if_banned = True # bool | Do nothing if the user is not banned (optional)
 
@@ -11433,13 +11418,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostBanChatMemberRequestChatId**](PostBanChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BanChatMemberRequestChatId**](BanChatMemberRequestChatId.md)|  | 
  **user_id** | **int**| Unique identifier of the target user | 
  **only_if_banned** | **bool**| Do nothing if the user is not banned | [optional] 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**UnbanChatMemberResponse**](UnbanChatMemberResponse.md)
 
 ### Authorization
 
@@ -11461,7 +11446,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_unban_chat_sender_chat**
-> PostSetWebhook200Response post_unban_chat_sender_chat(chat_id, sender_chat_id)
+> UnbanChatSenderChatResponse post_unban_chat_sender_chat(chat_id, sender_chat_id)
 
 unbanChatSenderChat
 
@@ -11472,8 +11457,8 @@ Use this method to unban a previously banned channel chat in a supergroup or cha
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.unban_chat_sender_chat_response import UnbanChatSenderChatResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -11488,7 +11473,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     sender_chat_id = 56 # int | Unique identifier of the target sender chat
 
     try:
@@ -11507,12 +11492,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **sender_chat_id** | **int**| Unique identifier of the target sender chat | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**UnbanChatSenderChatResponse**](UnbanChatSenderChatResponse.md)
 
 ### Authorization
 
@@ -11534,7 +11519,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_unhide_general_forum_topic**
-> PostSetWebhook200Response post_unhide_general_forum_topic(chat_id)
+> UnhideGeneralForumTopicResponse post_unhide_general_forum_topic(chat_id)
 
 unhideGeneralForumTopic
 
@@ -11545,8 +11530,8 @@ Use this method to unhide the 'General' topic in a forum supergroup chat. The bo
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.unhide_general_forum_topic_response import UnhideGeneralForumTopicResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -11561,7 +11546,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
 
     try:
         # unhideGeneralForumTopic
@@ -11579,11 +11564,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**UnhideGeneralForumTopicResponse**](UnhideGeneralForumTopicResponse.md)
 
 ### Authorization
 
@@ -11605,7 +11590,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_unpin_all_chat_messages**
-> PostSetWebhook200Response post_unpin_all_chat_messages(chat_id)
+> UnpinAllChatMessagesResponse post_unpin_all_chat_messages(chat_id)
 
 unpinAllChatMessages
 
@@ -11616,8 +11601,8 @@ Use this method to clear the list of pinned messages in a chat. If the chat is n
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.unpin_all_chat_messages_response import UnpinAllChatMessagesResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -11632,7 +11617,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
 
     try:
         # unpinAllChatMessages
@@ -11650,11 +11635,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**UnpinAllChatMessagesResponse**](UnpinAllChatMessagesResponse.md)
 
 ### Authorization
 
@@ -11676,7 +11661,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_unpin_all_forum_topic_messages**
-> PostSetWebhook200Response post_unpin_all_forum_topic_messages(chat_id, message_thread_id)
+> UnpinAllForumTopicMessagesResponse post_unpin_all_forum_topic_messages(chat_id, message_thread_id)
 
 unpinAllForumTopicMessages
 
@@ -11687,8 +11672,8 @@ Use this method to clear the list of pinned messages in a forum topic. The bot m
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.unpin_all_forum_topic_messages_response import UnpinAllForumTopicMessagesResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -11703,7 +11688,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
     message_thread_id = 56 # int | Unique identifier for the target message thread of the forum topic
 
     try:
@@ -11722,12 +11707,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
  **message_thread_id** | **int**| Unique identifier for the target message thread of the forum topic | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**UnpinAllForumTopicMessagesResponse**](UnpinAllForumTopicMessagesResponse.md)
 
 ### Authorization
 
@@ -11749,7 +11734,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_unpin_all_general_forum_topic_messages**
-> PostSetWebhook200Response post_unpin_all_general_forum_topic_messages(chat_id)
+> UnpinAllGeneralForumTopicMessagesResponse post_unpin_all_general_forum_topic_messages(chat_id)
 
 unpinAllGeneralForumTopicMessages
 
@@ -11760,8 +11745,8 @@ Use this method to clear the list of pinned messages in a General forum topic. T
 
 ```python
 import tele_rest
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.unpin_all_general_forum_topic_messages_response import UnpinAllGeneralForumTopicMessagesResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -11776,7 +11761,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostRestrictChatMemberRequestChatId() # PostRestrictChatMemberRequestChatId | 
+    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
 
     try:
         # unpinAllGeneralForumTopicMessages
@@ -11794,11 +11779,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostRestrictChatMemberRequestChatId**](PostRestrictChatMemberRequestChatId.md)|  | 
+ **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**UnpinAllGeneralForumTopicMessagesResponse**](UnpinAllGeneralForumTopicMessagesResponse.md)
 
 ### Authorization
 
@@ -11820,7 +11805,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_unpin_chat_message**
-> PostSetWebhook200Response post_unpin_chat_message(chat_id, business_connection_id=business_connection_id, message_id=message_id)
+> UnpinChatMessageResponse post_unpin_chat_message(chat_id, business_connection_id=business_connection_id, message_id=message_id)
 
 unpinChatMessage
 
@@ -11831,8 +11816,8 @@ Use this method to remove a message from the list of pinned messages in a chat. 
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.unpin_chat_message_response import UnpinChatMessageResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -11847,7 +11832,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be unpinned (optional)
     message_id = 56 # int | Identifier of the message to unpin. Required if *business\\\\_connection\\\\_id* is specified. If not specified, the most recent pinned message (by sending date) will be unpinned. (optional)
 
@@ -11867,13 +11852,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be unpinned | [optional] 
  **message_id** | **int**| Identifier of the message to unpin. Required if *business\\\\_connection\\\\_id* is specified. If not specified, the most recent pinned message (by sending date) will be unpinned. | [optional] 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**UnpinChatMessageResponse**](UnpinChatMessageResponse.md)
 
 ### Authorization
 
@@ -11895,7 +11880,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_upgrade_gift**
-> PostSetWebhook200Response post_upgrade_gift(business_connection_id, owned_gift_id, keep_original_details=keep_original_details, star_count=star_count)
+> UpgradeGiftResponse post_upgrade_gift(business_connection_id, owned_gift_id, keep_original_details=keep_original_details, star_count=star_count)
 
 upgradeGift
 
@@ -11906,7 +11891,7 @@ Upgrades a given regular gift to a unique gift. Requires the *can\_transfer\_and
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.upgrade_gift_response import UpgradeGiftResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -11949,7 +11934,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**UpgradeGiftResponse**](UpgradeGiftResponse.md)
 
 ### Authorization
 
@@ -11971,7 +11956,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_upload_sticker_file**
-> PostGetFile200Response post_upload_sticker_file(user_id, sticker, sticker_format)
+> UploadStickerFileResponse post_upload_sticker_file(user_id, sticker, sticker_format)
 
 uploadStickerFile
 
@@ -11982,7 +11967,7 @@ Use this method to upload a file with a sticker for later use in the [createNewS
 
 ```python
 import tele_rest
-from tele_rest.models.post_get_file200_response import PostGetFile200Response
+from tele_rest.models.upload_sticker_file_response import UploadStickerFileResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -12023,7 +12008,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostGetFile200Response**](PostGetFile200Response.md)
+[**UploadStickerFileResponse**](UploadStickerFileResponse.md)
 
 ### Authorization
 
@@ -12031,7 +12016,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: multipart/form-data, application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -12045,7 +12030,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_verify_chat**
-> PostSetWebhook200Response post_verify_chat(chat_id, custom_description=custom_description)
+> VerifyChatResponse post_verify_chat(chat_id, custom_description=custom_description)
 
 verifyChat
 
@@ -12056,8 +12041,8 @@ Verifies a chat [on behalf of the organization](https://telegram.org/verify#thir
 
 ```python
 import tele_rest
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.verify_chat_response import VerifyChatResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -12072,7 +12057,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.PostSendMessageRequestChatId() # PostSendMessageRequestChatId | 
+    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     custom_description = 'custom_description_example' # str | Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description. (optional)
 
     try:
@@ -12091,12 +12076,12 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**PostSendMessageRequestChatId**](PostSendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **custom_description** | **str**| Custom description for the verification; 0-70 characters. Must be empty if the organization isn&#39;t allowed to provide a custom verification description. | [optional] 
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**VerifyChatResponse**](VerifyChatResponse.md)
 
 ### Authorization
 
@@ -12118,7 +12103,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_verify_user**
-> PostSetWebhook200Response post_verify_user(user_id, custom_description=custom_description)
+> VerifyUserResponse post_verify_user(user_id, custom_description=custom_description)
 
 verifyUser
 
@@ -12129,7 +12114,7 @@ Verifies a user [on behalf of the organization](https://telegram.org/verify#thir
 
 ```python
 import tele_rest
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
+from tele_rest.models.verify_user_response import VerifyUserResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -12168,7 +12153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostSetWebhook200Response**](PostSetWebhook200Response.md)
+[**VerifyUserResponse**](VerifyUserResponse.md)
 
 ### Authorization
 
