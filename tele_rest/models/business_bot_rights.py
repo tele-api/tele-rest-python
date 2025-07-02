@@ -9,7 +9,7 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
 - **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Modified**: 2025-07-02T09:16:58.218987030Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -62,7 +62,7 @@ class BusinessBotRights(BaseModel):
     """ # noqa: E501
     can_reply: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can send and edit messages in the private chats that had incoming messages in the last 24 hours")
     can_read_messages: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can mark incoming private messages as read")
-    can_delete_sent_messages: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can delete messages sent by the bot")
+    can_delete_outgoing_messages: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can delete messages sent by the bot")
     can_delete_all_messages: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can delete all private messages in managed chats")
     can_edit_name: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can edit the first and last name of the business account")
     can_edit_bio: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can edit the bio of the business account")
@@ -74,7 +74,7 @@ class BusinessBotRights(BaseModel):
     can_transfer_and_upgrade_gifts: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can transfer and upgrade gifts owned by the business account")
     can_transfer_stars: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can transfer Telegram Stars received by the business account to its own account, or use them to upgrade and transfer gifts")
     can_manage_stories: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can post, edit and delete stories on behalf of the business account")
-    __properties: ClassVar[List[str]] = ["can_reply", "can_read_messages", "can_delete_sent_messages", "can_delete_all_messages", "can_edit_name", "can_edit_bio", "can_edit_profile_photo", "can_edit_username", "can_change_gift_settings", "can_view_gifts_and_stars", "can_convert_gifts_to_stars", "can_transfer_and_upgrade_gifts", "can_transfer_stars", "can_manage_stories"]
+    __properties: ClassVar[List[str]] = ["can_reply", "can_read_messages", "can_delete_outgoing_messages", "can_delete_all_messages", "can_edit_name", "can_edit_bio", "can_edit_profile_photo", "can_edit_username", "can_change_gift_settings", "can_view_gifts_and_stars", "can_convert_gifts_to_stars", "can_transfer_and_upgrade_gifts", "can_transfer_stars", "can_manage_stories"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -134,7 +134,7 @@ class BusinessBotRights(BaseModel):
         _obj = cls.model_validate({
             "can_reply": obj.get("can_reply") if obj.get("can_reply") is not None else True,
             "can_read_messages": obj.get("can_read_messages") if obj.get("can_read_messages") is not None else True,
-            "can_delete_sent_messages": obj.get("can_delete_sent_messages") if obj.get("can_delete_sent_messages") is not None else True,
+            "can_delete_outgoing_messages": obj.get("can_delete_outgoing_messages") if obj.get("can_delete_outgoing_messages") is not None else True,
             "can_delete_all_messages": obj.get("can_delete_all_messages") if obj.get("can_delete_all_messages") is not None else True,
             "can_edit_name": obj.get("can_edit_name") if obj.get("can_edit_name") is not None else True,
             "can_edit_bio": obj.get("can_edit_bio") if obj.get("can_edit_bio") is not None else True,

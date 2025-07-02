@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **can_reply** | **bool** | *Optional*. True, if the bot can send and edit messages in the private chats that had incoming messages in the last 24 hours | [optional] [default to True]
 **can_read_messages** | **bool** | *Optional*. True, if the bot can mark incoming private messages as read | [optional] [default to True]
-**can_delete_sent_messages** | **bool** | *Optional*. True, if the bot can delete messages sent by the bot | [optional] [default to True]
+**can_delete_outgoing_messages** | **bool** | *Optional*. True, if the bot can delete messages sent by the bot | [optional] [default to True]
 **can_delete_all_messages** | **bool** | *Optional*. True, if the bot can delete all private messages in managed chats | [optional] [default to True]
 **can_edit_name** | **bool** | *Optional*. True, if the bot can edit the first and last name of the business account | [optional] [default to True]
 **can_edit_bio** | **bool** | *Optional*. True, if the bot can edit the bio of the business account | [optional] [default to True]
