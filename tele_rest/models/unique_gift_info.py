@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -62,16 +62,18 @@ class UniqueGiftInfo(BaseModel):
     Describes a service message about a unique gift that was sent or received.
     """ # noqa: E501
     gift: UniqueGift
-    origin: StrictStr = Field(description="Origin of the gift. Currently, either “upgrade” or “transfer”")
+    origin: StrictStr = Field(description="Origin of the gift. Currently, either “upgrade” for gifts upgraded from regular gifts, “transfer” for gifts transferred from other users or channels, or “resale” for gifts bought from other users")
+    last_resale_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. For gifts bought from other users, the price paid for the gift")
     owned_gift_id: Optional[StrictStr] = Field(default=None, description="*Optional*. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts")
     transfer_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift")
-    __properties: ClassVar[List[str]] = ["gift", "origin", "owned_gift_id", "transfer_star_count"]
+    next_transfer_date: Optional[StrictInt] = Field(default=None, description="*Optional*. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now")
+    __properties: ClassVar[List[str]] = ["gift", "origin", "last_resale_star_count", "owned_gift_id", "transfer_star_count", "next_transfer_date"]
 
     @field_validator('origin')
     def origin_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['upgrade', 'transfer']):
-            raise ValueError("must be one of enum values ('upgrade', 'transfer')")
+        if value not in set(['upgrade', 'transfer', 'resale']):
+            raise ValueError("must be one of enum values ('upgrade', 'transfer', 'resale')")
         return value
 
     model_config = ConfigDict(
@@ -135,8 +137,10 @@ class UniqueGiftInfo(BaseModel):
         _obj = cls.model_validate({
             "gift": UniqueGift.from_dict(obj["gift"]) if obj.get("gift") is not None else None,
             "origin": obj.get("origin"),
+            "last_resale_star_count": obj.get("last_resale_star_count"),
             "owned_gift_id": obj.get("owned_gift_id"),
-            "transfer_star_count": obj.get("transfer_star_count")
+            "transfer_star_count": obj.get("transfer_star_count"),
+            "next_transfer_date": obj.get("next_transfer_date")
         })
         return _obj
 

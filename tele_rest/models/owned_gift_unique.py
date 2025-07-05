@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -67,10 +67,11 @@ class OwnedGiftUnique(BaseModel):
     owned_gift_id: Optional[StrictStr] = Field(default=None, description="*Optional*. Unique identifier of the received gift for the bot; for gifts received on behalf of business accounts only")
     sender_user: Optional[User] = None
     send_date: StrictInt = Field(description="Date the gift was sent in Unix time")
-    is_saved: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the gift is displayed on the account's profile page; for gifts received on behalf of business accounts only")
-    can_be_transferred: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the gift can be transferred to another owner; for gifts received on behalf of business accounts only")
+    is_saved: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift is displayed on the account's profile page; for gifts received on behalf of business accounts only")
+    can_be_transferred: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift can be transferred to another owner; for gifts received on behalf of business accounts only")
     transfer_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift")
-    __properties: ClassVar[List[str]] = ["type", "gift", "owned_gift_id", "sender_user", "send_date", "is_saved", "can_be_transferred", "transfer_star_count"]
+    next_transfer_date: Optional[StrictInt] = Field(default=None, description="*Optional*. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now")
+    __properties: ClassVar[List[str]] = ["type", "gift", "owned_gift_id", "sender_user", "send_date", "is_saved", "can_be_transferred", "transfer_star_count", "next_transfer_date"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -141,7 +142,8 @@ class OwnedGiftUnique(BaseModel):
             "send_date": obj.get("send_date"),
             "is_saved": obj.get("is_saved") if obj.get("is_saved") is not None else True,
             "can_be_transferred": obj.get("can_be_transferred") if obj.get("can_be_transferred") is not None else True,
-            "transfer_star_count": obj.get("transfer_star_count")
+            "transfer_star_count": obj.get("transfer_star_count"),
+            "next_transfer_date": obj.get("next_transfer_date")
         })
         return _obj
 

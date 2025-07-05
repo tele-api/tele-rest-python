@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -59,8 +59,10 @@ from tele_rest.models.chat import Chat
 from tele_rest.models.chat_background import ChatBackground
 from tele_rest.models.chat_boost_added import ChatBoostAdded
 from tele_rest.models.chat_shared import ChatShared
+from tele_rest.models.checklist import Checklist
 from tele_rest.models.contact import Contact
 from tele_rest.models.dice import Dice
+from tele_rest.models.direct_message_price_changed import DirectMessagePriceChanged
 from tele_rest.models.document import Document
 from tele_rest.models.external_reply_info import ExternalReplyInfo
 from tele_rest.models.forum_topic_created import ForumTopicCreated
@@ -126,7 +128,7 @@ class Message(BaseModel):
     via_bot: Optional[User] = None
     edit_date: Optional[StrictInt] = Field(default=None, description="*Optional*. Date the message was last edited in Unix time")
     has_protected_content: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the message can't be forwarded")
-    is_from_offline: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the message was sent by an implicit action, for example, as an away or a greeting business message, or as a scheduled message")
+    is_from_offline: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the message was sent by an implicit action, for example, as an away or a greeting business message, or as a scheduled message")
     media_group_id: Optional[StrictStr] = Field(default=None, description="*Optional*. The unique identifier of a media message group this message belongs to")
     author_signature: Optional[StrictStr] = Field(default=None, description="*Optional*. Signature of the post author for messages in channels, or the custom title of an anonymous group administrator")
     paid_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The number of Telegram Stars that were paid by the sender of the message to send it")
@@ -146,8 +148,9 @@ class Message(BaseModel):
     voice: Optional[Voice] = None
     caption: Optional[StrictStr] = Field(default=None, description="*Optional*. Caption for the animation, audio, document, paid media, photo, video or voice")
     caption_entities: Optional[List[MessageEntity]] = Field(default=None, description="*Optional*. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption")
-    show_caption_above_media: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the caption must be shown above the message media")
+    show_caption_above_media: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the caption must be shown above the message media")
     has_media_spoiler: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the message media is covered by a spoiler animation")
+    checklist: Optional[Checklist] = None
     contact: Optional[Contact] = None
     dice: Optional[Dice] = None
     game: Optional[Game] = None
@@ -179,6 +182,9 @@ class Message(BaseModel):
     proximity_alert_triggered: Optional[ProximityAlertTriggered] = None
     boost_added: Optional[ChatBoostAdded] = None
     chat_background_set: Optional[ChatBackground] = None
+    checklist_tasks_done: Optional[ChecklistTasksDone] = None
+    checklist_tasks_added: Optional[ChecklistTasksAdded] = None
+    direct_message_price_changed: Optional[DirectMessagePriceChanged] = None
     forum_topic_created: Optional[ForumTopicCreated] = None
     forum_topic_edited: Optional[ForumTopicEdited] = None
     forum_topic_closed: Optional[Any] = None
@@ -196,7 +202,7 @@ class Message(BaseModel):
     video_chat_participants_invited: Optional[VideoChatParticipantsInvited] = None
     web_app_data: Optional[WebAppData] = None
     reply_markup: Optional[InlineKeyboardMarkup] = None
-    __properties: ClassVar[List[str]] = ["message_id", "message_thread_id", "from", "sender_chat", "sender_boost_count", "sender_business_bot", "date", "business_connection_id", "chat", "forward_origin", "is_topic_message", "is_automatic_forward", "reply_to_message", "external_reply", "quote", "reply_to_story", "via_bot", "edit_date", "has_protected_content", "is_from_offline", "media_group_id", "author_signature", "paid_star_count", "text", "entities", "link_preview_options", "effect_id", "animation", "audio", "document", "paid_media", "photo", "sticker", "story", "video", "video_note", "voice", "caption", "caption_entities", "show_caption_above_media", "has_media_spoiler", "contact", "dice", "game", "poll", "venue", "location", "new_chat_members", "left_chat_member", "new_chat_title", "new_chat_photo", "delete_chat_photo", "group_chat_created", "supergroup_chat_created", "channel_chat_created", "message_auto_delete_timer_changed", "migrate_to_chat_id", "migrate_from_chat_id", "pinned_message", "invoice", "successful_payment", "refunded_payment", "users_shared", "chat_shared", "gift", "unique_gift", "connected_website", "write_access_allowed", "passport_data", "proximity_alert_triggered", "boost_added", "chat_background_set", "forum_topic_created", "forum_topic_edited", "forum_topic_closed", "forum_topic_reopened", "general_forum_topic_hidden", "general_forum_topic_unhidden", "giveaway_created", "giveaway", "giveaway_winners", "giveaway_completed", "paid_message_price_changed", "video_chat_scheduled", "video_chat_started", "video_chat_ended", "video_chat_participants_invited", "web_app_data", "reply_markup"]
+    __properties: ClassVar[List[str]] = ["message_id", "message_thread_id", "from", "sender_chat", "sender_boost_count", "sender_business_bot", "date", "business_connection_id", "chat", "forward_origin", "is_topic_message", "is_automatic_forward", "reply_to_message", "external_reply", "quote", "reply_to_story", "via_bot", "edit_date", "has_protected_content", "is_from_offline", "media_group_id", "author_signature", "paid_star_count", "text", "entities", "link_preview_options", "effect_id", "animation", "audio", "document", "paid_media", "photo", "sticker", "story", "video", "video_note", "voice", "caption", "caption_entities", "show_caption_above_media", "has_media_spoiler", "checklist", "contact", "dice", "game", "poll", "venue", "location", "new_chat_members", "left_chat_member", "new_chat_title", "new_chat_photo", "delete_chat_photo", "group_chat_created", "supergroup_chat_created", "channel_chat_created", "message_auto_delete_timer_changed", "migrate_to_chat_id", "migrate_from_chat_id", "pinned_message", "invoice", "successful_payment", "refunded_payment", "users_shared", "chat_shared", "gift", "unique_gift", "connected_website", "write_access_allowed", "passport_data", "proximity_alert_triggered", "boost_added", "chat_background_set", "checklist_tasks_done", "checklist_tasks_added", "direct_message_price_changed", "forum_topic_created", "forum_topic_edited", "forum_topic_closed", "forum_topic_reopened", "general_forum_topic_hidden", "general_forum_topic_unhidden", "giveaway_created", "giveaway", "giveaway_winners", "giveaway_completed", "paid_message_price_changed", "video_chat_scheduled", "video_chat_started", "video_chat_ended", "video_chat_participants_invited", "web_app_data", "reply_markup"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -318,6 +324,9 @@ class Message(BaseModel):
                 if _item_caption_entities:
                     _items.append(_item_caption_entities.to_dict())
             _dict['caption_entities'] = _items
+        # override the default output from pydantic by calling `to_dict()` of checklist
+        if self.checklist:
+            _dict['checklist'] = self.checklist.to_dict()
         # override the default output from pydantic by calling `to_dict()` of contact
         if self.contact:
             _dict['contact'] = self.contact.to_dict()
@@ -395,6 +404,15 @@ class Message(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of chat_background_set
         if self.chat_background_set:
             _dict['chat_background_set'] = self.chat_background_set.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of checklist_tasks_done
+        if self.checklist_tasks_done:
+            _dict['checklist_tasks_done'] = self.checklist_tasks_done.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of checklist_tasks_added
+        if self.checklist_tasks_added:
+            _dict['checklist_tasks_added'] = self.checklist_tasks_added.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of direct_message_price_changed
+        if self.direct_message_price_changed:
+            _dict['direct_message_price_changed'] = self.direct_message_price_changed.to_dict()
         # override the default output from pydantic by calling `to_dict()` of forum_topic_created
         if self.forum_topic_created:
             _dict['forum_topic_created'] = self.forum_topic_created.to_dict()
@@ -514,6 +532,7 @@ class Message(BaseModel):
             "caption_entities": [MessageEntity.from_dict(_item) for _item in obj["caption_entities"]] if obj.get("caption_entities") is not None else None,
             "show_caption_above_media": obj.get("show_caption_above_media") if obj.get("show_caption_above_media") is not None else True,
             "has_media_spoiler": obj.get("has_media_spoiler") if obj.get("has_media_spoiler") is not None else True,
+            "checklist": Checklist.from_dict(obj["checklist"]) if obj.get("checklist") is not None else None,
             "contact": Contact.from_dict(obj["contact"]) if obj.get("contact") is not None else None,
             "dice": Dice.from_dict(obj["dice"]) if obj.get("dice") is not None else None,
             "game": Game.from_dict(obj["game"]) if obj.get("game") is not None else None,
@@ -545,6 +564,9 @@ class Message(BaseModel):
             "proximity_alert_triggered": ProximityAlertTriggered.from_dict(obj["proximity_alert_triggered"]) if obj.get("proximity_alert_triggered") is not None else None,
             "boost_added": ChatBoostAdded.from_dict(obj["boost_added"]) if obj.get("boost_added") is not None else None,
             "chat_background_set": ChatBackground.from_dict(obj["chat_background_set"]) if obj.get("chat_background_set") is not None else None,
+            "checklist_tasks_done": ChecklistTasksDone.from_dict(obj["checklist_tasks_done"]) if obj.get("checklist_tasks_done") is not None else None,
+            "checklist_tasks_added": ChecklistTasksAdded.from_dict(obj["checklist_tasks_added"]) if obj.get("checklist_tasks_added") is not None else None,
+            "direct_message_price_changed": DirectMessagePriceChanged.from_dict(obj["direct_message_price_changed"]) if obj.get("direct_message_price_changed") is not None else None,
             "forum_topic_created": ForumTopicCreated.from_dict(obj["forum_topic_created"]) if obj.get("forum_topic_created") is not None else None,
             "forum_topic_edited": ForumTopicEdited.from_dict(obj["forum_topic_edited"]) if obj.get("forum_topic_edited") is not None else None,
             "forum_topic_closed": obj.get("forum_topic_closed"),
@@ -565,6 +587,8 @@ class Message(BaseModel):
         })
         return _obj
 
+from tele_rest.models.checklist_tasks_added import ChecklistTasksAdded
+from tele_rest.models.checklist_tasks_done import ChecklistTasksDone
 from tele_rest.models.giveaway_completed import GiveawayCompleted
 from tele_rest.models.maybe_inaccessible_message import MaybeInaccessibleMessage
 # TODO: Rewrite to not use raise_errors

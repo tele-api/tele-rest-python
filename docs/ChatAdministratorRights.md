@@ -7,7 +7,7 @@ Represents the rights of an administrator in a chat.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **is_anonymous** | **bool** | *True*, if the user&#39;s presence in the chat is hidden | 
-**can_manage_chat** | **bool** | *True*, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege. | 
+**can_manage_chat** | **bool** | *True*, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege. | 
 **can_delete_messages** | **bool** | *True*, if the administrator can delete messages of other users | 
 **can_manage_video_chats** | **bool** | *True*, if the administrator can manage video chats | 
 **can_restrict_members** | **bool** | *True*, if the administrator can restrict, ban or unban chat members, or access supergroup statistics | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **can_post_stories** | **bool** | *True*, if the administrator can post stories to the chat | 
 **can_edit_stories** | **bool** | *True*, if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access the chat&#39;s story archive | 
 **can_delete_stories** | **bool** | *True*, if the administrator can delete stories posted by other users | 
-**can_post_messages** | **bool** | *Optional*. *True*, if the administrator can post messages in the channel, or access channel statistics; for channels only | [optional] 
+**can_post_messages** | **bool** | *Optional*. *True*, if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only | [optional] 
 **can_edit_messages** | **bool** | *Optional*. *True*, if the administrator can edit messages of other users and can pin messages; for channels only | [optional] 
 **can_pin_messages** | **bool** | *Optional*. *True*, if the user is allowed to pin messages; for groups and supergroups only | [optional] 
 **can_manage_topics** | **bool** | *Optional*. *True*, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only | [optional] 

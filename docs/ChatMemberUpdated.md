@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **old_chat_member** | [**ChatMember**](ChatMember.md) |  | 
 **new_chat_member** | [**ChatMember**](ChatMember.md) |  | 
 **invite_link** | [**ChatInviteLink**](ChatInviteLink.md) |  | [optional] 
-**via_join_request** | **bool** | *Optional*. True, if the user joined the chat after sending a direct join request without using an invite link and being approved by an administrator | [optional] 
-**via_chat_folder_invite_link** | **bool** | *Optional*. True, if the user joined the chat via a chat folder invite link | [optional] 
+**via_join_request** | **bool** | *Optional*. *True*, if the user joined the chat after sending a direct join request without using an invite link and being approved by an administrator | [optional] 
+**via_chat_folder_invite_link** | **bool** | *Optional*. *True*, if the user joined the chat via a chat folder invite link | [optional] 
 
 ## Example
 

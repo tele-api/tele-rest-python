@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **can_send_videos** | **bool** | *Optional*. *True*, if the user is allowed to send videos | [optional] 
 **can_send_video_notes** | **bool** | *Optional*. *True*, if the user is allowed to send video notes | [optional] 
 **can_send_voice_notes** | **bool** | *Optional*. *True*, if the user is allowed to send voice notes | [optional] 
-**can_send_polls** | **bool** | *Optional*. *True*, if the user is allowed to send polls | [optional] 
+**can_send_polls** | **bool** | *Optional*. *True*, if the user is allowed to send polls and checklists | [optional] 
 **can_send_other_messages** | **bool** | *Optional*. *True*, if the user is allowed to send animations, games, stickers and use inline bots | [optional] 
 **can_add_web_page_previews** | **bool** | *Optional*. *True*, if the user is allowed to add web page previews to their messages | [optional] 
 **can_change_info** | **bool** | *Optional*. *True*, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups | [optional] 

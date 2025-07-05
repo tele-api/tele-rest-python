@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **is_anonymous** | **bool** | *True*, if the user&#39;s presence in the chat is hidden | 
 **custom_title** | **str** | *Optional*. Custom title for this user | [optional] 
 **can_be_edited** | **bool** | *True*, if the bot is allowed to edit administrator privileges of that user | 
-**can_manage_chat** | **bool** | *True*, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege. | 
+**can_manage_chat** | **bool** | *True*, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege. | 
 **can_delete_messages** | **bool** | *True*, if the administrator can delete messages of other users | 
 **can_manage_video_chats** | **bool** | *True*, if the administrator can manage video chats | 
 **can_restrict_members** | **bool** | *True*, if the administrator can restrict, ban or unban chat members, or access supergroup statistics | 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **can_post_stories** | **bool** | *True*, if the administrator can post stories to the chat | 
 **can_edit_stories** | **bool** | *True*, if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access the chat&#39;s story archive | 
 **can_delete_stories** | **bool** | *True*, if the administrator can delete stories posted by other users | 
-**can_post_messages** | **bool** | *Optional*. *True*, if the administrator can post messages in the channel, or access channel statistics; for channels only | [optional] 
+**can_post_messages** | **bool** | *Optional*. *True*, if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only | [optional] 
 **can_edit_messages** | **bool** | *Optional*. *True*, if the administrator can edit messages of other users and can pin messages; for channels only | [optional] 
 **can_pin_messages** | **bool** | *True*, if the user is allowed to pin messages | 
 **can_manage_topics** | **bool** | *True*, if the user is allowed to create forum topics | 
@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 **can_send_videos** | **bool** | *True*, if the user is allowed to send videos | 
 **can_send_video_notes** | **bool** | *True*, if the user is allowed to send video notes | 
 **can_send_voice_notes** | **bool** | *True*, if the user is allowed to send voice notes | 
-**can_send_polls** | **bool** | *True*, if the user is allowed to send polls | 
+**can_send_polls** | **bool** | *True*, if the user is allowed to send polls and checklists | 
 **can_send_other_messages** | **bool** | *True*, if the user is allowed to send animations, games, stickers and use inline bots | 
 **can_add_web_page_previews** | **bool** | *True*, if the user is allowed to add web page previews to their messages | 
 

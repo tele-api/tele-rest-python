@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -71,7 +71,7 @@ class ChatMemberRestricted(BaseModel):
     can_send_videos: StrictBool = Field(description="*True*, if the user is allowed to send videos")
     can_send_video_notes: StrictBool = Field(description="*True*, if the user is allowed to send video notes")
     can_send_voice_notes: StrictBool = Field(description="*True*, if the user is allowed to send voice notes")
-    can_send_polls: StrictBool = Field(description="*True*, if the user is allowed to send polls")
+    can_send_polls: StrictBool = Field(description="*True*, if the user is allowed to send polls and checklists")
     can_send_other_messages: StrictBool = Field(description="*True*, if the user is allowed to send animations, games, stickers and use inline bots")
     can_add_web_page_previews: StrictBool = Field(description="*True*, if the user is allowed to add web page previews to their messages")
     can_change_info: StrictBool = Field(description="*True*, if the user is allowed to change the chat title, photo and other settings")

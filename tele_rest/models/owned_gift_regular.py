@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -70,10 +70,10 @@ class OwnedGiftRegular(BaseModel):
     send_date: StrictInt = Field(description="Date the gift was sent in Unix time")
     text: Optional[StrictStr] = Field(default=None, description="*Optional*. Text of the message that was added to the gift")
     entities: Optional[List[MessageEntity]] = Field(default=None, description="*Optional*. Special entities that appear in the text")
-    is_private: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them")
-    is_saved: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the gift is displayed on the account's profile page; for gifts received on behalf of business accounts only")
-    can_be_upgraded: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the gift can be upgraded to a unique gift; for gifts received on behalf of business accounts only")
-    was_refunded: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the gift was refunded and isn't available anymore")
+    is_private: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them")
+    is_saved: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift is displayed on the account's profile page; for gifts received on behalf of business accounts only")
+    can_be_upgraded: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift can be upgraded to a unique gift; for gifts received on behalf of business accounts only")
+    was_refunded: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift was refunded and isn't available anymore")
     convert_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that can be claimed by the receiver instead of the gift; omitted if the gift cannot be converted to Telegram Stars")
     prepaid_upgrade_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that were paid by the sender for the ability to upgrade the gift")
     __properties: ClassVar[List[str]] = ["type", "gift", "owned_gift_id", "sender_user", "send_date", "text", "entities", "is_private", "is_saved", "can_be_upgraded", "was_refunded", "convert_star_count", "prepaid_upgrade_star_count"]

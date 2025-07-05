@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -222,6 +222,62 @@ class TestExternalReplyInfo(unittest.TestCase):
                     mime_type = '', 
                     file_size = 56, ),
                 has_media_spoiler = True,
+                checklist = tele_rest.models.checklist.Checklist(
+                    title = '', 
+                    title_entities = [
+                        tele_rest.models.message_entity.MessageEntity(
+                            type = 'mention', 
+                            offset = 56, 
+                            length = 56, 
+                            url = '', 
+                            user = tele_rest.models.user.User(
+                                id = 56, 
+                                is_bot = True, 
+                                first_name = '', 
+                                last_name = '', 
+                                username = '', 
+                                language_code = '', 
+                                is_premium = True, 
+                                added_to_attachment_menu = True, 
+                                can_join_groups = True, 
+                                can_read_all_group_messages = True, 
+                                supports_inline_queries = True, 
+                                can_connect_to_business = True, 
+                                has_main_web_app = True, ), 
+                            language = '', 
+                            custom_emoji_id = '', )
+                        ], 
+                    tasks = [
+                        tele_rest.models.checklist_task.ChecklistTask(
+                            id = 56, 
+                            text = '', 
+                            text_entities = [
+                                tele_rest.models.message_entity.MessageEntity(
+                                    type = 'mention', 
+                                    offset = 56, 
+                                    length = 56, 
+                                    url = '', 
+                                    language = '', 
+                                    custom_emoji_id = '', )
+                                ], 
+                            completed_by_user = tele_rest.models.user.User(
+                                id = 56, 
+                                is_bot = True, 
+                                first_name = '', 
+                                last_name = '', 
+                                username = '', 
+                                language_code = '', 
+                                is_premium = True, 
+                                added_to_attachment_menu = True, 
+                                can_join_groups = True, 
+                                can_read_all_group_messages = True, 
+                                supports_inline_queries = True, 
+                                can_connect_to_business = True, 
+                                has_main_web_app = True, ), 
+                            completion_date = 56, )
+                        ], 
+                    others_can_add_tasks = True, 
+                    others_can_mark_tasks_as_done = True, ),
                 contact = tele_rest.models.contact.Contact(
                     phone_number = '', 
                     first_name = '', 

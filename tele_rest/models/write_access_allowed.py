@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -60,9 +60,9 @@ class WriteAccessAllowed(BaseModel):
     """
     This object represents a service message about a user allowing a bot to write messages after adding it to the attachment menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method [requestWriteAccess](https://core.telegram.org/bots/webapps#initializing-mini-apps).
     """ # noqa: E501
-    from_request: Optional[StrictBool] = Field(default=None, description="*Optional*. True, if the access was granted after the user accepted an explicit request from a Web App sent by the method [requestWriteAccess](https://core.telegram.org/bots/webapps#initializing-mini-apps)")
+    from_request: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the access was granted after the user accepted an explicit request from a Web App sent by the method [requestWriteAccess](https://core.telegram.org/bots/webapps#initializing-mini-apps)")
     web_app_name: Optional[StrictStr] = Field(default=None, description="*Optional*. Name of the Web App, if the access was granted when the Web App was launched from a link")
-    from_attachment_menu: Optional[StrictBool] = Field(default=None, description="*Optional*. True, if the access was granted when the bot was added to the attachment or side menu")
+    from_attachment_menu: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the access was granted when the bot was added to the attachment or side menu")
     __properties: ClassVar[List[str]] = ["from_request", "web_app_name", "from_attachment_menu"]
 
     model_config = ConfigDict(

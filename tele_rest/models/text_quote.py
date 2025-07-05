@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -64,7 +64,7 @@ class TextQuote(BaseModel):
     text: StrictStr = Field(description="Text of the quoted part of a message that is replied to by the given message")
     entities: Optional[List[MessageEntity]] = Field(default=None, description="*Optional*. Special entities that appear in the quote. Currently, only *bold*, *italic*, *underline*, *strikethrough*, *spoiler*, and *custom\\_emoji* entities are kept in quotes.")
     position: StrictInt = Field(description="Approximate quote position in the original message in UTF-16 code units as specified by the sender")
-    is_manual: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the quote was chosen manually by the message sender. Otherwise, the quote was added automatically by the server.")
+    is_manual: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the quote was chosen manually by the message sender. Otherwise, the quote was added automatically by the server.")
     __properties: ClassVar[List[str]] = ["text", "entities", "position", "is_manual"]
 
     model_config = ConfigDict(

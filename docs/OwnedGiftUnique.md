@@ -11,9 +11,10 @@ Name | Type | Description | Notes
 **owned_gift_id** | **str** | *Optional*. Unique identifier of the received gift for the bot; for gifts received on behalf of business accounts only | [optional] 
 **sender_user** | [**User**](User.md) |  | [optional] 
 **send_date** | **int** | Date the gift was sent in Unix time | 
-**is_saved** | **bool** | *Optional*. True, if the gift is displayed on the account&#39;s profile page; for gifts received on behalf of business accounts only | [optional] [default to True]
-**can_be_transferred** | **bool** | *Optional*. True, if the gift can be transferred to another owner; for gifts received on behalf of business accounts only | [optional] [default to True]
+**is_saved** | **bool** | *Optional*. *True*, if the gift is displayed on the account&#39;s profile page; for gifts received on behalf of business accounts only | [optional] [default to True]
+**can_be_transferred** | **bool** | *Optional*. *True*, if the gift can be transferred to another owner; for gifts received on behalf of business accounts only | [optional] [default to True]
 **transfer_star_count** | **int** | *Optional*. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift | [optional] 
+**next_transfer_date** | **int** | *Optional*. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now | [optional] 
 
 ## Example
 
