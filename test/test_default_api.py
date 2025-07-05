@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -319,6 +319,13 @@ class TestDefaultApi(unittest.IsolatedAsyncioTestCase):
         """
         pass
 
+    async def test_post_edit_message_checklist(self) -> None:
+        """Test case for post_edit_message_checklist
+
+        editMessageChecklist
+        """
+        pass
+
     async def test_post_edit_message_live_location(self) -> None:
         """Test case for post_edit_message_live_location
 
@@ -515,6 +522,13 @@ class TestDefaultApi(unittest.IsolatedAsyncioTestCase):
         """
         pass
 
+    async def test_post_get_my_star_balance(self) -> None:
+        """Test case for post_get_my_star_balance
+
+        getMyStarBalance
+        """
+        pass
+
     async def test_post_get_star_transactions(self) -> None:
         """Test case for post_get_star_transactions
 
@@ -701,6 +715,13 @@ class TestDefaultApi(unittest.IsolatedAsyncioTestCase):
         """Test case for post_send_chat_action
 
         sendChatAction
+        """
+        pass
+
+    async def test_post_send_checklist(self) -> None:
+        """Test case for post_send_checklist
+
+        sendChecklist
         """
         pass
 

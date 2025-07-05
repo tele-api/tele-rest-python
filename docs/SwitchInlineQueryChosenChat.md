@@ -7,10 +7,10 @@ This object represents an inline button that switches the current user to inline
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **query** | **str** | *Optional*. The default inline query to be inserted in the input field. If left empty, only the bot&#39;s username will be inserted | [optional] 
-**allow_user_chats** | **bool** | *Optional*. True, if private chats with users can be chosen | [optional] 
-**allow_bot_chats** | **bool** | *Optional*. True, if private chats with bots can be chosen | [optional] 
-**allow_group_chats** | **bool** | *Optional*. True, if group and supergroup chats can be chosen | [optional] 
-**allow_channel_chats** | **bool** | *Optional*. True, if channel chats can be chosen | [optional] 
+**allow_user_chats** | **bool** | *Optional*. *True*, if private chats with users can be chosen | [optional] 
+**allow_bot_chats** | **bool** | *Optional*. *True*, if private chats with bots can be chosen | [optional] 
+**allow_group_chats** | **bool** | *Optional*. *True*, if group and supergroup chats can be chosen | [optional] 
+**allow_channel_chats** | **bool** | *Optional*. *True*, if channel chats can be chosen | [optional] 
 
 ## Example
 

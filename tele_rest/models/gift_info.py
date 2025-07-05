@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -66,10 +66,10 @@ class GiftInfo(BaseModel):
     owned_gift_id: Optional[StrictStr] = Field(default=None, description="*Optional*. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts")
     convert_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that can be claimed by the receiver by converting the gift; omitted if conversion to Telegram Stars is impossible")
     prepaid_upgrade_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that were prepaid by the sender for the ability to upgrade the gift")
-    can_be_upgraded: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the gift can be upgraded to a unique gift")
+    can_be_upgraded: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift can be upgraded to a unique gift")
     text: Optional[StrictStr] = Field(default=None, description="*Optional*. Text of the message that was added to the gift")
     entities: Optional[List[MessageEntity]] = Field(default=None, description="*Optional*. Special entities that appear in the text")
-    is_private: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them")
+    is_private: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them")
     __properties: ClassVar[List[str]] = ["gift", "owned_gift_id", "convert_star_count", "prepaid_upgrade_star_count", "can_be_upgraded", "text", "entities", "is_private"]
 
     model_config = ConfigDict(

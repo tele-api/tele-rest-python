@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **total_amount** | **int** | Total price in the *smallest units* of the currency (integer, **not** float/double). For example, for a price of &#x60;US$ 1.45&#x60; pass &#x60;amount &#x3D; 145&#x60;. See the *exp* parameter in [currencies.json](https://core.telegram.org/bots/payments/currencies.json), it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). | 
 **invoice_payload** | **str** | Bot-specified invoice payload | 
 **subscription_expiration_date** | **int** | *Optional*. Expiration date of the subscription, in Unix time; for recurring payments only | [optional] 
-**is_recurring** | **bool** | *Optional*. True, if the payment is a recurring payment for a subscription | [optional] [default to True]
-**is_first_recurring** | **bool** | *Optional*. True, if the payment is the first payment for a subscription | [optional] [default to True]
+**is_recurring** | **bool** | *Optional*. *True*, if the payment is a recurring payment for a subscription | [optional] [default to True]
+**is_first_recurring** | **bool** | *Optional*. *True*, if the payment is the first payment for a subscription | [optional] [default to True]
 **shipping_option_id** | **str** | *Optional*. Identifier of the shipping option chosen by the user | [optional] 
 **order_info** | [**OrderInfo**](OrderInfo.md) |  | [optional] 
 **telegram_payment_charge_id** | **str** | Telegram payment identifier | 

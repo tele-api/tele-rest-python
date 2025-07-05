@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -65,8 +65,8 @@ class SuccessfulPayment(BaseModel):
     total_amount: StrictInt = Field(description="Total price in the *smallest units* of the currency (integer, **not** float/double). For example, for a price of `US$ 1.45` pass `amount = 145`. See the *exp* parameter in [currencies.json](https://core.telegram.org/bots/payments/currencies.json), it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).")
     invoice_payload: StrictStr = Field(description="Bot-specified invoice payload")
     subscription_expiration_date: Optional[StrictInt] = Field(default=None, description="*Optional*. Expiration date of the subscription, in Unix time; for recurring payments only")
-    is_recurring: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the payment is a recurring payment for a subscription")
-    is_first_recurring: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the payment is the first payment for a subscription")
+    is_recurring: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the payment is a recurring payment for a subscription")
+    is_first_recurring: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the payment is the first payment for a subscription")
     shipping_option_id: Optional[StrictStr] = Field(default=None, description="*Optional*. Identifier of the shipping option chosen by the user")
     order_info: Optional[OrderInfo] = None
     telegram_payment_charge_id: StrictStr = Field(description="Telegram payment identifier")

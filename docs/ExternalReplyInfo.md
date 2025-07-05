@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **video_note** | [**VideoNote**](VideoNote.md) |  | [optional] 
 **voice** | [**Voice**](Voice.md) |  | [optional] 
 **has_media_spoiler** | **bool** | *Optional*. *True*, if the message media is covered by a spoiler animation | [optional] [default to True]
+**checklist** | [**Checklist**](Checklist.md) |  | [optional] 
 **contact** | [**Contact**](Contact.md) |  | [optional] 
 **dice** | [**Dice**](Dice.md) |  | [optional] 
 **game** | [**Game**](Game.md) |  | [optional] 

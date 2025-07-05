@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -67,7 +67,7 @@ class BusinessConnection(BaseModel):
     user_chat_id: StrictInt = Field(description="Identifier of a private chat with the user who created the business connection. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier.")
     var_date: StrictInt = Field(description="Date the connection was established in Unix time", alias="date")
     rights: Optional[BusinessBotRights] = None
-    is_enabled: StrictBool = Field(description="True, if the connection is active")
+    is_enabled: StrictBool = Field(description="*True*, if the connection is active")
     __properties: ClassVar[List[str]] = ["id", "user", "user_chat_id", "date", "rights", "is_enabled"]
 
     model_config = ConfigDict(

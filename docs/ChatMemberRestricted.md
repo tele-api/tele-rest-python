@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **can_send_videos** | **bool** | *True*, if the user is allowed to send videos | 
 **can_send_video_notes** | **bool** | *True*, if the user is allowed to send video notes | 
 **can_send_voice_notes** | **bool** | *True*, if the user is allowed to send voice notes | 
-**can_send_polls** | **bool** | *True*, if the user is allowed to send polls | 
+**can_send_polls** | **bool** | *True*, if the user is allowed to send polls and checklists | 
 **can_send_other_messages** | **bool** | *True*, if the user is allowed to send animations, games, stickers and use inline bots | 
 **can_add_web_page_previews** | **bool** | *True*, if the user is allowed to add web page previews to their messages | 
 **can_change_info** | **bool** | *True*, if the user is allowed to change the chat title, photo and other settings | 

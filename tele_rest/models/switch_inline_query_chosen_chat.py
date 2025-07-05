@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -61,10 +61,10 @@ class SwitchInlineQueryChosenChat(BaseModel):
     This object represents an inline button that switches the current user to inline mode in a chosen chat, with an optional default inline query.
     """ # noqa: E501
     query: Optional[StrictStr] = Field(default=None, description="*Optional*. The default inline query to be inserted in the input field. If left empty, only the bot's username will be inserted")
-    allow_user_chats: Optional[StrictBool] = Field(default=None, description="*Optional*. True, if private chats with users can be chosen")
-    allow_bot_chats: Optional[StrictBool] = Field(default=None, description="*Optional*. True, if private chats with bots can be chosen")
-    allow_group_chats: Optional[StrictBool] = Field(default=None, description="*Optional*. True, if group and supergroup chats can be chosen")
-    allow_channel_chats: Optional[StrictBool] = Field(default=None, description="*Optional*. True, if channel chats can be chosen")
+    allow_user_chats: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if private chats with users can be chosen")
+    allow_bot_chats: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if private chats with bots can be chosen")
+    allow_group_chats: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if group and supergroup chats can be chosen")
+    allow_channel_chats: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if channel chats can be chosen")
     __properties: ClassVar[List[str]] = ["query", "allow_user_chats", "allow_bot_chats", "allow_group_chats", "allow_channel_chats"]
 
     model_config = ConfigDict(

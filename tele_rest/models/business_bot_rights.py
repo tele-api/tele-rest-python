@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -60,20 +60,20 @@ class BusinessBotRights(BaseModel):
     """
     Represents the rights of a business bot.
     """ # noqa: E501
-    can_reply: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can send and edit messages in the private chats that had incoming messages in the last 24 hours")
-    can_read_messages: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can mark incoming private messages as read")
-    can_delete_sent_messages: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can delete messages sent by the bot")
-    can_delete_all_messages: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can delete all private messages in managed chats")
-    can_edit_name: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can edit the first and last name of the business account")
-    can_edit_bio: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can edit the bio of the business account")
-    can_edit_profile_photo: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can edit the profile photo of the business account")
-    can_edit_username: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can edit the username of the business account")
-    can_change_gift_settings: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can change the privacy settings pertaining to gifts for the business account")
-    can_view_gifts_and_stars: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can view gifts and the amount of Telegram Stars owned by the business account")
-    can_convert_gifts_to_stars: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can convert regular gifts owned by the business account to Telegram Stars")
-    can_transfer_and_upgrade_gifts: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can transfer and upgrade gifts owned by the business account")
-    can_transfer_stars: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can transfer Telegram Stars received by the business account to its own account, or use them to upgrade and transfer gifts")
-    can_manage_stories: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the bot can post, edit and delete stories on behalf of the business account")
+    can_reply: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can send and edit messages in the private chats that had incoming messages in the last 24 hours")
+    can_read_messages: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can mark incoming private messages as read")
+    can_delete_sent_messages: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can delete messages sent by the bot")
+    can_delete_all_messages: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can delete all private messages in managed chats")
+    can_edit_name: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can edit the first and last name of the business account")
+    can_edit_bio: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can edit the bio of the business account")
+    can_edit_profile_photo: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can edit the profile photo of the business account")
+    can_edit_username: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can edit the username of the business account")
+    can_change_gift_settings: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can change the privacy settings pertaining to gifts for the business account")
+    can_view_gifts_and_stars: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can view gifts and the amount of Telegram Stars owned by the business account")
+    can_convert_gifts_to_stars: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can convert regular gifts owned by the business account to Telegram Stars")
+    can_transfer_and_upgrade_gifts: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can transfer and upgrade gifts owned by the business account")
+    can_transfer_stars: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can transfer Telegram Stars received by the business account to its own account, or use them to upgrade and transfer gifts")
+    can_manage_stories: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the bot can post, edit and delete stories on behalf of the business account")
     __properties: ClassVar[List[str]] = ["can_reply", "can_read_messages", "can_delete_sent_messages", "can_delete_all_messages", "can_edit_name", "can_edit_bio", "can_edit_profile_photo", "can_edit_username", "can_change_gift_settings", "can_view_gifts_and_stars", "can_convert_gifts_to_stars", "can_transfer_and_upgrade_gifts", "can_transfer_stars", "can_manage_stories"]
 
     model_config = ConfigDict(

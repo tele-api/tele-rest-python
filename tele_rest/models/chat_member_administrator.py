@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -65,7 +65,7 @@ class ChatMemberAdministrator(BaseModel):
     user: User
     can_be_edited: StrictBool = Field(description="*True*, if the bot is allowed to edit administrator privileges of that user")
     is_anonymous: StrictBool = Field(description="*True*, if the user's presence in the chat is hidden")
-    can_manage_chat: StrictBool = Field(description="*True*, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege.")
+    can_manage_chat: StrictBool = Field(description="*True*, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.")
     can_delete_messages: StrictBool = Field(description="*True*, if the administrator can delete messages of other users")
     can_manage_video_chats: StrictBool = Field(description="*True*, if the administrator can manage video chats")
     can_restrict_members: StrictBool = Field(description="*True*, if the administrator can restrict, ban or unban chat members, or access supergroup statistics")
@@ -75,7 +75,7 @@ class ChatMemberAdministrator(BaseModel):
     can_post_stories: StrictBool = Field(description="*True*, if the administrator can post stories to the chat")
     can_edit_stories: StrictBool = Field(description="*True*, if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access the chat's story archive")
     can_delete_stories: StrictBool = Field(description="*True*, if the administrator can delete stories posted by other users")
-    can_post_messages: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the administrator can post messages in the channel, or access channel statistics; for channels only")
+    can_post_messages: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only")
     can_edit_messages: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the administrator can edit messages of other users and can pin messages; for channels only")
     can_pin_messages: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the user is allowed to pin messages; for groups and supergroups only")
     can_manage_topics: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only")

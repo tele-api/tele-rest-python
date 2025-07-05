@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -56,6 +56,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from tele_rest.models.animation import Animation
 from tele_rest.models.audio import Audio
 from tele_rest.models.chat import Chat
+from tele_rest.models.checklist import Checklist
 from tele_rest.models.contact import Contact
 from tele_rest.models.dice import Dice
 from tele_rest.models.document import Document
@@ -97,6 +98,7 @@ class ExternalReplyInfo(BaseModel):
     video_note: Optional[VideoNote] = None
     voice: Optional[Voice] = None
     has_media_spoiler: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the message media is covered by a spoiler animation")
+    checklist: Optional[Checklist] = None
     contact: Optional[Contact] = None
     dice: Optional[Dice] = None
     game: Optional[Game] = None
@@ -106,7 +108,7 @@ class ExternalReplyInfo(BaseModel):
     location: Optional[Location] = None
     poll: Optional[Poll] = None
     venue: Optional[Venue] = None
-    __properties: ClassVar[List[str]] = ["origin", "chat", "message_id", "link_preview_options", "animation", "audio", "document", "paid_media", "photo", "sticker", "story", "video", "video_note", "voice", "has_media_spoiler", "contact", "dice", "game", "giveaway", "giveaway_winners", "invoice", "location", "poll", "venue"]
+    __properties: ClassVar[List[str]] = ["origin", "chat", "message_id", "link_preview_options", "animation", "audio", "document", "paid_media", "photo", "sticker", "story", "video", "video_note", "voice", "has_media_spoiler", "checklist", "contact", "dice", "game", "giveaway", "giveaway_winners", "invoice", "location", "poll", "venue"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -190,6 +192,9 @@ class ExternalReplyInfo(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of voice
         if self.voice:
             _dict['voice'] = self.voice.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of checklist
+        if self.checklist:
+            _dict['checklist'] = self.checklist.to_dict()
         # override the default output from pydantic by calling `to_dict()` of contact
         if self.contact:
             _dict['contact'] = self.contact.to_dict()
@@ -249,6 +254,7 @@ class ExternalReplyInfo(BaseModel):
             "video_note": VideoNote.from_dict(obj["video_note"]) if obj.get("video_note") is not None else None,
             "voice": Voice.from_dict(obj["voice"]) if obj.get("voice") is not None else None,
             "has_media_spoiler": obj.get("has_media_spoiler") if obj.get("has_media_spoiler") is not None else True,
+            "checklist": Checklist.from_dict(obj["checklist"]) if obj.get("checklist") is not None else None,
             "contact": Contact.from_dict(obj["contact"]) if obj.get("contact") is not None else None,
             "dice": Dice.from_dict(obj["dice"]) if obj.get("dice") is not None else None,
             "game": Game.from_dict(obj["game"]) if obj.get("game") is not None else None,

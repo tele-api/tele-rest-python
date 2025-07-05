@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -54,13 +54,96 @@ from pydantic import Field, StrictBool, StrictFloat, StrictInt, StrictStr, field
 from typing import Any, List, Optional, Union
 from typing_extensions import Annotated
 from tele_rest.models.accepted_gift_types import AcceptedGiftTypes
+from tele_rest.models.add_sticker_to_set_response import AddStickerToSetResponse
+from tele_rest.models.answer_callback_query_response import AnswerCallbackQueryResponse
+from tele_rest.models.answer_inline_query_response import AnswerInlineQueryResponse
+from tele_rest.models.answer_pre_checkout_query_response import AnswerPreCheckoutQueryResponse
+from tele_rest.models.answer_shipping_query_response import AnswerShippingQueryResponse
+from tele_rest.models.answer_web_app_query_response import AnswerWebAppQueryResponse
+from tele_rest.models.approve_chat_join_request_response import ApproveChatJoinRequestResponse
+from tele_rest.models.ban_chat_member_request_chat_id import BanChatMemberRequestChatId
+from tele_rest.models.ban_chat_member_response import BanChatMemberResponse
+from tele_rest.models.ban_chat_sender_chat_response import BanChatSenderChatResponse
 from tele_rest.models.bot_command import BotCommand
 from tele_rest.models.bot_command_scope import BotCommandScope
+from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.chat_administrator_rights import ChatAdministratorRights
 from tele_rest.models.chat_permissions import ChatPermissions
+from tele_rest.models.close_forum_topic_response import CloseForumTopicResponse
+from tele_rest.models.close_general_forum_topic_response import CloseGeneralForumTopicResponse
+from tele_rest.models.close_response import CloseResponse
+from tele_rest.models.convert_gift_to_stars_response import ConvertGiftToStarsResponse
+from tele_rest.models.copy_message_response import CopyMessageResponse
+from tele_rest.models.copy_messages_response import CopyMessagesResponse
+from tele_rest.models.create_chat_invite_link_response import CreateChatInviteLinkResponse
+from tele_rest.models.create_chat_subscription_invite_link_request_chat_id import CreateChatSubscriptionInviteLinkRequestChatId
+from tele_rest.models.create_chat_subscription_invite_link_response import CreateChatSubscriptionInviteLinkResponse
+from tele_rest.models.create_forum_topic_response import CreateForumTopicResponse
+from tele_rest.models.create_invoice_link_response import CreateInvoiceLinkResponse
+from tele_rest.models.create_new_sticker_set_response import CreateNewStickerSetResponse
+from tele_rest.models.decline_chat_join_request_response import DeclineChatJoinRequestResponse
+from tele_rest.models.delete_business_messages_response import DeleteBusinessMessagesResponse
+from tele_rest.models.delete_chat_photo_response import DeleteChatPhotoResponse
+from tele_rest.models.delete_chat_sticker_set_response import DeleteChatStickerSetResponse
+from tele_rest.models.delete_forum_topic_response import DeleteForumTopicResponse
+from tele_rest.models.delete_message_response import DeleteMessageResponse
+from tele_rest.models.delete_messages_response import DeleteMessagesResponse
+from tele_rest.models.delete_my_commands_response import DeleteMyCommandsResponse
+from tele_rest.models.delete_sticker_from_set_response import DeleteStickerFromSetResponse
+from tele_rest.models.delete_sticker_set_response import DeleteStickerSetResponse
+from tele_rest.models.delete_story_response import DeleteStoryResponse
+from tele_rest.models.delete_webhook_response import DeleteWebhookResponse
+from tele_rest.models.edit_chat_invite_link_response import EditChatInviteLinkResponse
+from tele_rest.models.edit_chat_subscription_invite_link_response import EditChatSubscriptionInviteLinkResponse
+from tele_rest.models.edit_forum_topic_response import EditForumTopicResponse
+from tele_rest.models.edit_general_forum_topic_response import EditGeneralForumTopicResponse
+from tele_rest.models.edit_message_caption_response import EditMessageCaptionResponse
+from tele_rest.models.edit_message_checklist_response import EditMessageChecklistResponse
+from tele_rest.models.edit_message_live_location_response import EditMessageLiveLocationResponse
+from tele_rest.models.edit_message_media_response import EditMessageMediaResponse
+from tele_rest.models.edit_message_reply_markup_response import EditMessageReplyMarkupResponse
+from tele_rest.models.edit_message_text_request_chat_id import EditMessageTextRequestChatId
+from tele_rest.models.edit_message_text_response import EditMessageTextResponse
+from tele_rest.models.edit_story_response import EditStoryResponse
+from tele_rest.models.edit_user_star_subscription_response import EditUserStarSubscriptionResponse
+from tele_rest.models.export_chat_invite_link_response import ExportChatInviteLinkResponse
+from tele_rest.models.forward_message_request_from_chat_id import ForwardMessageRequestFromChatId
+from tele_rest.models.forward_message_response import ForwardMessageResponse
+from tele_rest.models.forward_messages_request_from_chat_id import ForwardMessagesRequestFromChatId
+from tele_rest.models.forward_messages_response import ForwardMessagesResponse
+from tele_rest.models.get_available_gifts_response import GetAvailableGiftsResponse
+from tele_rest.models.get_business_account_gifts_response import GetBusinessAccountGiftsResponse
+from tele_rest.models.get_business_account_star_balance_response import GetBusinessAccountStarBalanceResponse
+from tele_rest.models.get_business_connection_response import GetBusinessConnectionResponse
+from tele_rest.models.get_chat_administrators_response import GetChatAdministratorsResponse
+from tele_rest.models.get_chat_member_count_response import GetChatMemberCountResponse
+from tele_rest.models.get_chat_member_response import GetChatMemberResponse
+from tele_rest.models.get_chat_menu_button_response import GetChatMenuButtonResponse
+from tele_rest.models.get_chat_response import GetChatResponse
+from tele_rest.models.get_custom_emoji_stickers_response import GetCustomEmojiStickersResponse
+from tele_rest.models.get_file_response import GetFileResponse
+from tele_rest.models.get_forum_topic_icon_stickers_response import GetForumTopicIconStickersResponse
+from tele_rest.models.get_game_high_scores_response import GetGameHighScoresResponse
+from tele_rest.models.get_me_response import GetMeResponse
+from tele_rest.models.get_my_commands_response import GetMyCommandsResponse
+from tele_rest.models.get_my_default_administrator_rights_response import GetMyDefaultAdministratorRightsResponse
+from tele_rest.models.get_my_description_response import GetMyDescriptionResponse
+from tele_rest.models.get_my_name_response import GetMyNameResponse
+from tele_rest.models.get_my_short_description_response import GetMyShortDescriptionResponse
+from tele_rest.models.get_my_star_balance_response import GetMyStarBalanceResponse
+from tele_rest.models.get_star_transactions_response import GetStarTransactionsResponse
+from tele_rest.models.get_sticker_set_response import GetStickerSetResponse
+from tele_rest.models.get_updates_response import GetUpdatesResponse
+from tele_rest.models.get_user_chat_boosts_request_chat_id import GetUserChatBoostsRequestChatId
+from tele_rest.models.get_user_chat_boosts_response import GetUserChatBoostsResponse
+from tele_rest.models.get_user_profile_photos_response import GetUserProfilePhotosResponse
+from tele_rest.models.get_webhook_info_response import GetWebhookInfoResponse
+from tele_rest.models.gift_premium_subscription_response import GiftPremiumSubscriptionResponse
+from tele_rest.models.hide_general_forum_topic_response import HideGeneralForumTopicResponse
 from tele_rest.models.inline_keyboard_markup import InlineKeyboardMarkup
 from tele_rest.models.inline_query_result import InlineQueryResult
 from tele_rest.models.inline_query_results_button import InlineQueryResultsButton
+from tele_rest.models.input_checklist import InputChecklist
 from tele_rest.models.input_media import InputMedia
 from tele_rest.models.input_paid_media import InputPaidMedia
 from tele_rest.models.input_poll_option import InputPollOption
@@ -68,77 +151,103 @@ from tele_rest.models.input_profile_photo import InputProfilePhoto
 from tele_rest.models.input_sticker import InputSticker
 from tele_rest.models.input_story_content import InputStoryContent
 from tele_rest.models.labeled_price import LabeledPrice
+from tele_rest.models.leave_chat_request_chat_id import LeaveChatRequestChatId
+from tele_rest.models.leave_chat_response import LeaveChatResponse
 from tele_rest.models.link_preview_options import LinkPreviewOptions
+from tele_rest.models.log_out_response import LogOutResponse
 from tele_rest.models.mask_position import MaskPosition
 from tele_rest.models.menu_button import MenuButton
 from tele_rest.models.message_entity import MessageEntity
 from tele_rest.models.passport_element_error import PassportElementError
-from tele_rest.models.post_answer_web_app_query200_response import PostAnswerWebAppQuery200Response
-from tele_rest.models.post_ban_chat_member_request_chat_id import PostBanChatMemberRequestChatId
-from tele_rest.models.post_copy_message200_response import PostCopyMessage200Response
-from tele_rest.models.post_create_chat_invite_link200_response import PostCreateChatInviteLink200Response
-from tele_rest.models.post_create_chat_subscription_invite_link_request_chat_id import PostCreateChatSubscriptionInviteLinkRequestChatId
-from tele_rest.models.post_create_forum_topic200_response import PostCreateForumTopic200Response
-from tele_rest.models.post_edit_message_text200_response import PostEditMessageText200Response
-from tele_rest.models.post_edit_message_text_request_chat_id import PostEditMessageTextRequestChatId
-from tele_rest.models.post_export_chat_invite_link200_response import PostExportChatInviteLink200Response
-from tele_rest.models.post_forward_message_request_from_chat_id import PostForwardMessageRequestFromChatId
-from tele_rest.models.post_forward_messages200_response import PostForwardMessages200Response
-from tele_rest.models.post_forward_messages_request_from_chat_id import PostForwardMessagesRequestFromChatId
-from tele_rest.models.post_get_available_gifts200_response import PostGetAvailableGifts200Response
-from tele_rest.models.post_get_business_account_gifts200_response import PostGetBusinessAccountGifts200Response
-from tele_rest.models.post_get_business_account_star_balance200_response import PostGetBusinessAccountStarBalance200Response
-from tele_rest.models.post_get_business_connection200_response import PostGetBusinessConnection200Response
-from tele_rest.models.post_get_chat200_response import PostGetChat200Response
-from tele_rest.models.post_get_chat_administrators200_response import PostGetChatAdministrators200Response
-from tele_rest.models.post_get_chat_member200_response import PostGetChatMember200Response
-from tele_rest.models.post_get_chat_member_count200_response import PostGetChatMemberCount200Response
-from tele_rest.models.post_get_chat_menu_button200_response import PostGetChatMenuButton200Response
-from tele_rest.models.post_get_file200_response import PostGetFile200Response
-from tele_rest.models.post_get_forum_topic_icon_stickers200_response import PostGetForumTopicIconStickers200Response
-from tele_rest.models.post_get_game_high_scores200_response import PostGetGameHighScores200Response
-from tele_rest.models.post_get_me200_response import PostGetMe200Response
-from tele_rest.models.post_get_my_commands200_response import PostGetMyCommands200Response
-from tele_rest.models.post_get_my_default_administrator_rights200_response import PostGetMyDefaultAdministratorRights200Response
-from tele_rest.models.post_get_my_description200_response import PostGetMyDescription200Response
-from tele_rest.models.post_get_my_name200_response import PostGetMyName200Response
-from tele_rest.models.post_get_my_short_description200_response import PostGetMyShortDescription200Response
-from tele_rest.models.post_get_star_transactions200_response import PostGetStarTransactions200Response
-from tele_rest.models.post_get_sticker_set200_response import PostGetStickerSet200Response
-from tele_rest.models.post_get_updates200_response import PostGetUpdates200Response
-from tele_rest.models.post_get_user_chat_boosts200_response import PostGetUserChatBoosts200Response
-from tele_rest.models.post_get_user_chat_boosts_request_chat_id import PostGetUserChatBoostsRequestChatId
-from tele_rest.models.post_get_user_profile_photos200_response import PostGetUserProfilePhotos200Response
-from tele_rest.models.post_get_webhook_info200_response import PostGetWebhookInfo200Response
-from tele_rest.models.post_leave_chat_request_chat_id import PostLeaveChatRequestChatId
-from tele_rest.models.post_post_story200_response import PostPostStory200Response
-from tele_rest.models.post_restrict_chat_member_request_chat_id import PostRestrictChatMemberRequestChatId
-from tele_rest.models.post_revoke_chat_invite_link_request_chat_id import PostRevokeChatInviteLinkRequestChatId
-from tele_rest.models.post_save_prepared_inline_message200_response import PostSavePreparedInlineMessage200Response
-from tele_rest.models.post_send_animation_request_animation import PostSendAnimationRequestAnimation
-from tele_rest.models.post_send_audio_request_audio import PostSendAudioRequestAudio
-from tele_rest.models.post_send_audio_request_thumbnail import PostSendAudioRequestThumbnail
-from tele_rest.models.post_send_document_request_document import PostSendDocumentRequestDocument
-from tele_rest.models.post_send_gift_request_chat_id import PostSendGiftRequestChatId
-from tele_rest.models.post_send_media_group200_response import PostSendMediaGroup200Response
-from tele_rest.models.post_send_media_group_request_media_inner import PostSendMediaGroupRequestMediaInner
-from tele_rest.models.post_send_message200_response import PostSendMessage200Response
-from tele_rest.models.post_send_message_request_chat_id import PostSendMessageRequestChatId
-from tele_rest.models.post_send_message_request_reply_markup import PostSendMessageRequestReplyMarkup
-from tele_rest.models.post_send_paid_media_request_chat_id import PostSendPaidMediaRequestChatId
-from tele_rest.models.post_send_photo_request_photo import PostSendPhotoRequestPhoto
-from tele_rest.models.post_send_sticker_request_sticker import PostSendStickerRequestSticker
-from tele_rest.models.post_send_video_note_request_video_note import PostSendVideoNoteRequestVideoNote
-from tele_rest.models.post_send_video_request_cover import PostSendVideoRequestCover
-from tele_rest.models.post_send_video_request_video import PostSendVideoRequestVideo
-from tele_rest.models.post_send_voice_request_voice import PostSendVoiceRequestVoice
-from tele_rest.models.post_set_sticker_set_thumbnail_request_thumbnail import PostSetStickerSetThumbnailRequestThumbnail
-from tele_rest.models.post_set_webhook200_response import PostSetWebhook200Response
-from tele_rest.models.post_stop_poll200_response import PostStopPoll200Response
+from tele_rest.models.pin_chat_message_response import PinChatMessageResponse
+from tele_rest.models.post_story_response import PostStoryResponse
+from tele_rest.models.promote_chat_member_response import PromoteChatMemberResponse
 from tele_rest.models.reaction_type import ReactionType
+from tele_rest.models.read_business_message_response import ReadBusinessMessageResponse
+from tele_rest.models.refund_star_payment_response import RefundStarPaymentResponse
+from tele_rest.models.remove_business_account_profile_photo_response import RemoveBusinessAccountProfilePhotoResponse
+from tele_rest.models.remove_chat_verification_response import RemoveChatVerificationResponse
+from tele_rest.models.remove_user_verification_response import RemoveUserVerificationResponse
+from tele_rest.models.reopen_forum_topic_response import ReopenForumTopicResponse
+from tele_rest.models.reopen_general_forum_topic_response import ReopenGeneralForumTopicResponse
+from tele_rest.models.replace_sticker_in_set_response import ReplaceStickerInSetResponse
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.restrict_chat_member_response import RestrictChatMemberResponse
+from tele_rest.models.revoke_chat_invite_link_request_chat_id import RevokeChatInviteLinkRequestChatId
+from tele_rest.models.revoke_chat_invite_link_response import RevokeChatInviteLinkResponse
+from tele_rest.models.save_prepared_inline_message_response import SavePreparedInlineMessageResponse
+from tele_rest.models.send_animation_response import SendAnimationResponse
+from tele_rest.models.send_audio_response import SendAudioResponse
+from tele_rest.models.send_chat_action_response import SendChatActionResponse
+from tele_rest.models.send_checklist_response import SendChecklistResponse
+from tele_rest.models.send_contact_response import SendContactResponse
+from tele_rest.models.send_dice_response import SendDiceResponse
+from tele_rest.models.send_document_response import SendDocumentResponse
+from tele_rest.models.send_game_response import SendGameResponse
+from tele_rest.models.send_gift_request_chat_id import SendGiftRequestChatId
+from tele_rest.models.send_gift_response import SendGiftResponse
+from tele_rest.models.send_invoice_response import SendInvoiceResponse
+from tele_rest.models.send_location_response import SendLocationResponse
+from tele_rest.models.send_media_group_request_media_inner import SendMediaGroupRequestMediaInner
+from tele_rest.models.send_media_group_response import SendMediaGroupResponse
+from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.send_message_response import SendMessageResponse
+from tele_rest.models.send_paid_media_request_chat_id import SendPaidMediaRequestChatId
+from tele_rest.models.send_paid_media_response import SendPaidMediaResponse
+from tele_rest.models.send_photo_response import SendPhotoResponse
+from tele_rest.models.send_poll_response import SendPollResponse
+from tele_rest.models.send_sticker_response import SendStickerResponse
+from tele_rest.models.send_venue_response import SendVenueResponse
+from tele_rest.models.send_video_note_response import SendVideoNoteResponse
+from tele_rest.models.send_video_response import SendVideoResponse
+from tele_rest.models.send_voice_response import SendVoiceResponse
+from tele_rest.models.set_business_account_bio_response import SetBusinessAccountBioResponse
+from tele_rest.models.set_business_account_gift_settings_response import SetBusinessAccountGiftSettingsResponse
+from tele_rest.models.set_business_account_name_response import SetBusinessAccountNameResponse
+from tele_rest.models.set_business_account_profile_photo_response import SetBusinessAccountProfilePhotoResponse
+from tele_rest.models.set_business_account_username_response import SetBusinessAccountUsernameResponse
+from tele_rest.models.set_chat_administrator_custom_title_response import SetChatAdministratorCustomTitleResponse
+from tele_rest.models.set_chat_description_response import SetChatDescriptionResponse
+from tele_rest.models.set_chat_menu_button_response import SetChatMenuButtonResponse
+from tele_rest.models.set_chat_permissions_response import SetChatPermissionsResponse
+from tele_rest.models.set_chat_photo_response import SetChatPhotoResponse
+from tele_rest.models.set_chat_sticker_set_response import SetChatStickerSetResponse
+from tele_rest.models.set_chat_title_response import SetChatTitleResponse
+from tele_rest.models.set_custom_emoji_sticker_set_thumbnail_response import SetCustomEmojiStickerSetThumbnailResponse
+from tele_rest.models.set_game_score_response import SetGameScoreResponse
+from tele_rest.models.set_message_reaction_response import SetMessageReactionResponse
+from tele_rest.models.set_my_commands_response import SetMyCommandsResponse
+from tele_rest.models.set_my_default_administrator_rights_response import SetMyDefaultAdministratorRightsResponse
+from tele_rest.models.set_my_description_response import SetMyDescriptionResponse
+from tele_rest.models.set_my_name_response import SetMyNameResponse
+from tele_rest.models.set_my_short_description_response import SetMyShortDescriptionResponse
+from tele_rest.models.set_passport_data_errors_response import SetPassportDataErrorsResponse
+from tele_rest.models.set_sticker_emoji_list_response import SetStickerEmojiListResponse
+from tele_rest.models.set_sticker_keywords_response import SetStickerKeywordsResponse
+from tele_rest.models.set_sticker_mask_position_response import SetStickerMaskPositionResponse
+from tele_rest.models.set_sticker_position_in_set_response import SetStickerPositionInSetResponse
+from tele_rest.models.set_sticker_set_thumbnail_response import SetStickerSetThumbnailResponse
+from tele_rest.models.set_sticker_set_title_response import SetStickerSetTitleResponse
+from tele_rest.models.set_user_emoji_status_response import SetUserEmojiStatusResponse
+from tele_rest.models.set_webhook_response import SetWebhookResponse
 from tele_rest.models.shipping_option import ShippingOption
+from tele_rest.models.stop_message_live_location_response import StopMessageLiveLocationResponse
+from tele_rest.models.stop_poll_response import StopPollResponse
 from tele_rest.models.story_area import StoryArea
+from tele_rest.models.transfer_business_account_stars_response import TransferBusinessAccountStarsResponse
+from tele_rest.models.transfer_gift_response import TransferGiftResponse
+from tele_rest.models.unban_chat_member_response import UnbanChatMemberResponse
+from tele_rest.models.unban_chat_sender_chat_response import UnbanChatSenderChatResponse
+from tele_rest.models.unhide_general_forum_topic_response import UnhideGeneralForumTopicResponse
+from tele_rest.models.unpin_all_chat_messages_response import UnpinAllChatMessagesResponse
+from tele_rest.models.unpin_all_forum_topic_messages_response import UnpinAllForumTopicMessagesResponse
+from tele_rest.models.unpin_all_general_forum_topic_messages_response import UnpinAllGeneralForumTopicMessagesResponse
+from tele_rest.models.unpin_chat_message_response import UnpinChatMessageResponse
+from tele_rest.models.upgrade_gift_response import UpgradeGiftResponse
+from tele_rest.models.upload_sticker_file_response import UploadStickerFileResponse
+from tele_rest.models.verify_chat_response import VerifyChatResponse
+from tele_rest.models.verify_user_response import VerifyUserResponse
 
 from tele_rest.api_client import ApiClient, RequestSerialized
 from tele_rest.api_response import ApiResponse
@@ -171,7 +280,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> AddStickerToSetResponse:
         """addStickerToSet
 
         Use this method to add a new sticker to a set created by the bot. Emoji sticker sets can have up to 200 stickers. Other sticker sets can have up to 120 stickers. Returns *True* on success.
@@ -215,7 +324,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AddStickerToSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -247,7 +356,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[AddStickerToSetResponse]:
         """addStickerToSet
 
         Use this method to add a new sticker to a set created by the bot. Emoji sticker sets can have up to 200 stickers. Other sticker sets can have up to 120 stickers. Returns *True* on success.
@@ -291,7 +400,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AddStickerToSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -367,7 +476,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AddStickerToSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -430,7 +539,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -479,7 +589,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> AnswerCallbackQueryResponse:
         """answerCallbackQuery
 
         Use this method to send answers to callback queries sent from [inline keyboards](https://core.telegram.org/bots/features#inline-keyboards). The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, *True* is returned.  Alternatively, the user can be redirected to the specified Game URL. For this option to work, you must first create a game for your bot via [@BotFather](https://t.me/botfather) and accept the terms. Otherwise, you may use links like `t.me/your_bot?start=XXXX` that open your bot with a parameter.
@@ -529,7 +639,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AnswerCallbackQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -563,7 +673,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[AnswerCallbackQueryResponse]:
         """answerCallbackQuery
 
         Use this method to send answers to callback queries sent from [inline keyboards](https://core.telegram.org/bots/features#inline-keyboards). The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, *True* is returned.  Alternatively, the user can be redirected to the specified Game URL. For this option to work, you must first create a game for your bot via [@BotFather](https://t.me/botfather) and accept the terms. Otherwise, you may use links like `t.me/your_bot?start=XXXX` that open your bot with a parameter.
@@ -613,7 +723,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AnswerCallbackQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -697,7 +807,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AnswerCallbackQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -818,7 +928,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> AnswerInlineQueryResponse:
         """answerInlineQuery
 
         Use this method to send answers to an inline query. On success, *True* is returned.   No more than **50** results per query are allowed.
@@ -871,7 +981,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AnswerInlineQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -906,7 +1016,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[AnswerInlineQueryResponse]:
         """answerInlineQuery
 
         Use this method to send answers to an inline query. On success, *True* is returned.   No more than **50** results per query are allowed.
@@ -959,7 +1069,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AnswerInlineQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -1047,7 +1157,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AnswerInlineQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -1169,7 +1279,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> AnswerPreCheckoutQueryResponse:
         """answerPreCheckoutQuery
 
         Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an [Update](https://core.telegram.org/bots/api/#update) with the field *pre\\_checkout\\_query*. Use this method to respond to such pre-checkout queries. On success, *True* is returned. **Note:** The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.
@@ -1213,7 +1323,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AnswerPreCheckoutQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -1245,7 +1355,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[AnswerPreCheckoutQueryResponse]:
         """answerPreCheckoutQuery
 
         Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an [Update](https://core.telegram.org/bots/api/#update) with the field *pre\\_checkout\\_query*. Use this method to respond to such pre-checkout queries. On success, *True* is returned. **Note:** The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.
@@ -1289,7 +1399,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AnswerPreCheckoutQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -1365,7 +1475,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AnswerPreCheckoutQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -1478,7 +1588,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> AnswerShippingQueryResponse:
         """answerShippingQuery
 
         If you sent an invoice requesting a shipping address and the parameter *is\\_flexible* was specified, the Bot API will send an [Update](https://core.telegram.org/bots/api/#update) with a *shipping\\_query* field to the bot. Use this method to reply to shipping queries. On success, *True* is returned.
@@ -1525,7 +1635,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AnswerShippingQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -1558,7 +1668,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[AnswerShippingQueryResponse]:
         """answerShippingQuery
 
         If you sent an invoice requesting a shipping address and the parameter *is\\_flexible* was specified, the Bot API will send an [Update](https://core.telegram.org/bots/api/#update) with a *shipping\\_query* field to the bot. Use this method to reply to shipping queries. On success, *True* is returned.
@@ -1605,7 +1715,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AnswerShippingQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -1685,7 +1795,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "AnswerShippingQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -1800,7 +1910,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostAnswerWebAppQuery200Response:
+    ) -> AnswerWebAppQueryResponse:
         """answerWebAppQuery
 
         Use this method to set the result of an interaction with a [Web App](https://core.telegram.org/bots/webapps) and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a [SentWebAppMessage](https://core.telegram.org/bots/api/#sentwebappmessage) object is returned.
@@ -1841,7 +1951,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostAnswerWebAppQuery200Response",
+            '200': "AnswerWebAppQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -1872,7 +1982,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostAnswerWebAppQuery200Response]:
+    ) -> ApiResponse[AnswerWebAppQueryResponse]:
         """answerWebAppQuery
 
         Use this method to set the result of an interaction with a [Web App](https://core.telegram.org/bots/webapps) and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a [SentWebAppMessage](https://core.telegram.org/bots/api/#sentwebappmessage) object is returned.
@@ -1913,7 +2023,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostAnswerWebAppQuery200Response",
+            '200': "AnswerWebAppQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -1985,7 +2095,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostAnswerWebAppQuery200Response",
+            '200': "AnswerWebAppQueryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -2079,7 +2189,7 @@ class DefaultApi:
     @validate_call
     async def post_approve_chat_join_request(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -2093,13 +2203,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> ApproveChatJoinRequestResponse:
         """approveChatJoinRequest
 
         Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the *can\\_invite\\_users* administrator right. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -2134,7 +2244,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ApproveChatJoinRequestResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -2151,7 +2261,7 @@ class DefaultApi:
     @validate_call
     async def post_approve_chat_join_request_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -2165,13 +2275,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[ApproveChatJoinRequestResponse]:
         """approveChatJoinRequest
 
         Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the *can\\_invite\\_users* administrator right. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -2206,7 +2316,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ApproveChatJoinRequestResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -2223,7 +2333,7 @@ class DefaultApi:
     @validate_call
     async def post_approve_chat_join_request_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -2243,7 +2353,7 @@ class DefaultApi:
         Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the *can\\_invite\\_users* administrator right. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -2278,7 +2388,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ApproveChatJoinRequestResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -2372,7 +2482,7 @@ class DefaultApi:
     @validate_call
     async def post_ban_chat_member(
         self,
-        chat_id: PostBanChatMemberRequestChatId,
+        chat_id: BanChatMemberRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         until_date: Annotated[Optional[StrictInt], Field(description="Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only.")] = None,
         revoke_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* to delete all messages from the chat for the user that is being removed. If *False*, the user will be able to see messages in the group that were sent before the user was removed. Always *True* for supergroups and channels.")] = None,
@@ -2388,13 +2498,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> BanChatMemberResponse:
         """banChatMember
 
         Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless [unbanned](https://core.telegram.org/bots/api/#unbanchatmember) first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostBanChatMemberRequestChatId
+        :type chat_id: BanChatMemberRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param until_date: Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only.
@@ -2435,7 +2545,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "BanChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -2452,7 +2562,7 @@ class DefaultApi:
     @validate_call
     async def post_ban_chat_member_with_http_info(
         self,
-        chat_id: PostBanChatMemberRequestChatId,
+        chat_id: BanChatMemberRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         until_date: Annotated[Optional[StrictInt], Field(description="Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only.")] = None,
         revoke_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* to delete all messages from the chat for the user that is being removed. If *False*, the user will be able to see messages in the group that were sent before the user was removed. Always *True* for supergroups and channels.")] = None,
@@ -2468,13 +2578,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[BanChatMemberResponse]:
         """banChatMember
 
         Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless [unbanned](https://core.telegram.org/bots/api/#unbanchatmember) first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostBanChatMemberRequestChatId
+        :type chat_id: BanChatMemberRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param until_date: Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only.
@@ -2515,7 +2625,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "BanChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -2532,7 +2642,7 @@ class DefaultApi:
     @validate_call
     async def post_ban_chat_member_without_preload_content(
         self,
-        chat_id: PostBanChatMemberRequestChatId,
+        chat_id: BanChatMemberRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         until_date: Annotated[Optional[StrictInt], Field(description="Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only.")] = None,
         revoke_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* to delete all messages from the chat for the user that is being removed. If *False*, the user will be able to see messages in the group that were sent before the user was removed. Always *True* for supergroups and channels.")] = None,
@@ -2554,7 +2664,7 @@ class DefaultApi:
         Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless [unbanned](https://core.telegram.org/bots/api/#unbanchatmember) first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostBanChatMemberRequestChatId
+        :type chat_id: BanChatMemberRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param until_date: Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only.
@@ -2595,7 +2705,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "BanChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -2695,7 +2805,7 @@ class DefaultApi:
     @validate_call
     async def post_ban_chat_sender_chat(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         sender_chat_id: Annotated[StrictInt, Field(description="Unique identifier of the target sender chat")],
         _request_timeout: Union[
             None,
@@ -2709,13 +2819,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> BanChatSenderChatResponse:
         """banChatSenderChat
 
         Use this method to ban a channel chat in a supergroup or a channel. Until the chat is [unbanned](https://core.telegram.org/bots/api/#unbanchatsenderchat), the owner of the banned chat won't be able to send messages on behalf of **any of their channels**. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param sender_chat_id: Unique identifier of the target sender chat (required)
         :type sender_chat_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -2750,7 +2860,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "BanChatSenderChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -2767,7 +2877,7 @@ class DefaultApi:
     @validate_call
     async def post_ban_chat_sender_chat_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         sender_chat_id: Annotated[StrictInt, Field(description="Unique identifier of the target sender chat")],
         _request_timeout: Union[
             None,
@@ -2781,13 +2891,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[BanChatSenderChatResponse]:
         """banChatSenderChat
 
         Use this method to ban a channel chat in a supergroup or a channel. Until the chat is [unbanned](https://core.telegram.org/bots/api/#unbanchatsenderchat), the owner of the banned chat won't be able to send messages on behalf of **any of their channels**. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param sender_chat_id: Unique identifier of the target sender chat (required)
         :type sender_chat_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -2822,7 +2932,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "BanChatSenderChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -2839,7 +2949,7 @@ class DefaultApi:
     @validate_call
     async def post_ban_chat_sender_chat_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         sender_chat_id: Annotated[StrictInt, Field(description="Unique identifier of the target sender chat")],
         _request_timeout: Union[
             None,
@@ -2859,7 +2969,7 @@ class DefaultApi:
         Use this method to ban a channel chat in a supergroup or a channel. Until the chat is [unbanned](https://core.telegram.org/bots/api/#unbanchatsenderchat), the owner of the banned chat won't be able to send messages on behalf of **any of their channels**. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param sender_chat_id: Unique identifier of the target sender chat (required)
         :type sender_chat_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -2894,7 +3004,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "BanChatSenderChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -3000,7 +3110,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> CloseResponse:
         """close
 
         Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns *True* on success. Requires no parameters.
@@ -3035,7 +3145,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "CloseResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -3064,7 +3174,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[CloseResponse]:
         """close
 
         Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns *True* on success. Requires no parameters.
@@ -3099,7 +3209,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "CloseResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -3163,7 +3273,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "CloseResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -3236,7 +3346,7 @@ class DefaultApi:
     @validate_call
     async def post_close_forum_topic(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -3250,13 +3360,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> CloseForumTopicResponse:
         """closeForumTopic
 
         Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -3291,7 +3401,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "CloseForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -3308,7 +3418,7 @@ class DefaultApi:
     @validate_call
     async def post_close_forum_topic_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -3322,13 +3432,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[CloseForumTopicResponse]:
         """closeForumTopic
 
         Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -3363,7 +3473,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "CloseForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -3380,7 +3490,7 @@ class DefaultApi:
     @validate_call
     async def post_close_forum_topic_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -3400,7 +3510,7 @@ class DefaultApi:
         Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -3435,7 +3545,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "CloseForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -3529,7 +3639,7 @@ class DefaultApi:
     @validate_call
     async def post_close_general_forum_topic(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3542,13 +3652,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> CloseGeneralForumTopicResponse:
         """closeGeneralForumTopic
 
         Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3580,7 +3690,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "CloseGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -3597,7 +3707,7 @@ class DefaultApi:
     @validate_call
     async def post_close_general_forum_topic_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3610,13 +3720,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[CloseGeneralForumTopicResponse]:
         """closeGeneralForumTopic
 
         Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3648,7 +3758,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "CloseGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -3665,7 +3775,7 @@ class DefaultApi:
     @validate_call
     async def post_close_general_forum_topic_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3684,7 +3794,7 @@ class DefaultApi:
         Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3716,7 +3826,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "CloseGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -3821,7 +3931,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> ConvertGiftToStarsResponse:
         """convertGiftToStars
 
         Converts a given regular gift to Telegram Stars. Requires the *can\\_convert\\_gifts\\_to\\_stars* business bot right. Returns *True* on success.
@@ -3862,7 +3972,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ConvertGiftToStarsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -3893,7 +4003,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[ConvertGiftToStarsResponse]:
         """convertGiftToStars
 
         Converts a given regular gift to Telegram Stars. Requires the *can\\_convert\\_gifts\\_to\\_stars* business bot right. Returns *True* on success.
@@ -3934,7 +4044,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ConvertGiftToStarsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -4006,7 +4116,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ConvertGiftToStarsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -4100,8 +4210,8 @@ class DefaultApi:
     @validate_call
     async def post_copy_message(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        from_chat_id: PostForwardMessageRequestFromChatId,
+        chat_id: SendMessageRequestChatId,
+        from_chat_id: ForwardMessageRequestFromChatId,
         message_id: Annotated[StrictInt, Field(description="Message identifier in the chat specified in *from\\\\_chat\\\\_id*")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         video_start_timestamp: Annotated[Optional[StrictInt], Field(description="New start timestamp for the copied video in the message")] = None,
@@ -4113,7 +4223,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4126,15 +4236,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostCopyMessage200Response:
+    ) -> CopyMessageResponse:
         """copyMessage
 
         Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz [poll](https://core.telegram.org/bots/api/#poll) can be copied only if the value of the field *correct\\_option\\_id* is known to the bot. The method is analogous to the method [forwardMessage](https://core.telegram.org/bots/api/#forwardmessage), but the copied message doesn't have a link to the original message. Returns the [MessageId](https://core.telegram.org/bots/api/#messageid) of the sent message on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param from_chat_id: (required)
-        :type from_chat_id: PostForwardMessageRequestFromChatId
+        :type from_chat_id: ForwardMessageRequestFromChatId
         :param message_id: Message identifier in the chat specified in *from\\\\_chat\\\\_id* (required)
         :type message_id: int
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -4158,7 +4268,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4203,7 +4313,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCopyMessage200Response",
+            '200': "CopyMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -4220,8 +4330,8 @@ class DefaultApi:
     @validate_call
     async def post_copy_message_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        from_chat_id: PostForwardMessageRequestFromChatId,
+        chat_id: SendMessageRequestChatId,
+        from_chat_id: ForwardMessageRequestFromChatId,
         message_id: Annotated[StrictInt, Field(description="Message identifier in the chat specified in *from\\\\_chat\\\\_id*")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         video_start_timestamp: Annotated[Optional[StrictInt], Field(description="New start timestamp for the copied video in the message")] = None,
@@ -4233,7 +4343,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4246,15 +4356,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostCopyMessage200Response]:
+    ) -> ApiResponse[CopyMessageResponse]:
         """copyMessage
 
         Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz [poll](https://core.telegram.org/bots/api/#poll) can be copied only if the value of the field *correct\\_option\\_id* is known to the bot. The method is analogous to the method [forwardMessage](https://core.telegram.org/bots/api/#forwardmessage), but the copied message doesn't have a link to the original message. Returns the [MessageId](https://core.telegram.org/bots/api/#messageid) of the sent message on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param from_chat_id: (required)
-        :type from_chat_id: PostForwardMessageRequestFromChatId
+        :type from_chat_id: ForwardMessageRequestFromChatId
         :param message_id: Message identifier in the chat specified in *from\\\\_chat\\\\_id* (required)
         :type message_id: int
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -4278,7 +4388,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4323,7 +4433,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCopyMessage200Response",
+            '200': "CopyMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -4340,8 +4450,8 @@ class DefaultApi:
     @validate_call
     async def post_copy_message_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        from_chat_id: PostForwardMessageRequestFromChatId,
+        chat_id: SendMessageRequestChatId,
+        from_chat_id: ForwardMessageRequestFromChatId,
         message_id: Annotated[StrictInt, Field(description="Message identifier in the chat specified in *from\\\\_chat\\\\_id*")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         video_start_timestamp: Annotated[Optional[StrictInt], Field(description="New start timestamp for the copied video in the message")] = None,
@@ -4353,7 +4463,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4372,9 +4482,9 @@ class DefaultApi:
         Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz [poll](https://core.telegram.org/bots/api/#poll) can be copied only if the value of the field *correct\\_option\\_id* is known to the bot. The method is analogous to the method [forwardMessage](https://core.telegram.org/bots/api/#forwardmessage), but the copied message doesn't have a link to the original message. Returns the [MessageId](https://core.telegram.org/bots/api/#messageid) of the sent message on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param from_chat_id: (required)
-        :type from_chat_id: PostForwardMessageRequestFromChatId
+        :type from_chat_id: ForwardMessageRequestFromChatId
         :param message_id: Message identifier in the chat specified in *from\\\\_chat\\\\_id* (required)
         :type message_id: int
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -4398,7 +4508,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4443,7 +4553,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCopyMessage200Response",
+            '200': "CopyMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -4574,8 +4684,8 @@ class DefaultApi:
     @validate_call
     async def post_copy_messages(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        from_chat_id: PostForwardMessagesRequestFromChatId,
+        chat_id: SendMessageRequestChatId,
+        from_chat_id: ForwardMessagesRequestFromChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to copy. The identifiers must be specified in a strictly increasing order.")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
@@ -4593,15 +4703,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostForwardMessages200Response:
+    ) -> CopyMessagesResponse:
         """copyMessages
 
         Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz [poll](https://core.telegram.org/bots/api/#poll) can be copied only if the value of the field *correct\\_option\\_id* is known to the bot. The method is analogous to the method [forwardMessages](https://core.telegram.org/bots/api/#forwardmessages), but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an array of [MessageId](https://core.telegram.org/bots/api/#messageid) of the sent messages is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param from_chat_id: (required)
-        :type from_chat_id: PostForwardMessagesRequestFromChatId
+        :type from_chat_id: ForwardMessagesRequestFromChatId
         :param message_ids: A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to copy. The identifiers must be specified in a strictly increasing order. (required)
         :type message_ids: List[int]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -4649,7 +4759,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostForwardMessages200Response",
+            '200': "CopyMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -4666,8 +4776,8 @@ class DefaultApi:
     @validate_call
     async def post_copy_messages_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        from_chat_id: PostForwardMessagesRequestFromChatId,
+        chat_id: SendMessageRequestChatId,
+        from_chat_id: ForwardMessagesRequestFromChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to copy. The identifiers must be specified in a strictly increasing order.")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
@@ -4685,15 +4795,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostForwardMessages200Response]:
+    ) -> ApiResponse[CopyMessagesResponse]:
         """copyMessages
 
         Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz [poll](https://core.telegram.org/bots/api/#poll) can be copied only if the value of the field *correct\\_option\\_id* is known to the bot. The method is analogous to the method [forwardMessages](https://core.telegram.org/bots/api/#forwardmessages), but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an array of [MessageId](https://core.telegram.org/bots/api/#messageid) of the sent messages is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param from_chat_id: (required)
-        :type from_chat_id: PostForwardMessagesRequestFromChatId
+        :type from_chat_id: ForwardMessagesRequestFromChatId
         :param message_ids: A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to copy. The identifiers must be specified in a strictly increasing order. (required)
         :type message_ids: List[int]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -4741,7 +4851,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostForwardMessages200Response",
+            '200': "CopyMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -4758,8 +4868,8 @@ class DefaultApi:
     @validate_call
     async def post_copy_messages_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        from_chat_id: PostForwardMessagesRequestFromChatId,
+        chat_id: SendMessageRequestChatId,
+        from_chat_id: ForwardMessagesRequestFromChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to copy. The identifiers must be specified in a strictly increasing order.")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
@@ -4783,9 +4893,9 @@ class DefaultApi:
         Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz [poll](https://core.telegram.org/bots/api/#poll) can be copied only if the value of the field *correct\\_option\\_id* is known to the bot. The method is analogous to the method [forwardMessages](https://core.telegram.org/bots/api/#forwardmessages), but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an array of [MessageId](https://core.telegram.org/bots/api/#messageid) of the sent messages is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param from_chat_id: (required)
-        :type from_chat_id: PostForwardMessagesRequestFromChatId
+        :type from_chat_id: ForwardMessagesRequestFromChatId
         :param message_ids: A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to copy. The identifiers must be specified in a strictly increasing order. (required)
         :type message_ids: List[int]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -4833,7 +4943,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostForwardMessages200Response",
+            '200': "CopyMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -4943,7 +5053,7 @@ class DefaultApi:
     @validate_call
     async def post_create_chat_invite_link(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=32)]], Field(description="Invite link name; 0-32 characters")] = None,
         expire_date: Annotated[Optional[StrictInt], Field(description="Point in time (Unix timestamp) when the link will expire")] = None,
         member_limit: Annotated[Optional[StrictInt], Field(description="The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999")] = None,
@@ -4960,13 +5070,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostCreateChatInviteLink200Response:
+    ) -> CreateChatInviteLinkResponse:
         """createChatInviteLink
 
         Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method [revokeChatInviteLink](https://core.telegram.org/bots/api/#revokechatinvitelink). Returns the new invite link as [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param name: Invite link name; 0-32 characters
         :type name: str
         :param expire_date: Point in time (Unix timestamp) when the link will expire
@@ -5010,7 +5120,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "CreateChatInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -5027,7 +5137,7 @@ class DefaultApi:
     @validate_call
     async def post_create_chat_invite_link_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=32)]], Field(description="Invite link name; 0-32 characters")] = None,
         expire_date: Annotated[Optional[StrictInt], Field(description="Point in time (Unix timestamp) when the link will expire")] = None,
         member_limit: Annotated[Optional[StrictInt], Field(description="The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999")] = None,
@@ -5044,13 +5154,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostCreateChatInviteLink200Response]:
+    ) -> ApiResponse[CreateChatInviteLinkResponse]:
         """createChatInviteLink
 
         Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method [revokeChatInviteLink](https://core.telegram.org/bots/api/#revokechatinvitelink). Returns the new invite link as [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param name: Invite link name; 0-32 characters
         :type name: str
         :param expire_date: Point in time (Unix timestamp) when the link will expire
@@ -5094,7 +5204,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "CreateChatInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -5111,7 +5221,7 @@ class DefaultApi:
     @validate_call
     async def post_create_chat_invite_link_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=32)]], Field(description="Invite link name; 0-32 characters")] = None,
         expire_date: Annotated[Optional[StrictInt], Field(description="Point in time (Unix timestamp) when the link will expire")] = None,
         member_limit: Annotated[Optional[StrictInt], Field(description="The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999")] = None,
@@ -5134,7 +5244,7 @@ class DefaultApi:
         Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method [revokeChatInviteLink](https://core.telegram.org/bots/api/#revokechatinvitelink). Returns the new invite link as [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param name: Invite link name; 0-32 characters
         :type name: str
         :param expire_date: Point in time (Unix timestamp) when the link will expire
@@ -5178,7 +5288,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "CreateChatInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -5281,7 +5391,7 @@ class DefaultApi:
     @validate_call
     async def post_create_chat_subscription_invite_link(
         self,
-        chat_id: PostCreateChatSubscriptionInviteLinkRequestChatId,
+        chat_id: CreateChatSubscriptionInviteLinkRequestChatId,
         subscription_period: Annotated[StrictInt, Field(description="The number of seconds the subscription will be active for before the next payment. Currently, it must always be 2592000 (30 days).")],
         subscription_price: Annotated[StrictInt, Field(description="The amount of Telegram Stars a user must pay initially and after each subsequent subscription period to be a member of the chat; 1-10000")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=32)]], Field(description="Invite link name; 0-32 characters")] = None,
@@ -5297,13 +5407,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostCreateChatInviteLink200Response:
+    ) -> CreateChatSubscriptionInviteLinkResponse:
         """createChatSubscriptionInviteLink
 
         Use this method to create a [subscription invite link](https://telegram.org/blog/superchannels-star-reactions-subscriptions#star-subscriptions) for a channel chat. The bot must have the *can\\_invite\\_users* administrator rights. The link can be edited using the method [editChatSubscriptionInviteLink](https://core.telegram.org/bots/api/#editchatsubscriptioninvitelink) or revoked using the method [revokeChatInviteLink](https://core.telegram.org/bots/api/#revokechatinvitelink). Returns the new invite link as a [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostCreateChatSubscriptionInviteLinkRequestChatId
+        :type chat_id: CreateChatSubscriptionInviteLinkRequestChatId
         :param subscription_period: The number of seconds the subscription will be active for before the next payment. Currently, it must always be 2592000 (30 days). (required)
         :type subscription_period: int
         :param subscription_price: The amount of Telegram Stars a user must pay initially and after each subsequent subscription period to be a member of the chat; 1-10000 (required)
@@ -5344,7 +5454,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "CreateChatSubscriptionInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -5361,7 +5471,7 @@ class DefaultApi:
     @validate_call
     async def post_create_chat_subscription_invite_link_with_http_info(
         self,
-        chat_id: PostCreateChatSubscriptionInviteLinkRequestChatId,
+        chat_id: CreateChatSubscriptionInviteLinkRequestChatId,
         subscription_period: Annotated[StrictInt, Field(description="The number of seconds the subscription will be active for before the next payment. Currently, it must always be 2592000 (30 days).")],
         subscription_price: Annotated[StrictInt, Field(description="The amount of Telegram Stars a user must pay initially and after each subsequent subscription period to be a member of the chat; 1-10000")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=32)]], Field(description="Invite link name; 0-32 characters")] = None,
@@ -5377,13 +5487,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostCreateChatInviteLink200Response]:
+    ) -> ApiResponse[CreateChatSubscriptionInviteLinkResponse]:
         """createChatSubscriptionInviteLink
 
         Use this method to create a [subscription invite link](https://telegram.org/blog/superchannels-star-reactions-subscriptions#star-subscriptions) for a channel chat. The bot must have the *can\\_invite\\_users* administrator rights. The link can be edited using the method [editChatSubscriptionInviteLink](https://core.telegram.org/bots/api/#editchatsubscriptioninvitelink) or revoked using the method [revokeChatInviteLink](https://core.telegram.org/bots/api/#revokechatinvitelink). Returns the new invite link as a [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostCreateChatSubscriptionInviteLinkRequestChatId
+        :type chat_id: CreateChatSubscriptionInviteLinkRequestChatId
         :param subscription_period: The number of seconds the subscription will be active for before the next payment. Currently, it must always be 2592000 (30 days). (required)
         :type subscription_period: int
         :param subscription_price: The amount of Telegram Stars a user must pay initially and after each subsequent subscription period to be a member of the chat; 1-10000 (required)
@@ -5424,7 +5534,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "CreateChatSubscriptionInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -5441,7 +5551,7 @@ class DefaultApi:
     @validate_call
     async def post_create_chat_subscription_invite_link_without_preload_content(
         self,
-        chat_id: PostCreateChatSubscriptionInviteLinkRequestChatId,
+        chat_id: CreateChatSubscriptionInviteLinkRequestChatId,
         subscription_period: Annotated[StrictInt, Field(description="The number of seconds the subscription will be active for before the next payment. Currently, it must always be 2592000 (30 days).")],
         subscription_price: Annotated[StrictInt, Field(description="The amount of Telegram Stars a user must pay initially and after each subsequent subscription period to be a member of the chat; 1-10000")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=32)]], Field(description="Invite link name; 0-32 characters")] = None,
@@ -5463,7 +5573,7 @@ class DefaultApi:
         Use this method to create a [subscription invite link](https://telegram.org/blog/superchannels-star-reactions-subscriptions#star-subscriptions) for a channel chat. The bot must have the *can\\_invite\\_users* administrator rights. The link can be edited using the method [editChatSubscriptionInviteLink](https://core.telegram.org/bots/api/#editchatsubscriptioninvitelink) or revoked using the method [revokeChatInviteLink](https://core.telegram.org/bots/api/#revokechatinvitelink). Returns the new invite link as a [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostCreateChatSubscriptionInviteLinkRequestChatId
+        :type chat_id: CreateChatSubscriptionInviteLinkRequestChatId
         :param subscription_period: The number of seconds the subscription will be active for before the next payment. Currently, it must always be 2592000 (30 days). (required)
         :type subscription_period: int
         :param subscription_price: The amount of Telegram Stars a user must pay initially and after each subsequent subscription period to be a member of the chat; 1-10000 (required)
@@ -5504,7 +5614,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "CreateChatSubscriptionInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -5604,7 +5714,7 @@ class DefaultApi:
     @validate_call
     async def post_create_forum_topic(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         name: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Topic name, 1-128 characters")],
         icon_color: Annotated[Optional[StrictInt], Field(description="Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)")] = None,
         icon_custom_emoji_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers.")] = None,
@@ -5620,13 +5730,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostCreateForumTopic200Response:
+    ) -> CreateForumTopicResponse:
         """createForumTopic
 
         Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns information about the created topic as a [ForumTopic](https://core.telegram.org/bots/api/#forumtopic) object.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param name: Topic name, 1-128 characters (required)
         :type name: str
         :param icon_color: Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)
@@ -5667,7 +5777,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateForumTopic200Response",
+            '200': "CreateForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -5684,7 +5794,7 @@ class DefaultApi:
     @validate_call
     async def post_create_forum_topic_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         name: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Topic name, 1-128 characters")],
         icon_color: Annotated[Optional[StrictInt], Field(description="Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)")] = None,
         icon_custom_emoji_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers.")] = None,
@@ -5700,13 +5810,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostCreateForumTopic200Response]:
+    ) -> ApiResponse[CreateForumTopicResponse]:
         """createForumTopic
 
         Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns information about the created topic as a [ForumTopic](https://core.telegram.org/bots/api/#forumtopic) object.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param name: Topic name, 1-128 characters (required)
         :type name: str
         :param icon_color: Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)
@@ -5747,7 +5857,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateForumTopic200Response",
+            '200': "CreateForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -5764,7 +5874,7 @@ class DefaultApi:
     @validate_call
     async def post_create_forum_topic_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         name: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Topic name, 1-128 characters")],
         icon_color: Annotated[Optional[StrictInt], Field(description="Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)")] = None,
         icon_custom_emoji_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers.")] = None,
@@ -5786,7 +5896,7 @@ class DefaultApi:
         Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns information about the created topic as a [ForumTopic](https://core.telegram.org/bots/api/#forumtopic) object.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param name: Topic name, 1-128 characters (required)
         :type name: str
         :param icon_color: Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)
@@ -5827,7 +5937,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateForumTopic200Response",
+            '200': "CreateForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -5961,7 +6071,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostExportChatInviteLink200Response:
+    ) -> CreateInvoiceLinkResponse:
         """createInvoiceLink
 
         Use this method to create a link for an invoice. Returns the created invoice link as *String* on success.
@@ -6062,7 +6172,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostExportChatInviteLink200Response",
+            '200': "CreateInvoiceLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -6113,7 +6223,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostExportChatInviteLink200Response]:
+    ) -> ApiResponse[CreateInvoiceLinkResponse]:
         """createInvoiceLink
 
         Use this method to create a link for an invoice. Returns the created invoice link as *String* on success.
@@ -6214,7 +6324,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostExportChatInviteLink200Response",
+            '200': "CreateInvoiceLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -6366,7 +6476,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostExportChatInviteLink200Response",
+            '200': "CreateInvoiceLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -6540,7 +6650,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> CreateNewStickerSetResponse:
         """createNewStickerSet
 
         Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. Returns *True* on success.
@@ -6593,7 +6703,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "CreateNewStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -6628,7 +6738,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[CreateNewStickerSetResponse]:
         """createNewStickerSet
 
         Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. Returns *True* on success.
@@ -6681,7 +6791,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "CreateNewStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -6769,7 +6879,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "CreateNewStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -6842,7 +6952,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -6874,7 +6985,7 @@ class DefaultApi:
     @validate_call
     async def post_decline_chat_join_request(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -6888,13 +6999,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> DeclineChatJoinRequestResponse:
         """declineChatJoinRequest
 
         Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the *can\\_invite\\_users* administrator right. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -6929,7 +7040,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeclineChatJoinRequestResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -6946,7 +7057,7 @@ class DefaultApi:
     @validate_call
     async def post_decline_chat_join_request_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -6960,13 +7071,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[DeclineChatJoinRequestResponse]:
         """declineChatJoinRequest
 
         Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the *can\\_invite\\_users* administrator right. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -7001,7 +7112,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeclineChatJoinRequestResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -7018,7 +7129,7 @@ class DefaultApi:
     @validate_call
     async def post_decline_chat_join_request_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -7038,7 +7149,7 @@ class DefaultApi:
         Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the *can\\_invite\\_users* administrator right. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -7073,7 +7184,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeclineChatJoinRequestResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -7181,7 +7292,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> DeleteBusinessMessagesResponse:
         """deleteBusinessMessages
 
         Delete messages on behalf of a business account. Requires the *can\\_delete\\_sent\\_messages* business bot right to delete messages sent by the bot itself, or the *can\\_delete\\_all\\_messages* business bot right to delete any message. Returns *True* on success.
@@ -7222,7 +7333,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteBusinessMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -7253,7 +7364,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[DeleteBusinessMessagesResponse]:
         """deleteBusinessMessages
 
         Delete messages on behalf of a business account. Requires the *can\\_delete\\_sent\\_messages* business bot right to delete messages sent by the bot itself, or the *can\\_delete\\_all\\_messages* business bot right to delete any message. Returns *True* on success.
@@ -7294,7 +7405,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteBusinessMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -7366,7 +7477,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteBusinessMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -7461,7 +7572,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_chat_photo(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7474,13 +7585,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> DeleteChatPhotoResponse:
         """deleteChatPhoto
 
         Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7512,7 +7623,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteChatPhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -7529,7 +7640,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_chat_photo_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7542,13 +7653,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[DeleteChatPhotoResponse]:
         """deleteChatPhoto
 
         Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7580,7 +7691,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteChatPhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -7597,7 +7708,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_chat_photo_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7616,7 +7727,7 @@ class DefaultApi:
         Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7648,7 +7759,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteChatPhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -7739,7 +7850,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_chat_sticker_set(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7752,13 +7863,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> DeleteChatStickerSetResponse:
         """deleteChatStickerSet
 
         Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7790,7 +7901,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteChatStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -7807,7 +7918,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_chat_sticker_set_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7820,13 +7931,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[DeleteChatStickerSetResponse]:
         """deleteChatStickerSet
 
         Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7858,7 +7969,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteChatStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -7875,7 +7986,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_chat_sticker_set_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7894,7 +8005,7 @@ class DefaultApi:
         Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7926,7 +8037,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteChatStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -8017,7 +8128,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_forum_topic(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -8031,13 +8142,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> DeleteForumTopicResponse:
         """deleteForumTopic
 
         Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_delete\\_messages* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -8072,7 +8183,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -8089,7 +8200,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_forum_topic_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -8103,13 +8214,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[DeleteForumTopicResponse]:
         """deleteForumTopic
 
         Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_delete\\_messages* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -8144,7 +8255,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -8161,7 +8272,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_forum_topic_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -8181,7 +8292,7 @@ class DefaultApi:
         Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_delete\\_messages* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -8216,7 +8327,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -8310,7 +8421,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_message(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_id: Annotated[StrictInt, Field(description="Identifier of the message to delete")],
         _request_timeout: Union[
             None,
@@ -8324,13 +8435,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> DeleteMessageResponse:
         """deleteMessage
 
         Use this method to delete a message, including service messages, with the following limitations:   \\- A message can only be deleted if it was sent less than 48 hours ago.   \\- Service messages about a supergroup, channel, or forum topic creation can't be deleted.   \\- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.   \\- Bots can delete outgoing messages in private chats, groups, and supergroups.   \\- Bots can delete incoming messages in private chats.   \\- Bots granted *can\\_post\\_messages* permissions can delete outgoing messages in channels.   \\- If the bot is an administrator of a group, it can delete any message there.   \\- If the bot has *can\\_delete\\_messages* permission in a supergroup or a channel, it can delete any message there.   Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_id: Identifier of the message to delete (required)
         :type message_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -8365,7 +8476,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -8382,7 +8493,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_message_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_id: Annotated[StrictInt, Field(description="Identifier of the message to delete")],
         _request_timeout: Union[
             None,
@@ -8396,13 +8507,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[DeleteMessageResponse]:
         """deleteMessage
 
         Use this method to delete a message, including service messages, with the following limitations:   \\- A message can only be deleted if it was sent less than 48 hours ago.   \\- Service messages about a supergroup, channel, or forum topic creation can't be deleted.   \\- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.   \\- Bots can delete outgoing messages in private chats, groups, and supergroups.   \\- Bots can delete incoming messages in private chats.   \\- Bots granted *can\\_post\\_messages* permissions can delete outgoing messages in channels.   \\- If the bot is an administrator of a group, it can delete any message there.   \\- If the bot has *can\\_delete\\_messages* permission in a supergroup or a channel, it can delete any message there.   Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_id: Identifier of the message to delete (required)
         :type message_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -8437,7 +8548,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -8454,7 +8565,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_message_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_id: Annotated[StrictInt, Field(description="Identifier of the message to delete")],
         _request_timeout: Union[
             None,
@@ -8474,7 +8585,7 @@ class DefaultApi:
         Use this method to delete a message, including service messages, with the following limitations:   \\- A message can only be deleted if it was sent less than 48 hours ago.   \\- Service messages about a supergroup, channel, or forum topic creation can't be deleted.   \\- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.   \\- Bots can delete outgoing messages in private chats, groups, and supergroups.   \\- Bots can delete incoming messages in private chats.   \\- Bots granted *can\\_post\\_messages* permissions can delete outgoing messages in channels.   \\- If the bot is an administrator of a group, it can delete any message there.   \\- If the bot has *can\\_delete\\_messages* permission in a supergroup or a channel, it can delete any message there.   Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_id: Identifier of the message to delete (required)
         :type message_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -8509,7 +8620,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -8603,7 +8714,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_messages(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages to delete. See [deleteMessage](https://core.telegram.org/bots/api/#deletemessage) for limitations on which messages can be deleted")],
         _request_timeout: Union[
             None,
@@ -8617,13 +8728,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> DeleteMessagesResponse:
         """deleteMessages
 
         Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_ids: A JSON-serialized list of 1-100 identifiers of messages to delete. See [deleteMessage](https://core.telegram.org/bots/api/#deletemessage) for limitations on which messages can be deleted (required)
         :type message_ids: List[int]
         :param _request_timeout: timeout setting for this request. If one
@@ -8658,7 +8769,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -8675,7 +8786,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_messages_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages to delete. See [deleteMessage](https://core.telegram.org/bots/api/#deletemessage) for limitations on which messages can be deleted")],
         _request_timeout: Union[
             None,
@@ -8689,13 +8800,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[DeleteMessagesResponse]:
         """deleteMessages
 
         Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_ids: A JSON-serialized list of 1-100 identifiers of messages to delete. See [deleteMessage](https://core.telegram.org/bots/api/#deletemessage) for limitations on which messages can be deleted (required)
         :type message_ids: List[int]
         :param _request_timeout: timeout setting for this request. If one
@@ -8730,7 +8841,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -8747,7 +8858,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_messages_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages to delete. See [deleteMessage](https://core.telegram.org/bots/api/#deletemessage) for limitations on which messages can be deleted")],
         _request_timeout: Union[
             None,
@@ -8767,7 +8878,7 @@ class DefaultApi:
         Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_ids: A JSON-serialized list of 1-100 identifiers of messages to delete. See [deleteMessage](https://core.telegram.org/bots/api/#deletemessage) for limitations on which messages can be deleted (required)
         :type message_ids: List[int]
         :param _request_timeout: timeout setting for this request. If one
@@ -8802,7 +8913,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -8911,7 +9022,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> DeleteMyCommandsResponse:
         """deleteMyCommands
 
         Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, [higher level commands](https://core.telegram.org/bots/api/#determining-list-of-commands) will be shown to affected users. Returns *True* on success.
@@ -8952,7 +9063,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteMyCommandsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -8983,7 +9094,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[DeleteMyCommandsResponse]:
         """deleteMyCommands
 
         Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, [higher level commands](https://core.telegram.org/bots/api/#determining-list-of-commands) will be shown to affected users. Returns *True* on success.
@@ -9024,7 +9135,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteMyCommandsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -9096,7 +9207,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteMyCommandsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -9203,7 +9314,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> DeleteStickerFromSetResponse:
         """deleteStickerFromSet
 
         Use this method to delete a sticker from a set created by the bot. Returns *True* on success.
@@ -9241,7 +9352,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteStickerFromSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -9271,7 +9382,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[DeleteStickerFromSetResponse]:
         """deleteStickerFromSet
 
         Use this method to delete a sticker from a set created by the bot. Returns *True* on success.
@@ -9309,7 +9420,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteStickerFromSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -9377,7 +9488,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteStickerFromSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -9481,7 +9592,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> DeleteStickerSetResponse:
         """deleteStickerSet
 
         Use this method to delete a sticker set that was created by the bot. Returns *True* on success.
@@ -9519,7 +9630,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -9549,7 +9660,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[DeleteStickerSetResponse]:
         """deleteStickerSet
 
         Use this method to delete a sticker set that was created by the bot. Returns *True* on success.
@@ -9587,7 +9698,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -9655,7 +9766,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -9760,7 +9871,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> DeleteStoryResponse:
         """deleteStory
 
         Deletes a story previously posted by the bot on behalf of a managed business account. Requires the *can\\_manage\\_stories* business bot right. Returns *True* on success.
@@ -9801,7 +9912,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteStoryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -9832,7 +9943,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[DeleteStoryResponse]:
         """deleteStory
 
         Deletes a story previously posted by the bot on behalf of a managed business account. Requires the *can\\_manage\\_stories* business bot right. Returns *True* on success.
@@ -9873,7 +9984,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteStoryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -9945,7 +10056,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteStoryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -10052,7 +10163,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> DeleteWebhookResponse:
         """deleteWebhook
 
         Use this method to remove webhook integration if you decide to switch back to [getUpdates](https://core.telegram.org/bots/api/#getupdates). Returns *True* on success.
@@ -10090,7 +10201,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteWebhookResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -10120,7 +10231,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[DeleteWebhookResponse]:
         """deleteWebhook
 
         Use this method to remove webhook integration if you decide to switch back to [getUpdates](https://core.telegram.org/bots/api/#getupdates). Returns *True* on success.
@@ -10158,7 +10269,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteWebhookResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -10226,7 +10337,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "DeleteWebhookResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -10317,7 +10428,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_chat_invite_link(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         invite_link: Annotated[StrictStr, Field(description="The invite link to edit")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=32)]], Field(description="Invite link name; 0-32 characters")] = None,
         expire_date: Annotated[Optional[StrictInt], Field(description="Point in time (Unix timestamp) when the link will expire")] = None,
@@ -10335,13 +10446,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostCreateChatInviteLink200Response:
+    ) -> EditChatInviteLinkResponse:
         """editChatInviteLink
 
         Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param invite_link: The invite link to edit (required)
         :type invite_link: str
         :param name: Invite link name; 0-32 characters
@@ -10388,7 +10499,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "EditChatInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -10405,7 +10516,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_chat_invite_link_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         invite_link: Annotated[StrictStr, Field(description="The invite link to edit")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=32)]], Field(description="Invite link name; 0-32 characters")] = None,
         expire_date: Annotated[Optional[StrictInt], Field(description="Point in time (Unix timestamp) when the link will expire")] = None,
@@ -10423,13 +10534,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostCreateChatInviteLink200Response]:
+    ) -> ApiResponse[EditChatInviteLinkResponse]:
         """editChatInviteLink
 
         Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param invite_link: The invite link to edit (required)
         :type invite_link: str
         :param name: Invite link name; 0-32 characters
@@ -10476,7 +10587,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "EditChatInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -10493,7 +10604,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_chat_invite_link_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         invite_link: Annotated[StrictStr, Field(description="The invite link to edit")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=32)]], Field(description="Invite link name; 0-32 characters")] = None,
         expire_date: Annotated[Optional[StrictInt], Field(description="Point in time (Unix timestamp) when the link will expire")] = None,
@@ -10517,7 +10628,7 @@ class DefaultApi:
         Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param invite_link: The invite link to edit (required)
         :type invite_link: str
         :param name: Invite link name; 0-32 characters
@@ -10564,7 +10675,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "EditChatInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -10670,7 +10781,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_chat_subscription_invite_link(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         invite_link: Annotated[StrictStr, Field(description="The invite link to edit")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=32)]], Field(description="Invite link name; 0-32 characters")] = None,
         _request_timeout: Union[
@@ -10685,13 +10796,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostCreateChatInviteLink200Response:
+    ) -> EditChatSubscriptionInviteLinkResponse:
         """editChatSubscriptionInviteLink
 
         Use this method to edit a subscription invite link created by the bot. The bot must have the *can\\_invite\\_users* administrator rights. Returns the edited invite link as a [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param invite_link: The invite link to edit (required)
         :type invite_link: str
         :param name: Invite link name; 0-32 characters
@@ -10729,7 +10840,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "EditChatSubscriptionInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -10746,7 +10857,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_chat_subscription_invite_link_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         invite_link: Annotated[StrictStr, Field(description="The invite link to edit")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=32)]], Field(description="Invite link name; 0-32 characters")] = None,
         _request_timeout: Union[
@@ -10761,13 +10872,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostCreateChatInviteLink200Response]:
+    ) -> ApiResponse[EditChatSubscriptionInviteLinkResponse]:
         """editChatSubscriptionInviteLink
 
         Use this method to edit a subscription invite link created by the bot. The bot must have the *can\\_invite\\_users* administrator rights. Returns the edited invite link as a [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param invite_link: The invite link to edit (required)
         :type invite_link: str
         :param name: Invite link name; 0-32 characters
@@ -10805,7 +10916,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "EditChatSubscriptionInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -10822,7 +10933,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_chat_subscription_invite_link_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         invite_link: Annotated[StrictStr, Field(description="The invite link to edit")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=32)]], Field(description="Invite link name; 0-32 characters")] = None,
         _request_timeout: Union[
@@ -10843,7 +10954,7 @@ class DefaultApi:
         Use this method to edit a subscription invite link created by the bot. The bot must have the *can\\_invite\\_users* administrator rights. Returns the edited invite link as a [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param invite_link: The invite link to edit (required)
         :type invite_link: str
         :param name: Invite link name; 0-32 characters
@@ -10881,7 +10992,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "EditChatSubscriptionInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -10978,7 +11089,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_forum_topic(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]], Field(description="New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept")] = None,
         icon_custom_emoji_id: Annotated[Optional[StrictStr], Field(description="New unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept")] = None,
@@ -10994,13 +11105,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> EditForumTopicResponse:
         """editForumTopic
 
         Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param name: New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept
@@ -11041,7 +11152,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "EditForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -11058,7 +11169,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_forum_topic_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]], Field(description="New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept")] = None,
         icon_custom_emoji_id: Annotated[Optional[StrictStr], Field(description="New unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept")] = None,
@@ -11074,13 +11185,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[EditForumTopicResponse]:
         """editForumTopic
 
         Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param name: New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept
@@ -11121,7 +11232,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "EditForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -11138,7 +11249,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_forum_topic_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]], Field(description="New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept")] = None,
         icon_custom_emoji_id: Annotated[Optional[StrictStr], Field(description="New unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept")] = None,
@@ -11160,7 +11271,7 @@ class DefaultApi:
         Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param name: New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept
@@ -11201,7 +11312,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "EditForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -11301,7 +11412,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_general_forum_topic(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         name: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="New topic name, 1-128 characters")],
         _request_timeout: Union[
             None,
@@ -11315,13 +11426,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> EditGeneralForumTopicResponse:
         """editGeneralForumTopic
 
         Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param name: New topic name, 1-128 characters (required)
         :type name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -11356,7 +11467,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "EditGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -11373,7 +11484,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_general_forum_topic_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         name: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="New topic name, 1-128 characters")],
         _request_timeout: Union[
             None,
@@ -11387,13 +11498,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[EditGeneralForumTopicResponse]:
         """editGeneralForumTopic
 
         Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param name: New topic name, 1-128 characters (required)
         :type name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -11428,7 +11539,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "EditGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -11445,7 +11556,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_general_forum_topic_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         name: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="New topic name, 1-128 characters")],
         _request_timeout: Union[
             None,
@@ -11465,7 +11576,7 @@ class DefaultApi:
         Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param name: New topic name, 1-128 characters (required)
         :type name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -11500,7 +11611,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "EditGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -11595,7 +11706,7 @@ class DefaultApi:
     async def post_edit_message_caption(
         self,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="New caption of the message, 0-1024 characters after entities parsing")] = None,
@@ -11615,7 +11726,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostEditMessageText200Response:
+    ) -> EditMessageCaptionResponse:
         """editMessageCaption
 
         Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within **48 hours** from the time they were sent.
@@ -11623,7 +11734,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -11677,7 +11788,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageCaptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -11695,7 +11806,7 @@ class DefaultApi:
     async def post_edit_message_caption_with_http_info(
         self,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="New caption of the message, 0-1024 characters after entities parsing")] = None,
@@ -11715,7 +11826,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostEditMessageText200Response]:
+    ) -> ApiResponse[EditMessageCaptionResponse]:
         """editMessageCaption
 
         Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within **48 hours** from the time they were sent.
@@ -11723,7 +11834,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -11777,7 +11888,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageCaptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -11795,7 +11906,7 @@ class DefaultApi:
     async def post_edit_message_caption_without_preload_content(
         self,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="New caption of the message, 0-1024 characters after entities parsing")] = None,
@@ -11823,7 +11934,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -11877,7 +11988,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageCaptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -11991,12 +12102,349 @@ class DefaultApi:
 
 
     @validate_call
+    async def post_edit_message_checklist(
+        self,
+        business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection on behalf of which the message will be sent")],
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target chat")],
+        message_id: Annotated[StrictInt, Field(description="Unique identifier for the target message")],
+        checklist: InputChecklist,
+        reply_markup: Optional[InlineKeyboardMarkup] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EditMessageChecklistResponse:
+        """editMessageChecklist
+
+        Use this method to edit a checklist on behalf of a connected business account. On success, the edited [Message](https://core.telegram.org/bots/api/#message) is returned.
+
+        :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent (required)
+        :type business_connection_id: str
+        :param chat_id: Unique identifier for the target chat (required)
+        :type chat_id: int
+        :param message_id: Unique identifier for the target message (required)
+        :type message_id: int
+        :param checklist: (required)
+        :type checklist: InputChecklist
+        :param reply_markup:
+        :type reply_markup: InlineKeyboardMarkup
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_edit_message_checklist_serialize(
+            business_connection_id=business_connection_id,
+            chat_id=chat_id,
+            message_id=message_id,
+            checklist=checklist,
+            reply_markup=reply_markup,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "EditMessageChecklistResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def post_edit_message_checklist_with_http_info(
+        self,
+        business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection on behalf of which the message will be sent")],
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target chat")],
+        message_id: Annotated[StrictInt, Field(description="Unique identifier for the target message")],
+        checklist: InputChecklist,
+        reply_markup: Optional[InlineKeyboardMarkup] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EditMessageChecklistResponse]:
+        """editMessageChecklist
+
+        Use this method to edit a checklist on behalf of a connected business account. On success, the edited [Message](https://core.telegram.org/bots/api/#message) is returned.
+
+        :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent (required)
+        :type business_connection_id: str
+        :param chat_id: Unique identifier for the target chat (required)
+        :type chat_id: int
+        :param message_id: Unique identifier for the target message (required)
+        :type message_id: int
+        :param checklist: (required)
+        :type checklist: InputChecklist
+        :param reply_markup:
+        :type reply_markup: InlineKeyboardMarkup
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_edit_message_checklist_serialize(
+            business_connection_id=business_connection_id,
+            chat_id=chat_id,
+            message_id=message_id,
+            checklist=checklist,
+            reply_markup=reply_markup,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "EditMessageChecklistResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def post_edit_message_checklist_without_preload_content(
+        self,
+        business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection on behalf of which the message will be sent")],
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target chat")],
+        message_id: Annotated[StrictInt, Field(description="Unique identifier for the target message")],
+        checklist: InputChecklist,
+        reply_markup: Optional[InlineKeyboardMarkup] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """editMessageChecklist
+
+        Use this method to edit a checklist on behalf of a connected business account. On success, the edited [Message](https://core.telegram.org/bots/api/#message) is returned.
+
+        :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent (required)
+        :type business_connection_id: str
+        :param chat_id: Unique identifier for the target chat (required)
+        :type chat_id: int
+        :param message_id: Unique identifier for the target message (required)
+        :type message_id: int
+        :param checklist: (required)
+        :type checklist: InputChecklist
+        :param reply_markup:
+        :type reply_markup: InlineKeyboardMarkup
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_edit_message_checklist_serialize(
+            business_connection_id=business_connection_id,
+            chat_id=chat_id,
+            message_id=message_id,
+            checklist=checklist,
+            reply_markup=reply_markup,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "EditMessageChecklistResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _post_edit_message_checklist_serialize(
+        self,
+        business_connection_id,
+        chat_id,
+        message_id,
+        checklist,
+        reply_markup,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        if business_connection_id is not None:
+            _form_params.append(('business_connection_id', business_connection_id))
+        if chat_id is not None:
+            _form_params.append(('chat_id', chat_id))
+        if message_id is not None:
+            _form_params.append(('message_id', message_id))
+        if checklist is not None:
+            _form_params.append(('checklist', checklist))
+        if reply_markup is not None:
+            _form_params.append(('reply_markup', reply_markup))
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'multipart/form-data', 
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/editMessageChecklist',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def post_edit_message_live_location(
         self,
         latitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Latitude of new location")],
         longitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Longitude of new location")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         live_period: Annotated[Optional[StrictInt], Field(description="New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current *live\\\\_period* by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then *live\\\\_period* remains unchanged")] = None,
@@ -12016,7 +12464,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostEditMessageText200Response:
+    ) -> EditMessageLiveLocationResponse:
         """editMessageLiveLocation
 
         Use this method to edit live location messages. A location can be edited until its *live\\_period* expires or editing is explicitly disabled by a call to [stopMessageLiveLocation](https://core.telegram.org/bots/api/#stopmessagelivelocation). On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned.
@@ -12028,7 +12476,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -12084,7 +12532,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageLiveLocationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -12104,7 +12552,7 @@ class DefaultApi:
         latitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Latitude of new location")],
         longitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Longitude of new location")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         live_period: Annotated[Optional[StrictInt], Field(description="New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current *live\\\\_period* by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then *live\\\\_period* remains unchanged")] = None,
@@ -12124,7 +12572,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostEditMessageText200Response]:
+    ) -> ApiResponse[EditMessageLiveLocationResponse]:
         """editMessageLiveLocation
 
         Use this method to edit live location messages. A location can be edited until its *live\\_period* expires or editing is explicitly disabled by a call to [stopMessageLiveLocation](https://core.telegram.org/bots/api/#stopmessagelivelocation). On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned.
@@ -12136,7 +12584,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -12192,7 +12640,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageLiveLocationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -12212,7 +12660,7 @@ class DefaultApi:
         latitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Latitude of new location")],
         longitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Longitude of new location")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         live_period: Annotated[Optional[StrictInt], Field(description="New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current *live\\\\_period* by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then *live\\\\_period* remains unchanged")] = None,
@@ -12244,7 +12692,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -12300,7 +12748,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageLiveLocationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -12423,7 +12871,7 @@ class DefaultApi:
         self,
         media: InputMedia,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
@@ -12439,7 +12887,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostEditMessageText200Response:
+    ) -> EditMessageMediaResponse:
         """editMessageMedia
 
         Use this method to edit animation, audio, document, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file\\_id or specify a URL. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within **48 hours** from the time they were sent.
@@ -12449,7 +12897,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -12492,7 +12940,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageMediaResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -12511,7 +12959,7 @@ class DefaultApi:
         self,
         media: InputMedia,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
@@ -12527,7 +12975,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostEditMessageText200Response]:
+    ) -> ApiResponse[EditMessageMediaResponse]:
         """editMessageMedia
 
         Use this method to edit animation, audio, document, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file\\_id or specify a URL. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within **48 hours** from the time they were sent.
@@ -12537,7 +12985,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -12580,7 +13028,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageMediaResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -12599,7 +13047,7 @@ class DefaultApi:
         self,
         media: InputMedia,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
@@ -12625,7 +13073,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -12668,7 +13116,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageMediaResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -12740,7 +13188,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -12773,7 +13222,7 @@ class DefaultApi:
     async def post_edit_message_reply_markup(
         self,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
@@ -12789,7 +13238,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostEditMessageText200Response:
+    ) -> EditMessageReplyMarkupResponse:
         """editMessageReplyMarkup
 
         Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within **48 hours** from the time they were sent.
@@ -12797,7 +13246,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -12839,7 +13288,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageReplyMarkupResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -12857,7 +13306,7 @@ class DefaultApi:
     async def post_edit_message_reply_markup_with_http_info(
         self,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
@@ -12873,7 +13322,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostEditMessageText200Response]:
+    ) -> ApiResponse[EditMessageReplyMarkupResponse]:
         """editMessageReplyMarkup
 
         Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within **48 hours** from the time they were sent.
@@ -12881,7 +13330,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -12923,7 +13372,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageReplyMarkupResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -12941,7 +13390,7 @@ class DefaultApi:
     async def post_edit_message_reply_markup_without_preload_content(
         self,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
@@ -12965,7 +13414,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -13007,7 +13456,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageReplyMarkupResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -13112,7 +13561,7 @@ class DefaultApi:
         self,
         text: Annotated[str, Field(min_length=1, strict=True, max_length=4096, description="New text of the message, 1-4096 characters after entities parsing")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the message text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -13131,7 +13580,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostEditMessageText200Response:
+    ) -> EditMessageTextResponse:
         """editMessageText
 
         Use this method to edit text and [game](https://core.telegram.org/bots/api/#games) messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within **48 hours** from the time they were sent.
@@ -13141,7 +13590,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -13193,7 +13642,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageTextResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -13212,7 +13661,7 @@ class DefaultApi:
         self,
         text: Annotated[str, Field(min_length=1, strict=True, max_length=4096, description="New text of the message, 1-4096 characters after entities parsing")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the message text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -13231,7 +13680,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostEditMessageText200Response]:
+    ) -> ApiResponse[EditMessageTextResponse]:
         """editMessageText
 
         Use this method to edit text and [game](https://core.telegram.org/bots/api/#games) messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within **48 hours** from the time they were sent.
@@ -13241,7 +13690,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -13293,7 +13742,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageTextResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -13312,7 +13761,7 @@ class DefaultApi:
         self,
         text: Annotated[str, Field(min_length=1, strict=True, max_length=4096, description="New text of the message, 1-4096 characters after entities parsing")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the message text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -13341,7 +13790,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message to edit
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -13393,7 +13842,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "EditMessageTextResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -13528,7 +13977,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostPostStory200Response:
+    ) -> EditStoryResponse:
         """editStory
 
         Edits a story previously posted by the bot on behalf of a managed business account. Requires the *can\\_manage\\_stories* business bot right. Returns [Story](https://core.telegram.org/bots/api/#story) on success.
@@ -13584,7 +14033,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostPostStory200Response",
+            '200': "EditStoryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -13620,7 +14069,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostPostStory200Response]:
+    ) -> ApiResponse[EditStoryResponse]:
         """editStory
 
         Edits a story previously posted by the bot on behalf of a managed business account. Requires the *can\\_manage\\_stories* business bot right. Returns [Story](https://core.telegram.org/bots/api/#story) on success.
@@ -13676,7 +14125,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostPostStory200Response",
+            '200': "EditStoryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -13768,7 +14217,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostPostStory200Response",
+            '200': "EditStoryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -13845,7 +14294,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -13892,7 +14342,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> EditUserStarSubscriptionResponse:
         """editUserStarSubscription
 
         Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars. Returns *True* on success.
@@ -13936,7 +14386,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "EditUserStarSubscriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -13968,7 +14418,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[EditUserStarSubscriptionResponse]:
         """editUserStarSubscription
 
         Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars. Returns *True* on success.
@@ -14012,7 +14462,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "EditUserStarSubscriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -14088,7 +14538,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "EditUserStarSubscriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -14185,7 +14635,7 @@ class DefaultApi:
     @validate_call
     async def post_export_chat_invite_link(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14198,13 +14648,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostExportChatInviteLink200Response:
+    ) -> ExportChatInviteLinkResponse:
         """exportChatInviteLink
 
         Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the new invite link as *String* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14236,7 +14686,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostExportChatInviteLink200Response",
+            '200': "ExportChatInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -14253,7 +14703,7 @@ class DefaultApi:
     @validate_call
     async def post_export_chat_invite_link_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14266,13 +14716,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostExportChatInviteLink200Response]:
+    ) -> ApiResponse[ExportChatInviteLinkResponse]:
         """exportChatInviteLink
 
         Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the new invite link as *String* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14304,7 +14754,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostExportChatInviteLink200Response",
+            '200': "ExportChatInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -14321,7 +14771,7 @@ class DefaultApi:
     @validate_call
     async def post_export_chat_invite_link_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14340,7 +14790,7 @@ class DefaultApi:
         Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the new invite link as *String* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14372,7 +14822,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostExportChatInviteLink200Response",
+            '200': "ExportChatInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -14463,8 +14913,8 @@ class DefaultApi:
     @validate_call
     async def post_forward_message(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        from_chat_id: PostForwardMessageRequestFromChatId,
+        chat_id: SendMessageRequestChatId,
+        from_chat_id: ForwardMessageRequestFromChatId,
         message_id: Annotated[StrictInt, Field(description="Message identifier in the chat specified in *from\\\\_chat\\\\_id*")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         video_start_timestamp: Annotated[Optional[StrictInt], Field(description="New start timestamp for the forwarded video in the message")] = None,
@@ -14482,15 +14932,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> ForwardMessageResponse:
         """forwardMessage
 
         Use this method to forward messages of any kind. Service messages and messages with protected content can't be forwarded. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param from_chat_id: (required)
-        :type from_chat_id: PostForwardMessageRequestFromChatId
+        :type from_chat_id: ForwardMessageRequestFromChatId
         :param message_id: Message identifier in the chat specified in *from\\\\_chat\\\\_id* (required)
         :type message_id: int
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -14538,7 +14988,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "ForwardMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -14555,8 +15005,8 @@ class DefaultApi:
     @validate_call
     async def post_forward_message_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        from_chat_id: PostForwardMessageRequestFromChatId,
+        chat_id: SendMessageRequestChatId,
+        from_chat_id: ForwardMessageRequestFromChatId,
         message_id: Annotated[StrictInt, Field(description="Message identifier in the chat specified in *from\\\\_chat\\\\_id*")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         video_start_timestamp: Annotated[Optional[StrictInt], Field(description="New start timestamp for the forwarded video in the message")] = None,
@@ -14574,15 +15024,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[ForwardMessageResponse]:
         """forwardMessage
 
         Use this method to forward messages of any kind. Service messages and messages with protected content can't be forwarded. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param from_chat_id: (required)
-        :type from_chat_id: PostForwardMessageRequestFromChatId
+        :type from_chat_id: ForwardMessageRequestFromChatId
         :param message_id: Message identifier in the chat specified in *from\\\\_chat\\\\_id* (required)
         :type message_id: int
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -14630,7 +15080,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "ForwardMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -14647,8 +15097,8 @@ class DefaultApi:
     @validate_call
     async def post_forward_message_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        from_chat_id: PostForwardMessageRequestFromChatId,
+        chat_id: SendMessageRequestChatId,
+        from_chat_id: ForwardMessageRequestFromChatId,
         message_id: Annotated[StrictInt, Field(description="Message identifier in the chat specified in *from\\\\_chat\\\\_id*")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         video_start_timestamp: Annotated[Optional[StrictInt], Field(description="New start timestamp for the forwarded video in the message")] = None,
@@ -14672,9 +15122,9 @@ class DefaultApi:
         Use this method to forward messages of any kind. Service messages and messages with protected content can't be forwarded. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param from_chat_id: (required)
-        :type from_chat_id: PostForwardMessageRequestFromChatId
+        :type from_chat_id: ForwardMessageRequestFromChatId
         :param message_id: Message identifier in the chat specified in *from\\\\_chat\\\\_id* (required)
         :type message_id: int
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -14722,7 +15172,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "ForwardMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -14831,8 +15281,8 @@ class DefaultApi:
     @validate_call
     async def post_forward_messages(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        from_chat_id: PostForwardMessagesRequestFromChatId,
+        chat_id: SendMessageRequestChatId,
+        from_chat_id: ForwardMessagesRequestFromChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to forward. The identifiers must be specified in a strictly increasing order.")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
@@ -14849,15 +15299,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostForwardMessages200Response:
+    ) -> ForwardMessagesResponse:
         """forwardMessages
 
         Use this method to forward multiple messages of any kind. If some of the specified messages can't be found or forwarded, they are skipped. Service messages and messages with protected content can't be forwarded. Album grouping is kept for forwarded messages. On success, an array of [MessageId](https://core.telegram.org/bots/api/#messageid) of the sent messages is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param from_chat_id: (required)
-        :type from_chat_id: PostForwardMessagesRequestFromChatId
+        :type from_chat_id: ForwardMessagesRequestFromChatId
         :param message_ids: A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to forward. The identifiers must be specified in a strictly increasing order. (required)
         :type message_ids: List[int]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -14902,7 +15352,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostForwardMessages200Response",
+            '200': "ForwardMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -14919,8 +15369,8 @@ class DefaultApi:
     @validate_call
     async def post_forward_messages_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        from_chat_id: PostForwardMessagesRequestFromChatId,
+        chat_id: SendMessageRequestChatId,
+        from_chat_id: ForwardMessagesRequestFromChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to forward. The identifiers must be specified in a strictly increasing order.")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
@@ -14937,15 +15387,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostForwardMessages200Response]:
+    ) -> ApiResponse[ForwardMessagesResponse]:
         """forwardMessages
 
         Use this method to forward multiple messages of any kind. If some of the specified messages can't be found or forwarded, they are skipped. Service messages and messages with protected content can't be forwarded. Album grouping is kept for forwarded messages. On success, an array of [MessageId](https://core.telegram.org/bots/api/#messageid) of the sent messages is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param from_chat_id: (required)
-        :type from_chat_id: PostForwardMessagesRequestFromChatId
+        :type from_chat_id: ForwardMessagesRequestFromChatId
         :param message_ids: A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to forward. The identifiers must be specified in a strictly increasing order. (required)
         :type message_ids: List[int]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -14990,7 +15440,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostForwardMessages200Response",
+            '200': "ForwardMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -15007,8 +15457,8 @@ class DefaultApi:
     @validate_call
     async def post_forward_messages_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        from_chat_id: PostForwardMessagesRequestFromChatId,
+        chat_id: SendMessageRequestChatId,
+        from_chat_id: ForwardMessagesRequestFromChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to forward. The identifiers must be specified in a strictly increasing order.")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
@@ -15031,9 +15481,9 @@ class DefaultApi:
         Use this method to forward multiple messages of any kind. If some of the specified messages can't be found or forwarded, they are skipped. Service messages and messages with protected content can't be forwarded. Album grouping is kept for forwarded messages. On success, an array of [MessageId](https://core.telegram.org/bots/api/#messageid) of the sent messages is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param from_chat_id: (required)
-        :type from_chat_id: PostForwardMessagesRequestFromChatId
+        :type from_chat_id: ForwardMessagesRequestFromChatId
         :param message_ids: A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to forward. The identifiers must be specified in a strictly increasing order. (required)
         :type message_ids: List[int]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -15078,7 +15528,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostForwardMessages200Response",
+            '200': "ForwardMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -15197,7 +15647,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetAvailableGifts200Response:
+    ) -> GetAvailableGiftsResponse:
         """getAvailableGifts
 
         Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no parameters. Returns a [Gifts](https://core.telegram.org/bots/api/#gifts) object.
@@ -15232,7 +15682,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetAvailableGifts200Response",
+            '200': "GetAvailableGiftsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -15261,7 +15711,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetAvailableGifts200Response]:
+    ) -> ApiResponse[GetAvailableGiftsResponse]:
         """getAvailableGifts
 
         Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no parameters. Returns a [Gifts](https://core.telegram.org/bots/api/#gifts) object.
@@ -15296,7 +15746,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetAvailableGifts200Response",
+            '200': "GetAvailableGiftsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -15360,7 +15810,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetAvailableGifts200Response",
+            '200': "GetAvailableGiftsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -15434,12 +15884,12 @@ class DefaultApi:
     async def post_get_business_account_gifts(
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
-        exclude_unsaved: Annotated[Optional[StrictBool], Field(description="Pass True to exclude gifts that aren't saved to the account's profile page")] = None,
-        exclude_saved: Annotated[Optional[StrictBool], Field(description="Pass True to exclude gifts that are saved to the account's profile page")] = None,
-        exclude_unlimited: Annotated[Optional[StrictBool], Field(description="Pass True to exclude gifts that can be purchased an unlimited number of times")] = None,
-        exclude_limited: Annotated[Optional[StrictBool], Field(description="Pass True to exclude gifts that can be purchased a limited number of times")] = None,
-        exclude_unique: Annotated[Optional[StrictBool], Field(description="Pass True to exclude unique gifts")] = None,
-        sort_by_price: Annotated[Optional[StrictBool], Field(description="Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.")] = None,
+        exclude_unsaved: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude gifts that aren't saved to the account's profile page")] = None,
+        exclude_saved: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude gifts that are saved to the account's profile page")] = None,
+        exclude_unlimited: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude gifts that can be purchased an unlimited number of times")] = None,
+        exclude_limited: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude gifts that can be purchased a limited number of times")] = None,
+        exclude_unique: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude unique gifts")] = None,
+        sort_by_price: Annotated[Optional[StrictBool], Field(description="Pass *True* to sort results by gift price instead of send date. Sorting is applied before pagination.")] = None,
         offset: Annotated[Optional[StrictStr], Field(description="Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of gifts to be returned; 1-100. Defaults to 100")] = None,
         _request_timeout: Union[
@@ -15454,24 +15904,24 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetBusinessAccountGifts200Response:
+    ) -> GetBusinessAccountGiftsResponse:
         """getBusinessAccountGifts
 
         Returns the gifts received and owned by a managed business account. Requires the *can\\_view\\_gifts\\_and\\_stars* business bot right. Returns [OwnedGifts](https://core.telegram.org/bots/api/#ownedgifts) on success.
 
         :param business_connection_id: Unique identifier of the business connection (required)
         :type business_connection_id: str
-        :param exclude_unsaved: Pass True to exclude gifts that aren't saved to the account's profile page
+        :param exclude_unsaved: Pass *True* to exclude gifts that aren't saved to the account's profile page
         :type exclude_unsaved: bool
-        :param exclude_saved: Pass True to exclude gifts that are saved to the account's profile page
+        :param exclude_saved: Pass *True* to exclude gifts that are saved to the account's profile page
         :type exclude_saved: bool
-        :param exclude_unlimited: Pass True to exclude gifts that can be purchased an unlimited number of times
+        :param exclude_unlimited: Pass *True* to exclude gifts that can be purchased an unlimited number of times
         :type exclude_unlimited: bool
-        :param exclude_limited: Pass True to exclude gifts that can be purchased a limited number of times
+        :param exclude_limited: Pass *True* to exclude gifts that can be purchased a limited number of times
         :type exclude_limited: bool
-        :param exclude_unique: Pass True to exclude unique gifts
+        :param exclude_unique: Pass *True* to exclude unique gifts
         :type exclude_unique: bool
-        :param sort_by_price: Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
+        :param sort_by_price: Pass *True* to sort results by gift price instead of send date. Sorting is applied before pagination.
         :type sort_by_price: bool
         :param offset: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
         :type offset: str
@@ -15516,7 +15966,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetBusinessAccountGifts200Response",
+            '200': "GetBusinessAccountGiftsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -15534,12 +15984,12 @@ class DefaultApi:
     async def post_get_business_account_gifts_with_http_info(
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
-        exclude_unsaved: Annotated[Optional[StrictBool], Field(description="Pass True to exclude gifts that aren't saved to the account's profile page")] = None,
-        exclude_saved: Annotated[Optional[StrictBool], Field(description="Pass True to exclude gifts that are saved to the account's profile page")] = None,
-        exclude_unlimited: Annotated[Optional[StrictBool], Field(description="Pass True to exclude gifts that can be purchased an unlimited number of times")] = None,
-        exclude_limited: Annotated[Optional[StrictBool], Field(description="Pass True to exclude gifts that can be purchased a limited number of times")] = None,
-        exclude_unique: Annotated[Optional[StrictBool], Field(description="Pass True to exclude unique gifts")] = None,
-        sort_by_price: Annotated[Optional[StrictBool], Field(description="Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.")] = None,
+        exclude_unsaved: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude gifts that aren't saved to the account's profile page")] = None,
+        exclude_saved: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude gifts that are saved to the account's profile page")] = None,
+        exclude_unlimited: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude gifts that can be purchased an unlimited number of times")] = None,
+        exclude_limited: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude gifts that can be purchased a limited number of times")] = None,
+        exclude_unique: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude unique gifts")] = None,
+        sort_by_price: Annotated[Optional[StrictBool], Field(description="Pass *True* to sort results by gift price instead of send date. Sorting is applied before pagination.")] = None,
         offset: Annotated[Optional[StrictStr], Field(description="Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of gifts to be returned; 1-100. Defaults to 100")] = None,
         _request_timeout: Union[
@@ -15554,24 +16004,24 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetBusinessAccountGifts200Response]:
+    ) -> ApiResponse[GetBusinessAccountGiftsResponse]:
         """getBusinessAccountGifts
 
         Returns the gifts received and owned by a managed business account. Requires the *can\\_view\\_gifts\\_and\\_stars* business bot right. Returns [OwnedGifts](https://core.telegram.org/bots/api/#ownedgifts) on success.
 
         :param business_connection_id: Unique identifier of the business connection (required)
         :type business_connection_id: str
-        :param exclude_unsaved: Pass True to exclude gifts that aren't saved to the account's profile page
+        :param exclude_unsaved: Pass *True* to exclude gifts that aren't saved to the account's profile page
         :type exclude_unsaved: bool
-        :param exclude_saved: Pass True to exclude gifts that are saved to the account's profile page
+        :param exclude_saved: Pass *True* to exclude gifts that are saved to the account's profile page
         :type exclude_saved: bool
-        :param exclude_unlimited: Pass True to exclude gifts that can be purchased an unlimited number of times
+        :param exclude_unlimited: Pass *True* to exclude gifts that can be purchased an unlimited number of times
         :type exclude_unlimited: bool
-        :param exclude_limited: Pass True to exclude gifts that can be purchased a limited number of times
+        :param exclude_limited: Pass *True* to exclude gifts that can be purchased a limited number of times
         :type exclude_limited: bool
-        :param exclude_unique: Pass True to exclude unique gifts
+        :param exclude_unique: Pass *True* to exclude unique gifts
         :type exclude_unique: bool
-        :param sort_by_price: Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
+        :param sort_by_price: Pass *True* to sort results by gift price instead of send date. Sorting is applied before pagination.
         :type sort_by_price: bool
         :param offset: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
         :type offset: str
@@ -15616,7 +16066,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetBusinessAccountGifts200Response",
+            '200': "GetBusinessAccountGiftsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -15634,12 +16084,12 @@ class DefaultApi:
     async def post_get_business_account_gifts_without_preload_content(
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
-        exclude_unsaved: Annotated[Optional[StrictBool], Field(description="Pass True to exclude gifts that aren't saved to the account's profile page")] = None,
-        exclude_saved: Annotated[Optional[StrictBool], Field(description="Pass True to exclude gifts that are saved to the account's profile page")] = None,
-        exclude_unlimited: Annotated[Optional[StrictBool], Field(description="Pass True to exclude gifts that can be purchased an unlimited number of times")] = None,
-        exclude_limited: Annotated[Optional[StrictBool], Field(description="Pass True to exclude gifts that can be purchased a limited number of times")] = None,
-        exclude_unique: Annotated[Optional[StrictBool], Field(description="Pass True to exclude unique gifts")] = None,
-        sort_by_price: Annotated[Optional[StrictBool], Field(description="Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.")] = None,
+        exclude_unsaved: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude gifts that aren't saved to the account's profile page")] = None,
+        exclude_saved: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude gifts that are saved to the account's profile page")] = None,
+        exclude_unlimited: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude gifts that can be purchased an unlimited number of times")] = None,
+        exclude_limited: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude gifts that can be purchased a limited number of times")] = None,
+        exclude_unique: Annotated[Optional[StrictBool], Field(description="Pass *True* to exclude unique gifts")] = None,
+        sort_by_price: Annotated[Optional[StrictBool], Field(description="Pass *True* to sort results by gift price instead of send date. Sorting is applied before pagination.")] = None,
         offset: Annotated[Optional[StrictStr], Field(description="Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of gifts to be returned; 1-100. Defaults to 100")] = None,
         _request_timeout: Union[
@@ -15661,17 +16111,17 @@ class DefaultApi:
 
         :param business_connection_id: Unique identifier of the business connection (required)
         :type business_connection_id: str
-        :param exclude_unsaved: Pass True to exclude gifts that aren't saved to the account's profile page
+        :param exclude_unsaved: Pass *True* to exclude gifts that aren't saved to the account's profile page
         :type exclude_unsaved: bool
-        :param exclude_saved: Pass True to exclude gifts that are saved to the account's profile page
+        :param exclude_saved: Pass *True* to exclude gifts that are saved to the account's profile page
         :type exclude_saved: bool
-        :param exclude_unlimited: Pass True to exclude gifts that can be purchased an unlimited number of times
+        :param exclude_unlimited: Pass *True* to exclude gifts that can be purchased an unlimited number of times
         :type exclude_unlimited: bool
-        :param exclude_limited: Pass True to exclude gifts that can be purchased a limited number of times
+        :param exclude_limited: Pass *True* to exclude gifts that can be purchased a limited number of times
         :type exclude_limited: bool
-        :param exclude_unique: Pass True to exclude unique gifts
+        :param exclude_unique: Pass *True* to exclude unique gifts
         :type exclude_unique: bool
-        :param sort_by_price: Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
+        :param sort_by_price: Pass *True* to sort results by gift price instead of send date. Sorting is applied before pagination.
         :type sort_by_price: bool
         :param offset: Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
         :type offset: str
@@ -15716,7 +16166,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetBusinessAccountGifts200Response",
+            '200': "GetBusinessAccountGiftsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -15844,7 +16294,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetBusinessAccountStarBalance200Response:
+    ) -> GetBusinessAccountStarBalanceResponse:
         """getBusinessAccountStarBalance
 
         Returns the amount of Telegram Stars owned by a managed business account. Requires the *can\\_view\\_gifts\\_and\\_stars* business bot right. Returns [StarAmount](https://core.telegram.org/bots/api/#staramount) on success.
@@ -15882,7 +16332,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetBusinessAccountStarBalance200Response",
+            '200': "GetBusinessAccountStarBalanceResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -15912,7 +16362,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetBusinessAccountStarBalance200Response]:
+    ) -> ApiResponse[GetBusinessAccountStarBalanceResponse]:
         """getBusinessAccountStarBalance
 
         Returns the amount of Telegram Stars owned by a managed business account. Requires the *can\\_view\\_gifts\\_and\\_stars* business bot right. Returns [StarAmount](https://core.telegram.org/bots/api/#staramount) on success.
@@ -15950,7 +16400,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetBusinessAccountStarBalance200Response",
+            '200': "GetBusinessAccountStarBalanceResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -16018,7 +16468,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetBusinessAccountStarBalance200Response",
+            '200': "GetBusinessAccountStarBalanceResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -16122,7 +16572,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetBusinessConnection200Response:
+    ) -> GetBusinessConnectionResponse:
         """getBusinessConnection
 
         Use this method to get information about the connection of the bot with a business account. Returns a [BusinessConnection](https://core.telegram.org/bots/api/#businessconnection) object on success.
@@ -16160,7 +16610,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetBusinessConnection200Response",
+            '200': "GetBusinessConnectionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -16190,7 +16640,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetBusinessConnection200Response]:
+    ) -> ApiResponse[GetBusinessConnectionResponse]:
         """getBusinessConnection
 
         Use this method to get information about the connection of the bot with a business account. Returns a [BusinessConnection](https://core.telegram.org/bots/api/#businessconnection) object on success.
@@ -16228,7 +16678,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetBusinessConnection200Response",
+            '200': "GetBusinessConnectionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -16296,7 +16746,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetBusinessConnection200Response",
+            '200': "GetBusinessConnectionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -16387,7 +16837,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16400,13 +16850,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetChat200Response:
+    ) -> GetChatResponse:
         """getChat
 
         Use this method to get up-to-date information about the chat. Returns a [ChatFullInfo](https://core.telegram.org/bots/api/#chatfullinfo) object on success.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16438,7 +16888,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChat200Response",
+            '200': "GetChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -16455,7 +16905,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_with_http_info(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16468,13 +16918,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetChat200Response]:
+    ) -> ApiResponse[GetChatResponse]:
         """getChat
 
         Use this method to get up-to-date information about the chat. Returns a [ChatFullInfo](https://core.telegram.org/bots/api/#chatfullinfo) object on success.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16506,7 +16956,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChat200Response",
+            '200': "GetChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -16523,7 +16973,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_without_preload_content(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16542,7 +16992,7 @@ class DefaultApi:
         Use this method to get up-to-date information about the chat. Returns a [ChatFullInfo](https://core.telegram.org/bots/api/#chatfullinfo) object on success.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16574,7 +17024,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChat200Response",
+            '200': "GetChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -16665,7 +17115,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_administrators(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16678,13 +17128,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetChatAdministrators200Response:
+    ) -> GetChatAdministratorsResponse:
         """getChatAdministrators
 
         Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of [ChatMember](https://core.telegram.org/bots/api/#chatmember) objects.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16716,7 +17166,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChatAdministrators200Response",
+            '200': "GetChatAdministratorsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -16733,7 +17183,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_administrators_with_http_info(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16746,13 +17196,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetChatAdministrators200Response]:
+    ) -> ApiResponse[GetChatAdministratorsResponse]:
         """getChatAdministrators
 
         Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of [ChatMember](https://core.telegram.org/bots/api/#chatmember) objects.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16784,7 +17234,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChatAdministrators200Response",
+            '200': "GetChatAdministratorsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -16801,7 +17251,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_administrators_without_preload_content(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16820,7 +17270,7 @@ class DefaultApi:
         Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of [ChatMember](https://core.telegram.org/bots/api/#chatmember) objects.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16852,7 +17302,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChatAdministrators200Response",
+            '200': "GetChatAdministratorsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -16943,7 +17393,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_member(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -16957,13 +17407,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetChatMember200Response:
+    ) -> GetChatMemberResponse:
         """getChatMember
 
         Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a [ChatMember](https://core.telegram.org/bots/api/#chatmember) object on success.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -16998,7 +17448,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChatMember200Response",
+            '200': "GetChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -17015,7 +17465,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_member_with_http_info(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -17029,13 +17479,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetChatMember200Response]:
+    ) -> ApiResponse[GetChatMemberResponse]:
         """getChatMember
 
         Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a [ChatMember](https://core.telegram.org/bots/api/#chatmember) object on success.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -17070,7 +17520,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChatMember200Response",
+            '200': "GetChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -17087,7 +17537,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_member_without_preload_content(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -17107,7 +17557,7 @@ class DefaultApi:
         Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a [ChatMember](https://core.telegram.org/bots/api/#chatmember) object on success.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -17142,7 +17592,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChatMember200Response",
+            '200': "GetChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -17236,7 +17686,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_member_count(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17249,13 +17699,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetChatMemberCount200Response:
+    ) -> GetChatMemberCountResponse:
         """getChatMemberCount
 
         Use this method to get the number of members in a chat. Returns *Int* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17287,7 +17737,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChatMemberCount200Response",
+            '200': "GetChatMemberCountResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -17304,7 +17754,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_member_count_with_http_info(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17317,13 +17767,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetChatMemberCount200Response]:
+    ) -> ApiResponse[GetChatMemberCountResponse]:
         """getChatMemberCount
 
         Use this method to get the number of members in a chat. Returns *Int* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17355,7 +17805,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChatMemberCount200Response",
+            '200': "GetChatMemberCountResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -17372,7 +17822,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_member_count_without_preload_content(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17391,7 +17841,7 @@ class DefaultApi:
         Use this method to get the number of members in a chat. Returns *Int* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17423,7 +17873,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChatMemberCount200Response",
+            '200': "GetChatMemberCountResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -17527,7 +17977,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetChatMenuButton200Response:
+    ) -> GetChatMenuButtonResponse:
         """getChatMenuButton
 
         Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns [MenuButton](https://core.telegram.org/bots/api/#menubutton) on success.
@@ -17565,7 +18015,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChatMenuButton200Response",
+            '200': "GetChatMenuButtonResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -17595,7 +18045,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetChatMenuButton200Response]:
+    ) -> ApiResponse[GetChatMenuButtonResponse]:
         """getChatMenuButton
 
         Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns [MenuButton](https://core.telegram.org/bots/api/#menubutton) on success.
@@ -17633,7 +18083,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChatMenuButton200Response",
+            '200': "GetChatMenuButtonResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -17701,7 +18151,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetChatMenuButton200Response",
+            '200': "GetChatMenuButtonResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -17805,7 +18255,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetForumTopicIconStickers200Response:
+    ) -> GetCustomEmojiStickersResponse:
         """getCustomEmojiStickers
 
         Use this method to get information about custom emoji stickers by their identifiers. Returns an Array of [Sticker](https://core.telegram.org/bots/api/#sticker) objects.
@@ -17843,7 +18293,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetForumTopicIconStickers200Response",
+            '200': "GetCustomEmojiStickersResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -17873,7 +18323,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetForumTopicIconStickers200Response]:
+    ) -> ApiResponse[GetCustomEmojiStickersResponse]:
         """getCustomEmojiStickers
 
         Use this method to get information about custom emoji stickers by their identifiers. Returns an Array of [Sticker](https://core.telegram.org/bots/api/#sticker) objects.
@@ -17911,7 +18361,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetForumTopicIconStickers200Response",
+            '200': "GetCustomEmojiStickersResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -17979,7 +18429,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetForumTopicIconStickers200Response",
+            '200': "GetCustomEmojiStickersResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -18084,7 +18534,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetFile200Response:
+    ) -> GetFileResponse:
         """getFile
 
         Use this method to get basic information about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a [File](https://core.telegram.org/bots/api/#file) object is returned. The file can then be downloaded via the link `https://api.telegram.org/file/bot<token>/<file_path>`, where `<file_path>` is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling [getFile](https://core.telegram.org/bots/api/#getfile) again.
@@ -18122,7 +18572,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetFile200Response",
+            '200': "GetFileResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -18152,7 +18602,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetFile200Response]:
+    ) -> ApiResponse[GetFileResponse]:
         """getFile
 
         Use this method to get basic information about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a [File](https://core.telegram.org/bots/api/#file) object is returned. The file can then be downloaded via the link `https://api.telegram.org/file/bot<token>/<file_path>`, where `<file_path>` is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling [getFile](https://core.telegram.org/bots/api/#getfile) again.
@@ -18190,7 +18640,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetFile200Response",
+            '200': "GetFileResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -18258,7 +18708,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetFile200Response",
+            '200': "GetFileResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -18361,7 +18811,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetForumTopicIconStickers200Response:
+    ) -> GetForumTopicIconStickersResponse:
         """getForumTopicIconStickers
 
         Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user. Requires no parameters. Returns an Array of [Sticker](https://core.telegram.org/bots/api/#sticker) objects.
@@ -18396,7 +18846,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetForumTopicIconStickers200Response",
+            '200': "GetForumTopicIconStickersResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -18425,7 +18875,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetForumTopicIconStickers200Response]:
+    ) -> ApiResponse[GetForumTopicIconStickersResponse]:
         """getForumTopicIconStickers
 
         Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user. Requires no parameters. Returns an Array of [Sticker](https://core.telegram.org/bots/api/#sticker) objects.
@@ -18460,7 +18910,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetForumTopicIconStickers200Response",
+            '200': "GetForumTopicIconStickersResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -18524,7 +18974,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetForumTopicIconStickers200Response",
+            '200': "GetForumTopicIconStickersResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -18613,7 +19063,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetGameHighScores200Response:
+    ) -> GetGameHighScoresResponse:
         """getGameHighScores
 
         Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of [GameHighScore](https://core.telegram.org/bots/api/#gamehighscore) objects.  This method will currently return scores for the target user, plus two of their closest neighbors on each side. Will also return the top three users if the user and their neighbors are not among them. Please note that this behavior is subject to change.
@@ -18660,7 +19110,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetGameHighScores200Response",
+            '200': "GetGameHighScoresResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -18693,7 +19143,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetGameHighScores200Response]:
+    ) -> ApiResponse[GetGameHighScoresResponse]:
         """getGameHighScores
 
         Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of [GameHighScore](https://core.telegram.org/bots/api/#gamehighscore) objects.  This method will currently return scores for the target user, plus two of their closest neighbors on each side. Will also return the top three users if the user and their neighbors are not among them. Please note that this behavior is subject to change.
@@ -18740,7 +19190,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetGameHighScores200Response",
+            '200': "GetGameHighScoresResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -18820,7 +19270,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetGameHighScores200Response",
+            '200': "GetGameHighScoresResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -18932,7 +19382,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetMe200Response:
+    ) -> GetMeResponse:
         """getMe
 
         A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about the bot in form of a [User](https://core.telegram.org/bots/api/#user) object.
@@ -18967,7 +19417,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMe200Response",
+            '200': "GetMeResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -18996,7 +19446,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetMe200Response]:
+    ) -> ApiResponse[GetMeResponse]:
         """getMe
 
         A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about the bot in form of a [User](https://core.telegram.org/bots/api/#user) object.
@@ -19031,7 +19481,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMe200Response",
+            '200': "GetMeResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -19095,7 +19545,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMe200Response",
+            '200': "GetMeResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -19182,7 +19632,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetMyCommands200Response:
+    ) -> GetMyCommandsResponse:
         """getMyCommands
 
         Use this method to get the current list of the bot's commands for the given scope and user language. Returns an Array of [BotCommand](https://core.telegram.org/bots/api/#botcommand) objects. If commands aren't set, an empty list is returned.
@@ -19223,7 +19673,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyCommands200Response",
+            '200': "GetMyCommandsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -19254,7 +19704,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetMyCommands200Response]:
+    ) -> ApiResponse[GetMyCommandsResponse]:
         """getMyCommands
 
         Use this method to get the current list of the bot's commands for the given scope and user language. Returns an Array of [BotCommand](https://core.telegram.org/bots/api/#botcommand) objects. If commands aren't set, an empty list is returned.
@@ -19295,7 +19745,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyCommands200Response",
+            '200': "GetMyCommandsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -19367,7 +19817,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyCommands200Response",
+            '200': "GetMyCommandsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -19474,7 +19924,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetMyDefaultAdministratorRights200Response:
+    ) -> GetMyDefaultAdministratorRightsResponse:
         """getMyDefaultAdministratorRights
 
         Use this method to get the current default administrator rights of the bot. Returns [ChatAdministratorRights](https://core.telegram.org/bots/api/#chatadministratorrights) on success.
@@ -19512,7 +19962,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyDefaultAdministratorRights200Response",
+            '200': "GetMyDefaultAdministratorRightsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -19542,7 +19992,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetMyDefaultAdministratorRights200Response]:
+    ) -> ApiResponse[GetMyDefaultAdministratorRightsResponse]:
         """getMyDefaultAdministratorRights
 
         Use this method to get the current default administrator rights of the bot. Returns [ChatAdministratorRights](https://core.telegram.org/bots/api/#chatadministratorrights) on success.
@@ -19580,7 +20030,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyDefaultAdministratorRights200Response",
+            '200': "GetMyDefaultAdministratorRightsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -19648,7 +20098,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyDefaultAdministratorRights200Response",
+            '200': "GetMyDefaultAdministratorRightsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -19752,7 +20202,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetMyDescription200Response:
+    ) -> GetMyDescriptionResponse:
         """getMyDescription
 
         Use this method to get the current bot description for the given user language. Returns [BotDescription](https://core.telegram.org/bots/api/#botdescription) on success.
@@ -19790,7 +20240,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyDescription200Response",
+            '200': "GetMyDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -19820,7 +20270,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetMyDescription200Response]:
+    ) -> ApiResponse[GetMyDescriptionResponse]:
         """getMyDescription
 
         Use this method to get the current bot description for the given user language. Returns [BotDescription](https://core.telegram.org/bots/api/#botdescription) on success.
@@ -19858,7 +20308,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyDescription200Response",
+            '200': "GetMyDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -19926,7 +20376,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyDescription200Response",
+            '200': "GetMyDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -20030,7 +20480,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetMyName200Response:
+    ) -> GetMyNameResponse:
         """getMyName
 
         Use this method to get the current bot name for the given user language. Returns [BotName](https://core.telegram.org/bots/api/#botname) on success.
@@ -20068,7 +20518,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyName200Response",
+            '200': "GetMyNameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -20098,7 +20548,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetMyName200Response]:
+    ) -> ApiResponse[GetMyNameResponse]:
         """getMyName
 
         Use this method to get the current bot name for the given user language. Returns [BotName](https://core.telegram.org/bots/api/#botname) on success.
@@ -20136,7 +20586,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyName200Response",
+            '200': "GetMyNameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -20204,7 +20654,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyName200Response",
+            '200': "GetMyNameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -20308,7 +20758,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetMyShortDescription200Response:
+    ) -> GetMyShortDescriptionResponse:
         """getMyShortDescription
 
         Use this method to get the current bot short description for the given user language. Returns [BotShortDescription](https://core.telegram.org/bots/api/#botshortdescription) on success.
@@ -20346,7 +20796,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyShortDescription200Response",
+            '200': "GetMyShortDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -20376,7 +20826,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetMyShortDescription200Response]:
+    ) -> ApiResponse[GetMyShortDescriptionResponse]:
         """getMyShortDescription
 
         Use this method to get the current bot short description for the given user language. Returns [BotShortDescription](https://core.telegram.org/bots/api/#botshortdescription) on success.
@@ -20414,7 +20864,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyShortDescription200Response",
+            '200': "GetMyShortDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -20482,7 +20932,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetMyShortDescription200Response",
+            '200': "GetMyShortDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -20571,6 +21021,254 @@ class DefaultApi:
 
 
     @validate_call
+    async def post_get_my_star_balance(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GetMyStarBalanceResponse:
+        """getMyStarBalance
+
+        A method to get the current Telegram Stars balance of the bot. Requires no parameters. On success, returns a [StarAmount](https://core.telegram.org/bots/api/#staramount) object.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_get_my_star_balance_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetMyStarBalanceResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def post_get_my_star_balance_with_http_info(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[GetMyStarBalanceResponse]:
+        """getMyStarBalance
+
+        A method to get the current Telegram Stars balance of the bot. Requires no parameters. On success, returns a [StarAmount](https://core.telegram.org/bots/api/#staramount) object.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_get_my_star_balance_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetMyStarBalanceResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def post_get_my_star_balance_without_preload_content(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """getMyStarBalance
+
+        A method to get the current Telegram Stars balance of the bot. Requires no parameters. On success, returns a [StarAmount](https://core.telegram.org/bots/api/#staramount) object.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_get_my_star_balance_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetMyStarBalanceResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _post_get_my_star_balance_serialize(
+        self,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/getMyStarBalance',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def post_get_star_transactions(
         self,
         offset: Annotated[Optional[StrictInt], Field(description="Number of transactions to skip in the response")] = None,
@@ -20587,7 +21285,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetStarTransactions200Response:
+    ) -> GetStarTransactionsResponse:
         """getStarTransactions
 
         Returns the bot's Telegram Star transactions in chronological order. On success, returns a [StarTransactions](https://core.telegram.org/bots/api/#startransactions) object.
@@ -20628,7 +21326,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetStarTransactions200Response",
+            '200': "GetStarTransactionsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -20659,7 +21357,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetStarTransactions200Response]:
+    ) -> ApiResponse[GetStarTransactionsResponse]:
         """getStarTransactions
 
         Returns the bot's Telegram Star transactions in chronological order. On success, returns a [StarTransactions](https://core.telegram.org/bots/api/#startransactions) object.
@@ -20700,7 +21398,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetStarTransactions200Response",
+            '200': "GetStarTransactionsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -20772,7 +21470,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetStarTransactions200Response",
+            '200': "GetStarTransactionsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -20879,7 +21577,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetStickerSet200Response:
+    ) -> GetStickerSetResponse:
         """getStickerSet
 
         Use this method to get a sticker set. On success, a [StickerSet](https://core.telegram.org/bots/api/#stickerset) object is returned.
@@ -20917,7 +21615,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetStickerSet200Response",
+            '200': "GetStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -20947,7 +21645,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetStickerSet200Response]:
+    ) -> ApiResponse[GetStickerSetResponse]:
         """getStickerSet
 
         Use this method to get a sticker set. On success, a [StickerSet](https://core.telegram.org/bots/api/#stickerset) object is returned.
@@ -20985,7 +21683,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetStickerSet200Response",
+            '200': "GetStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -21053,7 +21751,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetStickerSet200Response",
+            '200': "GetStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -21160,7 +21858,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetUpdates200Response:
+    ) -> GetUpdatesResponse:
         """getUpdates
 
         Use this method to receive incoming updates using long polling ([wiki](https://en.wikipedia.org/wiki/Push_technology#Long_polling)). Returns an Array of [Update](https://core.telegram.org/bots/api/#update) objects.
@@ -21207,7 +21905,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetUpdates200Response",
+            '200': "GetUpdatesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -21240,7 +21938,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetUpdates200Response]:
+    ) -> ApiResponse[GetUpdatesResponse]:
         """getUpdates
 
         Use this method to receive incoming updates using long polling ([wiki](https://en.wikipedia.org/wiki/Push_technology#Long_polling)). Returns an Array of [Update](https://core.telegram.org/bots/api/#update) objects.
@@ -21287,7 +21985,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetUpdates200Response",
+            '200': "GetUpdatesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -21367,7 +22065,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetUpdates200Response",
+            '200': "GetUpdatesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -21468,7 +22166,7 @@ class DefaultApi:
     @validate_call
     async def post_get_user_chat_boosts(
         self,
-        chat_id: PostGetUserChatBoostsRequestChatId,
+        chat_id: GetUserChatBoostsRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -21482,13 +22180,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetUserChatBoosts200Response:
+    ) -> GetUserChatBoostsResponse:
         """getUserChatBoosts
 
         Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat. Returns a [UserChatBoosts](https://core.telegram.org/bots/api/#userchatboosts) object.
 
         :param chat_id: (required)
-        :type chat_id: PostGetUserChatBoostsRequestChatId
+        :type chat_id: GetUserChatBoostsRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -21523,7 +22221,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetUserChatBoosts200Response",
+            '200': "GetUserChatBoostsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -21540,7 +22238,7 @@ class DefaultApi:
     @validate_call
     async def post_get_user_chat_boosts_with_http_info(
         self,
-        chat_id: PostGetUserChatBoostsRequestChatId,
+        chat_id: GetUserChatBoostsRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -21554,13 +22252,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetUserChatBoosts200Response]:
+    ) -> ApiResponse[GetUserChatBoostsResponse]:
         """getUserChatBoosts
 
         Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat. Returns a [UserChatBoosts](https://core.telegram.org/bots/api/#userchatboosts) object.
 
         :param chat_id: (required)
-        :type chat_id: PostGetUserChatBoostsRequestChatId
+        :type chat_id: GetUserChatBoostsRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -21595,7 +22293,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetUserChatBoosts200Response",
+            '200': "GetUserChatBoostsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -21612,7 +22310,7 @@ class DefaultApi:
     @validate_call
     async def post_get_user_chat_boosts_without_preload_content(
         self,
-        chat_id: PostGetUserChatBoostsRequestChatId,
+        chat_id: GetUserChatBoostsRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -21632,7 +22330,7 @@ class DefaultApi:
         Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat. Returns a [UserChatBoosts](https://core.telegram.org/bots/api/#userchatboosts) object.
 
         :param chat_id: (required)
-        :type chat_id: PostGetUserChatBoostsRequestChatId
+        :type chat_id: GetUserChatBoostsRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -21667,7 +22365,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetUserChatBoosts200Response",
+            '200': "GetUserChatBoostsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -21776,7 +22474,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetUserProfilePhotos200Response:
+    ) -> GetUserProfilePhotosResponse:
         """getUserProfilePhotos
 
         Use this method to get a list of profile pictures for a user. Returns a [UserProfilePhotos](https://core.telegram.org/bots/api/#userprofilephotos) object.
@@ -21820,7 +22518,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetUserProfilePhotos200Response",
+            '200': "GetUserProfilePhotosResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -21852,7 +22550,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetUserProfilePhotos200Response]:
+    ) -> ApiResponse[GetUserProfilePhotosResponse]:
         """getUserProfilePhotos
 
         Use this method to get a list of profile pictures for a user. Returns a [UserProfilePhotos](https://core.telegram.org/bots/api/#userprofilephotos) object.
@@ -21896,7 +22594,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetUserProfilePhotos200Response",
+            '200': "GetUserProfilePhotosResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -21972,7 +22670,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetUserProfilePhotos200Response",
+            '200': "GetUserProfilePhotosResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -22081,7 +22779,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetWebhookInfo200Response:
+    ) -> GetWebhookInfoResponse:
         """getWebhookInfo
 
         Use this method to get current webhook status. Requires no parameters. On success, returns a [WebhookInfo](https://core.telegram.org/bots/api/#webhookinfo) object. If the bot is using [getUpdates](https://core.telegram.org/bots/api/#getupdates), will return an object with the *url* field empty.
@@ -22116,7 +22814,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetWebhookInfo200Response",
+            '200': "GetWebhookInfoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -22145,7 +22843,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetWebhookInfo200Response]:
+    ) -> ApiResponse[GetWebhookInfoResponse]:
         """getWebhookInfo
 
         Use this method to get current webhook status. Requires no parameters. On success, returns a [WebhookInfo](https://core.telegram.org/bots/api/#webhookinfo) object. If the bot is using [getUpdates](https://core.telegram.org/bots/api/#getupdates), will return an object with the *url* field empty.
@@ -22180,7 +22878,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetWebhookInfo200Response",
+            '200': "GetWebhookInfoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -22244,7 +22942,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetWebhookInfo200Response",
+            '200': "GetWebhookInfoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -22335,7 +23033,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> GiftPremiumSubscriptionResponse:
         """giftPremiumSubscription
 
         Gifts a Telegram Premium subscription to the given user. Returns *True* on success.
@@ -22388,7 +23086,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "GiftPremiumSubscriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -22423,7 +23121,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[GiftPremiumSubscriptionResponse]:
         """giftPremiumSubscription
 
         Gifts a Telegram Premium subscription to the given user. Returns *True* on success.
@@ -22476,7 +23174,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "GiftPremiumSubscriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -22564,7 +23262,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "GiftPremiumSubscriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -22671,7 +23369,7 @@ class DefaultApi:
     @validate_call
     async def post_hide_general_forum_topic(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -22684,13 +23382,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> HideGeneralForumTopicResponse:
         """hideGeneralForumTopic
 
         Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. The topic will be automatically closed if it was open. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -22722,7 +23420,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "HideGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -22739,7 +23437,7 @@ class DefaultApi:
     @validate_call
     async def post_hide_general_forum_topic_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -22752,13 +23450,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[HideGeneralForumTopicResponse]:
         """hideGeneralForumTopic
 
         Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. The topic will be automatically closed if it was open. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -22790,7 +23488,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "HideGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -22807,7 +23505,7 @@ class DefaultApi:
     @validate_call
     async def post_hide_general_forum_topic_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -22826,7 +23524,7 @@ class DefaultApi:
         Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. The topic will be automatically closed if it was open. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -22858,7 +23556,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "HideGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -22949,7 +23647,7 @@ class DefaultApi:
     @validate_call
     async def post_leave_chat(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -22962,13 +23660,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> LeaveChatResponse:
         """leaveChat
 
         Use this method for your bot to leave a group, supergroup or channel. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -23000,7 +23698,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "LeaveChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -23017,7 +23715,7 @@ class DefaultApi:
     @validate_call
     async def post_leave_chat_with_http_info(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -23030,13 +23728,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[LeaveChatResponse]:
         """leaveChat
 
         Use this method for your bot to leave a group, supergroup or channel. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -23068,7 +23766,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "LeaveChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -23085,7 +23783,7 @@ class DefaultApi:
     @validate_call
     async def post_leave_chat_without_preload_content(
         self,
-        chat_id: PostLeaveChatRequestChatId,
+        chat_id: LeaveChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -23104,7 +23802,7 @@ class DefaultApi:
         Use this method for your bot to leave a group, supergroup or channel. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostLeaveChatRequestChatId
+        :type chat_id: LeaveChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -23136,7 +23834,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "LeaveChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -23239,7 +23937,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> LogOutResponse:
         """logOut
 
         Use this method to log out from the cloud Bot API server before launching the bot locally. You **must** log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns *True* on success. Requires no parameters.
@@ -23274,7 +23972,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "LogOutResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -23303,7 +24001,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[LogOutResponse]:
         """logOut
 
         Use this method to log out from the cloud Bot API server before launching the bot locally. You **must** log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns *True* on success. Requires no parameters.
@@ -23338,7 +24036,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "LogOutResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -23402,7 +24100,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "LogOutResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -23475,7 +24173,7 @@ class DefaultApi:
     @validate_call
     async def post_pin_chat_message(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_id: Annotated[StrictInt, Field(description="Identifier of a message to pin")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be pinned")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Pass *True* if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels and private chats.")] = None,
@@ -23491,13 +24189,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> PinChatMessageResponse:
         """pinChatMessage
 
         Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_id: Identifier of a message to pin (required)
         :type message_id: int
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be pinned
@@ -23538,7 +24236,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "PinChatMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -23555,7 +24253,7 @@ class DefaultApi:
     @validate_call
     async def post_pin_chat_message_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_id: Annotated[StrictInt, Field(description="Identifier of a message to pin")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be pinned")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Pass *True* if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels and private chats.")] = None,
@@ -23571,13 +24269,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[PinChatMessageResponse]:
         """pinChatMessage
 
         Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_id: Identifier of a message to pin (required)
         :type message_id: int
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be pinned
@@ -23618,7 +24316,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "PinChatMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -23635,7 +24333,7 @@ class DefaultApi:
     @validate_call
     async def post_pin_chat_message_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_id: Annotated[StrictInt, Field(description="Identifier of a message to pin")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be pinned")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Pass *True* if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels and private chats.")] = None,
@@ -23657,7 +24355,7 @@ class DefaultApi:
         Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_id: Identifier of a message to pin (required)
         :type message_id: int
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be pinned
@@ -23698,7 +24396,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "PinChatMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -23819,7 +24517,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostPostStory200Response:
+    ) -> PostStoryResponse:
         """postStory
 
         Posts a story on behalf of a managed business account. Requires the *can\\_manage\\_stories* business bot right. Returns [Story](https://core.telegram.org/bots/api/#story) on success.
@@ -23881,7 +24579,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostPostStory200Response",
+            '200': "PostStoryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -23919,7 +24617,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostPostStory200Response]:
+    ) -> ApiResponse[PostStoryResponse]:
         """postStory
 
         Posts a story on behalf of a managed business account. Requires the *can\\_manage\\_stories* business bot right. Returns [Story](https://core.telegram.org/bots/api/#story) on success.
@@ -23981,7 +24679,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostPostStory200Response",
+            '200': "PostStoryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -24081,7 +24779,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostPostStory200Response",
+            '200': "PostStoryResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -24164,7 +24862,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -24196,10 +24895,10 @@ class DefaultApi:
     @validate_call
     async def post_promote_chat_member(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         is_anonymous: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator's presence in the chat is hidden")] = None,
-        can_manage_chat: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege.")] = None,
+        can_manage_chat: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.")] = None,
         can_delete_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can delete messages of other users")] = None,
         can_manage_video_chats: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can manage video chats")] = None,
         can_restrict_members: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can restrict, ban or unban chat members, or access supergroup statistics")] = None,
@@ -24209,7 +24908,7 @@ class DefaultApi:
         can_post_stories: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can post stories to the chat")] = None,
         can_edit_stories: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access the chat's story archive")] = None,
         can_delete_stories: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can delete stories posted by other users")] = None,
-        can_post_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can post messages in the channel, or access channel statistics; for channels only")] = None,
+        can_post_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only")] = None,
         can_edit_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can edit messages of other users and can pin messages; for channels only")] = None,
         can_pin_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can pin messages; for supergroups only")] = None,
         can_manage_topics: Annotated[Optional[StrictBool], Field(description="Pass *True* if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only")] = None,
@@ -24225,18 +24924,18 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> PromoteChatMemberResponse:
         """promoteChatMember
 
         Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass *False* for all boolean parameters to demote a user. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param is_anonymous: Pass *True* if the administrator's presence in the chat is hidden
         :type is_anonymous: bool
-        :param can_manage_chat: Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege.
+        :param can_manage_chat: Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.
         :type can_manage_chat: bool
         :param can_delete_messages: Pass *True* if the administrator can delete messages of other users
         :type can_delete_messages: bool
@@ -24256,7 +24955,7 @@ class DefaultApi:
         :type can_edit_stories: bool
         :param can_delete_stories: Pass *True* if the administrator can delete stories posted by other users
         :type can_delete_stories: bool
-        :param can_post_messages: Pass *True* if the administrator can post messages in the channel, or access channel statistics; for channels only
+        :param can_post_messages: Pass *True* if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only
         :type can_post_messages: bool
         :param can_edit_messages: Pass *True* if the administrator can edit messages of other users and can pin messages; for channels only
         :type can_edit_messages: bool
@@ -24311,7 +25010,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "PromoteChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -24328,10 +25027,10 @@ class DefaultApi:
     @validate_call
     async def post_promote_chat_member_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         is_anonymous: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator's presence in the chat is hidden")] = None,
-        can_manage_chat: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege.")] = None,
+        can_manage_chat: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.")] = None,
         can_delete_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can delete messages of other users")] = None,
         can_manage_video_chats: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can manage video chats")] = None,
         can_restrict_members: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can restrict, ban or unban chat members, or access supergroup statistics")] = None,
@@ -24341,7 +25040,7 @@ class DefaultApi:
         can_post_stories: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can post stories to the chat")] = None,
         can_edit_stories: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access the chat's story archive")] = None,
         can_delete_stories: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can delete stories posted by other users")] = None,
-        can_post_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can post messages in the channel, or access channel statistics; for channels only")] = None,
+        can_post_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only")] = None,
         can_edit_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can edit messages of other users and can pin messages; for channels only")] = None,
         can_pin_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can pin messages; for supergroups only")] = None,
         can_manage_topics: Annotated[Optional[StrictBool], Field(description="Pass *True* if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only")] = None,
@@ -24357,18 +25056,18 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[PromoteChatMemberResponse]:
         """promoteChatMember
 
         Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass *False* for all boolean parameters to demote a user. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param is_anonymous: Pass *True* if the administrator's presence in the chat is hidden
         :type is_anonymous: bool
-        :param can_manage_chat: Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege.
+        :param can_manage_chat: Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.
         :type can_manage_chat: bool
         :param can_delete_messages: Pass *True* if the administrator can delete messages of other users
         :type can_delete_messages: bool
@@ -24388,7 +25087,7 @@ class DefaultApi:
         :type can_edit_stories: bool
         :param can_delete_stories: Pass *True* if the administrator can delete stories posted by other users
         :type can_delete_stories: bool
-        :param can_post_messages: Pass *True* if the administrator can post messages in the channel, or access channel statistics; for channels only
+        :param can_post_messages: Pass *True* if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only
         :type can_post_messages: bool
         :param can_edit_messages: Pass *True* if the administrator can edit messages of other users and can pin messages; for channels only
         :type can_edit_messages: bool
@@ -24443,7 +25142,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "PromoteChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -24460,10 +25159,10 @@ class DefaultApi:
     @validate_call
     async def post_promote_chat_member_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         is_anonymous: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator's presence in the chat is hidden")] = None,
-        can_manage_chat: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege.")] = None,
+        can_manage_chat: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.")] = None,
         can_delete_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can delete messages of other users")] = None,
         can_manage_video_chats: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can manage video chats")] = None,
         can_restrict_members: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can restrict, ban or unban chat members, or access supergroup statistics")] = None,
@@ -24473,7 +25172,7 @@ class DefaultApi:
         can_post_stories: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can post stories to the chat")] = None,
         can_edit_stories: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access the chat's story archive")] = None,
         can_delete_stories: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can delete stories posted by other users")] = None,
-        can_post_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can post messages in the channel, or access channel statistics; for channels only")] = None,
+        can_post_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only")] = None,
         can_edit_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can edit messages of other users and can pin messages; for channels only")] = None,
         can_pin_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can pin messages; for supergroups only")] = None,
         can_manage_topics: Annotated[Optional[StrictBool], Field(description="Pass *True* if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only")] = None,
@@ -24495,12 +25194,12 @@ class DefaultApi:
         Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass *False* for all boolean parameters to demote a user. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param is_anonymous: Pass *True* if the administrator's presence in the chat is hidden
         :type is_anonymous: bool
-        :param can_manage_chat: Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege.
+        :param can_manage_chat: Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.
         :type can_manage_chat: bool
         :param can_delete_messages: Pass *True* if the administrator can delete messages of other users
         :type can_delete_messages: bool
@@ -24520,7 +25219,7 @@ class DefaultApi:
         :type can_edit_stories: bool
         :param can_delete_stories: Pass *True* if the administrator can delete stories posted by other users
         :type can_delete_stories: bool
-        :param can_post_messages: Pass *True* if the administrator can post messages in the channel, or access channel statistics; for channels only
+        :param can_post_messages: Pass *True* if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only
         :type can_post_messages: bool
         :param can_edit_messages: Pass *True* if the administrator can edit messages of other users and can pin messages; for channels only
         :type can_edit_messages: bool
@@ -24575,7 +25274,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "PromoteChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -24729,7 +25428,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> ReadBusinessMessageResponse:
         """readBusinessMessage
 
         Marks incoming message as read on behalf of a business account. Requires the *can\\_read\\_messages* business bot right. Returns *True* on success.
@@ -24773,7 +25472,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ReadBusinessMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -24805,7 +25504,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[ReadBusinessMessageResponse]:
         """readBusinessMessage
 
         Marks incoming message as read on behalf of a business account. Requires the *can\\_read\\_messages* business bot right. Returns *True* on success.
@@ -24849,7 +25548,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ReadBusinessMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -24925,7 +25624,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ReadBusinessMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -25036,7 +25735,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> RefundStarPaymentResponse:
         """refundStarPayment
 
         Refunds a successful payment in [Telegram Stars](https://t.me/BotNews/90). Returns *True* on success.
@@ -25077,7 +25776,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RefundStarPaymentResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -25108,7 +25807,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[RefundStarPaymentResponse]:
         """refundStarPayment
 
         Refunds a successful payment in [Telegram Stars](https://t.me/BotNews/90). Returns *True* on success.
@@ -25149,7 +25848,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RefundStarPaymentResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -25221,7 +25920,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RefundStarPaymentResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -25316,7 +26015,7 @@ class DefaultApi:
     async def post_remove_business_account_profile_photo(
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
-        is_public: Annotated[Optional[StrictBool], Field(description="Pass True to remove the public photo, which is visible even if the main photo is hidden by the business account's privacy settings. After the main photo is removed, the previous profile photo (if present) becomes the main photo.")] = None,
+        is_public: Annotated[Optional[StrictBool], Field(description="Pass *True* to remove the public photo, which is visible even if the main photo is hidden by the business account's privacy settings. After the main photo is removed, the previous profile photo (if present) becomes the main photo.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25329,14 +26028,14 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> RemoveBusinessAccountProfilePhotoResponse:
         """removeBusinessAccountProfilePhoto
 
         Removes the current profile photo of a managed business account. Requires the *can\\_edit\\_profile\\_photo* business bot right. Returns *True* on success.
 
         :param business_connection_id: Unique identifier of the business connection (required)
         :type business_connection_id: str
-        :param is_public: Pass True to remove the public photo, which is visible even if the main photo is hidden by the business account's privacy settings. After the main photo is removed, the previous profile photo (if present) becomes the main photo.
+        :param is_public: Pass *True* to remove the public photo, which is visible even if the main photo is hidden by the business account's privacy settings. After the main photo is removed, the previous profile photo (if present) becomes the main photo.
         :type is_public: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -25370,7 +26069,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RemoveBusinessAccountProfilePhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -25388,7 +26087,7 @@ class DefaultApi:
     async def post_remove_business_account_profile_photo_with_http_info(
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
-        is_public: Annotated[Optional[StrictBool], Field(description="Pass True to remove the public photo, which is visible even if the main photo is hidden by the business account's privacy settings. After the main photo is removed, the previous profile photo (if present) becomes the main photo.")] = None,
+        is_public: Annotated[Optional[StrictBool], Field(description="Pass *True* to remove the public photo, which is visible even if the main photo is hidden by the business account's privacy settings. After the main photo is removed, the previous profile photo (if present) becomes the main photo.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25401,14 +26100,14 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[RemoveBusinessAccountProfilePhotoResponse]:
         """removeBusinessAccountProfilePhoto
 
         Removes the current profile photo of a managed business account. Requires the *can\\_edit\\_profile\\_photo* business bot right. Returns *True* on success.
 
         :param business_connection_id: Unique identifier of the business connection (required)
         :type business_connection_id: str
-        :param is_public: Pass True to remove the public photo, which is visible even if the main photo is hidden by the business account's privacy settings. After the main photo is removed, the previous profile photo (if present) becomes the main photo.
+        :param is_public: Pass *True* to remove the public photo, which is visible even if the main photo is hidden by the business account's privacy settings. After the main photo is removed, the previous profile photo (if present) becomes the main photo.
         :type is_public: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -25442,7 +26141,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RemoveBusinessAccountProfilePhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -25460,7 +26159,7 @@ class DefaultApi:
     async def post_remove_business_account_profile_photo_without_preload_content(
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
-        is_public: Annotated[Optional[StrictBool], Field(description="Pass True to remove the public photo, which is visible even if the main photo is hidden by the business account's privacy settings. After the main photo is removed, the previous profile photo (if present) becomes the main photo.")] = None,
+        is_public: Annotated[Optional[StrictBool], Field(description="Pass *True* to remove the public photo, which is visible even if the main photo is hidden by the business account's privacy settings. After the main photo is removed, the previous profile photo (if present) becomes the main photo.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25480,7 +26179,7 @@ class DefaultApi:
 
         :param business_connection_id: Unique identifier of the business connection (required)
         :type business_connection_id: str
-        :param is_public: Pass True to remove the public photo, which is visible even if the main photo is hidden by the business account's privacy settings. After the main photo is removed, the previous profile photo (if present) becomes the main photo.
+        :param is_public: Pass *True* to remove the public photo, which is visible even if the main photo is hidden by the business account's privacy settings. After the main photo is removed, the previous profile photo (if present) becomes the main photo.
         :type is_public: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -25514,7 +26213,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RemoveBusinessAccountProfilePhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -25608,7 +26307,7 @@ class DefaultApi:
     @validate_call
     async def post_remove_chat_verification(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25621,13 +26320,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> RemoveChatVerificationResponse:
         """removeChatVerification
 
         Removes verification from a chat that is currently verified [on behalf of the organization](https://telegram.org/verify#third-party-verification) represented by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -25659,7 +26358,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RemoveChatVerificationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -25676,7 +26375,7 @@ class DefaultApi:
     @validate_call
     async def post_remove_chat_verification_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25689,13 +26388,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[RemoveChatVerificationResponse]:
         """removeChatVerification
 
         Removes verification from a chat that is currently verified [on behalf of the organization](https://telegram.org/verify#third-party-verification) represented by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -25727,7 +26426,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RemoveChatVerificationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -25744,7 +26443,7 @@ class DefaultApi:
     @validate_call
     async def post_remove_chat_verification_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25763,7 +26462,7 @@ class DefaultApi:
         Removes verification from a chat that is currently verified [on behalf of the organization](https://telegram.org/verify#third-party-verification) represented by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -25795,7 +26494,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RemoveChatVerificationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -25899,7 +26598,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> RemoveUserVerificationResponse:
         """removeUserVerification
 
         Removes verification from a user who is currently verified [on behalf of the organization](https://telegram.org/verify#third-party-verification) represented by the bot. Returns *True* on success.
@@ -25937,7 +26636,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RemoveUserVerificationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -25967,7 +26666,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[RemoveUserVerificationResponse]:
         """removeUserVerification
 
         Removes verification from a user who is currently verified [on behalf of the organization](https://telegram.org/verify#third-party-verification) represented by the bot. Returns *True* on success.
@@ -26005,7 +26704,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RemoveUserVerificationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -26073,7 +26772,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RemoveUserVerificationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -26164,7 +26863,7 @@ class DefaultApi:
     @validate_call
     async def post_reopen_forum_topic(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -26178,13 +26877,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> ReopenForumTopicResponse:
         """reopenForumTopic
 
         Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -26219,7 +26918,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ReopenForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -26236,7 +26935,7 @@ class DefaultApi:
     @validate_call
     async def post_reopen_forum_topic_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -26250,13 +26949,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[ReopenForumTopicResponse]:
         """reopenForumTopic
 
         Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -26291,7 +26990,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ReopenForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -26308,7 +27007,7 @@ class DefaultApi:
     @validate_call
     async def post_reopen_forum_topic_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -26328,7 +27027,7 @@ class DefaultApi:
         Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -26363,7 +27062,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ReopenForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -26457,7 +27156,7 @@ class DefaultApi:
     @validate_call
     async def post_reopen_general_forum_topic(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -26470,13 +27169,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> ReopenGeneralForumTopicResponse:
         """reopenGeneralForumTopic
 
         Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. The topic will be automatically unhidden if it was hidden. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -26508,7 +27207,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ReopenGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -26525,7 +27224,7 @@ class DefaultApi:
     @validate_call
     async def post_reopen_general_forum_topic_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -26538,13 +27237,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[ReopenGeneralForumTopicResponse]:
         """reopenGeneralForumTopic
 
         Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. The topic will be automatically unhidden if it was hidden. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -26576,7 +27275,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ReopenGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -26593,7 +27292,7 @@ class DefaultApi:
     @validate_call
     async def post_reopen_general_forum_topic_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -26612,7 +27311,7 @@ class DefaultApi:
         Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. The topic will be automatically unhidden if it was hidden. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -26644,7 +27343,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ReopenGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -26751,7 +27450,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> ReplaceStickerInSetResponse:
         """replaceStickerInSet
 
         Use this method to replace an existing sticker in a sticker set with a new one. The method is equivalent to calling [deleteStickerFromSet](https://core.telegram.org/bots/api/#deletestickerfromset), then [addStickerToSet](https://core.telegram.org/bots/api/#addstickertoset), then [setStickerPositionInSet](https://core.telegram.org/bots/api/#setstickerpositioninset). Returns *True* on success.
@@ -26798,7 +27497,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ReplaceStickerInSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -26831,7 +27530,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[ReplaceStickerInSetResponse]:
         """replaceStickerInSet
 
         Use this method to replace an existing sticker in a sticker set with a new one. The method is equivalent to calling [deleteStickerFromSet](https://core.telegram.org/bots/api/#deletestickerfromset), then [addStickerToSet](https://core.telegram.org/bots/api/#addstickertoset), then [setStickerPositionInSet](https://core.telegram.org/bots/api/#setstickerpositioninset). Returns *True* on success.
@@ -26878,7 +27577,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ReplaceStickerInSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -26958,7 +27657,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "ReplaceStickerInSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -27024,7 +27723,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -27056,7 +27756,7 @@ class DefaultApi:
     @validate_call
     async def post_restrict_chat_member(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         permissions: ChatPermissions,
         use_independent_chat_permissions: Annotated[Optional[StrictBool], Field(description="Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.")] = None,
@@ -27073,13 +27773,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> RestrictChatMemberResponse:
         """restrictChatMember
 
         Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass *True* for all permissions to lift restrictions from a user. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param permissions: (required)
@@ -27123,7 +27823,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RestrictChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -27140,7 +27840,7 @@ class DefaultApi:
     @validate_call
     async def post_restrict_chat_member_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         permissions: ChatPermissions,
         use_independent_chat_permissions: Annotated[Optional[StrictBool], Field(description="Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.")] = None,
@@ -27157,13 +27857,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[RestrictChatMemberResponse]:
         """restrictChatMember
 
         Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass *True* for all permissions to lift restrictions from a user. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param permissions: (required)
@@ -27207,7 +27907,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RestrictChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -27224,7 +27924,7 @@ class DefaultApi:
     @validate_call
     async def post_restrict_chat_member_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         permissions: ChatPermissions,
         use_independent_chat_permissions: Annotated[Optional[StrictBool], Field(description="Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.")] = None,
@@ -27247,7 +27947,7 @@ class DefaultApi:
         Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass *True* for all permissions to lift restrictions from a user. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param permissions: (required)
@@ -27291,7 +27991,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "RestrictChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -27394,7 +28094,7 @@ class DefaultApi:
     @validate_call
     async def post_revoke_chat_invite_link(
         self,
-        chat_id: PostRevokeChatInviteLinkRequestChatId,
+        chat_id: RevokeChatInviteLinkRequestChatId,
         invite_link: Annotated[StrictStr, Field(description="The invite link to revoke")],
         _request_timeout: Union[
             None,
@@ -27408,13 +28108,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostCreateChatInviteLink200Response:
+    ) -> RevokeChatInviteLinkResponse:
         """revokeChatInviteLink
 
         Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostRevokeChatInviteLinkRequestChatId
+        :type chat_id: RevokeChatInviteLinkRequestChatId
         :param invite_link: The invite link to revoke (required)
         :type invite_link: str
         :param _request_timeout: timeout setting for this request. If one
@@ -27449,7 +28149,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "RevokeChatInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -27466,7 +28166,7 @@ class DefaultApi:
     @validate_call
     async def post_revoke_chat_invite_link_with_http_info(
         self,
-        chat_id: PostRevokeChatInviteLinkRequestChatId,
+        chat_id: RevokeChatInviteLinkRequestChatId,
         invite_link: Annotated[StrictStr, Field(description="The invite link to revoke")],
         _request_timeout: Union[
             None,
@@ -27480,13 +28180,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostCreateChatInviteLink200Response]:
+    ) -> ApiResponse[RevokeChatInviteLinkResponse]:
         """revokeChatInviteLink
 
         Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostRevokeChatInviteLinkRequestChatId
+        :type chat_id: RevokeChatInviteLinkRequestChatId
         :param invite_link: The invite link to revoke (required)
         :type invite_link: str
         :param _request_timeout: timeout setting for this request. If one
@@ -27521,7 +28221,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "RevokeChatInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -27538,7 +28238,7 @@ class DefaultApi:
     @validate_call
     async def post_revoke_chat_invite_link_without_preload_content(
         self,
-        chat_id: PostRevokeChatInviteLinkRequestChatId,
+        chat_id: RevokeChatInviteLinkRequestChatId,
         invite_link: Annotated[StrictStr, Field(description="The invite link to revoke")],
         _request_timeout: Union[
             None,
@@ -27558,7 +28258,7 @@ class DefaultApi:
         Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as [ChatInviteLink](https://core.telegram.org/bots/api/#chatinvitelink) object.
 
         :param chat_id: (required)
-        :type chat_id: PostRevokeChatInviteLinkRequestChatId
+        :type chat_id: RevokeChatInviteLinkRequestChatId
         :param invite_link: The invite link to revoke (required)
         :type invite_link: str
         :param _request_timeout: timeout setting for this request. If one
@@ -27593,7 +28293,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostCreateChatInviteLink200Response",
+            '200': "RevokeChatInviteLinkResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -27705,7 +28405,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSavePreparedInlineMessage200Response:
+    ) -> SavePreparedInlineMessageResponse:
         """savePreparedInlineMessage
 
         Stores a message that can be sent by a user of a Mini App. Returns a [PreparedInlineMessage](https://core.telegram.org/bots/api/#preparedinlinemessage) object.
@@ -27758,7 +28458,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSavePreparedInlineMessage200Response",
+            '200': "SavePreparedInlineMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -27793,7 +28493,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSavePreparedInlineMessage200Response]:
+    ) -> ApiResponse[SavePreparedInlineMessageResponse]:
         """savePreparedInlineMessage
 
         Stores a message that can be sent by a user of a Mini App. Returns a [PreparedInlineMessage](https://core.telegram.org/bots/api/#preparedinlinemessage) object.
@@ -27846,7 +28546,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSavePreparedInlineMessage200Response",
+            '200': "SavePreparedInlineMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -27934,7 +28634,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSavePreparedInlineMessage200Response",
+            '200': "SavePreparedInlineMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -28040,14 +28740,14 @@ class DefaultApi:
     @validate_call
     async def post_send_animation(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        animation: PostSendAnimationRequestAnimation,
+        chat_id: SendMessageRequestChatId,
+        animation: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent animation in seconds")] = None,
         width: Annotated[Optional[StrictInt], Field(description="Animation width")] = None,
         height: Annotated[Optional[StrictInt], Field(description="Animation height")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Animation caption (may also be used when resending animation by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the animation caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -28058,7 +28758,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -28071,15 +28771,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendAnimationResponse:
         """sendAnimation
 
         Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param animation: (required)
-        :type animation: PostSendAnimationRequestAnimation
+        :type animation: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -28091,7 +28791,7 @@ class DefaultApi:
         :param height: Animation height
         :type height: int
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param caption: Animation caption (may also be used when resending animation by *file\\\\_id*), 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the animation caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -28113,7 +28813,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -28163,7 +28863,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendAnimationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -28180,14 +28880,14 @@ class DefaultApi:
     @validate_call
     async def post_send_animation_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        animation: PostSendAnimationRequestAnimation,
+        chat_id: SendMessageRequestChatId,
+        animation: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent animation in seconds")] = None,
         width: Annotated[Optional[StrictInt], Field(description="Animation width")] = None,
         height: Annotated[Optional[StrictInt], Field(description="Animation height")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Animation caption (may also be used when resending animation by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the animation caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -28198,7 +28898,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -28211,15 +28911,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendAnimationResponse]:
         """sendAnimation
 
         Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param animation: (required)
-        :type animation: PostSendAnimationRequestAnimation
+        :type animation: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -28231,7 +28931,7 @@ class DefaultApi:
         :param height: Animation height
         :type height: int
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param caption: Animation caption (may also be used when resending animation by *file\\\\_id*), 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the animation caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -28253,7 +28953,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -28303,7 +29003,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendAnimationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -28320,14 +29020,14 @@ class DefaultApi:
     @validate_call
     async def post_send_animation_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        animation: PostSendAnimationRequestAnimation,
+        chat_id: SendMessageRequestChatId,
+        animation: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent animation in seconds")] = None,
         width: Annotated[Optional[StrictInt], Field(description="Animation width")] = None,
         height: Annotated[Optional[StrictInt], Field(description="Animation height")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Animation caption (may also be used when resending animation by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the animation caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -28338,7 +29038,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -28357,9 +29057,9 @@ class DefaultApi:
         Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param animation: (required)
-        :type animation: PostSendAnimationRequestAnimation
+        :type animation: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -28371,7 +29071,7 @@ class DefaultApi:
         :param height: Animation height
         :type height: int
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param caption: Animation caption (may also be used when resending animation by *file\\\\_id*), 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the animation caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -28393,7 +29093,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -28443,7 +29143,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendAnimationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -28555,7 +29255,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -28587,8 +29288,8 @@ class DefaultApi:
     @validate_call
     async def post_send_audio(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        audio: PostSendAudioRequestAudio,
+        chat_id: SendMessageRequestChatId,
+        audio: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Audio caption, 0-1024 characters after entities parsing")] = None,
@@ -28597,13 +29298,13 @@ class DefaultApi:
         duration: Annotated[Optional[StrictInt], Field(description="Duration of the audio in seconds")] = None,
         performer: Annotated[Optional[StrictStr], Field(description="Performer")] = None,
         title: Annotated[Optional[StrictStr], Field(description="Track name")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -28616,15 +29317,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendAudioResponse:
         """sendAudio
 
         Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.  For sending voice messages, use the [sendVoice](https://core.telegram.org/bots/api/#sendvoice) method instead.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param audio: (required)
-        :type audio: PostSendAudioRequestAudio
+        :type audio: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -28642,7 +29343,7 @@ class DefaultApi:
         :param title: Track name
         :type title: str
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the sent message from forwarding and saving
@@ -28654,7 +29355,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -28702,7 +29403,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendAudioResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -28719,8 +29420,8 @@ class DefaultApi:
     @validate_call
     async def post_send_audio_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        audio: PostSendAudioRequestAudio,
+        chat_id: SendMessageRequestChatId,
+        audio: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Audio caption, 0-1024 characters after entities parsing")] = None,
@@ -28729,13 +29430,13 @@ class DefaultApi:
         duration: Annotated[Optional[StrictInt], Field(description="Duration of the audio in seconds")] = None,
         performer: Annotated[Optional[StrictStr], Field(description="Performer")] = None,
         title: Annotated[Optional[StrictStr], Field(description="Track name")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -28748,15 +29449,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendAudioResponse]:
         """sendAudio
 
         Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.  For sending voice messages, use the [sendVoice](https://core.telegram.org/bots/api/#sendvoice) method instead.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param audio: (required)
-        :type audio: PostSendAudioRequestAudio
+        :type audio: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -28774,7 +29475,7 @@ class DefaultApi:
         :param title: Track name
         :type title: str
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the sent message from forwarding and saving
@@ -28786,7 +29487,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -28834,7 +29535,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendAudioResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -28851,8 +29552,8 @@ class DefaultApi:
     @validate_call
     async def post_send_audio_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        audio: PostSendAudioRequestAudio,
+        chat_id: SendMessageRequestChatId,
+        audio: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Audio caption, 0-1024 characters after entities parsing")] = None,
@@ -28861,13 +29562,13 @@ class DefaultApi:
         duration: Annotated[Optional[StrictInt], Field(description="Duration of the audio in seconds")] = None,
         performer: Annotated[Optional[StrictStr], Field(description="Performer")] = None,
         title: Annotated[Optional[StrictStr], Field(description="Track name")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -28886,9 +29587,9 @@ class DefaultApi:
         Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.  For sending voice messages, use the [sendVoice](https://core.telegram.org/bots/api/#sendvoice) method instead.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param audio: (required)
-        :type audio: PostSendAudioRequestAudio
+        :type audio: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -28906,7 +29607,7 @@ class DefaultApi:
         :param title: Track name
         :type title: str
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the sent message from forwarding and saving
@@ -28918,7 +29619,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -28966,7 +29667,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendAudioResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -29072,7 +29773,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -29104,7 +29806,7 @@ class DefaultApi:
     @validate_call
     async def post_send_chat_action(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         action: Annotated[StrictStr, Field(description="Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote).")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the action will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread; for supergroups only")] = None,
@@ -29120,13 +29822,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SendChatActionResponse:
         """sendChatAction
 
         Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns *True* on success.  Example: The [ImageBot](https://t.me/imagebot) needs some time to process a request and upload the image. Instead of sending a text message along the lines of “Retrieving image, please wait…”, the bot may use [sendChatAction](https://core.telegram.org/bots/api/#sendchataction) with *action* = *upload\\_photo*. The user will see a “sending photo” status for the bot.  We only recommend using this method when a response from the bot will take a **noticeable** amount of time to arrive.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param action: Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote). (required)
         :type action: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the action will be sent
@@ -29167,7 +29869,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SendChatActionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -29184,7 +29886,7 @@ class DefaultApi:
     @validate_call
     async def post_send_chat_action_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         action: Annotated[StrictStr, Field(description="Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote).")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the action will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread; for supergroups only")] = None,
@@ -29200,13 +29902,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SendChatActionResponse]:
         """sendChatAction
 
         Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns *True* on success.  Example: The [ImageBot](https://t.me/imagebot) needs some time to process a request and upload the image. Instead of sending a text message along the lines of “Retrieving image, please wait…”, the bot may use [sendChatAction](https://core.telegram.org/bots/api/#sendchataction) with *action* = *upload\\_photo*. The user will see a “sending photo” status for the bot.  We only recommend using this method when a response from the bot will take a **noticeable** amount of time to arrive.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param action: Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote). (required)
         :type action: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the action will be sent
@@ -29247,7 +29949,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SendChatActionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -29264,7 +29966,7 @@ class DefaultApi:
     @validate_call
     async def post_send_chat_action_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         action: Annotated[StrictStr, Field(description="Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote).")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the action will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread; for supergroups only")] = None,
@@ -29286,7 +29988,7 @@ class DefaultApi:
         Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns *True* on success.  Example: The [ImageBot](https://t.me/imagebot) needs some time to process a request and upload the image. Instead of sending a text message along the lines of “Retrieving image, please wait…”, the bot may use [sendChatAction](https://core.telegram.org/bots/api/#sendchataction) with *action* = *upload\\_photo*. The user will see a “sending photo” status for the bot.  We only recommend using this method when a response from the bot will take a **noticeable** amount of time to arrive.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param action: Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote). (required)
         :type action: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the action will be sent
@@ -29327,7 +30029,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SendChatActionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -29425,21 +30127,16 @@ class DefaultApi:
 
 
     @validate_call
-    async def post_send_contact(
+    async def post_send_checklist(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        phone_number: Annotated[StrictStr, Field(description="Contact's phone number")],
-        first_name: Annotated[StrictStr, Field(description="Contact's first name")],
-        business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
-        message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
-        last_name: Annotated[Optional[StrictStr], Field(description="Contact's last name")] = None,
-        vcard: Annotated[Optional[StrictStr], Field(description="Additional data about the contact in the form of a [vCard](https://en.wikipedia.org/wiki/VCard), 0-2048 bytes")] = None,
-        disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
+        business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection on behalf of which the message will be sent")],
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target chat")],
+        checklist: InputChecklist,
+        disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message silently. Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
-        allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
-        message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[InlineKeyboardMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -29452,13 +30149,400 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendChecklistResponse:
+        """sendChecklist
+
+        Use this method to send a checklist on behalf of a connected business account. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
+
+        :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent (required)
+        :type business_connection_id: str
+        :param chat_id: Unique identifier for the target chat (required)
+        :type chat_id: int
+        :param checklist: (required)
+        :type checklist: InputChecklist
+        :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
+        :type disable_notification: bool
+        :param protect_content: Protects the contents of the sent message from forwarding and saving
+        :type protect_content: bool
+        :param message_effect_id: Unique identifier of the message effect to be added to the message
+        :type message_effect_id: str
+        :param reply_parameters:
+        :type reply_parameters: ReplyParameters
+        :param reply_markup:
+        :type reply_markup: InlineKeyboardMarkup
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_send_checklist_serialize(
+            business_connection_id=business_connection_id,
+            chat_id=chat_id,
+            checklist=checklist,
+            disable_notification=disable_notification,
+            protect_content=protect_content,
+            message_effect_id=message_effect_id,
+            reply_parameters=reply_parameters,
+            reply_markup=reply_markup,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SendChecklistResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def post_send_checklist_with_http_info(
+        self,
+        business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection on behalf of which the message will be sent")],
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target chat")],
+        checklist: InputChecklist,
+        disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message silently. Users will receive a notification with no sound.")] = None,
+        protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
+        message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message")] = None,
+        reply_parameters: Optional[ReplyParameters] = None,
+        reply_markup: Optional[InlineKeyboardMarkup] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SendChecklistResponse]:
+        """sendChecklist
+
+        Use this method to send a checklist on behalf of a connected business account. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
+
+        :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent (required)
+        :type business_connection_id: str
+        :param chat_id: Unique identifier for the target chat (required)
+        :type chat_id: int
+        :param checklist: (required)
+        :type checklist: InputChecklist
+        :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
+        :type disable_notification: bool
+        :param protect_content: Protects the contents of the sent message from forwarding and saving
+        :type protect_content: bool
+        :param message_effect_id: Unique identifier of the message effect to be added to the message
+        :type message_effect_id: str
+        :param reply_parameters:
+        :type reply_parameters: ReplyParameters
+        :param reply_markup:
+        :type reply_markup: InlineKeyboardMarkup
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_send_checklist_serialize(
+            business_connection_id=business_connection_id,
+            chat_id=chat_id,
+            checklist=checklist,
+            disable_notification=disable_notification,
+            protect_content=protect_content,
+            message_effect_id=message_effect_id,
+            reply_parameters=reply_parameters,
+            reply_markup=reply_markup,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SendChecklistResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def post_send_checklist_without_preload_content(
+        self,
+        business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection on behalf of which the message will be sent")],
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target chat")],
+        checklist: InputChecklist,
+        disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message silently. Users will receive a notification with no sound.")] = None,
+        protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
+        message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message")] = None,
+        reply_parameters: Optional[ReplyParameters] = None,
+        reply_markup: Optional[InlineKeyboardMarkup] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """sendChecklist
+
+        Use this method to send a checklist on behalf of a connected business account. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
+
+        :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent (required)
+        :type business_connection_id: str
+        :param chat_id: Unique identifier for the target chat (required)
+        :type chat_id: int
+        :param checklist: (required)
+        :type checklist: InputChecklist
+        :param disable_notification: Sends the message silently. Users will receive a notification with no sound.
+        :type disable_notification: bool
+        :param protect_content: Protects the contents of the sent message from forwarding and saving
+        :type protect_content: bool
+        :param message_effect_id: Unique identifier of the message effect to be added to the message
+        :type message_effect_id: str
+        :param reply_parameters:
+        :type reply_parameters: ReplyParameters
+        :param reply_markup:
+        :type reply_markup: InlineKeyboardMarkup
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_send_checklist_serialize(
+            business_connection_id=business_connection_id,
+            chat_id=chat_id,
+            checklist=checklist,
+            disable_notification=disable_notification,
+            protect_content=protect_content,
+            message_effect_id=message_effect_id,
+            reply_parameters=reply_parameters,
+            reply_markup=reply_markup,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SendChecklistResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _post_send_checklist_serialize(
+        self,
+        business_connection_id,
+        chat_id,
+        checklist,
+        disable_notification,
+        protect_content,
+        message_effect_id,
+        reply_parameters,
+        reply_markup,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        if business_connection_id is not None:
+            _form_params.append(('business_connection_id', business_connection_id))
+        if chat_id is not None:
+            _form_params.append(('chat_id', chat_id))
+        if checklist is not None:
+            _form_params.append(('checklist', checklist))
+        if disable_notification is not None:
+            _form_params.append(('disable_notification', disable_notification))
+        if protect_content is not None:
+            _form_params.append(('protect_content', protect_content))
+        if message_effect_id is not None:
+            _form_params.append(('message_effect_id', message_effect_id))
+        if reply_parameters is not None:
+            _form_params.append(('reply_parameters', reply_parameters))
+        if reply_markup is not None:
+            _form_params.append(('reply_markup', reply_markup))
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'multipart/form-data', 
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/sendChecklist',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    async def post_send_contact(
+        self,
+        chat_id: SendMessageRequestChatId,
+        phone_number: Annotated[StrictStr, Field(description="Contact's phone number")],
+        first_name: Annotated[StrictStr, Field(description="Contact's first name")],
+        business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
+        message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        last_name: Annotated[Optional[StrictStr], Field(description="Contact's last name")] = None,
+        vcard: Annotated[Optional[StrictStr], Field(description="Additional data about the contact in the form of a [vCard](https://en.wikipedia.org/wiki/VCard), 0-2048 bytes")] = None,
+        disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
+        protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
+        allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
+        message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        reply_parameters: Optional[ReplyParameters] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SendContactResponse:
         """sendContact
 
         Use this method to send phone contacts. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param phone_number: Contact's phone number (required)
         :type phone_number: str
         :param first_name: Contact's first name (required)
@@ -29482,7 +30566,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -29526,7 +30610,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendContactResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -29543,7 +30627,7 @@ class DefaultApi:
     @validate_call
     async def post_send_contact_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         phone_number: Annotated[StrictStr, Field(description="Contact's phone number")],
         first_name: Annotated[StrictStr, Field(description="Contact's first name")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
@@ -29555,7 +30639,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -29568,13 +30652,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendContactResponse]:
         """sendContact
 
         Use this method to send phone contacts. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param phone_number: Contact's phone number (required)
         :type phone_number: str
         :param first_name: Contact's first name (required)
@@ -29598,7 +30682,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -29642,7 +30726,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendContactResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -29659,7 +30743,7 @@ class DefaultApi:
     @validate_call
     async def post_send_contact_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         phone_number: Annotated[StrictStr, Field(description="Contact's phone number")],
         first_name: Annotated[StrictStr, Field(description="Contact's first name")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
@@ -29671,7 +30755,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -29690,7 +30774,7 @@ class DefaultApi:
         Use this method to send phone contacts. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param phone_number: Contact's phone number (required)
         :type phone_number: str
         :param first_name: Contact's first name (required)
@@ -29714,7 +30798,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -29758,7 +30842,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendContactResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -29885,7 +30969,7 @@ class DefaultApi:
     @validate_call
     async def post_send_dice(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         emoji: Annotated[Optional[StrictStr], Field(description="Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”")] = None,
@@ -29894,7 +30978,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -29907,13 +30991,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendDiceResponse:
         """sendDice
 
         Use this method to send an animated emoji that will display a random value. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -29931,7 +31015,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -29972,7 +31056,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendDiceResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -29989,7 +31073,7 @@ class DefaultApi:
     @validate_call
     async def post_send_dice_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         emoji: Annotated[Optional[StrictStr], Field(description="Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”")] = None,
@@ -29998,7 +31082,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -30011,13 +31095,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendDiceResponse]:
         """sendDice
 
         Use this method to send an animated emoji that will display a random value. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -30035,7 +31119,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -30076,7 +31160,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendDiceResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -30093,7 +31177,7 @@ class DefaultApi:
     @validate_call
     async def post_send_dice_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         emoji: Annotated[Optional[StrictStr], Field(description="Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”")] = None,
@@ -30102,7 +31186,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -30121,7 +31205,7 @@ class DefaultApi:
         Use this method to send an animated emoji that will display a random value. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -30139,7 +31223,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -30180,7 +31264,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendDiceResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -30298,11 +31382,11 @@ class DefaultApi:
     @validate_call
     async def post_send_document(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        document: PostSendDocumentRequestDocument,
+        chat_id: SendMessageRequestChatId,
+        document: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the document caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -30312,7 +31396,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -30325,21 +31409,21 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendDocumentResponse:
         """sendDocument
 
         Use this method to send general files. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param document: (required)
-        :type document: PostSendDocumentRequestDocument
+        :type document: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param caption: Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the document caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -30359,7 +31443,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -30405,7 +31489,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendDocumentResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -30422,11 +31506,11 @@ class DefaultApi:
     @validate_call
     async def post_send_document_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        document: PostSendDocumentRequestDocument,
+        chat_id: SendMessageRequestChatId,
+        document: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the document caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -30436,7 +31520,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -30449,21 +31533,21 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendDocumentResponse]:
         """sendDocument
 
         Use this method to send general files. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param document: (required)
-        :type document: PostSendDocumentRequestDocument
+        :type document: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param caption: Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the document caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -30483,7 +31567,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -30529,7 +31613,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendDocumentResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -30546,11 +31630,11 @@ class DefaultApi:
     @validate_call
     async def post_send_document_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        document: PostSendDocumentRequestDocument,
+        chat_id: SendMessageRequestChatId,
+        document: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the document caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -30560,7 +31644,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -30579,15 +31663,15 @@ class DefaultApi:
         Use this method to send general files. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param document: (required)
-        :type document: PostSendDocumentRequestDocument
+        :type document: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param caption: Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the document caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -30607,7 +31691,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -30653,7 +31737,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendDocumentResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -30753,7 +31837,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -30807,7 +31892,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendGameResponse:
         """sendGame
 
         Use this method to send a game. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
@@ -30872,7 +31957,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendGameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -30911,7 +31996,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendGameResponse]:
         """sendGame
 
         Use this method to send a game. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
@@ -30976,7 +32061,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendGameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -31080,7 +32165,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendGameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -31200,7 +32285,7 @@ class DefaultApi:
         self,
         gift_id: Annotated[StrictStr, Field(description="Identifier of the gift")],
         user_id: Annotated[Optional[StrictInt], Field(description="Required if *chat\\\\_id* is not specified. Unique identifier of the target user who will receive the gift.")] = None,
-        chat_id: Optional[PostSendGiftRequestChatId] = None,
+        chat_id: Optional[SendGiftRequestChatId] = None,
         pay_for_upgrade: Annotated[Optional[StrictBool], Field(description="Pass *True* to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver")] = None,
         text: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]], Field(description="Text that will be shown along with the gift; 0-128 characters")] = None,
         text_parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom\\\\_emoji” are ignored.")] = None,
@@ -31217,7 +32302,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SendGiftResponse:
         """sendGift
 
         Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver. Returns *True* on success.
@@ -31227,7 +32312,7 @@ class DefaultApi:
         :param user_id: Required if *chat\\\\_id* is not specified. Unique identifier of the target user who will receive the gift.
         :type user_id: int
         :param chat_id:
-        :type chat_id: PostSendGiftRequestChatId
+        :type chat_id: SendGiftRequestChatId
         :param pay_for_upgrade: Pass *True* to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver
         :type pay_for_upgrade: bool
         :param text: Text that will be shown along with the gift; 0-128 characters
@@ -31273,7 +32358,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SendGiftResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -31292,7 +32377,7 @@ class DefaultApi:
         self,
         gift_id: Annotated[StrictStr, Field(description="Identifier of the gift")],
         user_id: Annotated[Optional[StrictInt], Field(description="Required if *chat\\\\_id* is not specified. Unique identifier of the target user who will receive the gift.")] = None,
-        chat_id: Optional[PostSendGiftRequestChatId] = None,
+        chat_id: Optional[SendGiftRequestChatId] = None,
         pay_for_upgrade: Annotated[Optional[StrictBool], Field(description="Pass *True* to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver")] = None,
         text: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]], Field(description="Text that will be shown along with the gift; 0-128 characters")] = None,
         text_parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom\\\\_emoji” are ignored.")] = None,
@@ -31309,7 +32394,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SendGiftResponse]:
         """sendGift
 
         Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver. Returns *True* on success.
@@ -31319,7 +32404,7 @@ class DefaultApi:
         :param user_id: Required if *chat\\\\_id* is not specified. Unique identifier of the target user who will receive the gift.
         :type user_id: int
         :param chat_id:
-        :type chat_id: PostSendGiftRequestChatId
+        :type chat_id: SendGiftRequestChatId
         :param pay_for_upgrade: Pass *True* to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver
         :type pay_for_upgrade: bool
         :param text: Text that will be shown along with the gift; 0-128 characters
@@ -31365,7 +32450,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SendGiftResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -31384,7 +32469,7 @@ class DefaultApi:
         self,
         gift_id: Annotated[StrictStr, Field(description="Identifier of the gift")],
         user_id: Annotated[Optional[StrictInt], Field(description="Required if *chat\\\\_id* is not specified. Unique identifier of the target user who will receive the gift.")] = None,
-        chat_id: Optional[PostSendGiftRequestChatId] = None,
+        chat_id: Optional[SendGiftRequestChatId] = None,
         pay_for_upgrade: Annotated[Optional[StrictBool], Field(description="Pass *True* to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver")] = None,
         text: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]], Field(description="Text that will be shown along with the gift; 0-128 characters")] = None,
         text_parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom\\\\_emoji” are ignored.")] = None,
@@ -31411,7 +32496,7 @@ class DefaultApi:
         :param user_id: Required if *chat\\\\_id* is not specified. Unique identifier of the target user who will receive the gift.
         :type user_id: int
         :param chat_id:
-        :type chat_id: PostSendGiftRequestChatId
+        :type chat_id: SendGiftRequestChatId
         :param pay_for_upgrade: Pass *True* to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver
         :type pay_for_upgrade: bool
         :param text: Text that will be shown along with the gift; 0-128 characters
@@ -31457,7 +32542,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SendGiftResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -31567,7 +32652,7 @@ class DefaultApi:
     @validate_call
     async def post_send_invoice(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         title: Annotated[str, Field(min_length=1, strict=True, max_length=32, description="Product name, 1-32 characters")],
         description: Annotated[str, Field(min_length=1, strict=True, max_length=255, description="Product description, 1-255 characters")],
         payload: Annotated[StrictStr, Field(description="Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes.")],
@@ -31608,13 +32693,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendInvoiceResponse:
         """sendInvoice
 
         Use this method to send invoices. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param title: Product name, 1-32 characters (required)
         :type title: str
         :param description: Product description, 1-255 characters (required)
@@ -31730,7 +32815,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendInvoiceResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -31747,7 +32832,7 @@ class DefaultApi:
     @validate_call
     async def post_send_invoice_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         title: Annotated[str, Field(min_length=1, strict=True, max_length=32, description="Product name, 1-32 characters")],
         description: Annotated[str, Field(min_length=1, strict=True, max_length=255, description="Product description, 1-255 characters")],
         payload: Annotated[StrictStr, Field(description="Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes.")],
@@ -31788,13 +32873,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendInvoiceResponse]:
         """sendInvoice
 
         Use this method to send invoices. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param title: Product name, 1-32 characters (required)
         :type title: str
         :param description: Product description, 1-255 characters (required)
@@ -31910,7 +32995,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendInvoiceResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -31927,7 +33012,7 @@ class DefaultApi:
     @validate_call
     async def post_send_invoice_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         title: Annotated[str, Field(min_length=1, strict=True, max_length=32, description="Product name, 1-32 characters")],
         description: Annotated[str, Field(min_length=1, strict=True, max_length=255, description="Product description, 1-255 characters")],
         payload: Annotated[StrictStr, Field(description="Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes.")],
@@ -31974,7 +33059,7 @@ class DefaultApi:
         Use this method to send invoices. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param title: Product name, 1-32 characters (required)
         :type title: str
         :param description: Product description, 1-255 characters (required)
@@ -32090,7 +33175,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendInvoiceResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -32267,7 +33352,7 @@ class DefaultApi:
     @validate_call
     async def post_send_location(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         latitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Latitude of the location")],
         longitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Longitude of the location")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
@@ -32281,7 +33366,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -32294,13 +33379,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendLocationResponse:
         """sendLocation
 
         Use this method to send point on the map. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param latitude: Latitude of the location (required)
         :type latitude: float
         :param longitude: Longitude of the location (required)
@@ -32328,7 +33413,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -32374,7 +33459,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendLocationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -32391,7 +33476,7 @@ class DefaultApi:
     @validate_call
     async def post_send_location_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         latitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Latitude of the location")],
         longitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Longitude of the location")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
@@ -32405,7 +33490,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -32418,13 +33503,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendLocationResponse]:
         """sendLocation
 
         Use this method to send point on the map. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param latitude: Latitude of the location (required)
         :type latitude: float
         :param longitude: Longitude of the location (required)
@@ -32452,7 +33537,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -32498,7 +33583,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendLocationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -32515,7 +33600,7 @@ class DefaultApi:
     @validate_call
     async def post_send_location_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         latitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Latitude of the location")],
         longitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Longitude of the location")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
@@ -32529,7 +33614,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -32548,7 +33633,7 @@ class DefaultApi:
         Use this method to send point on the map. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param latitude: Latitude of the location (required)
         :type latitude: float
         :param longitude: Longitude of the location (required)
@@ -32576,7 +33661,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -32622,7 +33707,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendLocationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -32755,8 +33840,8 @@ class DefaultApi:
     @validate_call
     async def post_send_media_group(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        media: Annotated[List[PostSendMediaGroupRequestMediaInner], Field(description="A JSON-serialized array describing messages to be sent, must include 2-10 items")],
+        chat_id: SendMessageRequestChatId,
+        media: Annotated[List[SendMediaGroupRequestMediaInner], Field(description="A JSON-serialized array describing messages to be sent, must include 2-10 items")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
@@ -32776,15 +33861,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMediaGroup200Response:
+    ) -> SendMediaGroupResponse:
         """sendMediaGroup
 
         Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Messages](https://core.telegram.org/bots/api/#message) that were sent is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param media: A JSON-serialized array describing messages to be sent, must include 2-10 items (required)
-        :type media: List[PostSendMediaGroupRequestMediaInner]
+        :type media: List[SendMediaGroupRequestMediaInner]
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -32838,7 +33923,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMediaGroup200Response",
+            '200': "SendMediaGroupResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -32855,8 +33940,8 @@ class DefaultApi:
     @validate_call
     async def post_send_media_group_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        media: Annotated[List[PostSendMediaGroupRequestMediaInner], Field(description="A JSON-serialized array describing messages to be sent, must include 2-10 items")],
+        chat_id: SendMessageRequestChatId,
+        media: Annotated[List[SendMediaGroupRequestMediaInner], Field(description="A JSON-serialized array describing messages to be sent, must include 2-10 items")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
@@ -32876,15 +33961,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMediaGroup200Response]:
+    ) -> ApiResponse[SendMediaGroupResponse]:
         """sendMediaGroup
 
         Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Messages](https://core.telegram.org/bots/api/#message) that were sent is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param media: A JSON-serialized array describing messages to be sent, must include 2-10 items (required)
-        :type media: List[PostSendMediaGroupRequestMediaInner]
+        :type media: List[SendMediaGroupRequestMediaInner]
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -32938,7 +34023,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMediaGroup200Response",
+            '200': "SendMediaGroupResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -32955,8 +34040,8 @@ class DefaultApi:
     @validate_call
     async def post_send_media_group_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        media: Annotated[List[PostSendMediaGroupRequestMediaInner], Field(description="A JSON-serialized array describing messages to be sent, must include 2-10 items")],
+        chat_id: SendMessageRequestChatId,
+        media: Annotated[List[SendMediaGroupRequestMediaInner], Field(description="A JSON-serialized array describing messages to be sent, must include 2-10 items")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
@@ -32982,9 +34067,9 @@ class DefaultApi:
         Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Messages](https://core.telegram.org/bots/api/#message) that were sent is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param media: A JSON-serialized array describing messages to be sent, must include 2-10 items (required)
-        :type media: List[PostSendMediaGroupRequestMediaInner]
+        :type media: List[SendMediaGroupRequestMediaInner]
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -33038,7 +34123,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMediaGroup200Response",
+            '200': "SendMediaGroupResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -33120,7 +34205,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -33152,7 +34238,7 @@ class DefaultApi:
     @validate_call
     async def post_send_message(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         text: Annotated[str, Field(min_length=1, strict=True, max_length=4096, description="Text of the message to be sent, 1-4096 characters after entities parsing")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
@@ -33164,7 +34250,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -33177,13 +34263,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendMessageResponse:
         """sendMessage
 
         Use this method to send text messages. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param text: Text of the message to be sent, 1-4096 characters after entities parsing (required)
         :type text: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
@@ -33207,7 +34293,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -33251,7 +34337,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -33268,7 +34354,7 @@ class DefaultApi:
     @validate_call
     async def post_send_message_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         text: Annotated[str, Field(min_length=1, strict=True, max_length=4096, description="Text of the message to be sent, 1-4096 characters after entities parsing")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
@@ -33280,7 +34366,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -33293,13 +34379,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendMessageResponse]:
         """sendMessage
 
         Use this method to send text messages. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param text: Text of the message to be sent, 1-4096 characters after entities parsing (required)
         :type text: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
@@ -33323,7 +34409,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -33367,7 +34453,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -33384,7 +34470,7 @@ class DefaultApi:
     @validate_call
     async def post_send_message_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         text: Annotated[str, Field(min_length=1, strict=True, max_length=4096, description="Text of the message to be sent, 1-4096 characters after entities parsing")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
@@ -33396,7 +34482,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -33415,7 +34501,7 @@ class DefaultApi:
         Use this method to send text messages. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param text: Text of the message to be sent, 1-4096 characters after entities parsing (required)
         :type text: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
@@ -33439,7 +34525,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -33483,7 +34569,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -33611,7 +34697,7 @@ class DefaultApi:
     @validate_call
     async def post_send_paid_media(
         self,
-        chat_id: PostSendPaidMediaRequestChatId,
+        chat_id: SendPaidMediaRequestChatId,
         star_count: Annotated[StrictInt, Field(description="The number of Telegram Stars that must be paid to buy access to the media; 1-10000")],
         media: Annotated[List[InputPaidMedia], Field(description="A JSON-serialized array describing the media to be sent; up to 10 items")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
@@ -33624,7 +34710,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -33637,13 +34723,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendPaidMediaResponse:
         """sendPaidMedia
 
         Use this method to send paid media. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendPaidMediaRequestChatId
+        :type chat_id: SendPaidMediaRequestChatId
         :param star_count: The number of Telegram Stars that must be paid to buy access to the media; 1-10000 (required)
         :type star_count: int
         :param media: A JSON-serialized array describing the media to be sent; up to 10 items (required)
@@ -33669,7 +34755,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -33714,7 +34800,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendPaidMediaResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -33731,7 +34817,7 @@ class DefaultApi:
     @validate_call
     async def post_send_paid_media_with_http_info(
         self,
-        chat_id: PostSendPaidMediaRequestChatId,
+        chat_id: SendPaidMediaRequestChatId,
         star_count: Annotated[StrictInt, Field(description="The number of Telegram Stars that must be paid to buy access to the media; 1-10000")],
         media: Annotated[List[InputPaidMedia], Field(description="A JSON-serialized array describing the media to be sent; up to 10 items")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
@@ -33744,7 +34830,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -33757,13 +34843,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendPaidMediaResponse]:
         """sendPaidMedia
 
         Use this method to send paid media. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendPaidMediaRequestChatId
+        :type chat_id: SendPaidMediaRequestChatId
         :param star_count: The number of Telegram Stars that must be paid to buy access to the media; 1-10000 (required)
         :type star_count: int
         :param media: A JSON-serialized array describing the media to be sent; up to 10 items (required)
@@ -33789,7 +34875,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -33834,7 +34920,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendPaidMediaResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -33851,7 +34937,7 @@ class DefaultApi:
     @validate_call
     async def post_send_paid_media_without_preload_content(
         self,
-        chat_id: PostSendPaidMediaRequestChatId,
+        chat_id: SendPaidMediaRequestChatId,
         star_count: Annotated[StrictInt, Field(description="The number of Telegram Stars that must be paid to buy access to the media; 1-10000")],
         media: Annotated[List[InputPaidMedia], Field(description="A JSON-serialized array describing the media to be sent; up to 10 items")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
@@ -33864,7 +34950,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -33883,7 +34969,7 @@ class DefaultApi:
         Use this method to send paid media. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendPaidMediaRequestChatId
+        :type chat_id: SendPaidMediaRequestChatId
         :param star_count: The number of Telegram Stars that must be paid to buy access to the media; 1-10000 (required)
         :type star_count: int
         :param media: A JSON-serialized array describing the media to be sent; up to 10 items (required)
@@ -33909,7 +34995,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -33954,7 +35040,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendPaidMediaResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -34052,7 +35138,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -34084,8 +35171,8 @@ class DefaultApi:
     @validate_call
     async def post_send_photo(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        photo: PostSendPhotoRequestPhoto,
+        chat_id: SendMessageRequestChatId,
+        photo: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Photo caption (may also be used when resending photos by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
@@ -34098,7 +35185,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -34111,15 +35198,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendPhotoResponse:
         """sendPhoto
 
         Use this method to send photos. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param photo: (required)
-        :type photo: PostSendPhotoRequestPhoto
+        :type photo: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -34145,7 +35232,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -34191,7 +35278,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendPhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -34208,8 +35295,8 @@ class DefaultApi:
     @validate_call
     async def post_send_photo_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        photo: PostSendPhotoRequestPhoto,
+        chat_id: SendMessageRequestChatId,
+        photo: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Photo caption (may also be used when resending photos by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
@@ -34222,7 +35309,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -34235,15 +35322,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendPhotoResponse]:
         """sendPhoto
 
         Use this method to send photos. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param photo: (required)
-        :type photo: PostSendPhotoRequestPhoto
+        :type photo: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -34269,7 +35356,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -34315,7 +35402,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendPhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -34332,8 +35419,8 @@ class DefaultApi:
     @validate_call
     async def post_send_photo_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        photo: PostSendPhotoRequestPhoto,
+        chat_id: SendMessageRequestChatId,
+        photo: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Photo caption (may also be used when resending photos by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
@@ -34346,7 +35433,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -34365,9 +35452,9 @@ class DefaultApi:
         Use this method to send photos. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param photo: (required)
-        :type photo: PostSendPhotoRequestPhoto
+        :type photo: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -34393,7 +35480,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -34439,7 +35526,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendPhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -34539,7 +35626,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -34571,9 +35659,9 @@ class DefaultApi:
     @validate_call
     async def post_send_poll(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         question: Annotated[str, Field(min_length=1, strict=True, max_length=300, description="Poll question, 1-300 characters")],
-        options: Annotated[List[InputPollOption], Field(description="A JSON-serialized list of 2-10 answer options")],
+        options: Annotated[List[InputPollOption], Field(description="A JSON-serialized list of 2-12 answer options")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         question_parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the question. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. Currently, only custom emoji entities are allowed")] = None,
@@ -34593,7 +35681,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -34606,16 +35694,16 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendPollResponse:
         """sendPoll
 
         Use this method to send a native poll. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param question: Poll question, 1-300 characters (required)
         :type question: str
-        :param options: A JSON-serialized list of 2-10 answer options (required)
+        :param options: A JSON-serialized list of 2-12 answer options (required)
         :type options: List[InputPollOption]
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
@@ -34656,7 +35744,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -34710,7 +35798,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendPollResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -34727,9 +35815,9 @@ class DefaultApi:
     @validate_call
     async def post_send_poll_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         question: Annotated[str, Field(min_length=1, strict=True, max_length=300, description="Poll question, 1-300 characters")],
-        options: Annotated[List[InputPollOption], Field(description="A JSON-serialized list of 2-10 answer options")],
+        options: Annotated[List[InputPollOption], Field(description="A JSON-serialized list of 2-12 answer options")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         question_parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the question. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. Currently, only custom emoji entities are allowed")] = None,
@@ -34749,7 +35837,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -34762,16 +35850,16 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendPollResponse]:
         """sendPoll
 
         Use this method to send a native poll. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param question: Poll question, 1-300 characters (required)
         :type question: str
-        :param options: A JSON-serialized list of 2-10 answer options (required)
+        :param options: A JSON-serialized list of 2-12 answer options (required)
         :type options: List[InputPollOption]
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
@@ -34812,7 +35900,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -34866,7 +35954,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendPollResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -34883,9 +35971,9 @@ class DefaultApi:
     @validate_call
     async def post_send_poll_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         question: Annotated[str, Field(min_length=1, strict=True, max_length=300, description="Poll question, 1-300 characters")],
-        options: Annotated[List[InputPollOption], Field(description="A JSON-serialized list of 2-10 answer options")],
+        options: Annotated[List[InputPollOption], Field(description="A JSON-serialized list of 2-12 answer options")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         question_parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the question. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. Currently, only custom emoji entities are allowed")] = None,
@@ -34905,7 +35993,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -34924,10 +36012,10 @@ class DefaultApi:
         Use this method to send a native poll. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param question: Poll question, 1-300 characters (required)
         :type question: str
-        :param options: A JSON-serialized list of 2-10 answer options (required)
+        :param options: A JSON-serialized list of 2-12 answer options (required)
         :type options: List[InputPollOption]
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
@@ -34968,7 +36056,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -35022,7 +36110,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendPollResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -35182,8 +36270,8 @@ class DefaultApi:
     @validate_call
     async def post_send_sticker(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        sticker: PostSendStickerRequestSticker,
+        chat_id: SendMessageRequestChatId,
+        sticker: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         emoji: Annotated[Optional[StrictStr], Field(description="Emoji associated with the sticker; only for just uploaded stickers")] = None,
@@ -35192,7 +36280,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -35205,15 +36293,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendStickerResponse:
         """sendSticker
 
         Use this method to send static .WEBP, [animated](https://telegram.org/blog/animated-stickers) .TGS, or [video](https://telegram.org/blog/video-stickers-better-reactions) .WEBM stickers. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param sticker: (required)
-        :type sticker: PostSendStickerRequestSticker
+        :type sticker: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -35231,7 +36319,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -35273,7 +36361,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendStickerResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -35290,8 +36378,8 @@ class DefaultApi:
     @validate_call
     async def post_send_sticker_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        sticker: PostSendStickerRequestSticker,
+        chat_id: SendMessageRequestChatId,
+        sticker: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         emoji: Annotated[Optional[StrictStr], Field(description="Emoji associated with the sticker; only for just uploaded stickers")] = None,
@@ -35300,7 +36388,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -35313,15 +36401,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendStickerResponse]:
         """sendSticker
 
         Use this method to send static .WEBP, [animated](https://telegram.org/blog/animated-stickers) .TGS, or [video](https://telegram.org/blog/video-stickers-better-reactions) .WEBM stickers. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param sticker: (required)
-        :type sticker: PostSendStickerRequestSticker
+        :type sticker: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -35339,7 +36427,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -35381,7 +36469,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendStickerResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -35398,8 +36486,8 @@ class DefaultApi:
     @validate_call
     async def post_send_sticker_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        sticker: PostSendStickerRequestSticker,
+        chat_id: SendMessageRequestChatId,
+        sticker: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         emoji: Annotated[Optional[StrictStr], Field(description="Emoji associated with the sticker; only for just uploaded stickers")] = None,
@@ -35408,7 +36496,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -35427,9 +36515,9 @@ class DefaultApi:
         Use this method to send static .WEBP, [animated](https://telegram.org/blog/animated-stickers) .TGS, or [video](https://telegram.org/blog/video-stickers-better-reactions) .WEBM stickers. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param sticker: (required)
-        :type sticker: PostSendStickerRequestSticker
+        :type sticker: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -35447,7 +36535,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -35489,7 +36577,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendStickerResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -35576,7 +36664,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -35608,7 +36697,7 @@ class DefaultApi:
     @validate_call
     async def post_send_venue(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         latitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Latitude of the venue")],
         longitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Longitude of the venue")],
         title: Annotated[StrictStr, Field(description="Name of the venue")],
@@ -35624,7 +36713,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -35637,13 +36726,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendVenueResponse:
         """sendVenue
 
         Use this method to send information about a venue. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param latitude: Latitude of the venue (required)
         :type latitude: float
         :param longitude: Longitude of the venue (required)
@@ -35675,7 +36764,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -35723,7 +36812,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendVenueResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -35740,7 +36829,7 @@ class DefaultApi:
     @validate_call
     async def post_send_venue_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         latitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Latitude of the venue")],
         longitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Longitude of the venue")],
         title: Annotated[StrictStr, Field(description="Name of the venue")],
@@ -35756,7 +36845,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -35769,13 +36858,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendVenueResponse]:
         """sendVenue
 
         Use this method to send information about a venue. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param latitude: Latitude of the venue (required)
         :type latitude: float
         :param longitude: Longitude of the venue (required)
@@ -35807,7 +36896,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -35855,7 +36944,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendVenueResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -35872,7 +36961,7 @@ class DefaultApi:
     @validate_call
     async def post_send_venue_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         latitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Latitude of the venue")],
         longitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Longitude of the venue")],
         title: Annotated[StrictStr, Field(description="Name of the venue")],
@@ -35888,7 +36977,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -35907,7 +36996,7 @@ class DefaultApi:
         Use this method to send information about a venue. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param latitude: Latitude of the venue (required)
         :type latitude: float
         :param longitude: Longitude of the venue (required)
@@ -35939,7 +37028,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -35987,7 +37076,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendVenueResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -36126,15 +37215,15 @@ class DefaultApi:
     @validate_call
     async def post_send_video(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        video: PostSendVideoRequestVideo,
+        chat_id: SendMessageRequestChatId,
+        video: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent video in seconds")] = None,
         width: Annotated[Optional[StrictInt], Field(description="Video width")] = None,
         height: Annotated[Optional[StrictInt], Field(description="Video height")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
-        cover: Optional[PostSendVideoRequestCover] = None,
+        thumbnail: Optional[StrictStr] = None,
+        cover: Optional[StrictStr] = None,
         start_timestamp: Annotated[Optional[StrictInt], Field(description="Start timestamp for the video in the message")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Video caption (may also be used when resending videos by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the video caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -36147,7 +37236,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -36160,15 +37249,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendVideoResponse:
         """sendVideo
 
         Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as [Document](https://core.telegram.org/bots/api/#document)). On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param video: (required)
-        :type video: PostSendVideoRequestVideo
+        :type video: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -36180,9 +37269,9 @@ class DefaultApi:
         :param height: Video height
         :type height: int
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param cover:
-        :type cover: PostSendVideoRequestCover
+        :type cover: str
         :param start_timestamp: Start timestamp for the video in the message
         :type start_timestamp: int
         :param caption: Video caption (may also be used when resending videos by *file\\\\_id*), 0-1024 characters after entities parsing
@@ -36208,7 +37297,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -36261,7 +37350,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendVideoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -36278,15 +37367,15 @@ class DefaultApi:
     @validate_call
     async def post_send_video_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        video: PostSendVideoRequestVideo,
+        chat_id: SendMessageRequestChatId,
+        video: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent video in seconds")] = None,
         width: Annotated[Optional[StrictInt], Field(description="Video width")] = None,
         height: Annotated[Optional[StrictInt], Field(description="Video height")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
-        cover: Optional[PostSendVideoRequestCover] = None,
+        thumbnail: Optional[StrictStr] = None,
+        cover: Optional[StrictStr] = None,
         start_timestamp: Annotated[Optional[StrictInt], Field(description="Start timestamp for the video in the message")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Video caption (may also be used when resending videos by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the video caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -36299,7 +37388,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -36312,15 +37401,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendVideoResponse]:
         """sendVideo
 
         Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as [Document](https://core.telegram.org/bots/api/#document)). On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param video: (required)
-        :type video: PostSendVideoRequestVideo
+        :type video: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -36332,9 +37421,9 @@ class DefaultApi:
         :param height: Video height
         :type height: int
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param cover:
-        :type cover: PostSendVideoRequestCover
+        :type cover: str
         :param start_timestamp: Start timestamp for the video in the message
         :type start_timestamp: int
         :param caption: Video caption (may also be used when resending videos by *file\\\\_id*), 0-1024 characters after entities parsing
@@ -36360,7 +37449,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -36413,7 +37502,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendVideoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -36430,15 +37519,15 @@ class DefaultApi:
     @validate_call
     async def post_send_video_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        video: PostSendVideoRequestVideo,
+        chat_id: SendMessageRequestChatId,
+        video: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent video in seconds")] = None,
         width: Annotated[Optional[StrictInt], Field(description="Video width")] = None,
         height: Annotated[Optional[StrictInt], Field(description="Video height")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
-        cover: Optional[PostSendVideoRequestCover] = None,
+        thumbnail: Optional[StrictStr] = None,
+        cover: Optional[StrictStr] = None,
         start_timestamp: Annotated[Optional[StrictInt], Field(description="Start timestamp for the video in the message")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Video caption (may also be used when resending videos by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the video caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -36451,7 +37540,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -36470,9 +37559,9 @@ class DefaultApi:
         Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as [Document](https://core.telegram.org/bots/api/#document)). On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param video: (required)
-        :type video: PostSendVideoRequestVideo
+        :type video: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -36484,9 +37573,9 @@ class DefaultApi:
         :param height: Video height
         :type height: int
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param cover:
-        :type cover: PostSendVideoRequestCover
+        :type cover: str
         :param start_timestamp: Start timestamp for the video in the message
         :type start_timestamp: int
         :param caption: Video caption (may also be used when resending videos by *file\\\\_id*), 0-1024 characters after entities parsing
@@ -36512,7 +37601,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -36565,7 +37654,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendVideoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -36686,7 +37775,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -36718,19 +37808,19 @@ class DefaultApi:
     @validate_call
     async def post_send_video_note(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        video_note: PostSendVideoNoteRequestVideoNote,
+        chat_id: SendMessageRequestChatId,
+        video_note: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent video in seconds")] = None,
         length: Annotated[Optional[StrictInt], Field(description="Video width and height, i.e. diameter of the video message")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -36743,15 +37833,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendVideoNoteResponse:
         """sendVideoNote
 
         As of [v.4.0](https://telegram.org/blog/video-messages-and-telescope), Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param video_note: (required)
-        :type video_note: PostSendVideoNoteRequestVideoNote
+        :type video_note: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -36761,7 +37851,7 @@ class DefaultApi:
         :param length: Video width and height, i.e. diameter of the video message
         :type length: int
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the sent message from forwarding and saving
@@ -36773,7 +37863,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -36817,7 +37907,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendVideoNoteResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -36834,19 +37924,19 @@ class DefaultApi:
     @validate_call
     async def post_send_video_note_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        video_note: PostSendVideoNoteRequestVideoNote,
+        chat_id: SendMessageRequestChatId,
+        video_note: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent video in seconds")] = None,
         length: Annotated[Optional[StrictInt], Field(description="Video width and height, i.e. diameter of the video message")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -36859,15 +37949,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendVideoNoteResponse]:
         """sendVideoNote
 
         As of [v.4.0](https://telegram.org/blog/video-messages-and-telescope), Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param video_note: (required)
-        :type video_note: PostSendVideoNoteRequestVideoNote
+        :type video_note: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -36877,7 +37967,7 @@ class DefaultApi:
         :param length: Video width and height, i.e. diameter of the video message
         :type length: int
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the sent message from forwarding and saving
@@ -36889,7 +37979,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -36933,7 +38023,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendVideoNoteResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -36950,19 +38040,19 @@ class DefaultApi:
     @validate_call
     async def post_send_video_note_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        video_note: PostSendVideoNoteRequestVideoNote,
+        chat_id: SendMessageRequestChatId,
+        video_note: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent video in seconds")] = None,
         length: Annotated[Optional[StrictInt], Field(description="Video width and height, i.e. diameter of the video message")] = None,
-        thumbnail: Optional[PostSendAudioRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -36981,9 +38071,9 @@ class DefaultApi:
         As of [v.4.0](https://telegram.org/blog/video-messages-and-telescope), Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param video_note: (required)
-        :type video_note: PostSendVideoNoteRequestVideoNote
+        :type video_note: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -36993,7 +38083,7 @@ class DefaultApi:
         :param length: Video width and height, i.e. diameter of the video message
         :type length: int
         :param thumbnail:
-        :type thumbnail: PostSendAudioRequestThumbnail
+        :type thumbnail: str
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the sent message from forwarding and saving
@@ -37005,7 +38095,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -37049,7 +38139,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendVideoNoteResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -37142,7 +38232,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -37174,8 +38265,8 @@ class DefaultApi:
     @validate_call
     async def post_send_voice(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        voice: PostSendVoiceRequestVoice,
+        chat_id: SendMessageRequestChatId,
+        voice: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Voice message caption, 0-1024 characters after entities parsing")] = None,
@@ -37187,7 +38278,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -37200,15 +38291,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSendMessage200Response:
+    ) -> SendVoiceResponse:
         """sendVoice
 
         Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as [Audio](https://core.telegram.org/bots/api/#audio) or [Document](https://core.telegram.org/bots/api/#document)). On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param voice: (required)
-        :type voice: PostSendVoiceRequestVoice
+        :type voice: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -37232,7 +38323,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -37277,7 +38368,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendVoiceResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -37294,8 +38385,8 @@ class DefaultApi:
     @validate_call
     async def post_send_voice_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        voice: PostSendVoiceRequestVoice,
+        chat_id: SendMessageRequestChatId,
+        voice: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Voice message caption, 0-1024 characters after entities parsing")] = None,
@@ -37307,7 +38398,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -37320,15 +38411,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSendMessage200Response]:
+    ) -> ApiResponse[SendVoiceResponse]:
         """sendVoice
 
         Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as [Audio](https://core.telegram.org/bots/api/#audio) or [Document](https://core.telegram.org/bots/api/#document)). On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param voice: (required)
-        :type voice: PostSendVoiceRequestVoice
+        :type voice: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -37352,7 +38443,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -37397,7 +38488,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendVoiceResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -37414,8 +38505,8 @@ class DefaultApi:
     @validate_call
     async def post_send_voice_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
-        voice: PostSendVoiceRequestVoice,
+        chat_id: SendMessageRequestChatId,
+        voice: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Voice message caption, 0-1024 characters after entities parsing")] = None,
@@ -37427,7 +38518,7 @@ class DefaultApi:
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
         reply_parameters: Optional[ReplyParameters] = None,
-        reply_markup: Optional[PostSendMessageRequestReplyMarkup] = None,
+        reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -37446,9 +38537,9 @@ class DefaultApi:
         Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as [Audio](https://core.telegram.org/bots/api/#audio) or [Document](https://core.telegram.org/bots/api/#document)). On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param voice: (required)
-        :type voice: PostSendVoiceRequestVoice
+        :type voice: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
@@ -37472,7 +38563,7 @@ class DefaultApi:
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
-        :type reply_markup: PostSendMessageRequestReplyMarkup
+        :type reply_markup: SendMessageRequestReplyMarkup
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -37517,7 +38608,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSendMessage200Response",
+            '200': "SendVoiceResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -37614,7 +38705,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -37660,7 +38752,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetBusinessAccountBioResponse:
         """setBusinessAccountBio
 
         Changes the bio of a managed business account. Requires the *can\\_change\\_bio* business bot right. Returns *True* on success.
@@ -37701,7 +38793,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountBioResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -37732,7 +38824,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetBusinessAccountBioResponse]:
         """setBusinessAccountBio
 
         Changes the bio of a managed business account. Requires the *can\\_change\\_bio* business bot right. Returns *True* on success.
@@ -37773,7 +38865,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountBioResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -37845,7 +38937,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountBioResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -37940,7 +39032,7 @@ class DefaultApi:
     async def post_set_business_account_gift_settings(
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
-        show_gift_button: Annotated[StrictBool, Field(description="Pass True, if a button for sending a gift to the user or by the business account must always be shown in the input field")],
+        show_gift_button: Annotated[StrictBool, Field(description="Pass *True*, if a button for sending a gift to the user or by the business account must always be shown in the input field")],
         accepted_gift_types: AcceptedGiftTypes,
         _request_timeout: Union[
             None,
@@ -37954,14 +39046,14 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetBusinessAccountGiftSettingsResponse:
         """setBusinessAccountGiftSettings
 
         Changes the privacy settings pertaining to incoming gifts in a managed business account. Requires the *can\\_change\\_gift\\_settings* business bot right. Returns *True* on success.
 
         :param business_connection_id: Unique identifier of the business connection (required)
         :type business_connection_id: str
-        :param show_gift_button: Pass True, if a button for sending a gift to the user or by the business account must always be shown in the input field (required)
+        :param show_gift_button: Pass *True*, if a button for sending a gift to the user or by the business account must always be shown in the input field (required)
         :type show_gift_button: bool
         :param accepted_gift_types: (required)
         :type accepted_gift_types: AcceptedGiftTypes
@@ -37998,7 +39090,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountGiftSettingsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -38016,7 +39108,7 @@ class DefaultApi:
     async def post_set_business_account_gift_settings_with_http_info(
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
-        show_gift_button: Annotated[StrictBool, Field(description="Pass True, if a button for sending a gift to the user or by the business account must always be shown in the input field")],
+        show_gift_button: Annotated[StrictBool, Field(description="Pass *True*, if a button for sending a gift to the user or by the business account must always be shown in the input field")],
         accepted_gift_types: AcceptedGiftTypes,
         _request_timeout: Union[
             None,
@@ -38030,14 +39122,14 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetBusinessAccountGiftSettingsResponse]:
         """setBusinessAccountGiftSettings
 
         Changes the privacy settings pertaining to incoming gifts in a managed business account. Requires the *can\\_change\\_gift\\_settings* business bot right. Returns *True* on success.
 
         :param business_connection_id: Unique identifier of the business connection (required)
         :type business_connection_id: str
-        :param show_gift_button: Pass True, if a button for sending a gift to the user or by the business account must always be shown in the input field (required)
+        :param show_gift_button: Pass *True*, if a button for sending a gift to the user or by the business account must always be shown in the input field (required)
         :type show_gift_button: bool
         :param accepted_gift_types: (required)
         :type accepted_gift_types: AcceptedGiftTypes
@@ -38074,7 +39166,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountGiftSettingsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -38092,7 +39184,7 @@ class DefaultApi:
     async def post_set_business_account_gift_settings_without_preload_content(
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
-        show_gift_button: Annotated[StrictBool, Field(description="Pass True, if a button for sending a gift to the user or by the business account must always be shown in the input field")],
+        show_gift_button: Annotated[StrictBool, Field(description="Pass *True*, if a button for sending a gift to the user or by the business account must always be shown in the input field")],
         accepted_gift_types: AcceptedGiftTypes,
         _request_timeout: Union[
             None,
@@ -38113,7 +39205,7 @@ class DefaultApi:
 
         :param business_connection_id: Unique identifier of the business connection (required)
         :type business_connection_id: str
-        :param show_gift_button: Pass True, if a button for sending a gift to the user or by the business account must always be shown in the input field (required)
+        :param show_gift_button: Pass *True*, if a button for sending a gift to the user or by the business account must always be shown in the input field (required)
         :type show_gift_button: bool
         :param accepted_gift_types: (required)
         :type accepted_gift_types: AcceptedGiftTypes
@@ -38150,7 +39242,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountGiftSettingsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -38262,7 +39354,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetBusinessAccountNameResponse:
         """setBusinessAccountName
 
         Changes the first and last name of a managed business account. Requires the *can\\_change\\_name* business bot right. Returns *True* on success.
@@ -38306,7 +39398,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountNameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -38338,7 +39430,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetBusinessAccountNameResponse]:
         """setBusinessAccountName
 
         Changes the first and last name of a managed business account. Requires the *can\\_change\\_name* business bot right. Returns *True* on success.
@@ -38382,7 +39474,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountNameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -38458,7 +39550,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountNameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -38557,7 +39649,7 @@ class DefaultApi:
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
         photo: InputProfilePhoto,
-        is_public: Annotated[Optional[StrictBool], Field(description="Pass True to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.")] = None,
+        is_public: Annotated[Optional[StrictBool], Field(description="Pass *True* to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -38570,7 +39662,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetBusinessAccountProfilePhotoResponse:
         """setBusinessAccountProfilePhoto
 
         Changes the profile photo of a managed business account. Requires the *can\\_edit\\_profile\\_photo* business bot right. Returns *True* on success.
@@ -38579,7 +39671,7 @@ class DefaultApi:
         :type business_connection_id: str
         :param photo: (required)
         :type photo: InputProfilePhoto
-        :param is_public: Pass True to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.
+        :param is_public: Pass *True* to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.
         :type is_public: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -38614,7 +39706,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountProfilePhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -38633,7 +39725,7 @@ class DefaultApi:
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
         photo: InputProfilePhoto,
-        is_public: Annotated[Optional[StrictBool], Field(description="Pass True to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.")] = None,
+        is_public: Annotated[Optional[StrictBool], Field(description="Pass *True* to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -38646,7 +39738,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetBusinessAccountProfilePhotoResponse]:
         """setBusinessAccountProfilePhoto
 
         Changes the profile photo of a managed business account. Requires the *can\\_edit\\_profile\\_photo* business bot right. Returns *True* on success.
@@ -38655,7 +39747,7 @@ class DefaultApi:
         :type business_connection_id: str
         :param photo: (required)
         :type photo: InputProfilePhoto
-        :param is_public: Pass True to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.
+        :param is_public: Pass *True* to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.
         :type is_public: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -38690,7 +39782,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountProfilePhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -38709,7 +39801,7 @@ class DefaultApi:
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
         photo: InputProfilePhoto,
-        is_public: Annotated[Optional[StrictBool], Field(description="Pass True to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.")] = None,
+        is_public: Annotated[Optional[StrictBool], Field(description="Pass *True* to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -38731,7 +39823,7 @@ class DefaultApi:
         :type business_connection_id: str
         :param photo: (required)
         :type photo: InputProfilePhoto
-        :param is_public: Pass True to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.
+        :param is_public: Pass *True* to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.
         :type is_public: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -38766,7 +39858,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountProfilePhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -38829,7 +39921,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -38875,7 +39968,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetBusinessAccountUsernameResponse:
         """setBusinessAccountUsername
 
         Changes the username of a managed business account. Requires the *can\\_change\\_username* business bot right. Returns *True* on success.
@@ -38916,7 +40009,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountUsernameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -38947,7 +40040,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetBusinessAccountUsernameResponse]:
         """setBusinessAccountUsername
 
         Changes the username of a managed business account. Requires the *can\\_change\\_username* business bot right. Returns *True* on success.
@@ -38988,7 +40081,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountUsernameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -39060,7 +40153,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetBusinessAccountUsernameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -39154,7 +40247,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_administrator_custom_title(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         custom_title: Annotated[str, Field(min_length=0, strict=True, max_length=16, description="New custom title for the administrator; 0-16 characters, emoji are not allowed")],
         _request_timeout: Union[
@@ -39169,13 +40262,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetChatAdministratorCustomTitleResponse:
         """setChatAdministratorCustomTitle
 
         Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param custom_title: New custom title for the administrator; 0-16 characters, emoji are not allowed (required)
@@ -39213,7 +40306,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatAdministratorCustomTitleResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -39230,7 +40323,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_administrator_custom_title_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         custom_title: Annotated[str, Field(min_length=0, strict=True, max_length=16, description="New custom title for the administrator; 0-16 characters, emoji are not allowed")],
         _request_timeout: Union[
@@ -39245,13 +40338,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetChatAdministratorCustomTitleResponse]:
         """setChatAdministratorCustomTitle
 
         Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param custom_title: New custom title for the administrator; 0-16 characters, emoji are not allowed (required)
@@ -39289,7 +40382,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatAdministratorCustomTitleResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -39306,7 +40399,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_administrator_custom_title_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         custom_title: Annotated[str, Field(min_length=0, strict=True, max_length=16, description="New custom title for the administrator; 0-16 characters, emoji are not allowed")],
         _request_timeout: Union[
@@ -39327,7 +40420,7 @@ class DefaultApi:
         Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param custom_title: New custom title for the administrator; 0-16 characters, emoji are not allowed (required)
@@ -39365,7 +40458,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatAdministratorCustomTitleResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -39462,7 +40555,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_description(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         description: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=255)]], Field(description="New chat description, 0-255 characters")] = None,
         _request_timeout: Union[
             None,
@@ -39476,13 +40569,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetChatDescriptionResponse:
         """setChatDescription
 
         Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param description: New chat description, 0-255 characters
         :type description: str
         :param _request_timeout: timeout setting for this request. If one
@@ -39517,7 +40610,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -39534,7 +40627,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_description_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         description: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=255)]], Field(description="New chat description, 0-255 characters")] = None,
         _request_timeout: Union[
             None,
@@ -39548,13 +40641,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetChatDescriptionResponse]:
         """setChatDescription
 
         Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param description: New chat description, 0-255 characters
         :type description: str
         :param _request_timeout: timeout setting for this request. If one
@@ -39589,7 +40682,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -39606,7 +40699,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_description_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         description: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=255)]], Field(description="New chat description, 0-255 characters")] = None,
         _request_timeout: Union[
             None,
@@ -39626,7 +40719,7 @@ class DefaultApi:
         Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param description: New chat description, 0-255 characters
         :type description: str
         :param _request_timeout: timeout setting for this request. If one
@@ -39661,7 +40754,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -39769,7 +40862,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetChatMenuButtonResponse:
         """setChatMenuButton
 
         Use this method to change the bot's menu button in a private chat, or the default menu button. Returns *True* on success.
@@ -39810,7 +40903,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatMenuButtonResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -39841,7 +40934,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetChatMenuButtonResponse]:
         """setChatMenuButton
 
         Use this method to change the bot's menu button in a private chat, or the default menu button. Returns *True* on success.
@@ -39882,7 +40975,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatMenuButtonResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -39954,7 +41047,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatMenuButtonResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -40048,7 +41141,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_permissions(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         permissions: ChatPermissions,
         use_independent_chat_permissions: Annotated[Optional[StrictBool], Field(description="Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.")] = None,
         _request_timeout: Union[
@@ -40063,13 +41156,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetChatPermissionsResponse:
         """setChatPermissions
 
         Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the *can\\_restrict\\_members* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param permissions: (required)
         :type permissions: ChatPermissions
         :param use_independent_chat_permissions: Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.
@@ -40107,7 +41200,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatPermissionsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -40124,7 +41217,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_permissions_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         permissions: ChatPermissions,
         use_independent_chat_permissions: Annotated[Optional[StrictBool], Field(description="Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.")] = None,
         _request_timeout: Union[
@@ -40139,13 +41232,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetChatPermissionsResponse]:
         """setChatPermissions
 
         Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the *can\\_restrict\\_members* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param permissions: (required)
         :type permissions: ChatPermissions
         :param use_independent_chat_permissions: Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.
@@ -40183,7 +41276,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatPermissionsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -40200,7 +41293,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_permissions_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         permissions: ChatPermissions,
         use_independent_chat_permissions: Annotated[Optional[StrictBool], Field(description="Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.")] = None,
         _request_timeout: Union[
@@ -40221,7 +41314,7 @@ class DefaultApi:
         Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the *can\\_restrict\\_members* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param permissions: (required)
         :type permissions: ChatPermissions
         :param use_independent_chat_permissions: Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.
@@ -40259,7 +41352,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatPermissionsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -40356,7 +41449,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_photo(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         photo: Optional[Any],
         _request_timeout: Union[
             None,
@@ -40370,13 +41463,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetChatPhotoResponse:
         """setChatPhoto
 
         Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param photo: (required)
         :type photo: object
         :param _request_timeout: timeout setting for this request. If one
@@ -40411,7 +41504,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatPhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -40428,7 +41521,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_photo_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         photo: Optional[Any],
         _request_timeout: Union[
             None,
@@ -40442,13 +41535,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetChatPhotoResponse]:
         """setChatPhoto
 
         Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param photo: (required)
         :type photo: object
         :param _request_timeout: timeout setting for this request. If one
@@ -40483,7 +41576,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatPhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -40500,7 +41593,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_photo_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         photo: Optional[Any],
         _request_timeout: Union[
             None,
@@ -40520,7 +41613,7 @@ class DefaultApi:
         Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param photo: (required)
         :type photo: object
         :param _request_timeout: timeout setting for this request. If one
@@ -40555,7 +41648,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatPhotoResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -40615,7 +41708,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -40647,7 +41741,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_sticker_set(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         sticker_set_name: Annotated[StrictStr, Field(description="Name of the sticker set to be set as the group sticker set")],
         _request_timeout: Union[
             None,
@@ -40661,13 +41755,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetChatStickerSetResponse:
         """setChatStickerSet
 
         Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param sticker_set_name: Name of the sticker set to be set as the group sticker set (required)
         :type sticker_set_name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -40702,7 +41796,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -40719,7 +41813,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_sticker_set_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         sticker_set_name: Annotated[StrictStr, Field(description="Name of the sticker set to be set as the group sticker set")],
         _request_timeout: Union[
             None,
@@ -40733,13 +41827,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetChatStickerSetResponse]:
         """setChatStickerSet
 
         Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param sticker_set_name: Name of the sticker set to be set as the group sticker set (required)
         :type sticker_set_name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -40774,7 +41868,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -40791,7 +41885,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_sticker_set_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         sticker_set_name: Annotated[StrictStr, Field(description="Name of the sticker set to be set as the group sticker set")],
         _request_timeout: Union[
             None,
@@ -40811,7 +41905,7 @@ class DefaultApi:
         Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param sticker_set_name: Name of the sticker set to be set as the group sticker set (required)
         :type sticker_set_name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -40846,7 +41940,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatStickerSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -40940,7 +42034,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_title(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         title: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="New chat title, 1-128 characters")],
         _request_timeout: Union[
             None,
@@ -40954,13 +42048,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetChatTitleResponse:
         """setChatTitle
 
         Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param title: New chat title, 1-128 characters (required)
         :type title: str
         :param _request_timeout: timeout setting for this request. If one
@@ -40995,7 +42089,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatTitleResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -41012,7 +42106,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_title_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         title: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="New chat title, 1-128 characters")],
         _request_timeout: Union[
             None,
@@ -41026,13 +42120,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetChatTitleResponse]:
         """setChatTitle
 
         Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param title: New chat title, 1-128 characters (required)
         :type title: str
         :param _request_timeout: timeout setting for this request. If one
@@ -41067,7 +42161,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatTitleResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -41084,7 +42178,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_title_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         title: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="New chat title, 1-128 characters")],
         _request_timeout: Union[
             None,
@@ -41104,7 +42198,7 @@ class DefaultApi:
         Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param title: New chat title, 1-128 characters (required)
         :type title: str
         :param _request_timeout: timeout setting for this request. If one
@@ -41139,7 +42233,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetChatTitleResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -41247,7 +42341,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetCustomEmojiStickerSetThumbnailResponse:
         """setCustomEmojiStickerSetThumbnail
 
         Use this method to set the thumbnail of a custom emoji sticker set. Returns *True* on success.
@@ -41288,7 +42382,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetCustomEmojiStickerSetThumbnailResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -41319,7 +42413,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetCustomEmojiStickerSetThumbnailResponse]:
         """setCustomEmojiStickerSetThumbnail
 
         Use this method to set the thumbnail of a custom emoji sticker set. Returns *True* on success.
@@ -41360,7 +42454,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetCustomEmojiStickerSetThumbnailResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -41432,7 +42526,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetCustomEmojiStickerSetThumbnailResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -41545,7 +42639,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostEditMessageText200Response:
+    ) -> SetGameScoreResponse:
         """setGameScore
 
         Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned. Returns an error, if the new score is not greater than the user's current score in the chat and *force* is *False*.
@@ -41601,7 +42695,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "SetGameScoreResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -41637,7 +42731,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostEditMessageText200Response]:
+    ) -> ApiResponse[SetGameScoreResponse]:
         """setGameScore
 
         Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned. Returns an error, if the new score is not greater than the user's current score in the chat and *force* is *False*.
@@ -41693,7 +42787,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "SetGameScoreResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -41785,7 +42879,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "SetGameScoreResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -41894,7 +42988,7 @@ class DefaultApi:
     @validate_call
     async def post_set_message_reaction(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_id: Annotated[StrictInt, Field(description="Identifier of the target message. If the message belongs to a media group, the reaction is set to the first non-deleted message in the group instead.")],
         reaction: Annotated[Optional[List[ReactionType]], Field(description="A JSON-serialized list of reaction types to set on the message. Currently, as non-premium users, bots can set up to one reaction per message. A custom emoji reaction can be used if it is either already present on the message or explicitly allowed by chat administrators. Paid reactions can't be used by bots.")] = None,
         is_big: Annotated[Optional[StrictBool], Field(description="Pass *True* to set the reaction with a big animation")] = None,
@@ -41910,13 +43004,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetMessageReactionResponse:
         """setMessageReaction
 
         Use this method to change the chosen reactions on a message. Service messages of some types can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_id: Identifier of the target message. If the message belongs to a media group, the reaction is set to the first non-deleted message in the group instead. (required)
         :type message_id: int
         :param reaction: A JSON-serialized list of reaction types to set on the message. Currently, as non-premium users, bots can set up to one reaction per message. A custom emoji reaction can be used if it is either already present on the message or explicitly allowed by chat administrators. Paid reactions can't be used by bots.
@@ -41957,7 +43051,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMessageReactionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -41974,7 +43068,7 @@ class DefaultApi:
     @validate_call
     async def post_set_message_reaction_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_id: Annotated[StrictInt, Field(description="Identifier of the target message. If the message belongs to a media group, the reaction is set to the first non-deleted message in the group instead.")],
         reaction: Annotated[Optional[List[ReactionType]], Field(description="A JSON-serialized list of reaction types to set on the message. Currently, as non-premium users, bots can set up to one reaction per message. A custom emoji reaction can be used if it is either already present on the message or explicitly allowed by chat administrators. Paid reactions can't be used by bots.")] = None,
         is_big: Annotated[Optional[StrictBool], Field(description="Pass *True* to set the reaction with a big animation")] = None,
@@ -41990,13 +43084,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetMessageReactionResponse]:
         """setMessageReaction
 
         Use this method to change the chosen reactions on a message. Service messages of some types can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_id: Identifier of the target message. If the message belongs to a media group, the reaction is set to the first non-deleted message in the group instead. (required)
         :type message_id: int
         :param reaction: A JSON-serialized list of reaction types to set on the message. Currently, as non-premium users, bots can set up to one reaction per message. A custom emoji reaction can be used if it is either already present on the message or explicitly allowed by chat administrators. Paid reactions can't be used by bots.
@@ -42037,7 +43131,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMessageReactionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -42054,7 +43148,7 @@ class DefaultApi:
     @validate_call
     async def post_set_message_reaction_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_id: Annotated[StrictInt, Field(description="Identifier of the target message. If the message belongs to a media group, the reaction is set to the first non-deleted message in the group instead.")],
         reaction: Annotated[Optional[List[ReactionType]], Field(description="A JSON-serialized list of reaction types to set on the message. Currently, as non-premium users, bots can set up to one reaction per message. A custom emoji reaction can be used if it is either already present on the message or explicitly allowed by chat administrators. Paid reactions can't be used by bots.")] = None,
         is_big: Annotated[Optional[StrictBool], Field(description="Pass *True* to set the reaction with a big animation")] = None,
@@ -42076,7 +43170,7 @@ class DefaultApi:
         Use this method to change the chosen reactions on a message. Service messages of some types can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_id: Identifier of the target message. If the message belongs to a media group, the reaction is set to the first non-deleted message in the group instead. (required)
         :type message_id: int
         :param reaction: A JSON-serialized list of reaction types to set on the message. Currently, as non-premium users, bots can set up to one reaction per message. A custom emoji reaction can be used if it is either already present on the message or explicitly allowed by chat administrators. Paid reactions can't be used by bots.
@@ -42117,7 +43211,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMessageReactionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -42233,7 +43327,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetMyCommandsResponse:
         """setMyCommands
 
         Use this method to change the list of the bot's commands. See [this manual](https://core.telegram.org/bots/features#commands) for more details about bot commands. Returns *True* on success.
@@ -42277,7 +43371,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyCommandsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -42309,7 +43403,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetMyCommandsResponse]:
         """setMyCommands
 
         Use this method to change the list of the bot's commands. See [this manual](https://core.telegram.org/bots/features#commands) for more details about bot commands. Returns *True* on success.
@@ -42353,7 +43447,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyCommandsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -42429,7 +43523,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyCommandsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -42541,7 +43635,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetMyDefaultAdministratorRightsResponse:
         """setMyDefaultAdministratorRights
 
         Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are free to modify the list before adding the bot. Returns *True* on success.
@@ -42582,7 +43676,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyDefaultAdministratorRightsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -42613,7 +43707,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetMyDefaultAdministratorRightsResponse]:
         """setMyDefaultAdministratorRights
 
         Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are free to modify the list before adding the bot. Returns *True* on success.
@@ -42654,7 +43748,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyDefaultAdministratorRightsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -42726,7 +43820,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyDefaultAdministratorRightsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -42834,7 +43928,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetMyDescriptionResponse:
         """setMyDescription
 
         Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty. Returns *True* on success.
@@ -42875,7 +43969,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -42906,7 +44000,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetMyDescriptionResponse]:
         """setMyDescription
 
         Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty. Returns *True* on success.
@@ -42947,7 +44041,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -43019,7 +44113,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -43127,7 +44221,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetMyNameResponse:
         """setMyName
 
         Use this method to change the bot's name. Returns *True* on success.
@@ -43168,7 +44262,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyNameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -43199,7 +44293,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetMyNameResponse]:
         """setMyName
 
         Use this method to change the bot's name. Returns *True* on success.
@@ -43240,7 +44334,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyNameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -43312,7 +44406,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyNameResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -43420,7 +44514,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetMyShortDescriptionResponse:
         """setMyShortDescription
 
         Use this method to change the bot's short description, which is shown on the bot's profile page and is sent together with the link when users share the bot. Returns *True* on success.
@@ -43461,7 +44555,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyShortDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -43492,7 +44586,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetMyShortDescriptionResponse]:
         """setMyShortDescription
 
         Use this method to change the bot's short description, which is shown on the bot's profile page and is sent together with the link when users share the bot. Returns *True* on success.
@@ -43533,7 +44627,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyShortDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -43605,7 +44699,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetMyShortDescriptionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -43713,7 +44807,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetPassportDataErrorsResponse:
         """setPassportDataErrors
 
         Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns *True* on success.  Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.
@@ -43754,7 +44848,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetPassportDataErrorsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -43785,7 +44879,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetPassportDataErrorsResponse]:
         """setPassportDataErrors
 
         Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns *True* on success.  Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.
@@ -43826,7 +44920,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetPassportDataErrorsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -43898,7 +44992,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetPassportDataErrorsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -44007,7 +45101,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetStickerEmojiListResponse:
         """setStickerEmojiList
 
         Use this method to change the list of emoji assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns *True* on success.
@@ -44048,7 +45142,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerEmojiListResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -44079,7 +45173,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetStickerEmojiListResponse]:
         """setStickerEmojiList
 
         Use this method to change the list of emoji assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns *True* on success.
@@ -44120,7 +45214,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerEmojiListResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -44192,7 +45286,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerEmojiListResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -44301,7 +45395,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetStickerKeywordsResponse:
         """setStickerKeywords
 
         Use this method to change search keywords assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns *True* on success.
@@ -44342,7 +45436,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerKeywordsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -44373,7 +45467,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetStickerKeywordsResponse]:
         """setStickerKeywords
 
         Use this method to change search keywords assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns *True* on success.
@@ -44414,7 +45508,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerKeywordsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -44486,7 +45580,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerKeywordsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -44595,7 +45689,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetStickerMaskPositionResponse:
         """setStickerMaskPosition
 
         Use this method to change the [mask position](https://core.telegram.org/bots/api/#maskposition) of a mask sticker. The sticker must belong to a sticker set that was created by the bot. Returns *True* on success.
@@ -44636,7 +45730,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerMaskPositionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -44667,7 +45761,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetStickerMaskPositionResponse]:
         """setStickerMaskPosition
 
         Use this method to change the [mask position](https://core.telegram.org/bots/api/#maskposition) of a mask sticker. The sticker must belong to a sticker set that was created by the bot. Returns *True* on success.
@@ -44708,7 +45802,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerMaskPositionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -44780,7 +45874,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerMaskPositionResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -44888,7 +45982,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetStickerPositionInSetResponse:
         """setStickerPositionInSet
 
         Use this method to move a sticker in a set created by the bot to a specific position. Returns *True* on success.
@@ -44929,7 +46023,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerPositionInSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -44960,7 +46054,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetStickerPositionInSetResponse]:
         """setStickerPositionInSet
 
         Use this method to move a sticker in a set created by the bot to a specific position. Returns *True* on success.
@@ -45001,7 +46095,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerPositionInSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -45073,7 +46167,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerPositionInSetResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -45170,7 +46264,7 @@ class DefaultApi:
         name: Annotated[StrictStr, Field(description="Sticker set name")],
         user_id: Annotated[StrictInt, Field(description="User identifier of the sticker set owner")],
         format: Annotated[StrictStr, Field(description="Format of the thumbnail, must be one of “static” for a **.WEBP** or **.PNG** image, “animated” for a **.TGS** animation, or “video” for a **.WEBM** video")],
-        thumbnail: Optional[PostSetStickerSetThumbnailRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -45183,7 +46277,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetStickerSetThumbnailResponse:
         """setStickerSetThumbnail
 
         Use this method to set the thumbnail of a regular or mask sticker set. The format of the thumbnail file must match the format of the stickers in the set. Returns *True* on success.
@@ -45195,7 +46289,7 @@ class DefaultApi:
         :param format: Format of the thumbnail, must be one of “static” for a **.WEBP** or **.PNG** image, “animated” for a **.TGS** animation, or “video” for a **.WEBM** video (required)
         :type format: str
         :param thumbnail:
-        :type thumbnail: PostSetStickerSetThumbnailRequestThumbnail
+        :type thumbnail: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -45230,7 +46324,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerSetThumbnailResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -45250,7 +46344,7 @@ class DefaultApi:
         name: Annotated[StrictStr, Field(description="Sticker set name")],
         user_id: Annotated[StrictInt, Field(description="User identifier of the sticker set owner")],
         format: Annotated[StrictStr, Field(description="Format of the thumbnail, must be one of “static” for a **.WEBP** or **.PNG** image, “animated” for a **.TGS** animation, or “video” for a **.WEBM** video")],
-        thumbnail: Optional[PostSetStickerSetThumbnailRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -45263,7 +46357,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetStickerSetThumbnailResponse]:
         """setStickerSetThumbnail
 
         Use this method to set the thumbnail of a regular or mask sticker set. The format of the thumbnail file must match the format of the stickers in the set. Returns *True* on success.
@@ -45275,7 +46369,7 @@ class DefaultApi:
         :param format: Format of the thumbnail, must be one of “static” for a **.WEBP** or **.PNG** image, “animated” for a **.TGS** animation, or “video” for a **.WEBM** video (required)
         :type format: str
         :param thumbnail:
-        :type thumbnail: PostSetStickerSetThumbnailRequestThumbnail
+        :type thumbnail: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -45310,7 +46404,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerSetThumbnailResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -45330,7 +46424,7 @@ class DefaultApi:
         name: Annotated[StrictStr, Field(description="Sticker set name")],
         user_id: Annotated[StrictInt, Field(description="User identifier of the sticker set owner")],
         format: Annotated[StrictStr, Field(description="Format of the thumbnail, must be one of “static” for a **.WEBP** or **.PNG** image, “animated” for a **.TGS** animation, or “video” for a **.WEBM** video")],
-        thumbnail: Optional[PostSetStickerSetThumbnailRequestThumbnail] = None,
+        thumbnail: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -45355,7 +46449,7 @@ class DefaultApi:
         :param format: Format of the thumbnail, must be one of “static” for a **.WEBP** or **.PNG** image, “animated” for a **.TGS** animation, or “video” for a **.WEBM** video (required)
         :type format: str
         :param thumbnail:
-        :type thumbnail: PostSetStickerSetThumbnailRequestThumbnail
+        :type thumbnail: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -45390,7 +46484,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerSetThumbnailResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -45456,7 +46550,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -45502,7 +46597,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetStickerSetTitleResponse:
         """setStickerSetTitle
 
         Use this method to set the title of a created sticker set. Returns *True* on success.
@@ -45543,7 +46638,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerSetTitleResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -45574,7 +46669,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetStickerSetTitleResponse]:
         """setStickerSetTitle
 
         Use this method to set the title of a created sticker set. Returns *True* on success.
@@ -45615,7 +46710,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerSetTitleResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -45687,7 +46782,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetStickerSetTitleResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -45796,7 +46891,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetUserEmojiStatusResponse:
         """setUserEmojiStatus
 
         Changes the emoji status for a given user that previously allowed the bot to manage their emoji status via the Mini App method [requestEmojiStatusAccess](https://core.telegram.org/bots/webapps#initializing-mini-apps). Returns *True* on success.
@@ -45840,7 +46935,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetUserEmojiStatusResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -45872,7 +46967,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetUserEmojiStatusResponse]:
         """setUserEmojiStatus
 
         Changes the emoji status for a given user that previously allowed the bot to manage their emoji status via the Mini App method [requestEmojiStatusAccess](https://core.telegram.org/bots/webapps#initializing-mini-apps). Returns *True* on success.
@@ -45916,7 +47011,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetUserEmojiStatusResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -45992,7 +47087,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetUserEmojiStatusResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -46108,7 +47203,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> SetWebhookResponse:
         """setWebhook
 
         Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized [Update](https://core.telegram.org/bots/api/#update). In case of an unsuccessful request (a request with response [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) different from `2XY`), we will repeat the request and give up after a reasonable amount of attempts. Returns *True* on success.  If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter *secret\\_token*. If specified, the request will contain a header “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
@@ -46164,7 +47259,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetWebhookResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -46200,7 +47295,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[SetWebhookResponse]:
         """setWebhook
 
         Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized [Update](https://core.telegram.org/bots/api/#update). In case of an unsuccessful request (a request with response [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) different from `2XY`), we will repeat the request and give up after a reasonable amount of attempts. Returns *True* on success.  If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter *secret\\_token*. If specified, the request will contain a header “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
@@ -46256,7 +47351,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetWebhookResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -46348,7 +47443,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "SetWebhookResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -46424,7 +47519,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -46457,7 +47553,7 @@ class DefaultApi:
     async def post_stop_message_live_location(
         self,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message with live location to stop")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
@@ -46473,7 +47569,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostEditMessageText200Response:
+    ) -> StopMessageLiveLocationResponse:
         """stopMessageLiveLocation
 
         Use this method to stop updating a live location message before *live\\_period* expires. On success, if the message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned.
@@ -46481,7 +47577,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message with live location to stop
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -46523,7 +47619,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "StopMessageLiveLocationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -46541,7 +47637,7 @@ class DefaultApi:
     async def post_stop_message_live_location_with_http_info(
         self,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message with live location to stop")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
@@ -46557,7 +47653,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostEditMessageText200Response]:
+    ) -> ApiResponse[StopMessageLiveLocationResponse]:
         """stopMessageLiveLocation
 
         Use this method to stop updating a live location message before *live\\_period* expires. On success, if the message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned.
@@ -46565,7 +47661,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message with live location to stop
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -46607,7 +47703,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "StopMessageLiveLocationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -46625,7 +47721,7 @@ class DefaultApi:
     async def post_stop_message_live_location_without_preload_content(
         self,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
-        chat_id: Optional[PostEditMessageTextRequestChatId] = None,
+        chat_id: Optional[EditMessageTextRequestChatId] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message with live location to stop")] = None,
         inline_message_id: Annotated[Optional[StrictStr], Field(description="Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message")] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
@@ -46649,7 +47745,7 @@ class DefaultApi:
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
         :type business_connection_id: str
         :param chat_id:
-        :type chat_id: PostEditMessageTextRequestChatId
+        :type chat_id: EditMessageTextRequestChatId
         :param message_id: Required if *inline\\\\_message\\\\_id* is not specified. Identifier of the message with live location to stop
         :type message_id: int
         :param inline_message_id: Required if *chat\\\\_id* and *message\\\\_id* are not specified. Identifier of the inline message
@@ -46691,7 +47787,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostEditMessageText200Response",
+            '200': "StopMessageLiveLocationResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -46794,7 +47890,7 @@ class DefaultApi:
     @validate_call
     async def post_stop_poll(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_id: Annotated[StrictInt, Field(description="Identifier of the original message with the poll")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
@@ -46810,13 +47906,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostStopPoll200Response:
+    ) -> StopPollResponse:
         """stopPoll
 
         Use this method to stop a poll which was sent by the bot. On success, the stopped [Poll](https://core.telegram.org/bots/api/#poll) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_id: Identifier of the original message with the poll (required)
         :type message_id: int
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
@@ -46857,7 +47953,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostStopPoll200Response",
+            '200': "StopPollResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -46874,7 +47970,7 @@ class DefaultApi:
     @validate_call
     async def post_stop_poll_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_id: Annotated[StrictInt, Field(description="Identifier of the original message with the poll")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
@@ -46890,13 +47986,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostStopPoll200Response]:
+    ) -> ApiResponse[StopPollResponse]:
         """stopPoll
 
         Use this method to stop a poll which was sent by the bot. On success, the stopped [Poll](https://core.telegram.org/bots/api/#poll) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_id: Identifier of the original message with the poll (required)
         :type message_id: int
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
@@ -46937,7 +48033,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostStopPoll200Response",
+            '200': "StopPollResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -46954,7 +48050,7 @@ class DefaultApi:
     @validate_call
     async def post_stop_poll_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         message_id: Annotated[StrictInt, Field(description="Identifier of the original message with the poll")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message to be edited was sent")] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
@@ -46976,7 +48072,7 @@ class DefaultApi:
         Use this method to stop a poll which was sent by the bot. On success, the stopped [Poll](https://core.telegram.org/bots/api/#poll) is returned.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param message_id: Identifier of the original message with the poll (required)
         :type message_id: int
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message to be edited was sent
@@ -47017,7 +48113,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostStopPoll200Response",
+            '200': "StopPollResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -47131,7 +48227,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> TransferBusinessAccountStarsResponse:
         """transferBusinessAccountStars
 
         Transfers Telegram Stars from the business account balance to the bot's balance. Requires the *can\\_transfer\\_stars* business bot right. Returns *True* on success.
@@ -47172,7 +48268,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "TransferBusinessAccountStarsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -47203,7 +48299,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[TransferBusinessAccountStarsResponse]:
         """transferBusinessAccountStars
 
         Transfers Telegram Stars from the business account balance to the bot's balance. Requires the *can\\_transfer\\_stars* business bot right. Returns *True* on success.
@@ -47244,7 +48340,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "TransferBusinessAccountStarsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -47316,7 +48412,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "TransferBusinessAccountStarsResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -47426,7 +48522,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> TransferGiftResponse:
         """transferGift
 
         Transfers an owned unique gift to another user. Requires the *can\\_transfer\\_and\\_upgrade\\_gifts* business bot right. Requires *can\\_transfer\\_stars* business bot right if the transfer is paid. Returns *True* on success.
@@ -47473,7 +48569,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "TransferGiftResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -47506,7 +48602,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[TransferGiftResponse]:
         """transferGift
 
         Transfers an owned unique gift to another user. Requires the *can\\_transfer\\_and\\_upgrade\\_gifts* business bot right. Requires *can\\_transfer\\_stars* business bot right if the transfer is paid. Returns *True* on success.
@@ -47553,7 +48649,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "TransferGiftResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -47633,7 +48729,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "TransferGiftResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -47733,7 +48829,7 @@ class DefaultApi:
     @validate_call
     async def post_unban_chat_member(
         self,
-        chat_id: PostBanChatMemberRequestChatId,
+        chat_id: BanChatMemberRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         only_if_banned: Annotated[Optional[StrictBool], Field(description="Do nothing if the user is not banned")] = None,
         _request_timeout: Union[
@@ -47748,13 +48844,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> UnbanChatMemberResponse:
         """unbanChatMember
 
         Use this method to unban a previously banned user in a supergroup or channel. The user will **not** return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be **removed** from the chat. If you don't want this, use the parameter *only\\_if\\_banned*. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostBanChatMemberRequestChatId
+        :type chat_id: BanChatMemberRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param only_if_banned: Do nothing if the user is not banned
@@ -47792,7 +48888,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnbanChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -47809,7 +48905,7 @@ class DefaultApi:
     @validate_call
     async def post_unban_chat_member_with_http_info(
         self,
-        chat_id: PostBanChatMemberRequestChatId,
+        chat_id: BanChatMemberRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         only_if_banned: Annotated[Optional[StrictBool], Field(description="Do nothing if the user is not banned")] = None,
         _request_timeout: Union[
@@ -47824,13 +48920,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[UnbanChatMemberResponse]:
         """unbanChatMember
 
         Use this method to unban a previously banned user in a supergroup or channel. The user will **not** return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be **removed** from the chat. If you don't want this, use the parameter *only\\_if\\_banned*. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostBanChatMemberRequestChatId
+        :type chat_id: BanChatMemberRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param only_if_banned: Do nothing if the user is not banned
@@ -47868,7 +48964,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnbanChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -47885,7 +48981,7 @@ class DefaultApi:
     @validate_call
     async def post_unban_chat_member_without_preload_content(
         self,
-        chat_id: PostBanChatMemberRequestChatId,
+        chat_id: BanChatMemberRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         only_if_banned: Annotated[Optional[StrictBool], Field(description="Do nothing if the user is not banned")] = None,
         _request_timeout: Union[
@@ -47906,7 +49002,7 @@ class DefaultApi:
         Use this method to unban a previously banned user in a supergroup or channel. The user will **not** return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be **removed** from the chat. If you don't want this, use the parameter *only\\_if\\_banned*. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostBanChatMemberRequestChatId
+        :type chat_id: BanChatMemberRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param only_if_banned: Do nothing if the user is not banned
@@ -47944,7 +49040,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnbanChatMemberResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -48041,7 +49137,7 @@ class DefaultApi:
     @validate_call
     async def post_unban_chat_sender_chat(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         sender_chat_id: Annotated[StrictInt, Field(description="Unique identifier of the target sender chat")],
         _request_timeout: Union[
             None,
@@ -48055,13 +49151,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> UnbanChatSenderChatResponse:
         """unbanChatSenderChat
 
         Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param sender_chat_id: Unique identifier of the target sender chat (required)
         :type sender_chat_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -48096,7 +49192,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnbanChatSenderChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -48113,7 +49209,7 @@ class DefaultApi:
     @validate_call
     async def post_unban_chat_sender_chat_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         sender_chat_id: Annotated[StrictInt, Field(description="Unique identifier of the target sender chat")],
         _request_timeout: Union[
             None,
@@ -48127,13 +49223,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[UnbanChatSenderChatResponse]:
         """unbanChatSenderChat
 
         Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param sender_chat_id: Unique identifier of the target sender chat (required)
         :type sender_chat_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -48168,7 +49264,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnbanChatSenderChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -48185,7 +49281,7 @@ class DefaultApi:
     @validate_call
     async def post_unban_chat_sender_chat_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         sender_chat_id: Annotated[StrictInt, Field(description="Unique identifier of the target sender chat")],
         _request_timeout: Union[
             None,
@@ -48205,7 +49301,7 @@ class DefaultApi:
         Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param sender_chat_id: Unique identifier of the target sender chat (required)
         :type sender_chat_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -48240,7 +49336,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnbanChatSenderChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -48334,7 +49430,7 @@ class DefaultApi:
     @validate_call
     async def post_unhide_general_forum_topic(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -48347,13 +49443,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> UnhideGeneralForumTopicResponse:
         """unhideGeneralForumTopic
 
         Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -48385,7 +49481,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnhideGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -48402,7 +49498,7 @@ class DefaultApi:
     @validate_call
     async def post_unhide_general_forum_topic_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -48415,13 +49511,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[UnhideGeneralForumTopicResponse]:
         """unhideGeneralForumTopic
 
         Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -48453,7 +49549,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnhideGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -48470,7 +49566,7 @@ class DefaultApi:
     @validate_call
     async def post_unhide_general_forum_topic_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -48489,7 +49585,7 @@ class DefaultApi:
         Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -48521,7 +49617,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnhideGeneralForumTopicResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -48612,7 +49708,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_chat_messages(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -48625,13 +49721,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> UnpinAllChatMessagesResponse:
         """unpinAllChatMessages
 
         Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -48663,7 +49759,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnpinAllChatMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -48680,7 +49776,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_chat_messages_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -48693,13 +49789,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[UnpinAllChatMessagesResponse]:
         """unpinAllChatMessages
 
         Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -48731,7 +49827,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnpinAllChatMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -48748,7 +49844,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_chat_messages_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -48767,7 +49863,7 @@ class DefaultApi:
         Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -48799,7 +49895,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnpinAllChatMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -48890,7 +49986,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_forum_topic_messages(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -48904,13 +50000,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> UnpinAllForumTopicMessagesResponse:
         """unpinAllForumTopicMessages
 
         Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the *can\\_pin\\_messages* administrator right in the supergroup. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -48945,7 +50041,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnpinAllForumTopicMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -48962,7 +50058,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_forum_topic_messages_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -48976,13 +50072,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[UnpinAllForumTopicMessagesResponse]:
         """unpinAllForumTopicMessages
 
         Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the *can\\_pin\\_messages* administrator right in the supergroup. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -49017,7 +50113,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnpinAllForumTopicMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -49034,7 +50130,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_forum_topic_messages_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -49054,7 +50150,7 @@ class DefaultApi:
         Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the *can\\_pin\\_messages* administrator right in the supergroup. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -49089,7 +50185,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnpinAllForumTopicMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -49183,7 +50279,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_general_forum_topic_messages(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -49196,13 +50292,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> UnpinAllGeneralForumTopicMessagesResponse:
         """unpinAllGeneralForumTopicMessages
 
         Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the *can\\_pin\\_messages* administrator right in the supergroup. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -49234,7 +50330,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnpinAllGeneralForumTopicMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -49251,7 +50347,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_general_forum_topic_messages_with_http_info(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -49264,13 +50360,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[UnpinAllGeneralForumTopicMessagesResponse]:
         """unpinAllGeneralForumTopicMessages
 
         Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the *can\\_pin\\_messages* administrator right in the supergroup. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -49302,7 +50398,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnpinAllGeneralForumTopicMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -49319,7 +50415,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_general_forum_topic_messages_without_preload_content(
         self,
-        chat_id: PostRestrictChatMemberRequestChatId,
+        chat_id: BotCommandScopeChatChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -49338,7 +50434,7 @@ class DefaultApi:
         Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the *can\\_pin\\_messages* administrator right in the supergroup. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostRestrictChatMemberRequestChatId
+        :type chat_id: BotCommandScopeChatChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -49370,7 +50466,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnpinAllGeneralForumTopicMessagesResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -49461,7 +50557,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_chat_message(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be unpinned")] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Identifier of the message to unpin. Required if *business\\\\_connection\\\\_id* is specified. If not specified, the most recent pinned message (by sending date) will be unpinned.")] = None,
         _request_timeout: Union[
@@ -49476,13 +50572,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> UnpinChatMessageResponse:
         """unpinChatMessage
 
         Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be unpinned
         :type business_connection_id: str
         :param message_id: Identifier of the message to unpin. Required if *business\\\\_connection\\\\_id* is specified. If not specified, the most recent pinned message (by sending date) will be unpinned.
@@ -49520,7 +50616,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnpinChatMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -49537,7 +50633,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_chat_message_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be unpinned")] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Identifier of the message to unpin. Required if *business\\\\_connection\\\\_id* is specified. If not specified, the most recent pinned message (by sending date) will be unpinned.")] = None,
         _request_timeout: Union[
@@ -49552,13 +50648,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[UnpinChatMessageResponse]:
         """unpinChatMessage
 
         Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be unpinned
         :type business_connection_id: str
         :param message_id: Identifier of the message to unpin. Required if *business\\\\_connection\\\\_id* is specified. If not specified, the most recent pinned message (by sending date) will be unpinned.
@@ -49596,7 +50692,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnpinChatMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -49613,7 +50709,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_chat_message_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be unpinned")] = None,
         message_id: Annotated[Optional[StrictInt], Field(description="Identifier of the message to unpin. Required if *business\\\\_connection\\\\_id* is specified. If not specified, the most recent pinned message (by sending date) will be unpinned.")] = None,
         _request_timeout: Union[
@@ -49634,7 +50730,7 @@ class DefaultApi:
         Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be unpinned
         :type business_connection_id: str
         :param message_id: Identifier of the message to unpin. Required if *business\\\\_connection\\\\_id* is specified. If not specified, the most recent pinned message (by sending date) will be unpinned.
@@ -49672,7 +50768,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UnpinChatMessageResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -49771,7 +50867,7 @@ class DefaultApi:
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
         owned_gift_id: Annotated[StrictStr, Field(description="Unique identifier of the regular gift that should be upgraded to a unique one")],
-        keep_original_details: Annotated[Optional[StrictBool], Field(description="Pass True to keep the original gift text, sender and receiver in the upgraded gift")] = None,
+        keep_original_details: Annotated[Optional[StrictBool], Field(description="Pass *True* to keep the original gift text, sender and receiver in the upgraded gift")] = None,
         star_count: Annotated[Optional[StrictInt], Field(description="The amount of Telegram Stars that will be paid for the upgrade from the business account balance. If `gift.prepaid_upgrade_star_count > 0`, then pass 0, otherwise, the *can\\\\_transfer\\\\_stars* business bot right is required and `gift.upgrade_star_count` must be passed.")] = None,
         _request_timeout: Union[
             None,
@@ -49785,7 +50881,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> UpgradeGiftResponse:
         """upgradeGift
 
         Upgrades a given regular gift to a unique gift. Requires the *can\\_transfer\\_and\\_upgrade\\_gifts* business bot right. Additionally requires the *can\\_transfer\\_stars* business bot right if the upgrade is paid. Returns *True* on success.
@@ -49794,7 +50890,7 @@ class DefaultApi:
         :type business_connection_id: str
         :param owned_gift_id: Unique identifier of the regular gift that should be upgraded to a unique one (required)
         :type owned_gift_id: str
-        :param keep_original_details: Pass True to keep the original gift text, sender and receiver in the upgraded gift
+        :param keep_original_details: Pass *True* to keep the original gift text, sender and receiver in the upgraded gift
         :type keep_original_details: bool
         :param star_count: The amount of Telegram Stars that will be paid for the upgrade from the business account balance. If `gift.prepaid_upgrade_star_count > 0`, then pass 0, otherwise, the *can\\\\_transfer\\\\_stars* business bot right is required and `gift.upgrade_star_count` must be passed.
         :type star_count: int
@@ -49832,7 +50928,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UpgradeGiftResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -49851,7 +50947,7 @@ class DefaultApi:
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
         owned_gift_id: Annotated[StrictStr, Field(description="Unique identifier of the regular gift that should be upgraded to a unique one")],
-        keep_original_details: Annotated[Optional[StrictBool], Field(description="Pass True to keep the original gift text, sender and receiver in the upgraded gift")] = None,
+        keep_original_details: Annotated[Optional[StrictBool], Field(description="Pass *True* to keep the original gift text, sender and receiver in the upgraded gift")] = None,
         star_count: Annotated[Optional[StrictInt], Field(description="The amount of Telegram Stars that will be paid for the upgrade from the business account balance. If `gift.prepaid_upgrade_star_count > 0`, then pass 0, otherwise, the *can\\\\_transfer\\\\_stars* business bot right is required and `gift.upgrade_star_count` must be passed.")] = None,
         _request_timeout: Union[
             None,
@@ -49865,7 +50961,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[UpgradeGiftResponse]:
         """upgradeGift
 
         Upgrades a given regular gift to a unique gift. Requires the *can\\_transfer\\_and\\_upgrade\\_gifts* business bot right. Additionally requires the *can\\_transfer\\_stars* business bot right if the upgrade is paid. Returns *True* on success.
@@ -49874,7 +50970,7 @@ class DefaultApi:
         :type business_connection_id: str
         :param owned_gift_id: Unique identifier of the regular gift that should be upgraded to a unique one (required)
         :type owned_gift_id: str
-        :param keep_original_details: Pass True to keep the original gift text, sender and receiver in the upgraded gift
+        :param keep_original_details: Pass *True* to keep the original gift text, sender and receiver in the upgraded gift
         :type keep_original_details: bool
         :param star_count: The amount of Telegram Stars that will be paid for the upgrade from the business account balance. If `gift.prepaid_upgrade_star_count > 0`, then pass 0, otherwise, the *can\\\\_transfer\\\\_stars* business bot right is required and `gift.upgrade_star_count` must be passed.
         :type star_count: int
@@ -49912,7 +51008,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UpgradeGiftResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -49931,7 +51027,7 @@ class DefaultApi:
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection")],
         owned_gift_id: Annotated[StrictStr, Field(description="Unique identifier of the regular gift that should be upgraded to a unique one")],
-        keep_original_details: Annotated[Optional[StrictBool], Field(description="Pass True to keep the original gift text, sender and receiver in the upgraded gift")] = None,
+        keep_original_details: Annotated[Optional[StrictBool], Field(description="Pass *True* to keep the original gift text, sender and receiver in the upgraded gift")] = None,
         star_count: Annotated[Optional[StrictInt], Field(description="The amount of Telegram Stars that will be paid for the upgrade from the business account balance. If `gift.prepaid_upgrade_star_count > 0`, then pass 0, otherwise, the *can\\\\_transfer\\\\_stars* business bot right is required and `gift.upgrade_star_count` must be passed.")] = None,
         _request_timeout: Union[
             None,
@@ -49954,7 +51050,7 @@ class DefaultApi:
         :type business_connection_id: str
         :param owned_gift_id: Unique identifier of the regular gift that should be upgraded to a unique one (required)
         :type owned_gift_id: str
-        :param keep_original_details: Pass True to keep the original gift text, sender and receiver in the upgraded gift
+        :param keep_original_details: Pass *True* to keep the original gift text, sender and receiver in the upgraded gift
         :type keep_original_details: bool
         :param star_count: The amount of Telegram Stars that will be paid for the upgrade from the business account balance. If `gift.prepaid_upgrade_star_count > 0`, then pass 0, otherwise, the *can\\\\_transfer\\\\_stars* business bot right is required and `gift.upgrade_star_count` must be passed.
         :type star_count: int
@@ -49992,7 +51088,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "UpgradeGiftResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -50107,7 +51203,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostGetFile200Response:
+    ) -> UploadStickerFileResponse:
         """uploadStickerFile
 
         Use this method to upload a file with a sticker for later use in the [createNewStickerSet](https://core.telegram.org/bots/api/#createnewstickerset), [addStickerToSet](https://core.telegram.org/bots/api/#addstickertoset), or [replaceStickerInSet](https://core.telegram.org/bots/api/#replacestickerinset) methods (the file can be used multiple times). Returns the uploaded [File](https://core.telegram.org/bots/api/#file) on success.
@@ -50151,7 +51247,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetFile200Response",
+            '200': "UploadStickerFileResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -50183,7 +51279,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostGetFile200Response]:
+    ) -> ApiResponse[UploadStickerFileResponse]:
         """uploadStickerFile
 
         Use this method to upload a file with a sticker for later use in the [createNewStickerSet](https://core.telegram.org/bots/api/#createnewstickerset), [addStickerToSet](https://core.telegram.org/bots/api/#addstickertoset), or [replaceStickerInSet](https://core.telegram.org/bots/api/#replacestickerinset) methods (the file can be used multiple times). Returns the uploaded [File](https://core.telegram.org/bots/api/#file) on success.
@@ -50227,7 +51323,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetFile200Response",
+            '200': "UploadStickerFileResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -50303,7 +51399,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostGetFile200Response",
+            '200': "UploadStickerFileResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -50366,7 +51462,8 @@ class DefaultApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/json'
                     ]
                 )
             )
@@ -50398,7 +51495,7 @@ class DefaultApi:
     @validate_call
     async def post_verify_chat(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         custom_description: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=70)]], Field(description="Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.")] = None,
         _request_timeout: Union[
             None,
@@ -50412,13 +51509,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> VerifyChatResponse:
         """verifyChat
 
         Verifies a chat [on behalf of the organization](https://telegram.org/verify#third-party-verification) which is represented by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param custom_description: Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.
         :type custom_description: str
         :param _request_timeout: timeout setting for this request. If one
@@ -50453,7 +51550,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "VerifyChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -50470,7 +51567,7 @@ class DefaultApi:
     @validate_call
     async def post_verify_chat_with_http_info(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         custom_description: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=70)]], Field(description="Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.")] = None,
         _request_timeout: Union[
             None,
@@ -50484,13 +51581,13 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[VerifyChatResponse]:
         """verifyChat
 
         Verifies a chat [on behalf of the organization](https://telegram.org/verify#third-party-verification) which is represented by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param custom_description: Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.
         :type custom_description: str
         :param _request_timeout: timeout setting for this request. If one
@@ -50525,7 +51622,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "VerifyChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -50542,7 +51639,7 @@ class DefaultApi:
     @validate_call
     async def post_verify_chat_without_preload_content(
         self,
-        chat_id: PostSendMessageRequestChatId,
+        chat_id: SendMessageRequestChatId,
         custom_description: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=70)]], Field(description="Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.")] = None,
         _request_timeout: Union[
             None,
@@ -50562,7 +51659,7 @@ class DefaultApi:
         Verifies a chat [on behalf of the organization](https://telegram.org/verify#third-party-verification) which is represented by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: PostSendMessageRequestChatId
+        :type chat_id: SendMessageRequestChatId
         :param custom_description: Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.
         :type custom_description: str
         :param _request_timeout: timeout setting for this request. If one
@@ -50597,7 +51694,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "VerifyChatResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -50705,7 +51802,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PostSetWebhook200Response:
+    ) -> VerifyUserResponse:
         """verifyUser
 
         Verifies a user [on behalf of the organization](https://telegram.org/verify#third-party-verification) which is represented by the bot. Returns *True* on success.
@@ -50746,7 +51843,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "VerifyUserResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -50777,7 +51874,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PostSetWebhook200Response]:
+    ) -> ApiResponse[VerifyUserResponse]:
         """verifyUser
 
         Verifies a user [on behalf of the organization](https://telegram.org/verify#third-party-verification) which is represented by the bot. Returns *True* on success.
@@ -50818,7 +51915,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "VerifyUserResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(
@@ -50890,7 +51987,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PostSetWebhook200Response",
+            '200': "VerifyUserResponse",
             '400': "Error",
         }
         response_data = await self.api_client.call_api(

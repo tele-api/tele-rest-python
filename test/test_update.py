@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -236,6 +236,36 @@ class TestUpdate(unittest.TestCase):
                                 mime_type = '', 
                                 file_size = 56, ), 
                             has_media_spoiler = True, 
+                            checklist = tele_rest.models.checklist.Checklist(
+                                title = '', 
+                                title_entities = [
+                                    tele_rest.models.message_entity.MessageEntity(
+                                        type = 'mention', 
+                                        offset = 56, 
+                                        length = 56, 
+                                        url = '', 
+                                        user = , 
+                                        language = '', 
+                                        custom_emoji_id = '', )
+                                    ], 
+                                tasks = [
+                                    tele_rest.models.checklist_task.ChecklistTask(
+                                        id = 56, 
+                                        text = '', 
+                                        text_entities = [
+                                            tele_rest.models.message_entity.MessageEntity(
+                                                type = 'mention', 
+                                                offset = 56, 
+                                                length = 56, 
+                                                url = '', 
+                                                language = '', 
+                                                custom_emoji_id = '', )
+                                            ], 
+                                        completed_by_user = , 
+                                        completion_date = 56, )
+                                    ], 
+                                others_can_add_tasks = True, 
+                                others_can_mark_tasks_as_done = True, ), 
                             contact = tele_rest.models.contact.Contact(
                                 phone_number = '', 
                                 first_name = '', 
@@ -251,17 +281,7 @@ class TestUpdate(unittest.TestCase):
                                 photo = [
                                     
                                     ], 
-                                text = '', 
-                                text_entities = [
-                                    tele_rest.models.message_entity.MessageEntity(
-                                        type = 'mention', 
-                                        offset = 56, 
-                                        length = 56, 
-                                        url = '', 
-                                        user = , 
-                                        language = '', 
-                                        custom_emoji_id = '', )
-                                    ], ), 
+                                text = '', ), 
                             giveaway = tele_rest.models.giveaway.Giveaway(
                                 chats = [
                                     
@@ -308,13 +328,7 @@ class TestUpdate(unittest.TestCase):
                                 id = '', 
                                 question = '0', 
                                 question_entities = [
-                                    tele_rest.models.message_entity.MessageEntity(
-                                        type = 'mention', 
-                                        offset = 56, 
-                                        length = 56, 
-                                        url = '', 
-                                        language = '', 
-                                        custom_emoji_id = '', )
+                                    
                                     ], 
                                 options = [
                                     tele_rest.models.poll_option.PollOption(
@@ -449,6 +463,16 @@ class TestUpdate(unittest.TestCase):
                             ], 
                         show_caption_above_media = True, 
                         has_media_spoiler = True, 
+                        checklist = tele_rest.models.checklist.Checklist(
+                            title = '', 
+                            tasks = [
+                                tele_rest.models.checklist_task.ChecklistTask(
+                                    id = 56, 
+                                    text = '', 
+                                    completion_date = 56, )
+                                ], 
+                            others_can_add_tasks = True, 
+                            others_can_mark_tasks_as_done = True, ), 
                         contact = tele_rest.models.contact.Contact(
                             phone_number = '', 
                             first_name = '', 
@@ -591,8 +615,10 @@ class TestUpdate(unittest.TestCase):
                                         text_color = 56, ), 
                                     rarity_per_mille = 56, ), ), 
                             origin = 'upgrade', 
+                            last_resale_star_count = 56, 
                             owned_gift_id = '', 
-                            transfer_star_count = 56, ), 
+                            transfer_star_count = 56, 
+                            next_transfer_date = 56, ), 
                         connected_website = '', 
                         write_access_allowed = tele_rest.models.write_access_allowed.WriteAccessAllowed(
                             from_request = True, 
@@ -635,6 +661,21 @@ class TestUpdate(unittest.TestCase):
                             boost_count = 56, ), 
                         chat_background_set = tele_rest.models.chat_background.ChatBackground(
                             type = null, ), 
+                        checklist_tasks_done = tele_rest.models.checklist_tasks_done.ChecklistTasksDone(
+                            checklist_message = , 
+                            marked_as_done_task_ids = [
+                                56
+                                ], 
+                            marked_as_not_done_task_ids = [
+                                56
+                                ], ), 
+                        checklist_tasks_added = tele_rest.models.checklist_tasks_added.ChecklistTasksAdded(
+                            tasks = [
+                                
+                                ], ), 
+                        direct_message_price_changed = tele_rest.models.direct_message_price_changed.DirectMessagePriceChanged(
+                            are_direct_messages_enabled = True, 
+                            direct_message_star_count = 56, ), 
                         forum_topic_created = tele_rest.models.forum_topic_created.ForumTopicCreated(
                             name = '', 
                             icon_color = 56, 
@@ -759,6 +800,7 @@ class TestUpdate(unittest.TestCase):
                         ], 
                     show_caption_above_media = True, 
                     has_media_spoiler = True, 
+                    checklist = , 
                     contact = , 
                     dice = , 
                     game = , 
@@ -849,8 +891,10 @@ class TestUpdate(unittest.TestCase):
                                     text_color = 56, ), 
                                 rarity_per_mille = 56, ), ), 
                         origin = 'upgrade', 
+                        last_resale_star_count = 56, 
                         owned_gift_id = '', 
-                        transfer_star_count = 56, ), 
+                        transfer_star_count = 56, 
+                        next_transfer_date = 56, ), 
                     connected_website = '', 
                     write_access_allowed = tele_rest.models.write_access_allowed.WriteAccessAllowed(
                         from_request = True, 
@@ -876,6 +920,14 @@ class TestUpdate(unittest.TestCase):
                         boost_count = 56, ), 
                     chat_background_set = tele_rest.models.chat_background.ChatBackground(
                         type = null, ), 
+                    checklist_tasks_done = tele_rest.models.checklist_tasks_done.ChecklistTasksDone(), 
+                    checklist_tasks_added = tele_rest.models.checklist_tasks_added.ChecklistTasksAdded(
+                        tasks = [
+                            
+                            ], ), 
+                    direct_message_price_changed = tele_rest.models.direct_message_price_changed.DirectMessagePriceChanged(
+                        are_direct_messages_enabled = True, 
+                        direct_message_star_count = 56, ), 
                     forum_topic_created = tele_rest.models.forum_topic_created.ForumTopicCreated(
                         name = '', 
                         icon_color = 56, 
@@ -1087,6 +1139,36 @@ class TestUpdate(unittest.TestCase):
                                 mime_type = '', 
                                 file_size = 56, ), 
                             has_media_spoiler = True, 
+                            checklist = tele_rest.models.checklist.Checklist(
+                                title = '', 
+                                title_entities = [
+                                    tele_rest.models.message_entity.MessageEntity(
+                                        type = 'mention', 
+                                        offset = 56, 
+                                        length = 56, 
+                                        url = '', 
+                                        user = , 
+                                        language = '', 
+                                        custom_emoji_id = '', )
+                                    ], 
+                                tasks = [
+                                    tele_rest.models.checklist_task.ChecklistTask(
+                                        id = 56, 
+                                        text = '', 
+                                        text_entities = [
+                                            tele_rest.models.message_entity.MessageEntity(
+                                                type = 'mention', 
+                                                offset = 56, 
+                                                length = 56, 
+                                                url = '', 
+                                                language = '', 
+                                                custom_emoji_id = '', )
+                                            ], 
+                                        completed_by_user = , 
+                                        completion_date = 56, )
+                                    ], 
+                                others_can_add_tasks = True, 
+                                others_can_mark_tasks_as_done = True, ), 
                             contact = tele_rest.models.contact.Contact(
                                 phone_number = '', 
                                 first_name = '', 
@@ -1102,17 +1184,7 @@ class TestUpdate(unittest.TestCase):
                                 photo = [
                                     
                                     ], 
-                                text = '', 
-                                text_entities = [
-                                    tele_rest.models.message_entity.MessageEntity(
-                                        type = 'mention', 
-                                        offset = 56, 
-                                        length = 56, 
-                                        url = '', 
-                                        user = , 
-                                        language = '', 
-                                        custom_emoji_id = '', )
-                                    ], ), 
+                                text = '', ), 
                             giveaway = tele_rest.models.giveaway.Giveaway(
                                 chats = [
                                     
@@ -1159,13 +1231,7 @@ class TestUpdate(unittest.TestCase):
                                 id = '', 
                                 question = '0', 
                                 question_entities = [
-                                    tele_rest.models.message_entity.MessageEntity(
-                                        type = 'mention', 
-                                        offset = 56, 
-                                        length = 56, 
-                                        url = '', 
-                                        language = '', 
-                                        custom_emoji_id = '', )
+                                    
                                     ], 
                                 options = [
                                     tele_rest.models.poll_option.PollOption(
@@ -1300,6 +1366,16 @@ class TestUpdate(unittest.TestCase):
                             ], 
                         show_caption_above_media = True, 
                         has_media_spoiler = True, 
+                        checklist = tele_rest.models.checklist.Checklist(
+                            title = '', 
+                            tasks = [
+                                tele_rest.models.checklist_task.ChecklistTask(
+                                    id = 56, 
+                                    text = '', 
+                                    completion_date = 56, )
+                                ], 
+                            others_can_add_tasks = True, 
+                            others_can_mark_tasks_as_done = True, ), 
                         contact = tele_rest.models.contact.Contact(
                             phone_number = '', 
                             first_name = '', 
@@ -1442,8 +1518,10 @@ class TestUpdate(unittest.TestCase):
                                         text_color = 56, ), 
                                     rarity_per_mille = 56, ), ), 
                             origin = 'upgrade', 
+                            last_resale_star_count = 56, 
                             owned_gift_id = '', 
-                            transfer_star_count = 56, ), 
+                            transfer_star_count = 56, 
+                            next_transfer_date = 56, ), 
                         connected_website = '', 
                         write_access_allowed = tele_rest.models.write_access_allowed.WriteAccessAllowed(
                             from_request = True, 
@@ -1486,6 +1564,21 @@ class TestUpdate(unittest.TestCase):
                             boost_count = 56, ), 
                         chat_background_set = tele_rest.models.chat_background.ChatBackground(
                             type = null, ), 
+                        checklist_tasks_done = tele_rest.models.checklist_tasks_done.ChecklistTasksDone(
+                            checklist_message = , 
+                            marked_as_done_task_ids = [
+                                56
+                                ], 
+                            marked_as_not_done_task_ids = [
+                                56
+                                ], ), 
+                        checklist_tasks_added = tele_rest.models.checklist_tasks_added.ChecklistTasksAdded(
+                            tasks = [
+                                
+                                ], ), 
+                        direct_message_price_changed = tele_rest.models.direct_message_price_changed.DirectMessagePriceChanged(
+                            are_direct_messages_enabled = True, 
+                            direct_message_star_count = 56, ), 
                         forum_topic_created = tele_rest.models.forum_topic_created.ForumTopicCreated(
                             name = '', 
                             icon_color = 56, 
@@ -1610,6 +1703,7 @@ class TestUpdate(unittest.TestCase):
                         ], 
                     show_caption_above_media = True, 
                     has_media_spoiler = True, 
+                    checklist = , 
                     contact = , 
                     dice = , 
                     game = , 
@@ -1700,8 +1794,10 @@ class TestUpdate(unittest.TestCase):
                                     text_color = 56, ), 
                                 rarity_per_mille = 56, ), ), 
                         origin = 'upgrade', 
+                        last_resale_star_count = 56, 
                         owned_gift_id = '', 
-                        transfer_star_count = 56, ), 
+                        transfer_star_count = 56, 
+                        next_transfer_date = 56, ), 
                     connected_website = '', 
                     write_access_allowed = tele_rest.models.write_access_allowed.WriteAccessAllowed(
                         from_request = True, 
@@ -1727,6 +1823,14 @@ class TestUpdate(unittest.TestCase):
                         boost_count = 56, ), 
                     chat_background_set = tele_rest.models.chat_background.ChatBackground(
                         type = null, ), 
+                    checklist_tasks_done = tele_rest.models.checklist_tasks_done.ChecklistTasksDone(), 
+                    checklist_tasks_added = tele_rest.models.checklist_tasks_added.ChecklistTasksAdded(
+                        tasks = [
+                            
+                            ], ), 
+                    direct_message_price_changed = tele_rest.models.direct_message_price_changed.DirectMessagePriceChanged(
+                        are_direct_messages_enabled = True, 
+                        direct_message_star_count = 56, ), 
                     forum_topic_created = tele_rest.models.forum_topic_created.ForumTopicCreated(
                         name = '', 
                         icon_color = 56, 
@@ -1938,6 +2042,36 @@ class TestUpdate(unittest.TestCase):
                                 mime_type = '', 
                                 file_size = 56, ), 
                             has_media_spoiler = True, 
+                            checklist = tele_rest.models.checklist.Checklist(
+                                title = '', 
+                                title_entities = [
+                                    tele_rest.models.message_entity.MessageEntity(
+                                        type = 'mention', 
+                                        offset = 56, 
+                                        length = 56, 
+                                        url = '', 
+                                        user = , 
+                                        language = '', 
+                                        custom_emoji_id = '', )
+                                    ], 
+                                tasks = [
+                                    tele_rest.models.checklist_task.ChecklistTask(
+                                        id = 56, 
+                                        text = '', 
+                                        text_entities = [
+                                            tele_rest.models.message_entity.MessageEntity(
+                                                type = 'mention', 
+                                                offset = 56, 
+                                                length = 56, 
+                                                url = '', 
+                                                language = '', 
+                                                custom_emoji_id = '', )
+                                            ], 
+                                        completed_by_user = , 
+                                        completion_date = 56, )
+                                    ], 
+                                others_can_add_tasks = True, 
+                                others_can_mark_tasks_as_done = True, ), 
                             contact = tele_rest.models.contact.Contact(
                                 phone_number = '', 
                                 first_name = '', 
@@ -1953,17 +2087,7 @@ class TestUpdate(unittest.TestCase):
                                 photo = [
                                     
                                     ], 
-                                text = '', 
-                                text_entities = [
-                                    tele_rest.models.message_entity.MessageEntity(
-                                        type = 'mention', 
-                                        offset = 56, 
-                                        length = 56, 
-                                        url = '', 
-                                        user = , 
-                                        language = '', 
-                                        custom_emoji_id = '', )
-                                    ], ), 
+                                text = '', ), 
                             giveaway = tele_rest.models.giveaway.Giveaway(
                                 chats = [
                                     
@@ -2010,13 +2134,7 @@ class TestUpdate(unittest.TestCase):
                                 id = '', 
                                 question = '0', 
                                 question_entities = [
-                                    tele_rest.models.message_entity.MessageEntity(
-                                        type = 'mention', 
-                                        offset = 56, 
-                                        length = 56, 
-                                        url = '', 
-                                        language = '', 
-                                        custom_emoji_id = '', )
+                                    
                                     ], 
                                 options = [
                                     tele_rest.models.poll_option.PollOption(
@@ -2151,6 +2269,16 @@ class TestUpdate(unittest.TestCase):
                             ], 
                         show_caption_above_media = True, 
                         has_media_spoiler = True, 
+                        checklist = tele_rest.models.checklist.Checklist(
+                            title = '', 
+                            tasks = [
+                                tele_rest.models.checklist_task.ChecklistTask(
+                                    id = 56, 
+                                    text = '', 
+                                    completion_date = 56, )
+                                ], 
+                            others_can_add_tasks = True, 
+                            others_can_mark_tasks_as_done = True, ), 
                         contact = tele_rest.models.contact.Contact(
                             phone_number = '', 
                             first_name = '', 
@@ -2293,8 +2421,10 @@ class TestUpdate(unittest.TestCase):
                                         text_color = 56, ), 
                                     rarity_per_mille = 56, ), ), 
                             origin = 'upgrade', 
+                            last_resale_star_count = 56, 
                             owned_gift_id = '', 
-                            transfer_star_count = 56, ), 
+                            transfer_star_count = 56, 
+                            next_transfer_date = 56, ), 
                         connected_website = '', 
                         write_access_allowed = tele_rest.models.write_access_allowed.WriteAccessAllowed(
                             from_request = True, 
@@ -2337,6 +2467,21 @@ class TestUpdate(unittest.TestCase):
                             boost_count = 56, ), 
                         chat_background_set = tele_rest.models.chat_background.ChatBackground(
                             type = null, ), 
+                        checklist_tasks_done = tele_rest.models.checklist_tasks_done.ChecklistTasksDone(
+                            checklist_message = , 
+                            marked_as_done_task_ids = [
+                                56
+                                ], 
+                            marked_as_not_done_task_ids = [
+                                56
+                                ], ), 
+                        checklist_tasks_added = tele_rest.models.checklist_tasks_added.ChecklistTasksAdded(
+                            tasks = [
+                                
+                                ], ), 
+                        direct_message_price_changed = tele_rest.models.direct_message_price_changed.DirectMessagePriceChanged(
+                            are_direct_messages_enabled = True, 
+                            direct_message_star_count = 56, ), 
                         forum_topic_created = tele_rest.models.forum_topic_created.ForumTopicCreated(
                             name = '', 
                             icon_color = 56, 
@@ -2461,6 +2606,7 @@ class TestUpdate(unittest.TestCase):
                         ], 
                     show_caption_above_media = True, 
                     has_media_spoiler = True, 
+                    checklist = , 
                     contact = , 
                     dice = , 
                     game = , 
@@ -2551,8 +2697,10 @@ class TestUpdate(unittest.TestCase):
                                     text_color = 56, ), 
                                 rarity_per_mille = 56, ), ), 
                         origin = 'upgrade', 
+                        last_resale_star_count = 56, 
                         owned_gift_id = '', 
-                        transfer_star_count = 56, ), 
+                        transfer_star_count = 56, 
+                        next_transfer_date = 56, ), 
                     connected_website = '', 
                     write_access_allowed = tele_rest.models.write_access_allowed.WriteAccessAllowed(
                         from_request = True, 
@@ -2578,6 +2726,14 @@ class TestUpdate(unittest.TestCase):
                         boost_count = 56, ), 
                     chat_background_set = tele_rest.models.chat_background.ChatBackground(
                         type = null, ), 
+                    checklist_tasks_done = tele_rest.models.checklist_tasks_done.ChecklistTasksDone(), 
+                    checklist_tasks_added = tele_rest.models.checklist_tasks_added.ChecklistTasksAdded(
+                        tasks = [
+                            
+                            ], ), 
+                    direct_message_price_changed = tele_rest.models.direct_message_price_changed.DirectMessagePriceChanged(
+                        are_direct_messages_enabled = True, 
+                        direct_message_star_count = 56, ), 
                     forum_topic_created = tele_rest.models.forum_topic_created.ForumTopicCreated(
                         name = '', 
                         icon_color = 56, 
@@ -2789,6 +2945,36 @@ class TestUpdate(unittest.TestCase):
                                 mime_type = '', 
                                 file_size = 56, ), 
                             has_media_spoiler = True, 
+                            checklist = tele_rest.models.checklist.Checklist(
+                                title = '', 
+                                title_entities = [
+                                    tele_rest.models.message_entity.MessageEntity(
+                                        type = 'mention', 
+                                        offset = 56, 
+                                        length = 56, 
+                                        url = '', 
+                                        user = , 
+                                        language = '', 
+                                        custom_emoji_id = '', )
+                                    ], 
+                                tasks = [
+                                    tele_rest.models.checklist_task.ChecklistTask(
+                                        id = 56, 
+                                        text = '', 
+                                        text_entities = [
+                                            tele_rest.models.message_entity.MessageEntity(
+                                                type = 'mention', 
+                                                offset = 56, 
+                                                length = 56, 
+                                                url = '', 
+                                                language = '', 
+                                                custom_emoji_id = '', )
+                                            ], 
+                                        completed_by_user = , 
+                                        completion_date = 56, )
+                                    ], 
+                                others_can_add_tasks = True, 
+                                others_can_mark_tasks_as_done = True, ), 
                             contact = tele_rest.models.contact.Contact(
                                 phone_number = '', 
                                 first_name = '', 
@@ -2804,17 +2990,7 @@ class TestUpdate(unittest.TestCase):
                                 photo = [
                                     
                                     ], 
-                                text = '', 
-                                text_entities = [
-                                    tele_rest.models.message_entity.MessageEntity(
-                                        type = 'mention', 
-                                        offset = 56, 
-                                        length = 56, 
-                                        url = '', 
-                                        user = , 
-                                        language = '', 
-                                        custom_emoji_id = '', )
-                                    ], ), 
+                                text = '', ), 
                             giveaway = tele_rest.models.giveaway.Giveaway(
                                 chats = [
                                     
@@ -2861,13 +3037,7 @@ class TestUpdate(unittest.TestCase):
                                 id = '', 
                                 question = '0', 
                                 question_entities = [
-                                    tele_rest.models.message_entity.MessageEntity(
-                                        type = 'mention', 
-                                        offset = 56, 
-                                        length = 56, 
-                                        url = '', 
-                                        language = '', 
-                                        custom_emoji_id = '', )
+                                    
                                     ], 
                                 options = [
                                     tele_rest.models.poll_option.PollOption(
@@ -3002,6 +3172,16 @@ class TestUpdate(unittest.TestCase):
                             ], 
                         show_caption_above_media = True, 
                         has_media_spoiler = True, 
+                        checklist = tele_rest.models.checklist.Checklist(
+                            title = '', 
+                            tasks = [
+                                tele_rest.models.checklist_task.ChecklistTask(
+                                    id = 56, 
+                                    text = '', 
+                                    completion_date = 56, )
+                                ], 
+                            others_can_add_tasks = True, 
+                            others_can_mark_tasks_as_done = True, ), 
                         contact = tele_rest.models.contact.Contact(
                             phone_number = '', 
                             first_name = '', 
@@ -3144,8 +3324,10 @@ class TestUpdate(unittest.TestCase):
                                         text_color = 56, ), 
                                     rarity_per_mille = 56, ), ), 
                             origin = 'upgrade', 
+                            last_resale_star_count = 56, 
                             owned_gift_id = '', 
-                            transfer_star_count = 56, ), 
+                            transfer_star_count = 56, 
+                            next_transfer_date = 56, ), 
                         connected_website = '', 
                         write_access_allowed = tele_rest.models.write_access_allowed.WriteAccessAllowed(
                             from_request = True, 
@@ -3188,6 +3370,21 @@ class TestUpdate(unittest.TestCase):
                             boost_count = 56, ), 
                         chat_background_set = tele_rest.models.chat_background.ChatBackground(
                             type = null, ), 
+                        checklist_tasks_done = tele_rest.models.checklist_tasks_done.ChecklistTasksDone(
+                            checklist_message = , 
+                            marked_as_done_task_ids = [
+                                56
+                                ], 
+                            marked_as_not_done_task_ids = [
+                                56
+                                ], ), 
+                        checklist_tasks_added = tele_rest.models.checklist_tasks_added.ChecklistTasksAdded(
+                            tasks = [
+                                
+                                ], ), 
+                        direct_message_price_changed = tele_rest.models.direct_message_price_changed.DirectMessagePriceChanged(
+                            are_direct_messages_enabled = True, 
+                            direct_message_star_count = 56, ), 
                         forum_topic_created = tele_rest.models.forum_topic_created.ForumTopicCreated(
                             name = '', 
                             icon_color = 56, 
@@ -3312,6 +3509,7 @@ class TestUpdate(unittest.TestCase):
                         ], 
                     show_caption_above_media = True, 
                     has_media_spoiler = True, 
+                    checklist = , 
                     contact = , 
                     dice = , 
                     game = , 
@@ -3402,8 +3600,10 @@ class TestUpdate(unittest.TestCase):
                                     text_color = 56, ), 
                                 rarity_per_mille = 56, ), ), 
                         origin = 'upgrade', 
+                        last_resale_star_count = 56, 
                         owned_gift_id = '', 
-                        transfer_star_count = 56, ), 
+                        transfer_star_count = 56, 
+                        next_transfer_date = 56, ), 
                     connected_website = '', 
                     write_access_allowed = tele_rest.models.write_access_allowed.WriteAccessAllowed(
                         from_request = True, 
@@ -3429,6 +3629,14 @@ class TestUpdate(unittest.TestCase):
                         boost_count = 56, ), 
                     chat_background_set = tele_rest.models.chat_background.ChatBackground(
                         type = null, ), 
+                    checklist_tasks_done = tele_rest.models.checklist_tasks_done.ChecklistTasksDone(), 
+                    checklist_tasks_added = tele_rest.models.checklist_tasks_added.ChecklistTasksAdded(
+                        tasks = [
+                            
+                            ], ), 
+                    direct_message_price_changed = tele_rest.models.direct_message_price_changed.DirectMessagePriceChanged(
+                        are_direct_messages_enabled = True, 
+                        direct_message_star_count = 56, ), 
                     forum_topic_created = tele_rest.models.forum_topic_created.ForumTopicCreated(
                         name = '', 
                         icon_color = 56, 
@@ -3674,6 +3882,36 @@ class TestUpdate(unittest.TestCase):
                                 mime_type = '', 
                                 file_size = 56, ), 
                             has_media_spoiler = True, 
+                            checklist = tele_rest.models.checklist.Checklist(
+                                title = '', 
+                                title_entities = [
+                                    tele_rest.models.message_entity.MessageEntity(
+                                        type = 'mention', 
+                                        offset = 56, 
+                                        length = 56, 
+                                        url = '', 
+                                        user = , 
+                                        language = '', 
+                                        custom_emoji_id = '', )
+                                    ], 
+                                tasks = [
+                                    tele_rest.models.checklist_task.ChecklistTask(
+                                        id = 56, 
+                                        text = '', 
+                                        text_entities = [
+                                            tele_rest.models.message_entity.MessageEntity(
+                                                type = 'mention', 
+                                                offset = 56, 
+                                                length = 56, 
+                                                url = '', 
+                                                language = '', 
+                                                custom_emoji_id = '', )
+                                            ], 
+                                        completed_by_user = , 
+                                        completion_date = 56, )
+                                    ], 
+                                others_can_add_tasks = True, 
+                                others_can_mark_tasks_as_done = True, ), 
                             contact = tele_rest.models.contact.Contact(
                                 phone_number = '', 
                                 first_name = '', 
@@ -3689,17 +3927,7 @@ class TestUpdate(unittest.TestCase):
                                 photo = [
                                     
                                     ], 
-                                text = '', 
-                                text_entities = [
-                                    tele_rest.models.message_entity.MessageEntity(
-                                        type = 'mention', 
-                                        offset = 56, 
-                                        length = 56, 
-                                        url = '', 
-                                        user = , 
-                                        language = '', 
-                                        custom_emoji_id = '', )
-                                    ], ), 
+                                text = '', ), 
                             giveaway = tele_rest.models.giveaway.Giveaway(
                                 chats = [
                                     
@@ -3746,13 +3974,7 @@ class TestUpdate(unittest.TestCase):
                                 id = '', 
                                 question = '0', 
                                 question_entities = [
-                                    tele_rest.models.message_entity.MessageEntity(
-                                        type = 'mention', 
-                                        offset = 56, 
-                                        length = 56, 
-                                        url = '', 
-                                        language = '', 
-                                        custom_emoji_id = '', )
+                                    
                                     ], 
                                 options = [
                                     tele_rest.models.poll_option.PollOption(
@@ -3887,6 +4109,16 @@ class TestUpdate(unittest.TestCase):
                             ], 
                         show_caption_above_media = True, 
                         has_media_spoiler = True, 
+                        checklist = tele_rest.models.checklist.Checklist(
+                            title = '', 
+                            tasks = [
+                                tele_rest.models.checklist_task.ChecklistTask(
+                                    id = 56, 
+                                    text = '', 
+                                    completion_date = 56, )
+                                ], 
+                            others_can_add_tasks = True, 
+                            others_can_mark_tasks_as_done = True, ), 
                         contact = tele_rest.models.contact.Contact(
                             phone_number = '', 
                             first_name = '', 
@@ -4029,8 +4261,10 @@ class TestUpdate(unittest.TestCase):
                                         text_color = 56, ), 
                                     rarity_per_mille = 56, ), ), 
                             origin = 'upgrade', 
+                            last_resale_star_count = 56, 
                             owned_gift_id = '', 
-                            transfer_star_count = 56, ), 
+                            transfer_star_count = 56, 
+                            next_transfer_date = 56, ), 
                         connected_website = '', 
                         write_access_allowed = tele_rest.models.write_access_allowed.WriteAccessAllowed(
                             from_request = True, 
@@ -4073,6 +4307,21 @@ class TestUpdate(unittest.TestCase):
                             boost_count = 56, ), 
                         chat_background_set = tele_rest.models.chat_background.ChatBackground(
                             type = null, ), 
+                        checklist_tasks_done = tele_rest.models.checklist_tasks_done.ChecklistTasksDone(
+                            checklist_message = , 
+                            marked_as_done_task_ids = [
+                                56
+                                ], 
+                            marked_as_not_done_task_ids = [
+                                56
+                                ], ), 
+                        checklist_tasks_added = tele_rest.models.checklist_tasks_added.ChecklistTasksAdded(
+                            tasks = [
+                                
+                                ], ), 
+                        direct_message_price_changed = tele_rest.models.direct_message_price_changed.DirectMessagePriceChanged(
+                            are_direct_messages_enabled = True, 
+                            direct_message_star_count = 56, ), 
                         forum_topic_created = tele_rest.models.forum_topic_created.ForumTopicCreated(
                             name = '', 
                             icon_color = 56, 
@@ -4197,6 +4446,7 @@ class TestUpdate(unittest.TestCase):
                         ], 
                     show_caption_above_media = True, 
                     has_media_spoiler = True, 
+                    checklist = , 
                     contact = , 
                     dice = , 
                     game = , 
@@ -4287,8 +4537,10 @@ class TestUpdate(unittest.TestCase):
                                     text_color = 56, ), 
                                 rarity_per_mille = 56, ), ), 
                         origin = 'upgrade', 
+                        last_resale_star_count = 56, 
                         owned_gift_id = '', 
-                        transfer_star_count = 56, ), 
+                        transfer_star_count = 56, 
+                        next_transfer_date = 56, ), 
                     connected_website = '', 
                     write_access_allowed = tele_rest.models.write_access_allowed.WriteAccessAllowed(
                         from_request = True, 
@@ -4314,6 +4566,14 @@ class TestUpdate(unittest.TestCase):
                         boost_count = 56, ), 
                     chat_background_set = tele_rest.models.chat_background.ChatBackground(
                         type = null, ), 
+                    checklist_tasks_done = tele_rest.models.checklist_tasks_done.ChecklistTasksDone(), 
+                    checklist_tasks_added = tele_rest.models.checklist_tasks_added.ChecklistTasksAdded(
+                        tasks = [
+                            
+                            ], ), 
+                    direct_message_price_changed = tele_rest.models.direct_message_price_changed.DirectMessagePriceChanged(
+                        are_direct_messages_enabled = True, 
+                        direct_message_star_count = 56, ), 
                     forum_topic_created = tele_rest.models.forum_topic_created.ForumTopicCreated(
                         name = '', 
                         icon_color = 56, 
@@ -4525,6 +4785,36 @@ class TestUpdate(unittest.TestCase):
                                 mime_type = '', 
                                 file_size = 56, ), 
                             has_media_spoiler = True, 
+                            checklist = tele_rest.models.checklist.Checklist(
+                                title = '', 
+                                title_entities = [
+                                    tele_rest.models.message_entity.MessageEntity(
+                                        type = 'mention', 
+                                        offset = 56, 
+                                        length = 56, 
+                                        url = '', 
+                                        user = , 
+                                        language = '', 
+                                        custom_emoji_id = '', )
+                                    ], 
+                                tasks = [
+                                    tele_rest.models.checklist_task.ChecklistTask(
+                                        id = 56, 
+                                        text = '', 
+                                        text_entities = [
+                                            tele_rest.models.message_entity.MessageEntity(
+                                                type = 'mention', 
+                                                offset = 56, 
+                                                length = 56, 
+                                                url = '', 
+                                                language = '', 
+                                                custom_emoji_id = '', )
+                                            ], 
+                                        completed_by_user = , 
+                                        completion_date = 56, )
+                                    ], 
+                                others_can_add_tasks = True, 
+                                others_can_mark_tasks_as_done = True, ), 
                             contact = tele_rest.models.contact.Contact(
                                 phone_number = '', 
                                 first_name = '', 
@@ -4540,17 +4830,7 @@ class TestUpdate(unittest.TestCase):
                                 photo = [
                                     
                                     ], 
-                                text = '', 
-                                text_entities = [
-                                    tele_rest.models.message_entity.MessageEntity(
-                                        type = 'mention', 
-                                        offset = 56, 
-                                        length = 56, 
-                                        url = '', 
-                                        user = , 
-                                        language = '', 
-                                        custom_emoji_id = '', )
-                                    ], ), 
+                                text = '', ), 
                             giveaway = tele_rest.models.giveaway.Giveaway(
                                 chats = [
                                     
@@ -4597,13 +4877,7 @@ class TestUpdate(unittest.TestCase):
                                 id = '', 
                                 question = '0', 
                                 question_entities = [
-                                    tele_rest.models.message_entity.MessageEntity(
-                                        type = 'mention', 
-                                        offset = 56, 
-                                        length = 56, 
-                                        url = '', 
-                                        language = '', 
-                                        custom_emoji_id = '', )
+                                    
                                     ], 
                                 options = [
                                     tele_rest.models.poll_option.PollOption(
@@ -4738,6 +5012,16 @@ class TestUpdate(unittest.TestCase):
                             ], 
                         show_caption_above_media = True, 
                         has_media_spoiler = True, 
+                        checklist = tele_rest.models.checklist.Checklist(
+                            title = '', 
+                            tasks = [
+                                tele_rest.models.checklist_task.ChecklistTask(
+                                    id = 56, 
+                                    text = '', 
+                                    completion_date = 56, )
+                                ], 
+                            others_can_add_tasks = True, 
+                            others_can_mark_tasks_as_done = True, ), 
                         contact = tele_rest.models.contact.Contact(
                             phone_number = '', 
                             first_name = '', 
@@ -4880,8 +5164,10 @@ class TestUpdate(unittest.TestCase):
                                         text_color = 56, ), 
                                     rarity_per_mille = 56, ), ), 
                             origin = 'upgrade', 
+                            last_resale_star_count = 56, 
                             owned_gift_id = '', 
-                            transfer_star_count = 56, ), 
+                            transfer_star_count = 56, 
+                            next_transfer_date = 56, ), 
                         connected_website = '', 
                         write_access_allowed = tele_rest.models.write_access_allowed.WriteAccessAllowed(
                             from_request = True, 
@@ -4924,6 +5210,21 @@ class TestUpdate(unittest.TestCase):
                             boost_count = 56, ), 
                         chat_background_set = tele_rest.models.chat_background.ChatBackground(
                             type = null, ), 
+                        checklist_tasks_done = tele_rest.models.checklist_tasks_done.ChecklistTasksDone(
+                            checklist_message = , 
+                            marked_as_done_task_ids = [
+                                56
+                                ], 
+                            marked_as_not_done_task_ids = [
+                                56
+                                ], ), 
+                        checklist_tasks_added = tele_rest.models.checklist_tasks_added.ChecklistTasksAdded(
+                            tasks = [
+                                
+                                ], ), 
+                        direct_message_price_changed = tele_rest.models.direct_message_price_changed.DirectMessagePriceChanged(
+                            are_direct_messages_enabled = True, 
+                            direct_message_star_count = 56, ), 
                         forum_topic_created = tele_rest.models.forum_topic_created.ForumTopicCreated(
                             name = '', 
                             icon_color = 56, 
@@ -5048,6 +5349,7 @@ class TestUpdate(unittest.TestCase):
                         ], 
                     show_caption_above_media = True, 
                     has_media_spoiler = True, 
+                    checklist = , 
                     contact = , 
                     dice = , 
                     game = , 
@@ -5138,8 +5440,10 @@ class TestUpdate(unittest.TestCase):
                                     text_color = 56, ), 
                                 rarity_per_mille = 56, ), ), 
                         origin = 'upgrade', 
+                        last_resale_star_count = 56, 
                         owned_gift_id = '', 
-                        transfer_star_count = 56, ), 
+                        transfer_star_count = 56, 
+                        next_transfer_date = 56, ), 
                     connected_website = '', 
                     write_access_allowed = tele_rest.models.write_access_allowed.WriteAccessAllowed(
                         from_request = True, 
@@ -5165,6 +5469,14 @@ class TestUpdate(unittest.TestCase):
                         boost_count = 56, ), 
                     chat_background_set = tele_rest.models.chat_background.ChatBackground(
                         type = null, ), 
+                    checklist_tasks_done = tele_rest.models.checklist_tasks_done.ChecklistTasksDone(), 
+                    checklist_tasks_added = tele_rest.models.checklist_tasks_added.ChecklistTasksAdded(
+                        tasks = [
+                            
+                            ], ), 
+                    direct_message_price_changed = tele_rest.models.direct_message_price_changed.DirectMessagePriceChanged(
+                        are_direct_messages_enabled = True, 
+                        direct_message_star_count = 56, ), 
                     forum_topic_created = tele_rest.models.forum_topic_created.ForumTopicCreated(
                         name = '', 
                         icon_color = 56, 

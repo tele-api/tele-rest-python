@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -70,8 +70,8 @@ class ChatMemberUpdated(BaseModel):
     old_chat_member: ChatMember
     new_chat_member: ChatMember
     invite_link: Optional[ChatInviteLink] = None
-    via_join_request: Optional[StrictBool] = Field(default=None, description="*Optional*. True, if the user joined the chat after sending a direct join request without using an invite link and being approved by an administrator")
-    via_chat_folder_invite_link: Optional[StrictBool] = Field(default=None, description="*Optional*. True, if the user joined the chat via a chat folder invite link")
+    via_join_request: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the user joined the chat after sending a direct join request without using an invite link and being approved by an administrator")
+    via_chat_folder_invite_link: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the user joined the chat via a chat folder invite link")
     __properties: ClassVar[List[str]] = ["chat", "from", "date", "old_chat_member", "new_chat_member", "invite_link", "via_join_request", "via_chat_folder_invite_link"]
 
     model_config = ConfigDict(

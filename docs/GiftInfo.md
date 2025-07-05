@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **owned_gift_id** | **str** | *Optional*. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts | [optional] 
 **convert_star_count** | **int** | *Optional*. Number of Telegram Stars that can be claimed by the receiver by converting the gift; omitted if conversion to Telegram Stars is impossible | [optional] 
 **prepaid_upgrade_star_count** | **int** | *Optional*. Number of Telegram Stars that were prepaid by the sender for the ability to upgrade the gift | [optional] 
-**can_be_upgraded** | **bool** | *Optional*. True, if the gift can be upgraded to a unique gift | [optional] [default to True]
+**can_be_upgraded** | **bool** | *Optional*. *True*, if the gift can be upgraded to a unique gift | [optional] [default to True]
 **text** | **str** | *Optional*. Text of the message that was added to the gift | [optional] 
 **entities** | [**List[MessageEntity]**](MessageEntity.md) | *Optional*. Special entities that appear in the text | [optional] 
-**is_private** | **bool** | *Optional*. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them | [optional] [default to True]
+**is_private** | **bool** | *Optional*. *True*, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them | [optional] [default to True]
 
 ## Example
 

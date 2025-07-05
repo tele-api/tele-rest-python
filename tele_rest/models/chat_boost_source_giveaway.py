@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.0.0
-- **Modified**: 2025-07-02T07:03:17.088738557Z[Etc/UTC]
+- **Version**: 9.1.0
+- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -65,7 +65,7 @@ class ChatBoostSourceGiveaway(BaseModel):
     giveaway_message_id: StrictInt = Field(description="Identifier of a message in the chat with the giveaway; the message could have been deleted already. May be 0 if the message isn't sent yet.")
     user: Optional[User] = None
     prize_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only")
-    is_unclaimed: Optional[StrictBool] = Field(default=True, description="*Optional*. True, if the giveaway was completed, but there was no user to win the prize")
+    is_unclaimed: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the giveaway was completed, but there was no user to win the prize")
     __properties: ClassVar[List[str]] = ["source", "giveaway_message_id", "user", "prize_star_count", "is_unclaimed"]
 
     model_config = ConfigDict(
