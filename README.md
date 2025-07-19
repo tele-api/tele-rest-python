@@ -4,7 +4,7 @@ To learn how to create and set up a bot, please consult our Introduction to Bots
 
 - API version: 9.1.0
 - Package version: 9.1.0
-- Build date: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- Build date: 2025-07-19T09:30:11.405683802Z[Etc/UTC]
 
 ## Requirements.
 

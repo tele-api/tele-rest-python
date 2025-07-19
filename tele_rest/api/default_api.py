@@ -9,7 +9,7 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
 - **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Modified**: 2025-07-19T09:30:11.405683802Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -33864,7 +33864,7 @@ class DefaultApi:
     ) -> SendMediaGroupResponse:
         """sendMediaGroup
 
-        Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Messages](https://core.telegram.org/bots/api/#message) that were sent is returned.
+        Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Message](https://core.telegram.org/bots/api/#message) objects that were sent is returned.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -33964,7 +33964,7 @@ class DefaultApi:
     ) -> ApiResponse[SendMediaGroupResponse]:
         """sendMediaGroup
 
-        Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Messages](https://core.telegram.org/bots/api/#message) that were sent is returned.
+        Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Message](https://core.telegram.org/bots/api/#message) objects that were sent is returned.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -34064,7 +34064,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """sendMediaGroup
 
-        Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Messages](https://core.telegram.org/bots/api/#message) that were sent is returned.
+        Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Message](https://core.telegram.org/bots/api/#message) objects that were sent is returned.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId

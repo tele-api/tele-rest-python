@@ -11,7 +11,7 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
 - **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Modified**: 2025-07-19T09:30:11.405683802Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
