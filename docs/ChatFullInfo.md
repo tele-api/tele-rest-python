@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **first_name** | **str** | *Optional*. First name of the other party in a private chat | [optional] 
 **last_name** | **str** | *Optional*. Last name of the other party in a private chat | [optional] 
 **is_forum** | **bool** | *Optional*. *True*, if the supergroup chat is a forum (has [topics](https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups) enabled) | [optional] [default to True]
+**is_direct_messages** | **bool** | *Optional*. *True*, if the chat is the direct messages chat of a channel | [optional] [default to True]
 **accent_color_id** | **int** | Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header, and link preview. See [accent colors](https://core.telegram.org/bots/api/#accent-colors) for more details. | 
 **max_reaction_count** | **int** | The maximum number of reactions that can be set on a message in the chat | 
 **photo** | [**ChatPhoto**](ChatPhoto.md) |  | [optional] 
@@ -22,6 +23,7 @@ Name | Type | Description | Notes
 **business_location** | [**BusinessLocation**](BusinessLocation.md) |  | [optional] 
 **business_opening_hours** | [**BusinessOpeningHours**](BusinessOpeningHours.md) |  | [optional] 
 **personal_chat** | [**Chat**](Chat.md) |  | [optional] 
+**parent_chat** | [**Chat**](Chat.md) |  | [optional] 
 **available_reactions** | [**List[ReactionType]**](ReactionType.md) | *Optional*. List of available reactions allowed in the chat. If omitted, then all [emoji reactions](https://core.telegram.org/bots/api/#reactiontypeemoji) are allowed. | [optional] 
 **background_custom_emoji_id** | **str** | *Optional*. Custom emoji identifier of the emoji chosen by the chat for the reply header and link preview background | [optional] 
 **profile_accent_color_id** | **int** | *Optional*. Identifier of the accent color for the chat&#39;s profile background. See [profile accent colors](https://core.telegram.org/bots/api/#profile-accent-colors) for more details. | [optional] 

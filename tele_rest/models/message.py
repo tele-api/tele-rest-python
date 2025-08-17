@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-08-17T02:10:52.303427632Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -63,6 +63,7 @@ from tele_rest.models.checklist import Checklist
 from tele_rest.models.contact import Contact
 from tele_rest.models.dice import Dice
 from tele_rest.models.direct_message_price_changed import DirectMessagePriceChanged
+from tele_rest.models.direct_messages_topic import DirectMessagesTopic
 from tele_rest.models.document import Document
 from tele_rest.models.external_reply_info import ExternalReplyInfo
 from tele_rest.models.forum_topic_created import ForumTopicCreated
@@ -89,6 +90,7 @@ from tele_rest.models.refunded_payment import RefundedPayment
 from tele_rest.models.sticker import Sticker
 from tele_rest.models.story import Story
 from tele_rest.models.successful_payment import SuccessfulPayment
+from tele_rest.models.suggested_post_info import SuggestedPostInfo
 from tele_rest.models.text_quote import TextQuote
 from tele_rest.models.unique_gift_info import UniqueGiftInfo
 from tele_rest.models.user import User
@@ -111,6 +113,7 @@ class Message(BaseModel):
     """ # noqa: E501
     message_id: StrictInt = Field(description="Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent")
     message_thread_id: Optional[StrictInt] = Field(default=None, description="*Optional*. Unique identifier of a message thread to which the message belongs; for supergroups only")
+    direct_messages_topic: Optional[DirectMessagesTopic] = None
     var_from: Optional[User] = Field(default=None, alias="from")
     sender_chat: Optional[Chat] = None
     sender_boost_count: Optional[StrictInt] = Field(default=None, description="*Optional*. If the sender of the message boosted the chat, the number of boosts added by the user")
@@ -125,16 +128,19 @@ class Message(BaseModel):
     external_reply: Optional[ExternalReplyInfo] = None
     quote: Optional[TextQuote] = None
     reply_to_story: Optional[Story] = None
+    reply_to_checklist_task_id: Optional[StrictInt] = Field(default=None, description="*Optional*. Identifier of the specific checklist task that is being replied to")
     via_bot: Optional[User] = None
     edit_date: Optional[StrictInt] = Field(default=None, description="*Optional*. Date the message was last edited in Unix time")
     has_protected_content: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the message can't be forwarded")
     is_from_offline: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the message was sent by an implicit action, for example, as an away or a greeting business message, or as a scheduled message")
+    is_paid_post: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the message is a paid post. Note that such posts must not be deleted for 24 hours to receive the payment and can't be edited.")
     media_group_id: Optional[StrictStr] = Field(default=None, description="*Optional*. The unique identifier of a media message group this message belongs to")
     author_signature: Optional[StrictStr] = Field(default=None, description="*Optional*. Signature of the post author for messages in channels, or the custom title of an anonymous group administrator")
     paid_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The number of Telegram Stars that were paid by the sender of the message to send it")
     text: Optional[StrictStr] = Field(default=None, description="*Optional*. For text messages, the actual UTF-8 text of the message")
     entities: Optional[List[MessageEntity]] = Field(default=None, description="*Optional*. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text")
     link_preview_options: Optional[LinkPreviewOptions] = None
+    suggested_post_info: Optional[SuggestedPostInfo] = None
     effect_id: Optional[StrictStr] = Field(default=None, description="*Optional*. Unique identifier of the message effect added to the message")
     animation: Optional[Animation] = None
     audio: Optional[Audio] = None
@@ -196,13 +202,18 @@ class Message(BaseModel):
     giveaway_winners: Optional[GiveawayWinners] = None
     giveaway_completed: Optional[GiveawayCompleted] = None
     paid_message_price_changed: Optional[PaidMessagePriceChanged] = None
+    suggested_post_approved: Optional[SuggestedPostApproved] = None
+    suggested_post_approval_failed: Optional[SuggestedPostApprovalFailed] = None
+    suggested_post_declined: Optional[SuggestedPostDeclined] = None
+    suggested_post_paid: Optional[SuggestedPostPaid] = None
+    suggested_post_refunded: Optional[SuggestedPostRefunded] = None
     video_chat_scheduled: Optional[VideoChatScheduled] = None
     video_chat_started: Optional[Any] = None
     video_chat_ended: Optional[VideoChatEnded] = None
     video_chat_participants_invited: Optional[VideoChatParticipantsInvited] = None
     web_app_data: Optional[WebAppData] = None
     reply_markup: Optional[InlineKeyboardMarkup] = None
-    __properties: ClassVar[List[str]] = ["message_id", "message_thread_id", "from", "sender_chat", "sender_boost_count", "sender_business_bot", "date", "business_connection_id", "chat", "forward_origin", "is_topic_message", "is_automatic_forward", "reply_to_message", "external_reply", "quote", "reply_to_story", "via_bot", "edit_date", "has_protected_content", "is_from_offline", "media_group_id", "author_signature", "paid_star_count", "text", "entities", "link_preview_options", "effect_id", "animation", "audio", "document", "paid_media", "photo", "sticker", "story", "video", "video_note", "voice", "caption", "caption_entities", "show_caption_above_media", "has_media_spoiler", "checklist", "contact", "dice", "game", "poll", "venue", "location", "new_chat_members", "left_chat_member", "new_chat_title", "new_chat_photo", "delete_chat_photo", "group_chat_created", "supergroup_chat_created", "channel_chat_created", "message_auto_delete_timer_changed", "migrate_to_chat_id", "migrate_from_chat_id", "pinned_message", "invoice", "successful_payment", "refunded_payment", "users_shared", "chat_shared", "gift", "unique_gift", "connected_website", "write_access_allowed", "passport_data", "proximity_alert_triggered", "boost_added", "chat_background_set", "checklist_tasks_done", "checklist_tasks_added", "direct_message_price_changed", "forum_topic_created", "forum_topic_edited", "forum_topic_closed", "forum_topic_reopened", "general_forum_topic_hidden", "general_forum_topic_unhidden", "giveaway_created", "giveaway", "giveaway_winners", "giveaway_completed", "paid_message_price_changed", "video_chat_scheduled", "video_chat_started", "video_chat_ended", "video_chat_participants_invited", "web_app_data", "reply_markup"]
+    __properties: ClassVar[List[str]] = ["message_id", "message_thread_id", "direct_messages_topic", "from", "sender_chat", "sender_boost_count", "sender_business_bot", "date", "business_connection_id", "chat", "forward_origin", "is_topic_message", "is_automatic_forward", "reply_to_message", "external_reply", "quote", "reply_to_story", "reply_to_checklist_task_id", "via_bot", "edit_date", "has_protected_content", "is_from_offline", "is_paid_post", "media_group_id", "author_signature", "paid_star_count", "text", "entities", "link_preview_options", "suggested_post_info", "effect_id", "animation", "audio", "document", "paid_media", "photo", "sticker", "story", "video", "video_note", "voice", "caption", "caption_entities", "show_caption_above_media", "has_media_spoiler", "checklist", "contact", "dice", "game", "poll", "venue", "location", "new_chat_members", "left_chat_member", "new_chat_title", "new_chat_photo", "delete_chat_photo", "group_chat_created", "supergroup_chat_created", "channel_chat_created", "message_auto_delete_timer_changed", "migrate_to_chat_id", "migrate_from_chat_id", "pinned_message", "invoice", "successful_payment", "refunded_payment", "users_shared", "chat_shared", "gift", "unique_gift", "connected_website", "write_access_allowed", "passport_data", "proximity_alert_triggered", "boost_added", "chat_background_set", "checklist_tasks_done", "checklist_tasks_added", "direct_message_price_changed", "forum_topic_created", "forum_topic_edited", "forum_topic_closed", "forum_topic_reopened", "general_forum_topic_hidden", "general_forum_topic_unhidden", "giveaway_created", "giveaway", "giveaway_winners", "giveaway_completed", "paid_message_price_changed", "suggested_post_approved", "suggested_post_approval_failed", "suggested_post_declined", "suggested_post_paid", "suggested_post_refunded", "video_chat_scheduled", "video_chat_started", "video_chat_ended", "video_chat_participants_invited", "web_app_data", "reply_markup"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -243,6 +254,9 @@ class Message(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of direct_messages_topic
+        if self.direct_messages_topic:
+            _dict['direct_messages_topic'] = self.direct_messages_topic.to_dict()
         # override the default output from pydantic by calling `to_dict()` of var_from
         if self.var_from:
             _dict['from'] = self.var_from.to_dict()
@@ -283,6 +297,9 @@ class Message(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of link_preview_options
         if self.link_preview_options:
             _dict['link_preview_options'] = self.link_preview_options.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of suggested_post_info
+        if self.suggested_post_info:
+            _dict['suggested_post_info'] = self.suggested_post_info.to_dict()
         # override the default output from pydantic by calling `to_dict()` of animation
         if self.animation:
             _dict['animation'] = self.animation.to_dict()
@@ -434,6 +451,21 @@ class Message(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of paid_message_price_changed
         if self.paid_message_price_changed:
             _dict['paid_message_price_changed'] = self.paid_message_price_changed.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of suggested_post_approved
+        if self.suggested_post_approved:
+            _dict['suggested_post_approved'] = self.suggested_post_approved.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of suggested_post_approval_failed
+        if self.suggested_post_approval_failed:
+            _dict['suggested_post_approval_failed'] = self.suggested_post_approval_failed.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of suggested_post_declined
+        if self.suggested_post_declined:
+            _dict['suggested_post_declined'] = self.suggested_post_declined.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of suggested_post_paid
+        if self.suggested_post_paid:
+            _dict['suggested_post_paid'] = self.suggested_post_paid.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of suggested_post_refunded
+        if self.suggested_post_refunded:
+            _dict['suggested_post_refunded'] = self.suggested_post_refunded.to_dict()
         # override the default output from pydantic by calling `to_dict()` of video_chat_scheduled
         if self.video_chat_scheduled:
             _dict['video_chat_scheduled'] = self.video_chat_scheduled.to_dict()
@@ -493,6 +525,7 @@ class Message(BaseModel):
         _obj = cls.model_validate({
             "message_id": obj.get("message_id"),
             "message_thread_id": obj.get("message_thread_id"),
+            "direct_messages_topic": DirectMessagesTopic.from_dict(obj["direct_messages_topic"]) if obj.get("direct_messages_topic") is not None else None,
             "from": User.from_dict(obj["from"]) if obj.get("from") is not None else None,
             "sender_chat": Chat.from_dict(obj["sender_chat"]) if obj.get("sender_chat") is not None else None,
             "sender_boost_count": obj.get("sender_boost_count"),
@@ -507,16 +540,19 @@ class Message(BaseModel):
             "external_reply": ExternalReplyInfo.from_dict(obj["external_reply"]) if obj.get("external_reply") is not None else None,
             "quote": TextQuote.from_dict(obj["quote"]) if obj.get("quote") is not None else None,
             "reply_to_story": Story.from_dict(obj["reply_to_story"]) if obj.get("reply_to_story") is not None else None,
+            "reply_to_checklist_task_id": obj.get("reply_to_checklist_task_id"),
             "via_bot": User.from_dict(obj["via_bot"]) if obj.get("via_bot") is not None else None,
             "edit_date": obj.get("edit_date"),
             "has_protected_content": obj.get("has_protected_content") if obj.get("has_protected_content") is not None else True,
             "is_from_offline": obj.get("is_from_offline") if obj.get("is_from_offline") is not None else True,
+            "is_paid_post": obj.get("is_paid_post") if obj.get("is_paid_post") is not None else True,
             "media_group_id": obj.get("media_group_id"),
             "author_signature": obj.get("author_signature"),
             "paid_star_count": obj.get("paid_star_count"),
             "text": obj.get("text"),
             "entities": [MessageEntity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
             "link_preview_options": LinkPreviewOptions.from_dict(obj["link_preview_options"]) if obj.get("link_preview_options") is not None else None,
+            "suggested_post_info": SuggestedPostInfo.from_dict(obj["suggested_post_info"]) if obj.get("suggested_post_info") is not None else None,
             "effect_id": obj.get("effect_id"),
             "animation": Animation.from_dict(obj["animation"]) if obj.get("animation") is not None else None,
             "audio": Audio.from_dict(obj["audio"]) if obj.get("audio") is not None else None,
@@ -578,6 +614,11 @@ class Message(BaseModel):
             "giveaway_winners": GiveawayWinners.from_dict(obj["giveaway_winners"]) if obj.get("giveaway_winners") is not None else None,
             "giveaway_completed": GiveawayCompleted.from_dict(obj["giveaway_completed"]) if obj.get("giveaway_completed") is not None else None,
             "paid_message_price_changed": PaidMessagePriceChanged.from_dict(obj["paid_message_price_changed"]) if obj.get("paid_message_price_changed") is not None else None,
+            "suggested_post_approved": SuggestedPostApproved.from_dict(obj["suggested_post_approved"]) if obj.get("suggested_post_approved") is not None else None,
+            "suggested_post_approval_failed": SuggestedPostApprovalFailed.from_dict(obj["suggested_post_approval_failed"]) if obj.get("suggested_post_approval_failed") is not None else None,
+            "suggested_post_declined": SuggestedPostDeclined.from_dict(obj["suggested_post_declined"]) if obj.get("suggested_post_declined") is not None else None,
+            "suggested_post_paid": SuggestedPostPaid.from_dict(obj["suggested_post_paid"]) if obj.get("suggested_post_paid") is not None else None,
+            "suggested_post_refunded": SuggestedPostRefunded.from_dict(obj["suggested_post_refunded"]) if obj.get("suggested_post_refunded") is not None else None,
             "video_chat_scheduled": VideoChatScheduled.from_dict(obj["video_chat_scheduled"]) if obj.get("video_chat_scheduled") is not None else None,
             "video_chat_started": obj.get("video_chat_started"),
             "video_chat_ended": VideoChatEnded.from_dict(obj["video_chat_ended"]) if obj.get("video_chat_ended") is not None else None,
@@ -591,6 +632,11 @@ from tele_rest.models.checklist_tasks_added import ChecklistTasksAdded
 from tele_rest.models.checklist_tasks_done import ChecklistTasksDone
 from tele_rest.models.giveaway_completed import GiveawayCompleted
 from tele_rest.models.maybe_inaccessible_message import MaybeInaccessibleMessage
+from tele_rest.models.suggested_post_approval_failed import SuggestedPostApprovalFailed
+from tele_rest.models.suggested_post_approved import SuggestedPostApproved
+from tele_rest.models.suggested_post_declined import SuggestedPostDeclined
+from tele_rest.models.suggested_post_paid import SuggestedPostPaid
+from tele_rest.models.suggested_post_refunded import SuggestedPostRefunded
 # TODO: Rewrite to not use raise_errors
 Message.model_rebuild(raise_errors=False)
 

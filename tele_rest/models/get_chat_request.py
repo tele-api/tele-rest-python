@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-08-17T02:10:52.303427632Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -53,7 +53,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List
-from tele_rest.models.leave_chat_request_chat_id import LeaveChatRequestChatId
+from tele_rest.models.get_chat_request_chat_id import GetChatRequestChatId
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -61,7 +61,7 @@ class GetChatRequest(BaseModel):
     """
     Request parameters for getChat
     """ # noqa: E501
-    chat_id: LeaveChatRequestChatId
+    chat_id: GetChatRequestChatId
     __properties: ClassVar[List[str]] = ["chat_id"]
 
     model_config = ConfigDict(
@@ -123,7 +123,7 @@ class GetChatRequest(BaseModel):
                 raise ValueError("Error due to additional fields (not defined in GetChatRequest) in the input: " + _key)
 
         _obj = cls.model_validate({
-            "chat_id": LeaveChatRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None
+            "chat_id": GetChatRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None
         })
         return _obj
 

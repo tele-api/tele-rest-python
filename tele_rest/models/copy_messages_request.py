@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-08-17T02:10:52.303427632Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -64,12 +64,13 @@ class CopyMessagesRequest(BaseModel):
     """ # noqa: E501
     chat_id: SendMessageRequestChatId
     message_thread_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")
+    direct_messages_topic_id: Optional[StrictInt] = Field(default=None, description="Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat")
     from_chat_id: ForwardMessagesRequestFromChatId
     message_ids: List[StrictInt] = Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\_chat\\_id* to copy. The identifiers must be specified in a strictly increasing order.")
     disable_notification: Optional[StrictBool] = Field(default=None, description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")
     protect_content: Optional[StrictBool] = Field(default=None, description="Protects the contents of the sent messages from forwarding and saving")
     remove_caption: Optional[StrictBool] = Field(default=None, description="Pass *True* to copy the messages without their captions")
-    __properties: ClassVar[List[str]] = ["chat_id", "message_thread_id", "from_chat_id", "message_ids", "disable_notification", "protect_content", "remove_caption"]
+    __properties: ClassVar[List[str]] = ["chat_id", "message_thread_id", "direct_messages_topic_id", "from_chat_id", "message_ids", "disable_notification", "protect_content", "remove_caption"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -135,6 +136,7 @@ class CopyMessagesRequest(BaseModel):
         _obj = cls.model_validate({
             "chat_id": SendMessageRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "message_thread_id": obj.get("message_thread_id"),
+            "direct_messages_topic_id": obj.get("direct_messages_topic_id"),
             "from_chat_id": ForwardMessagesRequestFromChatId.from_dict(obj["from_chat_id"]) if obj.get("from_chat_id") is not None else None,
             "message_ids": obj.get("message_ids"),
             "disable_notification": obj.get("disable_notification"),

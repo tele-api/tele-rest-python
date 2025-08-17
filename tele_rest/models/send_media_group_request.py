@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-08-17T02:10:52.303427632Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -66,13 +66,14 @@ class SendMediaGroupRequest(BaseModel):
     business_connection_id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the business connection on behalf of which the message will be sent")
     chat_id: SendMessageRequestChatId
     message_thread_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")
+    direct_messages_topic_id: Optional[StrictInt] = Field(default=None, description="Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat")
     media: List[SendMediaGroupRequestMediaInner] = Field(description="A JSON-serialized array describing messages to be sent, must include 2-10 items")
     disable_notification: Optional[StrictBool] = Field(default=None, description="Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")
     protect_content: Optional[StrictBool] = Field(default=None, description="Protects the contents of the sent messages from forwarding and saving")
     allow_paid_broadcast: Optional[StrictBool] = Field(default=None, description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")
     message_effect_id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the message effect to be added to the message; for private chats only")
     reply_parameters: Optional[ReplyParameters] = None
-    __properties: ClassVar[List[str]] = ["business_connection_id", "chat_id", "message_thread_id", "media", "disable_notification", "protect_content", "allow_paid_broadcast", "message_effect_id", "reply_parameters"]
+    __properties: ClassVar[List[str]] = ["business_connection_id", "chat_id", "message_thread_id", "direct_messages_topic_id", "media", "disable_notification", "protect_content", "allow_paid_broadcast", "message_effect_id", "reply_parameters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -146,6 +147,7 @@ class SendMediaGroupRequest(BaseModel):
             "business_connection_id": obj.get("business_connection_id"),
             "chat_id": SendMessageRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "message_thread_id": obj.get("message_thread_id"),
+            "direct_messages_topic_id": obj.get("direct_messages_topic_id"),
             "media": [SendMediaGroupRequestMediaInner.from_dict(_item) for _item in obj["media"]] if obj.get("media") is not None else None,
             "disable_notification": obj.get("disable_notification"),
             "protect_content": obj.get("protect_content"),

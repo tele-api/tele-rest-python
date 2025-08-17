@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-08-17T02:10:52.303427632Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -103,7 +103,16 @@ class TestGiftInfo(unittest.TestCase):
                     star_count = 56, 
                     upgrade_star_count = 56, 
                     total_count = 56, 
-                    remaining_count = 56, ),
+                    remaining_count = 56, 
+                    publisher_chat = tele_rest.models.chat.Chat(
+                        id = 56, 
+                        type = 'private', 
+                        title = '', 
+                        username = '', 
+                        first_name = '', 
+                        last_name = '', 
+                        is_forum = True, 
+                        is_direct_messages = True, ), ),
                 owned_gift_id = '',
                 convert_star_count = 56,
                 prepaid_upgrade_star_count = 56,
@@ -170,7 +179,16 @@ class TestGiftInfo(unittest.TestCase):
                     star_count = 56, 
                     upgrade_star_count = 56, 
                     total_count = 56, 
-                    remaining_count = 56, ),
+                    remaining_count = 56, 
+                    publisher_chat = tele_rest.models.chat.Chat(
+                        id = 56, 
+                        type = 'private', 
+                        title = '', 
+                        username = '', 
+                        first_name = '', 
+                        last_name = '', 
+                        is_forum = True, 
+                        is_direct_messages = True, ), ),
         )
         """
 

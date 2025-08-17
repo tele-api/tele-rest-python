@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-08-17T02:10:52.303427632Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -58,6 +58,7 @@ from tele_rest.models.message_entity import MessageEntity
 from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -68,6 +69,7 @@ class SendVideoRequest(BaseModel):
     business_connection_id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the business connection on behalf of which the message will be sent")
     chat_id: SendMessageRequestChatId
     message_thread_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")
+    direct_messages_topic_id: Optional[StrictInt] = Field(default=None, description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")
     video: Optional[StrictStr]
     duration: Optional[StrictInt] = Field(default=None, description="Duration of sent video in seconds")
     width: Optional[StrictInt] = Field(default=None, description="Video width")
@@ -85,9 +87,10 @@ class SendVideoRequest(BaseModel):
     protect_content: Optional[StrictBool] = Field(default=None, description="Protects the contents of the sent message from forwarding and saving")
     allow_paid_broadcast: Optional[StrictBool] = Field(default=None, description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")
     message_effect_id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the message effect to be added to the message; for private chats only")
+    suggested_post_parameters: Optional[SuggestedPostParameters] = None
     reply_parameters: Optional[ReplyParameters] = None
     reply_markup: Optional[SendMessageRequestReplyMarkup] = None
-    __properties: ClassVar[List[str]] = ["business_connection_id", "chat_id", "message_thread_id", "video", "duration", "width", "height", "thumbnail", "cover", "start_timestamp", "caption", "parse_mode", "caption_entities", "show_caption_above_media", "has_spoiler", "supports_streaming", "disable_notification", "protect_content", "allow_paid_broadcast", "message_effect_id", "reply_parameters", "reply_markup"]
+    __properties: ClassVar[List[str]] = ["business_connection_id", "chat_id", "message_thread_id", "direct_messages_topic_id", "video", "duration", "width", "height", "thumbnail", "cover", "start_timestamp", "caption", "parse_mode", "caption_entities", "show_caption_above_media", "has_spoiler", "supports_streaming", "disable_notification", "protect_content", "allow_paid_broadcast", "message_effect_id", "suggested_post_parameters", "reply_parameters", "reply_markup"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -138,6 +141,9 @@ class SendVideoRequest(BaseModel):
                 if _item_caption_entities:
                     _items.append(_item_caption_entities.to_dict())
             _dict['caption_entities'] = _items
+        # override the default output from pydantic by calling `to_dict()` of suggested_post_parameters
+        if self.suggested_post_parameters:
+            _dict['suggested_post_parameters'] = self.suggested_post_parameters.to_dict()
         # override the default output from pydantic by calling `to_dict()` of reply_parameters
         if self.reply_parameters:
             _dict['reply_parameters'] = self.reply_parameters.to_dict()
@@ -179,6 +185,7 @@ class SendVideoRequest(BaseModel):
             "business_connection_id": obj.get("business_connection_id"),
             "chat_id": SendMessageRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "message_thread_id": obj.get("message_thread_id"),
+            "direct_messages_topic_id": obj.get("direct_messages_topic_id"),
             "video": obj.get("video"),
             "duration": obj.get("duration"),
             "width": obj.get("width"),
@@ -196,6 +203,7 @@ class SendVideoRequest(BaseModel):
             "protect_content": obj.get("protect_content"),
             "allow_paid_broadcast": obj.get("allow_paid_broadcast"),
             "message_effect_id": obj.get("message_effect_id"),
+            "suggested_post_parameters": SuggestedPostParameters.from_dict(obj["suggested_post_parameters"]) if obj.get("suggested_post_parameters") is not None else None,
             "reply_parameters": ReplyParameters.from_dict(obj["reply_parameters"]) if obj.get("reply_parameters") is not None else None,
             "reply_markup": SendMessageRequestReplyMarkup.from_dict(obj["reply_markup"]) if obj.get("reply_markup") is not None else None
         })

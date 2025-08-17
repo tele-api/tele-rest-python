@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-08-17T02:10:52.303427632Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -75,7 +75,8 @@ class ChatAdministratorRights(BaseModel):
     can_edit_messages: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the administrator can edit messages of other users and can pin messages; for channels only")
     can_pin_messages: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the user is allowed to pin messages; for groups and supergroups only")
     can_manage_topics: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only")
-    __properties: ClassVar[List[str]] = ["is_anonymous", "can_manage_chat", "can_delete_messages", "can_manage_video_chats", "can_restrict_members", "can_promote_members", "can_change_info", "can_invite_users", "can_post_stories", "can_edit_stories", "can_delete_stories", "can_post_messages", "can_edit_messages", "can_pin_messages", "can_manage_topics"]
+    can_manage_direct_messages: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only")
+    __properties: ClassVar[List[str]] = ["is_anonymous", "can_manage_chat", "can_delete_messages", "can_manage_video_chats", "can_restrict_members", "can_promote_members", "can_change_info", "can_invite_users", "can_post_stories", "can_edit_stories", "can_delete_stories", "can_post_messages", "can_edit_messages", "can_pin_messages", "can_manage_topics", "can_manage_direct_messages"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -147,7 +148,8 @@ class ChatAdministratorRights(BaseModel):
             "can_post_messages": obj.get("can_post_messages"),
             "can_edit_messages": obj.get("can_edit_messages"),
             "can_pin_messages": obj.get("can_pin_messages"),
-            "can_manage_topics": obj.get("can_manage_topics")
+            "can_manage_topics": obj.get("can_manage_topics"),
+            "can_manage_direct_messages": obj.get("can_manage_direct_messages")
         })
         return _obj
 

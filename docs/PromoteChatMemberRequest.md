@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **can_edit_messages** | **bool** | Pass *True* if the administrator can edit messages of other users and can pin messages; for channels only | [optional] 
 **can_pin_messages** | **bool** | Pass *True* if the administrator can pin messages; for supergroups only | [optional] 
 **can_manage_topics** | **bool** | Pass *True* if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only | [optional] 
+**can_manage_direct_messages** | **bool** | Pass *True* if the administrator can manage direct messages within the channel and decline suggested posts; for channels only | [optional] 
 
 ## Example
 

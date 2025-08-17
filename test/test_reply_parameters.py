@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-08-17T02:10:52.303427632Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -97,7 +97,8 @@ class TestReplyParameters(unittest.TestCase):
                         language = '', 
                         custom_emoji_id = '', )
                     ],
-                quote_position = 56
+                quote_position = 56,
+                checklist_task_id = 56
             )
         else:
             return ReplyParameters(
