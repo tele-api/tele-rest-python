@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-08-17T02:10:52.303427632Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -57,8 +57,8 @@ from typing_extensions import Annotated
 from tele_rest.models.input_poll_option import InputPollOption
 from tele_rest.models.message_entity import MessageEntity
 from tele_rest.models.reply_parameters import ReplyParameters
-from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.send_poll_request_chat_id import SendPollRequestChatId
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -67,7 +67,7 @@ class SendPollRequest(BaseModel):
     Request parameters for sendPoll
     """ # noqa: E501
     business_connection_id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the business connection on behalf of which the message will be sent")
-    chat_id: SendMessageRequestChatId
+    chat_id: SendPollRequestChatId
     message_thread_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")
     question: Annotated[str, Field(min_length=1, strict=True, max_length=300)] = Field(description="Poll question, 1-300 characters")
     question_parse_mode: Optional[StrictStr] = Field(default=None, description="Mode for parsing entities in the question. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. Currently, only custom emoji entities are allowed")
@@ -188,7 +188,7 @@ class SendPollRequest(BaseModel):
 
         _obj = cls.model_validate({
             "business_connection_id": obj.get("business_connection_id"),
-            "chat_id": SendMessageRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
+            "chat_id": SendPollRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "message_thread_id": obj.get("message_thread_id"),
             "question": obj.get("question"),
             "question_parse_mode": obj.get("question_parse_mode"),

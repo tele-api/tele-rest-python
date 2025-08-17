@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-08-17T02:10:52.303427632Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -72,6 +72,7 @@ class TestSendVoiceRequest(unittest.TestCase):
                 business_connection_id = '',
                 chat_id = None,
                 message_thread_id = 56,
+                direct_messages_topic_id = 56,
                 voice = '',
                 caption = '',
                 parse_mode = '',
@@ -103,6 +104,11 @@ class TestSendVoiceRequest(unittest.TestCase):
                 protect_content = True,
                 allow_paid_broadcast = True,
                 message_effect_id = '',
+                suggested_post_parameters = tele_rest.models.suggested_post_parameters.SuggestedPostParameters(
+                    price = tele_rest.models.suggested_post_price.SuggestedPostPrice(
+                        currency = 'XTR', 
+                        amount = 56, ), 
+                    send_date = 56, ),
                 reply_parameters = tele_rest.models.reply_parameters.ReplyParameters(
                     message_id = 56, 
                     chat_id = null, 
@@ -132,7 +138,8 @@ class TestSendVoiceRequest(unittest.TestCase):
                             language = '', 
                             custom_emoji_id = '', )
                         ], 
-                    quote_position = 56, ),
+                    quote_position = 56, 
+                    checklist_task_id = 56, ),
                 reply_markup = None
             )
         else:

@@ -6,7 +6,7 @@ Request parameters for setChatAdministratorCustomTitle
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md) |  | 
+**chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md) |  | 
 **user_id** | **int** | Unique identifier of the target user | 
 **custom_title** | **str** | New custom title for the administrator; 0-16 characters, emoji are not allowed | 
 

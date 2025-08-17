@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-08-17T02:10:52.303427632Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -54,7 +54,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -62,7 +62,7 @@ class EditGeneralForumTopicRequest(BaseModel):
     """
     Request parameters for editGeneralForumTopic
     """ # noqa: E501
-    chat_id: BotCommandScopeChatChatId
+    chat_id: RestrictChatMemberRequestChatId
     name: Annotated[str, Field(min_length=1, strict=True, max_length=128)] = Field(description="New topic name, 1-128 characters")
     __properties: ClassVar[List[str]] = ["chat_id", "name"]
 
@@ -125,7 +125,7 @@ class EditGeneralForumTopicRequest(BaseModel):
                 raise ValueError("Error due to additional fields (not defined in EditGeneralForumTopicRequest) in the input: " + _key)
 
         _obj = cls.model_validate({
-            "chat_id": BotCommandScopeChatChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
+            "chat_id": RestrictChatMemberRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "name": obj.get("name")
         })
         return _obj
