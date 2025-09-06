@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-06T05:32:06.285336202Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -107,7 +107,8 @@ class TestTransactionPartner(unittest.TestCase):
                         username = '', 
                         first_name = '', 
                         last_name = '', 
-                        is_forum = True, ), 
+                        is_forum = True, 
+                        is_direct_messages = True, ), 
                     commission_per_mille = 56, 
                     amount = 56, 
                     nanostar_amount = 56, ),
@@ -151,7 +152,16 @@ class TestTransactionPartner(unittest.TestCase):
                     star_count = 56, 
                     upgrade_star_count = 56, 
                     total_count = 56, 
-                    remaining_count = 56, ),
+                    remaining_count = 56, 
+                    publisher_chat = tele_rest.models.chat.Chat(
+                        id = 56, 
+                        type = 'private', 
+                        title = '', 
+                        username = '', 
+                        first_name = '', 
+                        last_name = '', 
+                        is_forum = True, 
+                        is_direct_messages = True, ), ),
                 premium_subscription_duration = 56,
                 chat = tele_rest.models.chat.Chat(
                     id = 56, 
@@ -160,7 +170,8 @@ class TestTransactionPartner(unittest.TestCase):
                     username = '', 
                     first_name = '', 
                     last_name = '', 
-                    is_forum = True, ),
+                    is_forum = True, 
+                    is_direct_messages = True, ),
                 sponsor_user = tele_rest.models.user.User(
                     id = 56, 
                     is_bot = True, 
@@ -204,7 +215,8 @@ class TestTransactionPartner(unittest.TestCase):
                     username = '', 
                     first_name = '', 
                     last_name = '', 
-                    is_forum = True, ),
+                    is_forum = True, 
+                    is_direct_messages = True, ),
                 commission_per_mille = 56,
                 request_count = 56,
         )

@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-06T05:32:06.285336202Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -530,8 +530,8 @@ class Configuration:
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: 9.1.0\n"\
-               "SDK Package Version: 9.1.0".\
+               "Version of the API: 9.2.0\n"\
+               "SDK Package Version: 9.2.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self) -> List[HostSetting]:

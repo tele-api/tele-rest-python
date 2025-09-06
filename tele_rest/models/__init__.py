@@ -9,8 +9,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-06T05:32:06.285336202Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -65,6 +65,8 @@ from tele_rest.models.answer_web_app_query_request import AnswerWebAppQueryReque
 from tele_rest.models.answer_web_app_query_response import AnswerWebAppQueryResponse
 from tele_rest.models.approve_chat_join_request_request import ApproveChatJoinRequestRequest
 from tele_rest.models.approve_chat_join_request_response import ApproveChatJoinRequestResponse
+from tele_rest.models.approve_suggested_post_request import ApproveSuggestedPostRequest
+from tele_rest.models.approve_suggested_post_response import ApproveSuggestedPostResponse
 from tele_rest.models.audio import Audio
 from tele_rest.models.background_fill import BackgroundFill
 from tele_rest.models.background_fill_freeform_gradient import BackgroundFillFreeformGradient
@@ -159,6 +161,8 @@ from tele_rest.models.create_new_sticker_set_request import CreateNewStickerSetR
 from tele_rest.models.create_new_sticker_set_response import CreateNewStickerSetResponse
 from tele_rest.models.decline_chat_join_request_request import DeclineChatJoinRequestRequest
 from tele_rest.models.decline_chat_join_request_response import DeclineChatJoinRequestResponse
+from tele_rest.models.decline_suggested_post_request import DeclineSuggestedPostRequest
+from tele_rest.models.decline_suggested_post_response import DeclineSuggestedPostResponse
 from tele_rest.models.delete_business_messages_request import DeleteBusinessMessagesRequest
 from tele_rest.models.delete_business_messages_response import DeleteBusinessMessagesResponse
 from tele_rest.models.delete_chat_photo_request import DeleteChatPhotoRequest
@@ -183,6 +187,7 @@ from tele_rest.models.delete_webhook_request import DeleteWebhookRequest
 from tele_rest.models.delete_webhook_response import DeleteWebhookResponse
 from tele_rest.models.dice import Dice
 from tele_rest.models.direct_message_price_changed import DirectMessagePriceChanged
+from tele_rest.models.direct_messages_topic import DirectMessagesTopic
 from tele_rest.models.document import Document
 from tele_rest.models.edit_chat_invite_link_request import EditChatInviteLinkRequest
 from tele_rest.models.edit_chat_invite_link_response import EditChatInviteLinkResponse
@@ -245,6 +250,7 @@ from tele_rest.models.get_chat_member_response import GetChatMemberResponse
 from tele_rest.models.get_chat_menu_button_request import GetChatMenuButtonRequest
 from tele_rest.models.get_chat_menu_button_response import GetChatMenuButtonResponse
 from tele_rest.models.get_chat_request import GetChatRequest
+from tele_rest.models.get_chat_request_chat_id import GetChatRequestChatId
 from tele_rest.models.get_chat_response import GetChatResponse
 from tele_rest.models.get_custom_emoji_stickers_request import GetCustomEmojiStickersRequest
 from tele_rest.models.get_custom_emoji_stickers_response import GetCustomEmojiStickersResponse
@@ -435,6 +441,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.reply_parameters_chat_id import ReplyParametersChatId
 from tele_rest.models.response_parameters import ResponseParameters
 from tele_rest.models.restrict_chat_member_request import RestrictChatMemberRequest
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.models.restrict_chat_member_response import RestrictChatMemberResponse
 from tele_rest.models.revenue_withdrawal_state import RevenueWithdrawalState
 from tele_rest.models.revenue_withdrawal_state_failed import RevenueWithdrawalStateFailed
@@ -450,6 +457,7 @@ from tele_rest.models.send_animation_response import SendAnimationResponse
 from tele_rest.models.send_audio_request import SendAudioRequest
 from tele_rest.models.send_audio_response import SendAudioResponse
 from tele_rest.models.send_chat_action_request import SendChatActionRequest
+from tele_rest.models.send_chat_action_request_chat_id import SendChatActionRequestChatId
 from tele_rest.models.send_chat_action_response import SendChatActionResponse
 from tele_rest.models.send_checklist_request import SendChecklistRequest
 from tele_rest.models.send_checklist_response import SendChecklistResponse
@@ -481,6 +489,7 @@ from tele_rest.models.send_paid_media_response import SendPaidMediaResponse
 from tele_rest.models.send_photo_request import SendPhotoRequest
 from tele_rest.models.send_photo_response import SendPhotoResponse
 from tele_rest.models.send_poll_request import SendPollRequest
+from tele_rest.models.send_poll_request_chat_id import SendPollRequestChatId
 from tele_rest.models.send_poll_response import SendPollResponse
 from tele_rest.models.send_sticker_request import SendStickerRequest
 from tele_rest.models.send_sticker_response import SendStickerResponse
@@ -574,6 +583,14 @@ from tele_rest.models.story_area_type_suggested_reaction import StoryAreaTypeSug
 from tele_rest.models.story_area_type_unique_gift import StoryAreaTypeUniqueGift
 from tele_rest.models.story_area_type_weather import StoryAreaTypeWeather
 from tele_rest.models.successful_payment import SuccessfulPayment
+from tele_rest.models.suggested_post_approval_failed import SuggestedPostApprovalFailed
+from tele_rest.models.suggested_post_approved import SuggestedPostApproved
+from tele_rest.models.suggested_post_declined import SuggestedPostDeclined
+from tele_rest.models.suggested_post_info import SuggestedPostInfo
+from tele_rest.models.suggested_post_paid import SuggestedPostPaid
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
+from tele_rest.models.suggested_post_price import SuggestedPostPrice
+from tele_rest.models.suggested_post_refunded import SuggestedPostRefunded
 from tele_rest.models.switch_inline_query_chosen_chat import SwitchInlineQueryChosenChat
 from tele_rest.models.text_quote import TextQuote
 from tele_rest.models.transaction_partner import TransactionPartner
@@ -619,6 +636,7 @@ from tele_rest.models.user_profile_photos import UserProfilePhotos
 from tele_rest.models.users_shared import UsersShared
 from tele_rest.models.venue import Venue
 from tele_rest.models.verify_chat_request import VerifyChatRequest
+from tele_rest.models.verify_chat_request_chat_id import VerifyChatRequestChatId
 from tele_rest.models.verify_chat_response import VerifyChatResponse
 from tele_rest.models.verify_user_request import VerifyUserRequest
 from tele_rest.models.verify_user_response import VerifyUserResponse

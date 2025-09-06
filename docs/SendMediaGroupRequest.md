@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **business_connection_id** | **str** | Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
 **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md) |  | 
 **message_thread_id** | **int** | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+**direct_messages_topic_id** | **int** | Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat | [optional] 
 **media** | [**List[SendMediaGroupRequestMediaInner]**](SendMediaGroupRequestMediaInner.md) | A JSON-serialized array describing messages to be sent, must include 2-10 items | 
 **disable_notification** | **bool** | Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
 **protect_content** | **bool** | Protects the contents of the sent messages from forwarding and saving | [optional] 
