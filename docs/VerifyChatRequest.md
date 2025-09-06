@@ -6,7 +6,7 @@ Request parameters for verifyChat
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md) |  | 
+**chat_id** | [**VerifyChatRequestChatId**](VerifyChatRequestChatId.md) |  | 
 **custom_description** | **str** | Custom description for the verification; 0-70 characters. Must be empty if the organization isn&#39;t allowed to provide a custom verification description. | [optional] 
 
 ## Example

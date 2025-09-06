@@ -10,8 +10,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-06T05:32:06.285336202Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -48,7 +48,7 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 """  # noqa: E501
 
 
-__version__ = "9.1.0"
+__version__ = "9.2.0"
 
 # Define package exports
 __all__ = [
@@ -79,6 +79,8 @@ __all__ = [
     "AnswerWebAppQueryResponse",
     "ApproveChatJoinRequestRequest",
     "ApproveChatJoinRequestResponse",
+    "ApproveSuggestedPostRequest",
+    "ApproveSuggestedPostResponse",
     "Audio",
     "BackgroundFill",
     "BackgroundFillFreeformGradient",
@@ -173,6 +175,8 @@ __all__ = [
     "CreateNewStickerSetResponse",
     "DeclineChatJoinRequestRequest",
     "DeclineChatJoinRequestResponse",
+    "DeclineSuggestedPostRequest",
+    "DeclineSuggestedPostResponse",
     "DeleteBusinessMessagesRequest",
     "DeleteBusinessMessagesResponse",
     "DeleteChatPhotoRequest",
@@ -197,6 +201,7 @@ __all__ = [
     "DeleteWebhookResponse",
     "Dice",
     "DirectMessagePriceChanged",
+    "DirectMessagesTopic",
     "Document",
     "EditChatInviteLinkRequest",
     "EditChatInviteLinkResponse",
@@ -259,6 +264,7 @@ __all__ = [
     "GetChatMenuButtonRequest",
     "GetChatMenuButtonResponse",
     "GetChatRequest",
+    "GetChatRequestChatId",
     "GetChatResponse",
     "GetCustomEmojiStickersRequest",
     "GetCustomEmojiStickersResponse",
@@ -449,6 +455,7 @@ __all__ = [
     "ReplyParametersChatId",
     "ResponseParameters",
     "RestrictChatMemberRequest",
+    "RestrictChatMemberRequestChatId",
     "RestrictChatMemberResponse",
     "RevenueWithdrawalState",
     "RevenueWithdrawalStateFailed",
@@ -464,6 +471,7 @@ __all__ = [
     "SendAudioRequest",
     "SendAudioResponse",
     "SendChatActionRequest",
+    "SendChatActionRequestChatId",
     "SendChatActionResponse",
     "SendChecklistRequest",
     "SendChecklistResponse",
@@ -495,6 +503,7 @@ __all__ = [
     "SendPhotoRequest",
     "SendPhotoResponse",
     "SendPollRequest",
+    "SendPollRequestChatId",
     "SendPollResponse",
     "SendStickerRequest",
     "SendStickerResponse",
@@ -588,6 +597,14 @@ __all__ = [
     "StoryAreaTypeUniqueGift",
     "StoryAreaTypeWeather",
     "SuccessfulPayment",
+    "SuggestedPostApprovalFailed",
+    "SuggestedPostApproved",
+    "SuggestedPostDeclined",
+    "SuggestedPostInfo",
+    "SuggestedPostPaid",
+    "SuggestedPostParameters",
+    "SuggestedPostPrice",
+    "SuggestedPostRefunded",
     "SwitchInlineQueryChosenChat",
     "TextQuote",
     "TransactionPartner",
@@ -633,6 +650,7 @@ __all__ = [
     "UsersShared",
     "Venue",
     "VerifyChatRequest",
+    "VerifyChatRequestChatId",
     "VerifyChatResponse",
     "VerifyUserRequest",
     "VerifyUserResponse",
@@ -680,6 +698,8 @@ from tele_rest.models.answer_web_app_query_request import AnswerWebAppQueryReque
 from tele_rest.models.answer_web_app_query_response import AnswerWebAppQueryResponse as AnswerWebAppQueryResponse
 from tele_rest.models.approve_chat_join_request_request import ApproveChatJoinRequestRequest as ApproveChatJoinRequestRequest
 from tele_rest.models.approve_chat_join_request_response import ApproveChatJoinRequestResponse as ApproveChatJoinRequestResponse
+from tele_rest.models.approve_suggested_post_request import ApproveSuggestedPostRequest as ApproveSuggestedPostRequest
+from tele_rest.models.approve_suggested_post_response import ApproveSuggestedPostResponse as ApproveSuggestedPostResponse
 from tele_rest.models.audio import Audio as Audio
 from tele_rest.models.background_fill import BackgroundFill as BackgroundFill
 from tele_rest.models.background_fill_freeform_gradient import BackgroundFillFreeformGradient as BackgroundFillFreeformGradient
@@ -774,6 +794,8 @@ from tele_rest.models.create_new_sticker_set_request import CreateNewStickerSetR
 from tele_rest.models.create_new_sticker_set_response import CreateNewStickerSetResponse as CreateNewStickerSetResponse
 from tele_rest.models.decline_chat_join_request_request import DeclineChatJoinRequestRequest as DeclineChatJoinRequestRequest
 from tele_rest.models.decline_chat_join_request_response import DeclineChatJoinRequestResponse as DeclineChatJoinRequestResponse
+from tele_rest.models.decline_suggested_post_request import DeclineSuggestedPostRequest as DeclineSuggestedPostRequest
+from tele_rest.models.decline_suggested_post_response import DeclineSuggestedPostResponse as DeclineSuggestedPostResponse
 from tele_rest.models.delete_business_messages_request import DeleteBusinessMessagesRequest as DeleteBusinessMessagesRequest
 from tele_rest.models.delete_business_messages_response import DeleteBusinessMessagesResponse as DeleteBusinessMessagesResponse
 from tele_rest.models.delete_chat_photo_request import DeleteChatPhotoRequest as DeleteChatPhotoRequest
@@ -798,6 +820,7 @@ from tele_rest.models.delete_webhook_request import DeleteWebhookRequest as Dele
 from tele_rest.models.delete_webhook_response import DeleteWebhookResponse as DeleteWebhookResponse
 from tele_rest.models.dice import Dice as Dice
 from tele_rest.models.direct_message_price_changed import DirectMessagePriceChanged as DirectMessagePriceChanged
+from tele_rest.models.direct_messages_topic import DirectMessagesTopic as DirectMessagesTopic
 from tele_rest.models.document import Document as Document
 from tele_rest.models.edit_chat_invite_link_request import EditChatInviteLinkRequest as EditChatInviteLinkRequest
 from tele_rest.models.edit_chat_invite_link_response import EditChatInviteLinkResponse as EditChatInviteLinkResponse
@@ -860,6 +883,7 @@ from tele_rest.models.get_chat_member_response import GetChatMemberResponse as G
 from tele_rest.models.get_chat_menu_button_request import GetChatMenuButtonRequest as GetChatMenuButtonRequest
 from tele_rest.models.get_chat_menu_button_response import GetChatMenuButtonResponse as GetChatMenuButtonResponse
 from tele_rest.models.get_chat_request import GetChatRequest as GetChatRequest
+from tele_rest.models.get_chat_request_chat_id import GetChatRequestChatId as GetChatRequestChatId
 from tele_rest.models.get_chat_response import GetChatResponse as GetChatResponse
 from tele_rest.models.get_custom_emoji_stickers_request import GetCustomEmojiStickersRequest as GetCustomEmojiStickersRequest
 from tele_rest.models.get_custom_emoji_stickers_response import GetCustomEmojiStickersResponse as GetCustomEmojiStickersResponse
@@ -1050,6 +1074,7 @@ from tele_rest.models.reply_parameters import ReplyParameters as ReplyParameters
 from tele_rest.models.reply_parameters_chat_id import ReplyParametersChatId as ReplyParametersChatId
 from tele_rest.models.response_parameters import ResponseParameters as ResponseParameters
 from tele_rest.models.restrict_chat_member_request import RestrictChatMemberRequest as RestrictChatMemberRequest
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId as RestrictChatMemberRequestChatId
 from tele_rest.models.restrict_chat_member_response import RestrictChatMemberResponse as RestrictChatMemberResponse
 from tele_rest.models.revenue_withdrawal_state import RevenueWithdrawalState as RevenueWithdrawalState
 from tele_rest.models.revenue_withdrawal_state_failed import RevenueWithdrawalStateFailed as RevenueWithdrawalStateFailed
@@ -1065,6 +1090,7 @@ from tele_rest.models.send_animation_response import SendAnimationResponse as Se
 from tele_rest.models.send_audio_request import SendAudioRequest as SendAudioRequest
 from tele_rest.models.send_audio_response import SendAudioResponse as SendAudioResponse
 from tele_rest.models.send_chat_action_request import SendChatActionRequest as SendChatActionRequest
+from tele_rest.models.send_chat_action_request_chat_id import SendChatActionRequestChatId as SendChatActionRequestChatId
 from tele_rest.models.send_chat_action_response import SendChatActionResponse as SendChatActionResponse
 from tele_rest.models.send_checklist_request import SendChecklistRequest as SendChecklistRequest
 from tele_rest.models.send_checklist_response import SendChecklistResponse as SendChecklistResponse
@@ -1096,6 +1122,7 @@ from tele_rest.models.send_paid_media_response import SendPaidMediaResponse as S
 from tele_rest.models.send_photo_request import SendPhotoRequest as SendPhotoRequest
 from tele_rest.models.send_photo_response import SendPhotoResponse as SendPhotoResponse
 from tele_rest.models.send_poll_request import SendPollRequest as SendPollRequest
+from tele_rest.models.send_poll_request_chat_id import SendPollRequestChatId as SendPollRequestChatId
 from tele_rest.models.send_poll_response import SendPollResponse as SendPollResponse
 from tele_rest.models.send_sticker_request import SendStickerRequest as SendStickerRequest
 from tele_rest.models.send_sticker_response import SendStickerResponse as SendStickerResponse
@@ -1189,6 +1216,14 @@ from tele_rest.models.story_area_type_suggested_reaction import StoryAreaTypeSug
 from tele_rest.models.story_area_type_unique_gift import StoryAreaTypeUniqueGift as StoryAreaTypeUniqueGift
 from tele_rest.models.story_area_type_weather import StoryAreaTypeWeather as StoryAreaTypeWeather
 from tele_rest.models.successful_payment import SuccessfulPayment as SuccessfulPayment
+from tele_rest.models.suggested_post_approval_failed import SuggestedPostApprovalFailed as SuggestedPostApprovalFailed
+from tele_rest.models.suggested_post_approved import SuggestedPostApproved as SuggestedPostApproved
+from tele_rest.models.suggested_post_declined import SuggestedPostDeclined as SuggestedPostDeclined
+from tele_rest.models.suggested_post_info import SuggestedPostInfo as SuggestedPostInfo
+from tele_rest.models.suggested_post_paid import SuggestedPostPaid as SuggestedPostPaid
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters as SuggestedPostParameters
+from tele_rest.models.suggested_post_price import SuggestedPostPrice as SuggestedPostPrice
+from tele_rest.models.suggested_post_refunded import SuggestedPostRefunded as SuggestedPostRefunded
 from tele_rest.models.switch_inline_query_chosen_chat import SwitchInlineQueryChosenChat as SwitchInlineQueryChosenChat
 from tele_rest.models.text_quote import TextQuote as TextQuote
 from tele_rest.models.transaction_partner import TransactionPartner as TransactionPartner
@@ -1234,6 +1269,7 @@ from tele_rest.models.user_profile_photos import UserProfilePhotos as UserProfil
 from tele_rest.models.users_shared import UsersShared as UsersShared
 from tele_rest.models.venue import Venue as Venue
 from tele_rest.models.verify_chat_request import VerifyChatRequest as VerifyChatRequest
+from tele_rest.models.verify_chat_request_chat_id import VerifyChatRequestChatId as VerifyChatRequestChatId
 from tele_rest.models.verify_chat_response import VerifyChatResponse as VerifyChatResponse
 from tele_rest.models.verify_user_request import VerifyUserRequest as VerifyUserRequest
 from tele_rest.models.verify_user_response import VerifyUserResponse as VerifyUserResponse

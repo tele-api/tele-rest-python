@@ -7,7 +7,7 @@ Request parameters for sendGame
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **business_connection_id** | **str** | Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
-**chat_id** | **int** | Unique identifier for the target chat | 
+**chat_id** | **int** | Unique identifier for the target chat. Games can&#39;t be sent to channel direct messages chats and channel chats. | 
 **message_thread_id** | **int** | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
 **game_short_name** | **str** | Short name of the game, serves as the unique identifier for the game. Set up your games via [@BotFather](https://t.me/botfather). | 
 **disable_notification** | **bool** | Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **first_name** | **str** | *Optional*. First name of the other party in a private chat | [optional] 
 **last_name** | **str** | *Optional*. Last name of the other party in a private chat | [optional] 
 **is_forum** | **bool** | *Optional*. *True*, if the supergroup chat is a forum (has [topics](https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups) enabled) | [optional] [default to True]
+**is_direct_messages** | **bool** | *Optional*. *True*, if the chat is the direct messages chat of a channel | [optional] [default to True]
 
 ## Example
 

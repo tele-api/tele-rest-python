@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-06T05:32:06.285336202Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -73,6 +73,22 @@ class TestSendAnimationResponse(unittest.TestCase):
                 result = tele_rest.models.message.Message(
                     message_id = 56, 
                     message_thread_id = 56, 
+                    direct_messages_topic = tele_rest.models.direct_messages_topic.DirectMessagesTopic(
+                        topic_id = 56, 
+                        user = tele_rest.models.user.User(
+                            id = 56, 
+                            is_bot = True, 
+                            first_name = '', 
+                            last_name = '', 
+                            username = '', 
+                            language_code = '', 
+                            is_premium = True, 
+                            added_to_attachment_menu = True, 
+                            can_join_groups = True, 
+                            can_read_all_group_messages = True, 
+                            supports_inline_queries = True, 
+                            can_connect_to_business = True, 
+                            has_main_web_app = True, ), ), 
                     from = tele_rest.models.user.User(
                         id = 56, 
                         is_bot = True, 
@@ -94,22 +110,10 @@ class TestSendAnimationResponse(unittest.TestCase):
                         username = '', 
                         first_name = '', 
                         last_name = '', 
-                        is_forum = True, ), 
+                        is_forum = True, 
+                        is_direct_messages = True, ), 
                     sender_boost_count = 56, 
-                    sender_business_bot = tele_rest.models.user.User(
-                        id = 56, 
-                        is_bot = True, 
-                        first_name = '', 
-                        last_name = '', 
-                        username = '', 
-                        language_code = '', 
-                        is_premium = True, 
-                        added_to_attachment_menu = True, 
-                        can_join_groups = True, 
-                        can_read_all_group_messages = True, 
-                        supports_inline_queries = True, 
-                        can_connect_to_business = True, 
-                        has_main_web_app = True, ), 
+                    sender_business_bot = , 
                     date = 56, 
                     business_connection_id = '', 
                     chat = tele_rest.models.chat.Chat(
@@ -119,7 +123,8 @@ class TestSendAnimationResponse(unittest.TestCase):
                         username = '', 
                         first_name = '', 
                         last_name = '', 
-                        is_forum = True, ), 
+                        is_forum = True, 
+                        is_direct_messages = True, ), 
                     forward_origin = null, 
                     is_topic_message = True, 
                     is_automatic_forward = True, 
@@ -244,7 +249,6 @@ class TestSendAnimationResponse(unittest.TestCase):
                                         offset = 56, 
                                         length = 56, 
                                         url = '', 
-                                        user = , 
                                         language = '', 
                                         custom_emoji_id = '', )
                                     ], 
@@ -371,10 +375,12 @@ class TestSendAnimationResponse(unittest.TestCase):
                         reply_to_story = tele_rest.models.story.Story(
                             chat = , 
                             id = 56, ), 
+                        reply_to_checklist_task_id = 56, 
                         via_bot = , 
                         edit_date = 56, 
                         has_protected_content = True, 
                         is_from_offline = True, 
+                        is_paid_post = True, 
                         media_group_id = '', 
                         author_signature = '', 
                         paid_star_count = 56, 
@@ -388,6 +394,12 @@ class TestSendAnimationResponse(unittest.TestCase):
                             prefer_small_media = True, 
                             prefer_large_media = True, 
                             show_above_text = True, ), 
+                        suggested_post_info = tele_rest.models.suggested_post_info.SuggestedPostInfo(
+                            state = 'pending', 
+                            price = tele_rest.models.suggested_post_price.SuggestedPostPrice(
+                                currency = 'XTR', 
+                                amount = 56, ), 
+                            send_date = 56, ), 
                         effect_id = '', 
                         animation = tele_rest.models.animation.Animation(
                             file_id = '', 
@@ -586,7 +598,8 @@ class TestSendAnimationResponse(unittest.TestCase):
                                 star_count = 56, 
                                 upgrade_star_count = 56, 
                                 total_count = 56, 
-                                remaining_count = 56, ), 
+                                remaining_count = 56, 
+                                publisher_chat = , ), 
                             owned_gift_id = '', 
                             convert_star_count = 56, 
                             prepaid_upgrade_star_count = 56, 
@@ -722,6 +735,23 @@ class TestSendAnimationResponse(unittest.TestCase):
                             is_star_giveaway = True, ), 
                         paid_message_price_changed = tele_rest.models.paid_message_price_changed.PaidMessagePriceChanged(
                             paid_message_star_count = 56, ), 
+                        suggested_post_approved = tele_rest.models.suggested_post_approved.SuggestedPostApproved(
+                            suggested_post_message = , 
+                            send_date = 56, ), 
+                        suggested_post_approval_failed = tele_rest.models.suggested_post_approval_failed.SuggestedPostApprovalFailed(
+                            price = tele_rest.models.suggested_post_price.SuggestedPostPrice(
+                                currency = 'XTR', 
+                                amount = 56, ), ), 
+                        suggested_post_declined = tele_rest.models.suggested_post_declined.SuggestedPostDeclined(
+                            comment = '', ), 
+                        suggested_post_paid = tele_rest.models.suggested_post_paid.SuggestedPostPaid(
+                            currency = 'XTR', 
+                            amount = 56, 
+                            star_amount = tele_rest.models.star_amount.StarAmount(
+                                amount = 56, 
+                                nanostar_amount = 56, ), ), 
+                        suggested_post_refunded = tele_rest.models.suggested_post_refunded.SuggestedPostRefunded(
+                            reason = 'post_deleted', ), 
                         video_chat_scheduled = tele_rest.models.video_chat_scheduled.VideoChatScheduled(
                             start_date = 56, ), 
                         video_chat_started = null, 
@@ -771,10 +801,12 @@ class TestSendAnimationResponse(unittest.TestCase):
                         position = 56, 
                         is_manual = True, ), 
                     reply_to_story = , 
+                    reply_to_checklist_task_id = 56, 
                     via_bot = , 
                     edit_date = 56, 
                     has_protected_content = True, 
                     is_from_offline = True, 
+                    is_paid_post = True, 
                     media_group_id = '', 
                     author_signature = '', 
                     paid_star_count = 56, 
@@ -783,6 +815,9 @@ class TestSendAnimationResponse(unittest.TestCase):
                         
                         ], 
                     link_preview_options = , 
+                    suggested_post_info = tele_rest.models.suggested_post_info.SuggestedPostInfo(
+                        state = 'pending', 
+                        send_date = 56, ), 
                     effect_id = '', 
                     animation = , 
                     audio = , 
@@ -949,6 +984,17 @@ class TestSendAnimationResponse(unittest.TestCase):
                         is_star_giveaway = True, ), 
                     paid_message_price_changed = tele_rest.models.paid_message_price_changed.PaidMessagePriceChanged(
                         paid_message_star_count = 56, ), 
+                    suggested_post_approved = tele_rest.models.suggested_post_approved.SuggestedPostApproved(
+                        send_date = 56, ), 
+                    suggested_post_approval_failed = tele_rest.models.suggested_post_approval_failed.SuggestedPostApprovalFailed(
+                        price = , ), 
+                    suggested_post_declined = tele_rest.models.suggested_post_declined.SuggestedPostDeclined(
+                        comment = '', ), 
+                    suggested_post_paid = tele_rest.models.suggested_post_paid.SuggestedPostPaid(
+                        currency = 'XTR', 
+                        amount = 56, ), 
+                    suggested_post_refunded = tele_rest.models.suggested_post_refunded.SuggestedPostRefunded(
+                        reason = 'post_deleted', ), 
                     video_chat_scheduled = tele_rest.models.video_chat_scheduled.VideoChatScheduled(
                         start_date = 56, ), 
                     video_chat_started = null, 
@@ -981,6 +1027,22 @@ class TestSendAnimationResponse(unittest.TestCase):
                 result = tele_rest.models.message.Message(
                     message_id = 56, 
                     message_thread_id = 56, 
+                    direct_messages_topic = tele_rest.models.direct_messages_topic.DirectMessagesTopic(
+                        topic_id = 56, 
+                        user = tele_rest.models.user.User(
+                            id = 56, 
+                            is_bot = True, 
+                            first_name = '', 
+                            last_name = '', 
+                            username = '', 
+                            language_code = '', 
+                            is_premium = True, 
+                            added_to_attachment_menu = True, 
+                            can_join_groups = True, 
+                            can_read_all_group_messages = True, 
+                            supports_inline_queries = True, 
+                            can_connect_to_business = True, 
+                            has_main_web_app = True, ), ), 
                     from = tele_rest.models.user.User(
                         id = 56, 
                         is_bot = True, 
@@ -1002,22 +1064,10 @@ class TestSendAnimationResponse(unittest.TestCase):
                         username = '', 
                         first_name = '', 
                         last_name = '', 
-                        is_forum = True, ), 
+                        is_forum = True, 
+                        is_direct_messages = True, ), 
                     sender_boost_count = 56, 
-                    sender_business_bot = tele_rest.models.user.User(
-                        id = 56, 
-                        is_bot = True, 
-                        first_name = '', 
-                        last_name = '', 
-                        username = '', 
-                        language_code = '', 
-                        is_premium = True, 
-                        added_to_attachment_menu = True, 
-                        can_join_groups = True, 
-                        can_read_all_group_messages = True, 
-                        supports_inline_queries = True, 
-                        can_connect_to_business = True, 
-                        has_main_web_app = True, ), 
+                    sender_business_bot = , 
                     date = 56, 
                     business_connection_id = '', 
                     chat = tele_rest.models.chat.Chat(
@@ -1027,7 +1077,8 @@ class TestSendAnimationResponse(unittest.TestCase):
                         username = '', 
                         first_name = '', 
                         last_name = '', 
-                        is_forum = True, ), 
+                        is_forum = True, 
+                        is_direct_messages = True, ), 
                     forward_origin = null, 
                     is_topic_message = True, 
                     is_automatic_forward = True, 
@@ -1152,7 +1203,6 @@ class TestSendAnimationResponse(unittest.TestCase):
                                         offset = 56, 
                                         length = 56, 
                                         url = '', 
-                                        user = , 
                                         language = '', 
                                         custom_emoji_id = '', )
                                     ], 
@@ -1279,10 +1329,12 @@ class TestSendAnimationResponse(unittest.TestCase):
                         reply_to_story = tele_rest.models.story.Story(
                             chat = , 
                             id = 56, ), 
+                        reply_to_checklist_task_id = 56, 
                         via_bot = , 
                         edit_date = 56, 
                         has_protected_content = True, 
                         is_from_offline = True, 
+                        is_paid_post = True, 
                         media_group_id = '', 
                         author_signature = '', 
                         paid_star_count = 56, 
@@ -1296,6 +1348,12 @@ class TestSendAnimationResponse(unittest.TestCase):
                             prefer_small_media = True, 
                             prefer_large_media = True, 
                             show_above_text = True, ), 
+                        suggested_post_info = tele_rest.models.suggested_post_info.SuggestedPostInfo(
+                            state = 'pending', 
+                            price = tele_rest.models.suggested_post_price.SuggestedPostPrice(
+                                currency = 'XTR', 
+                                amount = 56, ), 
+                            send_date = 56, ), 
                         effect_id = '', 
                         animation = tele_rest.models.animation.Animation(
                             file_id = '', 
@@ -1494,7 +1552,8 @@ class TestSendAnimationResponse(unittest.TestCase):
                                 star_count = 56, 
                                 upgrade_star_count = 56, 
                                 total_count = 56, 
-                                remaining_count = 56, ), 
+                                remaining_count = 56, 
+                                publisher_chat = , ), 
                             owned_gift_id = '', 
                             convert_star_count = 56, 
                             prepaid_upgrade_star_count = 56, 
@@ -1630,6 +1689,23 @@ class TestSendAnimationResponse(unittest.TestCase):
                             is_star_giveaway = True, ), 
                         paid_message_price_changed = tele_rest.models.paid_message_price_changed.PaidMessagePriceChanged(
                             paid_message_star_count = 56, ), 
+                        suggested_post_approved = tele_rest.models.suggested_post_approved.SuggestedPostApproved(
+                            suggested_post_message = , 
+                            send_date = 56, ), 
+                        suggested_post_approval_failed = tele_rest.models.suggested_post_approval_failed.SuggestedPostApprovalFailed(
+                            price = tele_rest.models.suggested_post_price.SuggestedPostPrice(
+                                currency = 'XTR', 
+                                amount = 56, ), ), 
+                        suggested_post_declined = tele_rest.models.suggested_post_declined.SuggestedPostDeclined(
+                            comment = '', ), 
+                        suggested_post_paid = tele_rest.models.suggested_post_paid.SuggestedPostPaid(
+                            currency = 'XTR', 
+                            amount = 56, 
+                            star_amount = tele_rest.models.star_amount.StarAmount(
+                                amount = 56, 
+                                nanostar_amount = 56, ), ), 
+                        suggested_post_refunded = tele_rest.models.suggested_post_refunded.SuggestedPostRefunded(
+                            reason = 'post_deleted', ), 
                         video_chat_scheduled = tele_rest.models.video_chat_scheduled.VideoChatScheduled(
                             start_date = 56, ), 
                         video_chat_started = null, 
@@ -1679,10 +1755,12 @@ class TestSendAnimationResponse(unittest.TestCase):
                         position = 56, 
                         is_manual = True, ), 
                     reply_to_story = , 
+                    reply_to_checklist_task_id = 56, 
                     via_bot = , 
                     edit_date = 56, 
                     has_protected_content = True, 
                     is_from_offline = True, 
+                    is_paid_post = True, 
                     media_group_id = '', 
                     author_signature = '', 
                     paid_star_count = 56, 
@@ -1691,6 +1769,9 @@ class TestSendAnimationResponse(unittest.TestCase):
                         
                         ], 
                     link_preview_options = , 
+                    suggested_post_info = tele_rest.models.suggested_post_info.SuggestedPostInfo(
+                        state = 'pending', 
+                        send_date = 56, ), 
                     effect_id = '', 
                     animation = , 
                     audio = , 
@@ -1857,6 +1938,17 @@ class TestSendAnimationResponse(unittest.TestCase):
                         is_star_giveaway = True, ), 
                     paid_message_price_changed = tele_rest.models.paid_message_price_changed.PaidMessagePriceChanged(
                         paid_message_star_count = 56, ), 
+                    suggested_post_approved = tele_rest.models.suggested_post_approved.SuggestedPostApproved(
+                        send_date = 56, ), 
+                    suggested_post_approval_failed = tele_rest.models.suggested_post_approval_failed.SuggestedPostApprovalFailed(
+                        price = , ), 
+                    suggested_post_declined = tele_rest.models.suggested_post_declined.SuggestedPostDeclined(
+                        comment = '', ), 
+                    suggested_post_paid = tele_rest.models.suggested_post_paid.SuggestedPostPaid(
+                        currency = 'XTR', 
+                        amount = 56, ), 
+                    suggested_post_refunded = tele_rest.models.suggested_post_refunded.SuggestedPostRefunded(
+                        reason = 'post_deleted', ), 
                     video_chat_scheduled = tele_rest.models.video_chat_scheduled.VideoChatScheduled(
                         start_date = 56, ), 
                     video_chat_started = null, 

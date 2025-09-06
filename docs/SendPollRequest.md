@@ -7,7 +7,7 @@ Request parameters for sendPoll
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **business_connection_id** | **str** | Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
-**chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md) |  | 
+**chat_id** | [**SendPollRequestChatId**](SendPollRequestChatId.md) |  | 
 **message_thread_id** | **int** | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
 **question** | **str** | Poll question, 1-300 characters | 
 **question_parse_mode** | **str** | Mode for parsing entities in the question. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. Currently, only custom emoji entities are allowed | [optional] 

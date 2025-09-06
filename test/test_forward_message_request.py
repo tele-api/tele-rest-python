@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-06T05:32:06.285336202Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -71,10 +71,16 @@ class TestForwardMessageRequest(unittest.TestCase):
             return ForwardMessageRequest(
                 chat_id = None,
                 message_thread_id = 56,
+                direct_messages_topic_id = 56,
                 from_chat_id = None,
                 video_start_timestamp = 56,
                 disable_notification = True,
                 protect_content = True,
+                suggested_post_parameters = tele_rest.models.suggested_post_parameters.SuggestedPostParameters(
+                    price = tele_rest.models.suggested_post_price.SuggestedPostPrice(
+                        currency = 'XTR', 
+                        amount = 56, ), 
+                    send_date = 56, ),
                 message_id = 56
             )
         else:

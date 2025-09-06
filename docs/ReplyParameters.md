@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **quote_parse_mode** | **str** | *Optional*. Mode for parsing entities in the quote. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
 **quote_entities** | [**List[MessageEntity]**](MessageEntity.md) | *Optional*. A JSON-serialized list of special entities that appear in the quote. It can be specified instead of *quote\\_parse\\_mode*. | [optional] 
 **quote_position** | **int** | *Optional*. Position of the quote in the original message in UTF-16 code units | [optional] 
+**checklist_task_id** | **int** | *Optional*. Identifier of the specific checklist task to be replied to | [optional] 
 
 ## Example
 

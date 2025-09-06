@@ -1,6 +1,6 @@
 [project]
 name = "tele_rest"
-version = "9.1.0"
+version = "9.2.0"
 description = "Telegram Bot API"
 authors = [
   {name = "ΣX",email = "gitctrlx@gmail.com"},

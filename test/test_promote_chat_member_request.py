@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-06T05:32:06.285336202Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -85,7 +85,8 @@ class TestPromoteChatMemberRequest(unittest.TestCase):
                 can_post_messages = True,
                 can_edit_messages = True,
                 can_pin_messages = True,
-                can_manage_topics = True
+                can_manage_topics = True,
+                can_manage_direct_messages = True
             )
         else:
             return PromoteChatMemberRequest(

@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-06T05:32:06.285336202Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -59,7 +59,7 @@ LEAVECHATREQUESTCHATID_ONE_OF_SCHEMAS = ["int", "str"]
 
 class LeaveChatRequestChatId(BaseModel):
     """
-    Unique identifier for the target chat or username of the target supergroup or channel (in the format `@channelusername`)
+    Unique identifier for the target chat or username of the target supergroup or channel (in the format `@channelusername`). Channel direct messages chats aren't supported; leave the corresponding channel instead.
     """
     # data type: int
     oneof_schema_1_validator: Optional[StrictInt] = None
