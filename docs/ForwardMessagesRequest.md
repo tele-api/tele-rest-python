@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md) |  | 
 **message_thread_id** | **int** | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+**direct_messages_topic_id** | **int** | Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat | [optional] 
 **from_chat_id** | [**ForwardMessagesRequestFromChatId**](ForwardMessagesRequestFromChatId.md) |  | 
 **message_ids** | **List[int]** | A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\_chat\\_id* to forward. The identifiers must be specified in a strictly increasing order. | 
 **disable_notification** | **bool** | Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 

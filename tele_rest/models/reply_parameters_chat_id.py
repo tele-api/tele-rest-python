@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -59,7 +59,7 @@ REPLYPARAMETERSCHATID_ONE_OF_SCHEMAS = ["int", "str"]
 
 class ReplyParametersChatId(BaseModel):
     """
-    *Optional*. If the message to be replied to is from a different chat, unique identifier for the chat or username of the channel (in the format `@channelusername`). Not supported for messages sent on behalf of a business account.
+    *Optional*. If the message to be replied to is from a different chat, unique identifier for the chat or username of the channel (in the format `@channelusername`). Not supported for messages sent on behalf of a business account and messages from channel direct messages chats.
     """
     # data type: int
     oneof_schema_1_validator: Optional[StrictInt] = None

@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -53,8 +53,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.chat_permissions import ChatPermissions
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -62,7 +62,7 @@ class RestrictChatMemberRequest(BaseModel):
     """
     Request parameters for restrictChatMember
     """ # noqa: E501
-    chat_id: BotCommandScopeChatChatId
+    chat_id: RestrictChatMemberRequestChatId
     user_id: StrictInt = Field(description="Unique identifier of the target user")
     permissions: ChatPermissions
     use_independent_chat_permissions: Optional[StrictBool] = Field(default=None, description="Pass *True* if chat permissions are set independently. Otherwise, the *can\\_send\\_other\\_messages* and *can\\_add\\_web\\_page\\_previews* permissions will imply the *can\\_send\\_messages*, *can\\_send\\_audios*, *can\\_send\\_documents*, *can\\_send\\_photos*, *can\\_send\\_videos*, *can\\_send\\_video\\_notes*, and *can\\_send\\_voice\\_notes* permissions; the *can\\_send\\_polls* permission will imply the *can\\_send\\_messages* permission.")
@@ -131,7 +131,7 @@ class RestrictChatMemberRequest(BaseModel):
                 raise ValueError("Error due to additional fields (not defined in RestrictChatMemberRequest) in the input: " + _key)
 
         _obj = cls.model_validate({
-            "chat_id": BotCommandScopeChatChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
+            "chat_id": RestrictChatMemberRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "user_id": obj.get("user_id"),
             "permissions": ChatPermissions.from_dict(obj["permissions"]) if obj.get("permissions") is not None else None,
             "use_independent_chat_permissions": obj.get("use_independent_chat_permissions"),

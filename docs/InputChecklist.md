@@ -7,7 +7,7 @@ Describes a checklist to create.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **str** | Title of the checklist; 1-255 characters after entities parsing | 
-**parse_mode** | **str** | Optional. Mode for parsing entities in the title. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
+**parse_mode** | **str** | *Optional*. Mode for parsing entities in the title. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
 **title_entities** | [**List[MessageEntity]**](MessageEntity.md) | *Optional*. List of special entities that appear in the title, which can be specified instead of parse\\_mode. Currently, only *bold*, *italic*, *underline*, *strikethrough*, *spoiler*, and *custom\\_emoji* entities are allowed. | [optional] 
 **tasks** | [**List[InputChecklistTask]**](InputChecklistTask.md) | List of 1-30 tasks in the checklist | 
 **others_can_add_tasks** | **bool** | *Optional*. Pass *True* if other users can add tasks to the checklist | [optional] 

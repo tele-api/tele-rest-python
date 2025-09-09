@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -59,6 +59,7 @@ from tele_rest.models.message_entity import MessageEntity
 from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.models.send_paid_media_request_chat_id import SendPaidMediaRequestChatId
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -68,6 +69,8 @@ class SendPaidMediaRequest(BaseModel):
     """ # noqa: E501
     business_connection_id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the business connection on behalf of which the message will be sent")
     chat_id: SendPaidMediaRequestChatId
+    message_thread_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")
+    direct_messages_topic_id: Optional[StrictInt] = Field(default=None, description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")
     star_count: StrictInt = Field(description="The number of Telegram Stars that must be paid to buy access to the media; 1-10000")
     media: List[InputPaidMedia] = Field(description="A JSON-serialized array describing the media to be sent; up to 10 items")
     payload: Optional[StrictStr] = Field(default=None, description="Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.")
@@ -78,9 +81,10 @@ class SendPaidMediaRequest(BaseModel):
     disable_notification: Optional[StrictBool] = Field(default=None, description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")
     protect_content: Optional[StrictBool] = Field(default=None, description="Protects the contents of the sent message from forwarding and saving")
     allow_paid_broadcast: Optional[StrictBool] = Field(default=None, description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")
+    suggested_post_parameters: Optional[SuggestedPostParameters] = None
     reply_parameters: Optional[ReplyParameters] = None
     reply_markup: Optional[SendMessageRequestReplyMarkup] = None
-    __properties: ClassVar[List[str]] = ["business_connection_id", "chat_id", "star_count", "media", "payload", "caption", "parse_mode", "caption_entities", "show_caption_above_media", "disable_notification", "protect_content", "allow_paid_broadcast", "reply_parameters", "reply_markup"]
+    __properties: ClassVar[List[str]] = ["business_connection_id", "chat_id", "message_thread_id", "direct_messages_topic_id", "star_count", "media", "payload", "caption", "parse_mode", "caption_entities", "show_caption_above_media", "disable_notification", "protect_content", "allow_paid_broadcast", "suggested_post_parameters", "reply_parameters", "reply_markup"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -138,6 +142,9 @@ class SendPaidMediaRequest(BaseModel):
                 if _item_caption_entities:
                     _items.append(_item_caption_entities.to_dict())
             _dict['caption_entities'] = _items
+        # override the default output from pydantic by calling `to_dict()` of suggested_post_parameters
+        if self.suggested_post_parameters:
+            _dict['suggested_post_parameters'] = self.suggested_post_parameters.to_dict()
         # override the default output from pydantic by calling `to_dict()` of reply_parameters
         if self.reply_parameters:
             _dict['reply_parameters'] = self.reply_parameters.to_dict()
@@ -163,6 +170,8 @@ class SendPaidMediaRequest(BaseModel):
         _obj = cls.model_validate({
             "business_connection_id": obj.get("business_connection_id"),
             "chat_id": SendPaidMediaRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
+            "message_thread_id": obj.get("message_thread_id"),
+            "direct_messages_topic_id": obj.get("direct_messages_topic_id"),
             "star_count": obj.get("star_count"),
             "media": [InputPaidMedia.from_dict(_item) for _item in obj["media"]] if obj.get("media") is not None else None,
             "payload": obj.get("payload"),
@@ -173,6 +182,7 @@ class SendPaidMediaRequest(BaseModel):
             "disable_notification": obj.get("disable_notification"),
             "protect_content": obj.get("protect_content"),
             "allow_paid_broadcast": obj.get("allow_paid_broadcast"),
+            "suggested_post_parameters": SuggestedPostParameters.from_dict(obj["suggested_post_parameters"]) if obj.get("suggested_post_parameters") is not None else None,
             "reply_parameters": ReplyParameters.from_dict(obj["reply_parameters"]) if obj.get("reply_parameters") is not None else None,
             "reply_markup": SendMessageRequestReplyMarkup.from_dict(obj["reply_markup"]) if obj.get("reply_markup") is not None else None
         })

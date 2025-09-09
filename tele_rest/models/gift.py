@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -53,6 +53,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from tele_rest.models.chat import Chat
 from tele_rest.models.sticker import Sticker
 from typing import Optional, Set
 from typing_extensions import Self
@@ -67,7 +68,8 @@ class Gift(BaseModel):
     upgrade_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The number of Telegram Stars that must be paid to upgrade the gift to a unique one")
     total_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The total number of the gifts of this type that can be sent; for limited gifts only")
     remaining_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The number of remaining gifts of this type that can be sent; for limited gifts only")
-    __properties: ClassVar[List[str]] = ["id", "sticker", "star_count", "upgrade_star_count", "total_count", "remaining_count"]
+    publisher_chat: Optional[Chat] = None
+    __properties: ClassVar[List[str]] = ["id", "sticker", "star_count", "upgrade_star_count", "total_count", "remaining_count", "publisher_chat"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -111,6 +113,9 @@ class Gift(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of sticker
         if self.sticker:
             _dict['sticker'] = self.sticker.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of publisher_chat
+        if self.publisher_chat:
+            _dict['publisher_chat'] = self.publisher_chat.to_dict()
         return _dict
 
     @classmethod
@@ -133,7 +138,8 @@ class Gift(BaseModel):
             "star_count": obj.get("star_count"),
             "upgrade_star_count": obj.get("upgrade_star_count"),
             "total_count": obj.get("total_count"),
-            "remaining_count": obj.get("remaining_count")
+            "remaining_count": obj.get("remaining_count"),
+            "publisher_chat": Chat.from_dict(obj["publisher_chat"]) if obj.get("publisher_chat") is not None else None
         })
         return _obj
 

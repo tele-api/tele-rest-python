@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -70,7 +70,8 @@ class ReplyParameters(BaseModel):
     quote_parse_mode: Optional[StrictStr] = Field(default=None, description="*Optional*. Mode for parsing entities in the quote. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")
     quote_entities: Optional[List[MessageEntity]] = Field(default=None, description="*Optional*. A JSON-serialized list of special entities that appear in the quote. It can be specified instead of *quote\\_parse\\_mode*.")
     quote_position: Optional[StrictInt] = Field(default=None, description="*Optional*. Position of the quote in the original message in UTF-16 code units")
-    __properties: ClassVar[List[str]] = ["message_id", "chat_id", "allow_sending_without_reply", "quote", "quote_parse_mode", "quote_entities", "quote_position"]
+    checklist_task_id: Optional[StrictInt] = Field(default=None, description="*Optional*. Identifier of the specific checklist task to be replied to")
+    __properties: ClassVar[List[str]] = ["message_id", "chat_id", "allow_sending_without_reply", "quote", "quote_parse_mode", "quote_entities", "quote_position", "checklist_task_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -144,7 +145,8 @@ class ReplyParameters(BaseModel):
             "quote": obj.get("quote"),
             "quote_parse_mode": obj.get("quote_parse_mode"),
             "quote_entities": [MessageEntity.from_dict(_item) for _item in obj["quote_entities"]] if obj.get("quote_entities") is not None else None,
-            "quote_position": obj.get("quote_position")
+            "quote_position": obj.get("quote_position"),
+            "checklist_task_id": obj.get("checklist_task_id")
         })
         return _obj
 

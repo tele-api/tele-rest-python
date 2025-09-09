@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **model** | [**UniqueGiftModel**](UniqueGiftModel.md) |  | 
 **symbol** | [**UniqueGiftSymbol**](UniqueGiftSymbol.md) |  | 
 **backdrop** | [**UniqueGiftBackdrop**](UniqueGiftBackdrop.md) |  | 
+**publisher_chat** | [**Chat**](Chat.md) |  | [optional] 
 
 ## Example
 

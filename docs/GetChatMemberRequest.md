@@ -6,7 +6,7 @@ Request parameters for getChatMember
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chat_id** | [**LeaveChatRequestChatId**](LeaveChatRequestChatId.md) |  | 
+**chat_id** | [**GetChatRequestChatId**](GetChatRequestChatId.md) |  | 
 **user_id** | **int** | Unique identifier of the target user | 
 
 ## Example

@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -59,7 +59,7 @@ BOTCOMMANDSCOPECHATCHATID_ONE_OF_SCHEMAS = ["int", "str"]
 
 class BotCommandScopeChatChatId(BaseModel):
     """
-    Unique identifier for the target chat or username of the target supergroup (in the format `@supergroupusername`)
+    Unique identifier for the target chat or username of the target supergroup (in the format `@supergroupusername`). Channel direct messages chats and channel chats aren't supported.
     """
     # data type: int
     oneof_schema_1_validator: Optional[StrictInt] = None

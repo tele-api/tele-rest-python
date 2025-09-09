@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -55,6 +55,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from tele_rest.models.forward_message_request_from_chat_id import ForwardMessageRequestFromChatId
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -64,12 +65,14 @@ class ForwardMessageRequest(BaseModel):
     """ # noqa: E501
     chat_id: SendMessageRequestChatId
     message_thread_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")
+    direct_messages_topic_id: Optional[StrictInt] = Field(default=None, description="Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat")
     from_chat_id: ForwardMessageRequestFromChatId
     video_start_timestamp: Optional[StrictInt] = Field(default=None, description="New start timestamp for the forwarded video in the message")
     disable_notification: Optional[StrictBool] = Field(default=None, description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")
     protect_content: Optional[StrictBool] = Field(default=None, description="Protects the contents of the forwarded message from forwarding and saving")
+    suggested_post_parameters: Optional[SuggestedPostParameters] = None
     message_id: StrictInt = Field(description="Message identifier in the chat specified in *from\\_chat\\_id*")
-    __properties: ClassVar[List[str]] = ["chat_id", "message_thread_id", "from_chat_id", "video_start_timestamp", "disable_notification", "protect_content", "message_id"]
+    __properties: ClassVar[List[str]] = ["chat_id", "message_thread_id", "direct_messages_topic_id", "from_chat_id", "video_start_timestamp", "disable_notification", "protect_content", "suggested_post_parameters", "message_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -116,6 +119,9 @@ class ForwardMessageRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of from_chat_id
         if self.from_chat_id:
             _dict['from_chat_id'] = self.from_chat_id.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of suggested_post_parameters
+        if self.suggested_post_parameters:
+            _dict['suggested_post_parameters'] = self.suggested_post_parameters.to_dict()
         return _dict
 
     @classmethod
@@ -135,10 +141,12 @@ class ForwardMessageRequest(BaseModel):
         _obj = cls.model_validate({
             "chat_id": SendMessageRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "message_thread_id": obj.get("message_thread_id"),
+            "direct_messages_topic_id": obj.get("direct_messages_topic_id"),
             "from_chat_id": ForwardMessageRequestFromChatId.from_dict(obj["from_chat_id"]) if obj.get("from_chat_id") is not None else None,
             "video_start_timestamp": obj.get("video_start_timestamp"),
             "disable_notification": obj.get("disable_notification"),
             "protect_content": obj.get("protect_content"),
+            "suggested_post_parameters": SuggestedPostParameters.from_dict(obj["suggested_post_parameters"]) if obj.get("suggested_post_parameters") is not None else None,
             "message_id": obj.get("message_id")
         })
         return _obj

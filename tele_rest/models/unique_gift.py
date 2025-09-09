@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -52,7 +52,8 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
+from tele_rest.models.chat import Chat
 from tele_rest.models.unique_gift_backdrop import UniqueGiftBackdrop
 from tele_rest.models.unique_gift_model import UniqueGiftModel
 from tele_rest.models.unique_gift_symbol import UniqueGiftSymbol
@@ -69,7 +70,8 @@ class UniqueGift(BaseModel):
     model: UniqueGiftModel
     symbol: UniqueGiftSymbol
     backdrop: UniqueGiftBackdrop
-    __properties: ClassVar[List[str]] = ["base_name", "name", "number", "model", "symbol", "backdrop"]
+    publisher_chat: Optional[Chat] = None
+    __properties: ClassVar[List[str]] = ["base_name", "name", "number", "model", "symbol", "backdrop", "publisher_chat"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -119,6 +121,9 @@ class UniqueGift(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of backdrop
         if self.backdrop:
             _dict['backdrop'] = self.backdrop.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of publisher_chat
+        if self.publisher_chat:
+            _dict['publisher_chat'] = self.publisher_chat.to_dict()
         return _dict
 
     @classmethod
@@ -141,7 +146,8 @@ class UniqueGift(BaseModel):
             "number": obj.get("number"),
             "model": UniqueGiftModel.from_dict(obj["model"]) if obj.get("model") is not None else None,
             "symbol": UniqueGiftSymbol.from_dict(obj["symbol"]) if obj.get("symbol") is not None else None,
-            "backdrop": UniqueGiftBackdrop.from_dict(obj["backdrop"]) if obj.get("backdrop") is not None else None
+            "backdrop": UniqueGiftBackdrop.from_dict(obj["backdrop"]) if obj.get("backdrop") is not None else None,
+            "publisher_chat": Chat.from_dict(obj["publisher_chat"]) if obj.get("publisher_chat") is not None else None
         })
         return _obj
 

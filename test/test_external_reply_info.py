@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -77,7 +77,8 @@ class TestExternalReplyInfo(unittest.TestCase):
                     username = '', 
                     first_name = '', 
                     last_name = '', 
-                    is_forum = True, ),
+                    is_forum = True, 
+                    is_direct_messages = True, ),
                 message_id = 56,
                 link_preview_options = tele_rest.models.link_preview_options.LinkPreviewOptions(
                     is_disabled = True, 
@@ -177,7 +178,8 @@ class TestExternalReplyInfo(unittest.TestCase):
                         username = '', 
                         first_name = '', 
                         last_name = '', 
-                        is_forum = True, ), 
+                        is_forum = True, 
+                        is_direct_messages = True, ), 
                     id = 56, ),
                 video = tele_rest.models.video.Video(
                     file_id = '', 
@@ -346,7 +348,8 @@ class TestExternalReplyInfo(unittest.TestCase):
                             username = '', 
                             first_name = '', 
                             last_name = '', 
-                            is_forum = True, )
+                            is_forum = True, 
+                            is_direct_messages = True, )
                         ], 
                     winners_selection_date = 56, 
                     winner_count = 56, 
@@ -366,7 +369,8 @@ class TestExternalReplyInfo(unittest.TestCase):
                         username = '', 
                         first_name = '', 
                         last_name = '', 
-                        is_forum = True, ), 
+                        is_forum = True, 
+                        is_direct_messages = True, ), 
                     giveaway_message_id = 56, 
                     winners_selection_date = 56, 
                     winner_count = 56, 

@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -54,7 +54,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -62,7 +62,7 @@ class EditForumTopicRequest(BaseModel):
     """
     Request parameters for editForumTopic
     """ # noqa: E501
-    chat_id: BotCommandScopeChatChatId
+    chat_id: RestrictChatMemberRequestChatId
     message_thread_id: StrictInt = Field(description="Unique identifier for the target message thread of the forum topic")
     name: Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]] = Field(default=None, description="New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept")
     icon_custom_emoji_id: Optional[StrictStr] = Field(default=None, description="New unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept")
@@ -127,7 +127,7 @@ class EditForumTopicRequest(BaseModel):
                 raise ValueError("Error due to additional fields (not defined in EditForumTopicRequest) in the input: " + _key)
 
         _obj = cls.model_validate({
-            "chat_id": BotCommandScopeChatChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
+            "chat_id": RestrictChatMemberRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "message_thread_id": obj.get("message_thread_id"),
             "name": obj.get("name"),
             "icon_custom_emoji_id": obj.get("icon_custom_emoji_id")

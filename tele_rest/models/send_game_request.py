@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -63,7 +63,7 @@ class SendGameRequest(BaseModel):
     Request parameters for sendGame
     """ # noqa: E501
     business_connection_id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the business connection on behalf of which the message will be sent")
-    chat_id: StrictInt = Field(description="Unique identifier for the target chat")
+    chat_id: StrictInt = Field(description="Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats.")
     message_thread_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")
     game_short_name: StrictStr = Field(description="Short name of the game, serves as the unique identifier for the game. Set up your games via [@BotFather](https://t.me/botfather).")
     disable_notification: Optional[StrictBool] = Field(default=None, description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")
