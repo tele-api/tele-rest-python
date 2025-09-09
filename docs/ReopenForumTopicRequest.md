@@ -6,7 +6,7 @@ Request parameters for reopenForumTopic
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md) |  | 
+**chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md) |  | 
 **message_thread_id** | **int** | Unique identifier for the target message thread of the forum topic | 
 
 ## Example

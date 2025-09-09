@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -61,12 +61,12 @@ from tele_rest.models.answer_pre_checkout_query_response import AnswerPreCheckou
 from tele_rest.models.answer_shipping_query_response import AnswerShippingQueryResponse
 from tele_rest.models.answer_web_app_query_response import AnswerWebAppQueryResponse
 from tele_rest.models.approve_chat_join_request_response import ApproveChatJoinRequestResponse
+from tele_rest.models.approve_suggested_post_response import ApproveSuggestedPostResponse
 from tele_rest.models.ban_chat_member_request_chat_id import BanChatMemberRequestChatId
 from tele_rest.models.ban_chat_member_response import BanChatMemberResponse
 from tele_rest.models.ban_chat_sender_chat_response import BanChatSenderChatResponse
 from tele_rest.models.bot_command import BotCommand
 from tele_rest.models.bot_command_scope import BotCommandScope
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.chat_administrator_rights import ChatAdministratorRights
 from tele_rest.models.chat_permissions import ChatPermissions
 from tele_rest.models.close_forum_topic_response import CloseForumTopicResponse
@@ -82,6 +82,7 @@ from tele_rest.models.create_forum_topic_response import CreateForumTopicRespons
 from tele_rest.models.create_invoice_link_response import CreateInvoiceLinkResponse
 from tele_rest.models.create_new_sticker_set_response import CreateNewStickerSetResponse
 from tele_rest.models.decline_chat_join_request_response import DeclineChatJoinRequestResponse
+from tele_rest.models.decline_suggested_post_response import DeclineSuggestedPostResponse
 from tele_rest.models.delete_business_messages_response import DeleteBusinessMessagesResponse
 from tele_rest.models.delete_chat_photo_response import DeleteChatPhotoResponse
 from tele_rest.models.delete_chat_sticker_set_response import DeleteChatStickerSetResponse
@@ -119,6 +120,7 @@ from tele_rest.models.get_chat_administrators_response import GetChatAdministrat
 from tele_rest.models.get_chat_member_count_response import GetChatMemberCountResponse
 from tele_rest.models.get_chat_member_response import GetChatMemberResponse
 from tele_rest.models.get_chat_menu_button_response import GetChatMenuButtonResponse
+from tele_rest.models.get_chat_request_chat_id import GetChatRequestChatId
 from tele_rest.models.get_chat_response import GetChatResponse
 from tele_rest.models.get_custom_emoji_stickers_response import GetCustomEmojiStickersResponse
 from tele_rest.models.get_file_response import GetFileResponse
@@ -172,12 +174,14 @@ from tele_rest.models.reopen_forum_topic_response import ReopenForumTopicRespons
 from tele_rest.models.reopen_general_forum_topic_response import ReopenGeneralForumTopicResponse
 from tele_rest.models.replace_sticker_in_set_response import ReplaceStickerInSetResponse
 from tele_rest.models.reply_parameters import ReplyParameters
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.models.restrict_chat_member_response import RestrictChatMemberResponse
 from tele_rest.models.revoke_chat_invite_link_request_chat_id import RevokeChatInviteLinkRequestChatId
 from tele_rest.models.revoke_chat_invite_link_response import RevokeChatInviteLinkResponse
 from tele_rest.models.save_prepared_inline_message_response import SavePreparedInlineMessageResponse
 from tele_rest.models.send_animation_response import SendAnimationResponse
 from tele_rest.models.send_audio_response import SendAudioResponse
+from tele_rest.models.send_chat_action_request_chat_id import SendChatActionRequestChatId
 from tele_rest.models.send_chat_action_response import SendChatActionResponse
 from tele_rest.models.send_checklist_response import SendChecklistResponse
 from tele_rest.models.send_contact_response import SendContactResponse
@@ -196,6 +200,7 @@ from tele_rest.models.send_message_response import SendMessageResponse
 from tele_rest.models.send_paid_media_request_chat_id import SendPaidMediaRequestChatId
 from tele_rest.models.send_paid_media_response import SendPaidMediaResponse
 from tele_rest.models.send_photo_response import SendPhotoResponse
+from tele_rest.models.send_poll_request_chat_id import SendPollRequestChatId
 from tele_rest.models.send_poll_response import SendPollResponse
 from tele_rest.models.send_sticker_response import SendStickerResponse
 from tele_rest.models.send_venue_response import SendVenueResponse
@@ -235,6 +240,7 @@ from tele_rest.models.shipping_option import ShippingOption
 from tele_rest.models.stop_message_live_location_response import StopMessageLiveLocationResponse
 from tele_rest.models.stop_poll_response import StopPollResponse
 from tele_rest.models.story_area import StoryArea
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.models.transfer_business_account_stars_response import TransferBusinessAccountStarsResponse
 from tele_rest.models.transfer_gift_response import TransferGiftResponse
 from tele_rest.models.unban_chat_member_response import UnbanChatMemberResponse
@@ -246,6 +252,7 @@ from tele_rest.models.unpin_all_general_forum_topic_messages_response import Unp
 from tele_rest.models.unpin_chat_message_response import UnpinChatMessageResponse
 from tele_rest.models.upgrade_gift_response import UpgradeGiftResponse
 from tele_rest.models.upload_sticker_file_response import UploadStickerFileResponse
+from tele_rest.models.verify_chat_request_chat_id import VerifyChatRequestChatId
 from tele_rest.models.verify_chat_response import VerifyChatResponse
 from tele_rest.models.verify_user_response import VerifyUserResponse
 
@@ -2480,6 +2487,314 @@ class DefaultApi:
 
 
     @validate_call
+    async def post_approve_suggested_post(
+        self,
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target direct messages chat")],
+        message_id: Annotated[StrictInt, Field(description="Identifier of a suggested post message to approve")],
+        send_date: Annotated[Optional[StrictInt], Field(description="Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApproveSuggestedPostResponse:
+        """approveSuggestedPost
+
+        Use this method to approve a suggested post in a direct messages chat. The bot must have the 'can\\_post\\_messages' administrator right in the corresponding channel chat. Returns *True* on success.
+
+        :param chat_id: Unique identifier for the target direct messages chat (required)
+        :type chat_id: int
+        :param message_id: Identifier of a suggested post message to approve (required)
+        :type message_id: int
+        :param send_date: Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future
+        :type send_date: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_approve_suggested_post_serialize(
+            chat_id=chat_id,
+            message_id=message_id,
+            send_date=send_date,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ApproveSuggestedPostResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def post_approve_suggested_post_with_http_info(
+        self,
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target direct messages chat")],
+        message_id: Annotated[StrictInt, Field(description="Identifier of a suggested post message to approve")],
+        send_date: Annotated[Optional[StrictInt], Field(description="Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ApproveSuggestedPostResponse]:
+        """approveSuggestedPost
+
+        Use this method to approve a suggested post in a direct messages chat. The bot must have the 'can\\_post\\_messages' administrator right in the corresponding channel chat. Returns *True* on success.
+
+        :param chat_id: Unique identifier for the target direct messages chat (required)
+        :type chat_id: int
+        :param message_id: Identifier of a suggested post message to approve (required)
+        :type message_id: int
+        :param send_date: Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future
+        :type send_date: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_approve_suggested_post_serialize(
+            chat_id=chat_id,
+            message_id=message_id,
+            send_date=send_date,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ApproveSuggestedPostResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def post_approve_suggested_post_without_preload_content(
+        self,
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target direct messages chat")],
+        message_id: Annotated[StrictInt, Field(description="Identifier of a suggested post message to approve")],
+        send_date: Annotated[Optional[StrictInt], Field(description="Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """approveSuggestedPost
+
+        Use this method to approve a suggested post in a direct messages chat. The bot must have the 'can\\_post\\_messages' administrator right in the corresponding channel chat. Returns *True* on success.
+
+        :param chat_id: Unique identifier for the target direct messages chat (required)
+        :type chat_id: int
+        :param message_id: Identifier of a suggested post message to approve (required)
+        :type message_id: int
+        :param send_date: Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future
+        :type send_date: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_approve_suggested_post_serialize(
+            chat_id=chat_id,
+            message_id=message_id,
+            send_date=send_date,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ApproveSuggestedPostResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _post_approve_suggested_post_serialize(
+        self,
+        chat_id,
+        message_id,
+        send_date,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        if chat_id is not None:
+            _form_params.append(('chat_id', chat_id))
+        if message_id is not None:
+            _form_params.append(('message_id', message_id))
+        if send_date is not None:
+            _form_params.append(('send_date', send_date))
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/x-www-form-urlencoded', 
+                        'multipart/form-data', 
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/approveSuggestedPost',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def post_ban_chat_member(
         self,
         chat_id: BanChatMemberRequestChatId,
@@ -3346,7 +3661,7 @@ class DefaultApi:
     @validate_call
     async def post_close_forum_topic(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -3366,7 +3681,7 @@ class DefaultApi:
         Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -3418,7 +3733,7 @@ class DefaultApi:
     @validate_call
     async def post_close_forum_topic_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -3438,7 +3753,7 @@ class DefaultApi:
         Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -3490,7 +3805,7 @@ class DefaultApi:
     @validate_call
     async def post_close_forum_topic_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -3510,7 +3825,7 @@ class DefaultApi:
         Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -3639,7 +3954,7 @@ class DefaultApi:
     @validate_call
     async def post_close_general_forum_topic(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3658,7 +3973,7 @@ class DefaultApi:
         Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3707,7 +4022,7 @@ class DefaultApi:
     @validate_call
     async def post_close_general_forum_topic_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3726,7 +4041,7 @@ class DefaultApi:
         Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3775,7 +4090,7 @@ class DefaultApi:
     @validate_call
     async def post_close_general_forum_topic_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3794,7 +4109,7 @@ class DefaultApi:
         Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4214,6 +4529,7 @@ class DefaultApi:
         from_chat_id: ForwardMessageRequestFromChatId,
         message_id: Annotated[StrictInt, Field(description="Message identifier in the chat specified in *from\\\\_chat\\\\_id*")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         video_start_timestamp: Annotated[Optional[StrictInt], Field(description="New start timestamp for the copied video in the message")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the new caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -4222,6 +4538,7 @@ class DefaultApi:
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -4249,6 +4566,8 @@ class DefaultApi:
         :type message_id: int
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param video_start_timestamp: New start timestamp for the copied video in the message
         :type video_start_timestamp: int
         :param caption: New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept
@@ -4265,6 +4584,8 @@ class DefaultApi:
         :type protect_content: bool
         :param allow_paid_broadcast: Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
         :type allow_paid_broadcast: bool
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -4296,6 +4617,7 @@ class DefaultApi:
             from_chat_id=from_chat_id,
             message_id=message_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             video_start_timestamp=video_start_timestamp,
             caption=caption,
             parse_mode=parse_mode,
@@ -4304,6 +4626,7 @@ class DefaultApi:
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -4334,6 +4657,7 @@ class DefaultApi:
         from_chat_id: ForwardMessageRequestFromChatId,
         message_id: Annotated[StrictInt, Field(description="Message identifier in the chat specified in *from\\\\_chat\\\\_id*")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         video_start_timestamp: Annotated[Optional[StrictInt], Field(description="New start timestamp for the copied video in the message")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the new caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -4342,6 +4666,7 @@ class DefaultApi:
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -4369,6 +4694,8 @@ class DefaultApi:
         :type message_id: int
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param video_start_timestamp: New start timestamp for the copied video in the message
         :type video_start_timestamp: int
         :param caption: New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept
@@ -4385,6 +4712,8 @@ class DefaultApi:
         :type protect_content: bool
         :param allow_paid_broadcast: Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
         :type allow_paid_broadcast: bool
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -4416,6 +4745,7 @@ class DefaultApi:
             from_chat_id=from_chat_id,
             message_id=message_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             video_start_timestamp=video_start_timestamp,
             caption=caption,
             parse_mode=parse_mode,
@@ -4424,6 +4754,7 @@ class DefaultApi:
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -4454,6 +4785,7 @@ class DefaultApi:
         from_chat_id: ForwardMessageRequestFromChatId,
         message_id: Annotated[StrictInt, Field(description="Message identifier in the chat specified in *from\\\\_chat\\\\_id*")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         video_start_timestamp: Annotated[Optional[StrictInt], Field(description="New start timestamp for the copied video in the message")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the new caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -4462,6 +4794,7 @@ class DefaultApi:
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -4489,6 +4822,8 @@ class DefaultApi:
         :type message_id: int
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param video_start_timestamp: New start timestamp for the copied video in the message
         :type video_start_timestamp: int
         :param caption: New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept
@@ -4505,6 +4840,8 @@ class DefaultApi:
         :type protect_content: bool
         :param allow_paid_broadcast: Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
         :type allow_paid_broadcast: bool
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -4536,6 +4873,7 @@ class DefaultApi:
             from_chat_id=from_chat_id,
             message_id=message_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             video_start_timestamp=video_start_timestamp,
             caption=caption,
             parse_mode=parse_mode,
@@ -4544,6 +4882,7 @@ class DefaultApi:
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -4569,6 +4908,7 @@ class DefaultApi:
         from_chat_id,
         message_id,
         message_thread_id,
+        direct_messages_topic_id,
         video_start_timestamp,
         caption,
         parse_mode,
@@ -4577,6 +4917,7 @@ class DefaultApi:
         disable_notification,
         protect_content,
         allow_paid_broadcast,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -4608,6 +4949,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if from_chat_id is not None:
             _form_params.append(('from_chat_id', from_chat_id))
         if message_id is not None:
@@ -4628,6 +4971,8 @@ class DefaultApi:
             _form_params.append(('protect_content', protect_content))
         if allow_paid_broadcast is not None:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -4688,6 +5033,7 @@ class DefaultApi:
         from_chat_id: ForwardMessagesRequestFromChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to copy. The identifiers must be specified in a strictly increasing order.")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent messages from forwarding and saving")] = None,
         remove_caption: Annotated[Optional[StrictBool], Field(description="Pass *True* to copy the messages without their captions")] = None,
@@ -4716,6 +5062,8 @@ class DefaultApi:
         :type message_ids: List[int]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param disable_notification: Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the sent messages from forwarding and saving
@@ -4749,6 +5097,7 @@ class DefaultApi:
             from_chat_id=from_chat_id,
             message_ids=message_ids,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             disable_notification=disable_notification,
             protect_content=protect_content,
             remove_caption=remove_caption,
@@ -4780,6 +5129,7 @@ class DefaultApi:
         from_chat_id: ForwardMessagesRequestFromChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to copy. The identifiers must be specified in a strictly increasing order.")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent messages from forwarding and saving")] = None,
         remove_caption: Annotated[Optional[StrictBool], Field(description="Pass *True* to copy the messages without their captions")] = None,
@@ -4808,6 +5158,8 @@ class DefaultApi:
         :type message_ids: List[int]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param disable_notification: Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the sent messages from forwarding and saving
@@ -4841,6 +5193,7 @@ class DefaultApi:
             from_chat_id=from_chat_id,
             message_ids=message_ids,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             disable_notification=disable_notification,
             protect_content=protect_content,
             remove_caption=remove_caption,
@@ -4872,6 +5225,7 @@ class DefaultApi:
         from_chat_id: ForwardMessagesRequestFromChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to copy. The identifiers must be specified in a strictly increasing order.")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent messages from forwarding and saving")] = None,
         remove_caption: Annotated[Optional[StrictBool], Field(description="Pass *True* to copy the messages without their captions")] = None,
@@ -4900,6 +5254,8 @@ class DefaultApi:
         :type message_ids: List[int]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param disable_notification: Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the sent messages from forwarding and saving
@@ -4933,6 +5289,7 @@ class DefaultApi:
             from_chat_id=from_chat_id,
             message_ids=message_ids,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             disable_notification=disable_notification,
             protect_content=protect_content,
             remove_caption=remove_caption,
@@ -4959,6 +5316,7 @@ class DefaultApi:
         from_chat_id,
         message_ids,
         message_thread_id,
+        direct_messages_topic_id,
         disable_notification,
         protect_content,
         remove_caption,
@@ -4991,6 +5349,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if from_chat_id is not None:
             _form_params.append(('from_chat_id', from_chat_id))
         if message_ids is not None:
@@ -5714,7 +6074,7 @@ class DefaultApi:
     @validate_call
     async def post_create_forum_topic(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         name: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Topic name, 1-128 characters")],
         icon_color: Annotated[Optional[StrictInt], Field(description="Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)")] = None,
         icon_custom_emoji_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers.")] = None,
@@ -5736,7 +6096,7 @@ class DefaultApi:
         Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns information about the created topic as a [ForumTopic](https://core.telegram.org/bots/api/#forumtopic) object.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param name: Topic name, 1-128 characters (required)
         :type name: str
         :param icon_color: Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)
@@ -5794,7 +6154,7 @@ class DefaultApi:
     @validate_call
     async def post_create_forum_topic_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         name: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Topic name, 1-128 characters")],
         icon_color: Annotated[Optional[StrictInt], Field(description="Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)")] = None,
         icon_custom_emoji_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers.")] = None,
@@ -5816,7 +6176,7 @@ class DefaultApi:
         Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns information about the created topic as a [ForumTopic](https://core.telegram.org/bots/api/#forumtopic) object.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param name: Topic name, 1-128 characters (required)
         :type name: str
         :param icon_color: Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)
@@ -5874,7 +6234,7 @@ class DefaultApi:
     @validate_call
     async def post_create_forum_topic_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         name: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="Topic name, 1-128 characters")],
         icon_color: Annotated[Optional[StrictInt], Field(description="Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)")] = None,
         icon_custom_emoji_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers.")] = None,
@@ -5896,7 +6256,7 @@ class DefaultApi:
         Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns information about the created topic as a [ForumTopic](https://core.telegram.org/bots/api/#forumtopic) object.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param name: Topic name, 1-128 characters (required)
         :type name: str
         :param icon_color: Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)
@@ -7276,6 +7636,314 @@ class DefaultApi:
 
 
     @validate_call
+    async def post_decline_suggested_post(
+        self,
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target direct messages chat")],
+        message_id: Annotated[StrictInt, Field(description="Identifier of a suggested post message to decline")],
+        comment: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]], Field(description="Comment for the creator of the suggested post; 0-128 characters")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> DeclineSuggestedPostResponse:
+        """declineSuggestedPost
+
+        Use this method to decline a suggested post in a direct messages chat. The bot must have the 'can\\_manage\\_direct\\_messages' administrator right in the corresponding channel chat. Returns *True* on success.
+
+        :param chat_id: Unique identifier for the target direct messages chat (required)
+        :type chat_id: int
+        :param message_id: Identifier of a suggested post message to decline (required)
+        :type message_id: int
+        :param comment: Comment for the creator of the suggested post; 0-128 characters
+        :type comment: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_decline_suggested_post_serialize(
+            chat_id=chat_id,
+            message_id=message_id,
+            comment=comment,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DeclineSuggestedPostResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    async def post_decline_suggested_post_with_http_info(
+        self,
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target direct messages chat")],
+        message_id: Annotated[StrictInt, Field(description="Identifier of a suggested post message to decline")],
+        comment: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]], Field(description="Comment for the creator of the suggested post; 0-128 characters")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[DeclineSuggestedPostResponse]:
+        """declineSuggestedPost
+
+        Use this method to decline a suggested post in a direct messages chat. The bot must have the 'can\\_manage\\_direct\\_messages' administrator right in the corresponding channel chat. Returns *True* on success.
+
+        :param chat_id: Unique identifier for the target direct messages chat (required)
+        :type chat_id: int
+        :param message_id: Identifier of a suggested post message to decline (required)
+        :type message_id: int
+        :param comment: Comment for the creator of the suggested post; 0-128 characters
+        :type comment: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_decline_suggested_post_serialize(
+            chat_id=chat_id,
+            message_id=message_id,
+            comment=comment,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DeclineSuggestedPostResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        await response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    async def post_decline_suggested_post_without_preload_content(
+        self,
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target direct messages chat")],
+        message_id: Annotated[StrictInt, Field(description="Identifier of a suggested post message to decline")],
+        comment: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]], Field(description="Comment for the creator of the suggested post; 0-128 characters")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """declineSuggestedPost
+
+        Use this method to decline a suggested post in a direct messages chat. The bot must have the 'can\\_manage\\_direct\\_messages' administrator right in the corresponding channel chat. Returns *True* on success.
+
+        :param chat_id: Unique identifier for the target direct messages chat (required)
+        :type chat_id: int
+        :param message_id: Identifier of a suggested post message to decline (required)
+        :type message_id: int
+        :param comment: Comment for the creator of the suggested post; 0-128 characters
+        :type comment: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_decline_suggested_post_serialize(
+            chat_id=chat_id,
+            message_id=message_id,
+            comment=comment,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "DeclineSuggestedPostResponse",
+            '400': "Error",
+        }
+        response_data = await self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _post_decline_suggested_post_serialize(
+        self,
+        chat_id,
+        message_id,
+        comment,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        if chat_id is not None:
+            _form_params.append(('chat_id', chat_id))
+        if message_id is not None:
+            _form_params.append(('message_id', message_id))
+        if comment is not None:
+            _form_params.append(('comment', comment))
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/x-www-form-urlencoded', 
+                        'multipart/form-data', 
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/declineSuggestedPost',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     async def post_delete_business_messages(
         self,
         business_connection_id: Annotated[StrictStr, Field(description="Unique identifier of the business connection on behalf of which to delete the messages")],
@@ -7850,7 +8518,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_chat_sticker_set(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7869,7 +8537,7 @@ class DefaultApi:
         Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7918,7 +8586,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_chat_sticker_set_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7937,7 +8605,7 @@ class DefaultApi:
         Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7986,7 +8654,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_chat_sticker_set_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8005,7 +8673,7 @@ class DefaultApi:
         Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8128,7 +8796,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_forum_topic(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -8148,7 +8816,7 @@ class DefaultApi:
         Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_delete\\_messages* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -8200,7 +8868,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_forum_topic_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -8220,7 +8888,7 @@ class DefaultApi:
         Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_delete\\_messages* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -8272,7 +8940,7 @@ class DefaultApi:
     @validate_call
     async def post_delete_forum_topic_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -8292,7 +8960,7 @@ class DefaultApi:
         Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_delete\\_messages* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -8438,7 +9106,7 @@ class DefaultApi:
     ) -> DeleteMessageResponse:
         """deleteMessage
 
-        Use this method to delete a message, including service messages, with the following limitations:   \\- A message can only be deleted if it was sent less than 48 hours ago.   \\- Service messages about a supergroup, channel, or forum topic creation can't be deleted.   \\- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.   \\- Bots can delete outgoing messages in private chats, groups, and supergroups.   \\- Bots can delete incoming messages in private chats.   \\- Bots granted *can\\_post\\_messages* permissions can delete outgoing messages in channels.   \\- If the bot is an administrator of a group, it can delete any message there.   \\- If the bot has *can\\_delete\\_messages* permission in a supergroup or a channel, it can delete any message there.   Returns *True* on success.
+        Use this method to delete a message, including service messages, with the following limitations:   \\- A message can only be deleted if it was sent less than 48 hours ago.   \\- Service messages about a supergroup, channel, or forum topic creation can't be deleted.   \\- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.   \\- Bots can delete outgoing messages in private chats, groups, and supergroups.   \\- Bots can delete incoming messages in private chats.   \\- Bots granted *can\\_post\\_messages* permissions can delete outgoing messages in channels.   \\- If the bot is an administrator of a group, it can delete any message there.   \\- If the bot has *can\\_delete\\_messages* administrator right in a supergroup or a channel, it can delete any message there.   \\- If the bot has *can\\_manage\\_direct\\_messages* administrator right in a channel, it can delete any message in the corresponding direct messages chat.   Returns *True* on success.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -8510,7 +9178,7 @@ class DefaultApi:
     ) -> ApiResponse[DeleteMessageResponse]:
         """deleteMessage
 
-        Use this method to delete a message, including service messages, with the following limitations:   \\- A message can only be deleted if it was sent less than 48 hours ago.   \\- Service messages about a supergroup, channel, or forum topic creation can't be deleted.   \\- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.   \\- Bots can delete outgoing messages in private chats, groups, and supergroups.   \\- Bots can delete incoming messages in private chats.   \\- Bots granted *can\\_post\\_messages* permissions can delete outgoing messages in channels.   \\- If the bot is an administrator of a group, it can delete any message there.   \\- If the bot has *can\\_delete\\_messages* permission in a supergroup or a channel, it can delete any message there.   Returns *True* on success.
+        Use this method to delete a message, including service messages, with the following limitations:   \\- A message can only be deleted if it was sent less than 48 hours ago.   \\- Service messages about a supergroup, channel, or forum topic creation can't be deleted.   \\- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.   \\- Bots can delete outgoing messages in private chats, groups, and supergroups.   \\- Bots can delete incoming messages in private chats.   \\- Bots granted *can\\_post\\_messages* permissions can delete outgoing messages in channels.   \\- If the bot is an administrator of a group, it can delete any message there.   \\- If the bot has *can\\_delete\\_messages* administrator right in a supergroup or a channel, it can delete any message there.   \\- If the bot has *can\\_manage\\_direct\\_messages* administrator right in a channel, it can delete any message in the corresponding direct messages chat.   Returns *True* on success.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -8582,7 +9250,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """deleteMessage
 
-        Use this method to delete a message, including service messages, with the following limitations:   \\- A message can only be deleted if it was sent less than 48 hours ago.   \\- Service messages about a supergroup, channel, or forum topic creation can't be deleted.   \\- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.   \\- Bots can delete outgoing messages in private chats, groups, and supergroups.   \\- Bots can delete incoming messages in private chats.   \\- Bots granted *can\\_post\\_messages* permissions can delete outgoing messages in channels.   \\- If the bot is an administrator of a group, it can delete any message there.   \\- If the bot has *can\\_delete\\_messages* permission in a supergroup or a channel, it can delete any message there.   Returns *True* on success.
+        Use this method to delete a message, including service messages, with the following limitations:   \\- A message can only be deleted if it was sent less than 48 hours ago.   \\- Service messages about a supergroup, channel, or forum topic creation can't be deleted.   \\- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.   \\- Bots can delete outgoing messages in private chats, groups, and supergroups.   \\- Bots can delete incoming messages in private chats.   \\- Bots granted *can\\_post\\_messages* permissions can delete outgoing messages in channels.   \\- If the bot is an administrator of a group, it can delete any message there.   \\- If the bot has *can\\_delete\\_messages* administrator right in a supergroup or a channel, it can delete any message there.   \\- If the bot has *can\\_manage\\_direct\\_messages* administrator right in a channel, it can delete any message in the corresponding direct messages chat.   Returns *True* on success.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -11089,7 +11757,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_forum_topic(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]], Field(description="New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept")] = None,
         icon_custom_emoji_id: Annotated[Optional[StrictStr], Field(description="New unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept")] = None,
@@ -11111,7 +11779,7 @@ class DefaultApi:
         Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param name: New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept
@@ -11169,7 +11837,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_forum_topic_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]], Field(description="New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept")] = None,
         icon_custom_emoji_id: Annotated[Optional[StrictStr], Field(description="New unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept")] = None,
@@ -11191,7 +11859,7 @@ class DefaultApi:
         Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param name: New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept
@@ -11249,7 +11917,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_forum_topic_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         name: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]], Field(description="New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept")] = None,
         icon_custom_emoji_id: Annotated[Optional[StrictStr], Field(description="New unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept")] = None,
@@ -11271,7 +11939,7 @@ class DefaultApi:
         Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param name: New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept
@@ -11412,7 +12080,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_general_forum_topic(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         name: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="New topic name, 1-128 characters")],
         _request_timeout: Union[
             None,
@@ -11432,7 +12100,7 @@ class DefaultApi:
         Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param name: New topic name, 1-128 characters (required)
         :type name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -11484,7 +12152,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_general_forum_topic_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         name: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="New topic name, 1-128 characters")],
         _request_timeout: Union[
             None,
@@ -11504,7 +12172,7 @@ class DefaultApi:
         Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param name: New topic name, 1-128 characters (required)
         :type name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -11556,7 +12224,7 @@ class DefaultApi:
     @validate_call
     async def post_edit_general_forum_topic_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         name: Annotated[str, Field(min_length=1, strict=True, max_length=128, description="New topic name, 1-128 characters")],
         _request_timeout: Union[
             None,
@@ -11576,7 +12244,7 @@ class DefaultApi:
         Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param name: New topic name, 1-128 characters (required)
         :type name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -14917,9 +15585,11 @@ class DefaultApi:
         from_chat_id: ForwardMessageRequestFromChatId,
         message_id: Annotated[StrictInt, Field(description="Message identifier in the chat specified in *from\\\\_chat\\\\_id*")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat")] = None,
         video_start_timestamp: Annotated[Optional[StrictInt], Field(description="New start timestamp for the forwarded video in the message")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the forwarded message from forwarding and saving")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14945,12 +15615,16 @@ class DefaultApi:
         :type message_id: int
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat
+        :type direct_messages_topic_id: int
         :param video_start_timestamp: New start timestamp for the forwarded video in the message
         :type video_start_timestamp: int
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the forwarded message from forwarding and saving
         :type protect_content: bool
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -14978,9 +15652,11 @@ class DefaultApi:
             from_chat_id=from_chat_id,
             message_id=message_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             video_start_timestamp=video_start_timestamp,
             disable_notification=disable_notification,
             protect_content=protect_content,
+            suggested_post_parameters=suggested_post_parameters,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15009,9 +15685,11 @@ class DefaultApi:
         from_chat_id: ForwardMessageRequestFromChatId,
         message_id: Annotated[StrictInt, Field(description="Message identifier in the chat specified in *from\\\\_chat\\\\_id*")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat")] = None,
         video_start_timestamp: Annotated[Optional[StrictInt], Field(description="New start timestamp for the forwarded video in the message")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the forwarded message from forwarding and saving")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15037,12 +15715,16 @@ class DefaultApi:
         :type message_id: int
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat
+        :type direct_messages_topic_id: int
         :param video_start_timestamp: New start timestamp for the forwarded video in the message
         :type video_start_timestamp: int
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the forwarded message from forwarding and saving
         :type protect_content: bool
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15070,9 +15752,11 @@ class DefaultApi:
             from_chat_id=from_chat_id,
             message_id=message_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             video_start_timestamp=video_start_timestamp,
             disable_notification=disable_notification,
             protect_content=protect_content,
+            suggested_post_parameters=suggested_post_parameters,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15101,9 +15785,11 @@ class DefaultApi:
         from_chat_id: ForwardMessageRequestFromChatId,
         message_id: Annotated[StrictInt, Field(description="Message identifier in the chat specified in *from\\\\_chat\\\\_id*")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat")] = None,
         video_start_timestamp: Annotated[Optional[StrictInt], Field(description="New start timestamp for the forwarded video in the message")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the forwarded message from forwarding and saving")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15129,12 +15815,16 @@ class DefaultApi:
         :type message_id: int
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat
+        :type direct_messages_topic_id: int
         :param video_start_timestamp: New start timestamp for the forwarded video in the message
         :type video_start_timestamp: int
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the forwarded message from forwarding and saving
         :type protect_content: bool
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15162,9 +15852,11 @@ class DefaultApi:
             from_chat_id=from_chat_id,
             message_id=message_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             video_start_timestamp=video_start_timestamp,
             disable_notification=disable_notification,
             protect_content=protect_content,
+            suggested_post_parameters=suggested_post_parameters,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15188,9 +15880,11 @@ class DefaultApi:
         from_chat_id,
         message_id,
         message_thread_id,
+        direct_messages_topic_id,
         video_start_timestamp,
         disable_notification,
         protect_content,
+        suggested_post_parameters,
         _request_auth,
         _content_type,
         _headers,
@@ -15219,6 +15913,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if from_chat_id is not None:
             _form_params.append(('from_chat_id', from_chat_id))
         if video_start_timestamp is not None:
@@ -15227,6 +15923,8 @@ class DefaultApi:
             _form_params.append(('disable_notification', disable_notification))
         if protect_content is not None:
             _form_params.append(('protect_content', protect_content))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if message_id is not None:
             _form_params.append(('message_id', message_id))
         # process the body parameter
@@ -15285,6 +15983,7 @@ class DefaultApi:
         from_chat_id: ForwardMessagesRequestFromChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to forward. The identifiers must be specified in a strictly increasing order.")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the forwarded messages from forwarding and saving")] = None,
         _request_timeout: Union[
@@ -15312,6 +16011,8 @@ class DefaultApi:
         :type message_ids: List[int]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat
+        :type direct_messages_topic_id: int
         :param disable_notification: Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the forwarded messages from forwarding and saving
@@ -15343,6 +16044,7 @@ class DefaultApi:
             from_chat_id=from_chat_id,
             message_ids=message_ids,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             disable_notification=disable_notification,
             protect_content=protect_content,
             _request_auth=_request_auth,
@@ -15373,6 +16075,7 @@ class DefaultApi:
         from_chat_id: ForwardMessagesRequestFromChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to forward. The identifiers must be specified in a strictly increasing order.")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the forwarded messages from forwarding and saving")] = None,
         _request_timeout: Union[
@@ -15400,6 +16103,8 @@ class DefaultApi:
         :type message_ids: List[int]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat
+        :type direct_messages_topic_id: int
         :param disable_notification: Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the forwarded messages from forwarding and saving
@@ -15431,6 +16136,7 @@ class DefaultApi:
             from_chat_id=from_chat_id,
             message_ids=message_ids,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             disable_notification=disable_notification,
             protect_content=protect_content,
             _request_auth=_request_auth,
@@ -15461,6 +16167,7 @@ class DefaultApi:
         from_chat_id: ForwardMessagesRequestFromChatId,
         message_ids: Annotated[List[StrictInt], Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to forward. The identifiers must be specified in a strictly increasing order.")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the forwarded messages from forwarding and saving")] = None,
         _request_timeout: Union[
@@ -15488,6 +16195,8 @@ class DefaultApi:
         :type message_ids: List[int]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat
+        :type direct_messages_topic_id: int
         :param disable_notification: Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the forwarded messages from forwarding and saving
@@ -15519,6 +16228,7 @@ class DefaultApi:
             from_chat_id=from_chat_id,
             message_ids=message_ids,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             disable_notification=disable_notification,
             protect_content=protect_content,
             _request_auth=_request_auth,
@@ -15544,6 +16254,7 @@ class DefaultApi:
         from_chat_id,
         message_ids,
         message_thread_id,
+        direct_messages_topic_id,
         disable_notification,
         protect_content,
         _request_auth,
@@ -15575,6 +16286,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if from_chat_id is not None:
             _form_params.append(('from_chat_id', from_chat_id))
         if message_ids is not None:
@@ -16837,7 +17550,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat(
         self,
-        chat_id: LeaveChatRequestChatId,
+        chat_id: GetChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16856,7 +17569,7 @@ class DefaultApi:
         Use this method to get up-to-date information about the chat. Returns a [ChatFullInfo](https://core.telegram.org/bots/api/#chatfullinfo) object on success.
 
         :param chat_id: (required)
-        :type chat_id: LeaveChatRequestChatId
+        :type chat_id: GetChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16905,7 +17618,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_with_http_info(
         self,
-        chat_id: LeaveChatRequestChatId,
+        chat_id: GetChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16924,7 +17637,7 @@ class DefaultApi:
         Use this method to get up-to-date information about the chat. Returns a [ChatFullInfo](https://core.telegram.org/bots/api/#chatfullinfo) object on success.
 
         :param chat_id: (required)
-        :type chat_id: LeaveChatRequestChatId
+        :type chat_id: GetChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -16973,7 +17686,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_without_preload_content(
         self,
-        chat_id: LeaveChatRequestChatId,
+        chat_id: GetChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -16992,7 +17705,7 @@ class DefaultApi:
         Use this method to get up-to-date information about the chat. Returns a [ChatFullInfo](https://core.telegram.org/bots/api/#chatfullinfo) object on success.
 
         :param chat_id: (required)
-        :type chat_id: LeaveChatRequestChatId
+        :type chat_id: GetChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17115,7 +17828,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_administrators(
         self,
-        chat_id: LeaveChatRequestChatId,
+        chat_id: GetChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17134,7 +17847,7 @@ class DefaultApi:
         Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of [ChatMember](https://core.telegram.org/bots/api/#chatmember) objects.
 
         :param chat_id: (required)
-        :type chat_id: LeaveChatRequestChatId
+        :type chat_id: GetChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17183,7 +17896,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_administrators_with_http_info(
         self,
-        chat_id: LeaveChatRequestChatId,
+        chat_id: GetChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17202,7 +17915,7 @@ class DefaultApi:
         Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of [ChatMember](https://core.telegram.org/bots/api/#chatmember) objects.
 
         :param chat_id: (required)
-        :type chat_id: LeaveChatRequestChatId
+        :type chat_id: GetChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17251,7 +17964,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_administrators_without_preload_content(
         self,
-        chat_id: LeaveChatRequestChatId,
+        chat_id: GetChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17270,7 +17983,7 @@ class DefaultApi:
         Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of [ChatMember](https://core.telegram.org/bots/api/#chatmember) objects.
 
         :param chat_id: (required)
-        :type chat_id: LeaveChatRequestChatId
+        :type chat_id: GetChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17393,7 +18106,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_member(
         self,
-        chat_id: LeaveChatRequestChatId,
+        chat_id: GetChatRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -17413,7 +18126,7 @@ class DefaultApi:
         Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a [ChatMember](https://core.telegram.org/bots/api/#chatmember) object on success.
 
         :param chat_id: (required)
-        :type chat_id: LeaveChatRequestChatId
+        :type chat_id: GetChatRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -17465,7 +18178,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_member_with_http_info(
         self,
-        chat_id: LeaveChatRequestChatId,
+        chat_id: GetChatRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -17485,7 +18198,7 @@ class DefaultApi:
         Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a [ChatMember](https://core.telegram.org/bots/api/#chatmember) object on success.
 
         :param chat_id: (required)
-        :type chat_id: LeaveChatRequestChatId
+        :type chat_id: GetChatRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -17537,7 +18250,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_member_without_preload_content(
         self,
-        chat_id: LeaveChatRequestChatId,
+        chat_id: GetChatRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         _request_timeout: Union[
             None,
@@ -17557,7 +18270,7 @@ class DefaultApi:
         Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a [ChatMember](https://core.telegram.org/bots/api/#chatmember) object on success.
 
         :param chat_id: (required)
-        :type chat_id: LeaveChatRequestChatId
+        :type chat_id: GetChatRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -17686,7 +18399,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_member_count(
         self,
-        chat_id: LeaveChatRequestChatId,
+        chat_id: GetChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17705,7 +18418,7 @@ class DefaultApi:
         Use this method to get the number of members in a chat. Returns *Int* on success.
 
         :param chat_id: (required)
-        :type chat_id: LeaveChatRequestChatId
+        :type chat_id: GetChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17754,7 +18467,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_member_count_with_http_info(
         self,
-        chat_id: LeaveChatRequestChatId,
+        chat_id: GetChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17773,7 +18486,7 @@ class DefaultApi:
         Use this method to get the number of members in a chat. Returns *Int* on success.
 
         :param chat_id: (required)
-        :type chat_id: LeaveChatRequestChatId
+        :type chat_id: GetChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17822,7 +18535,7 @@ class DefaultApi:
     @validate_call
     async def post_get_chat_member_count_without_preload_content(
         self,
-        chat_id: LeaveChatRequestChatId,
+        chat_id: GetChatRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17841,7 +18554,7 @@ class DefaultApi:
         Use this method to get the number of members in a chat. Returns *Int* on success.
 
         :param chat_id: (required)
-        :type chat_id: LeaveChatRequestChatId
+        :type chat_id: GetChatRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -23369,7 +24082,7 @@ class DefaultApi:
     @validate_call
     async def post_hide_general_forum_topic(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -23388,7 +24101,7 @@ class DefaultApi:
         Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. The topic will be automatically closed if it was open. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -23437,7 +24150,7 @@ class DefaultApi:
     @validate_call
     async def post_hide_general_forum_topic_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -23456,7 +24169,7 @@ class DefaultApi:
         Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. The topic will be automatically closed if it was open. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -23505,7 +24218,7 @@ class DefaultApi:
     @validate_call
     async def post_hide_general_forum_topic_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -23524,7 +24237,7 @@ class DefaultApi:
         Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. The topic will be automatically closed if it was open. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -24192,7 +24905,7 @@ class DefaultApi:
     ) -> PinChatMessageResponse:
         """pinChatMessage
 
-        Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
+        Use this method to add a message to the list of pinned messages in a chat. In private chats and channel direct messages chats, all non-service messages can be pinned. Conversely, the bot must be an administrator with the 'can\\_pin\\_messages' right or the 'can\\_edit\\_messages' right to pin messages in groups and channels respectively. Returns *True* on success.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -24272,7 +24985,7 @@ class DefaultApi:
     ) -> ApiResponse[PinChatMessageResponse]:
         """pinChatMessage
 
-        Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
+        Use this method to add a message to the list of pinned messages in a chat. In private chats and channel direct messages chats, all non-service messages can be pinned. Conversely, the bot must be an administrator with the 'can\\_pin\\_messages' right or the 'can\\_edit\\_messages' right to pin messages in groups and channels respectively. Returns *True* on success.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -24352,7 +25065,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """pinChatMessage
 
-        Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
+        Use this method to add a message to the list of pinned messages in a chat. In private chats and channel direct messages chats, all non-service messages can be pinned. Conversely, the bot must be an administrator with the 'can\\_pin\\_messages' right or the 'can\\_edit\\_messages' right to pin messages in groups and channels respectively. Returns *True* on success.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -24912,6 +25625,7 @@ class DefaultApi:
         can_edit_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can edit messages of other users and can pin messages; for channels only")] = None,
         can_pin_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can pin messages; for supergroups only")] = None,
         can_manage_topics: Annotated[Optional[StrictBool], Field(description="Pass *True* if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only")] = None,
+        can_manage_direct_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can manage direct messages within the channel and decline suggested posts; for channels only")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -24963,6 +25677,8 @@ class DefaultApi:
         :type can_pin_messages: bool
         :param can_manage_topics: Pass *True* if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
         :type can_manage_topics: bool
+        :param can_manage_direct_messages: Pass *True* if the administrator can manage direct messages within the channel and decline suggested posts; for channels only
+        :type can_manage_direct_messages: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -25003,6 +25719,7 @@ class DefaultApi:
             can_edit_messages=can_edit_messages,
             can_pin_messages=can_pin_messages,
             can_manage_topics=can_manage_topics,
+            can_manage_direct_messages=can_manage_direct_messages,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -25044,6 +25761,7 @@ class DefaultApi:
         can_edit_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can edit messages of other users and can pin messages; for channels only")] = None,
         can_pin_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can pin messages; for supergroups only")] = None,
         can_manage_topics: Annotated[Optional[StrictBool], Field(description="Pass *True* if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only")] = None,
+        can_manage_direct_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can manage direct messages within the channel and decline suggested posts; for channels only")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25095,6 +25813,8 @@ class DefaultApi:
         :type can_pin_messages: bool
         :param can_manage_topics: Pass *True* if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
         :type can_manage_topics: bool
+        :param can_manage_direct_messages: Pass *True* if the administrator can manage direct messages within the channel and decline suggested posts; for channels only
+        :type can_manage_direct_messages: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -25135,6 +25855,7 @@ class DefaultApi:
             can_edit_messages=can_edit_messages,
             can_pin_messages=can_pin_messages,
             can_manage_topics=can_manage_topics,
+            can_manage_direct_messages=can_manage_direct_messages,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -25176,6 +25897,7 @@ class DefaultApi:
         can_edit_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can edit messages of other users and can pin messages; for channels only")] = None,
         can_pin_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can pin messages; for supergroups only")] = None,
         can_manage_topics: Annotated[Optional[StrictBool], Field(description="Pass *True* if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only")] = None,
+        can_manage_direct_messages: Annotated[Optional[StrictBool], Field(description="Pass *True* if the administrator can manage direct messages within the channel and decline suggested posts; for channels only")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25227,6 +25949,8 @@ class DefaultApi:
         :type can_pin_messages: bool
         :param can_manage_topics: Pass *True* if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
         :type can_manage_topics: bool
+        :param can_manage_direct_messages: Pass *True* if the administrator can manage direct messages within the channel and decline suggested posts; for channels only
+        :type can_manage_direct_messages: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -25267,6 +25991,7 @@ class DefaultApi:
             can_edit_messages=can_edit_messages,
             can_pin_messages=can_pin_messages,
             can_manage_topics=can_manage_topics,
+            can_manage_direct_messages=can_manage_direct_messages,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -25303,6 +26028,7 @@ class DefaultApi:
         can_edit_messages,
         can_pin_messages,
         can_manage_topics,
+        can_manage_direct_messages,
         _request_auth,
         _content_type,
         _headers,
@@ -25361,6 +26087,8 @@ class DefaultApi:
             _form_params.append(('can_pin_messages', can_pin_messages))
         if can_manage_topics is not None:
             _form_params.append(('can_manage_topics', can_manage_topics))
+        if can_manage_direct_messages is not None:
+            _form_params.append(('can_manage_direct_messages', can_manage_direct_messages))
         # process the body parameter
 
 
@@ -26863,7 +27591,7 @@ class DefaultApi:
     @validate_call
     async def post_reopen_forum_topic(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -26883,7 +27611,7 @@ class DefaultApi:
         Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -26935,7 +27663,7 @@ class DefaultApi:
     @validate_call
     async def post_reopen_forum_topic_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -26955,7 +27683,7 @@ class DefaultApi:
         Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -27007,7 +27735,7 @@ class DefaultApi:
     @validate_call
     async def post_reopen_forum_topic_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -27027,7 +27755,7 @@ class DefaultApi:
         Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights, unless it is the creator of the topic. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -27156,7 +27884,7 @@ class DefaultApi:
     @validate_call
     async def post_reopen_general_forum_topic(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -27175,7 +27903,7 @@ class DefaultApi:
         Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. The topic will be automatically unhidden if it was hidden. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -27224,7 +27952,7 @@ class DefaultApi:
     @validate_call
     async def post_reopen_general_forum_topic_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -27243,7 +27971,7 @@ class DefaultApi:
         Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. The topic will be automatically unhidden if it was hidden. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -27292,7 +28020,7 @@ class DefaultApi:
     @validate_call
     async def post_reopen_general_forum_topic_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -27311,7 +28039,7 @@ class DefaultApi:
         Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. The topic will be automatically unhidden if it was hidden. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -27756,7 +28484,7 @@ class DefaultApi:
     @validate_call
     async def post_restrict_chat_member(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         permissions: ChatPermissions,
         use_independent_chat_permissions: Annotated[Optional[StrictBool], Field(description="Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.")] = None,
@@ -27779,7 +28507,7 @@ class DefaultApi:
         Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass *True* for all permissions to lift restrictions from a user. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param permissions: (required)
@@ -27840,7 +28568,7 @@ class DefaultApi:
     @validate_call
     async def post_restrict_chat_member_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         permissions: ChatPermissions,
         use_independent_chat_permissions: Annotated[Optional[StrictBool], Field(description="Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.")] = None,
@@ -27863,7 +28591,7 @@ class DefaultApi:
         Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass *True* for all permissions to lift restrictions from a user. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param permissions: (required)
@@ -27924,7 +28652,7 @@ class DefaultApi:
     @validate_call
     async def post_restrict_chat_member_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         permissions: ChatPermissions,
         use_independent_chat_permissions: Annotated[Optional[StrictBool], Field(description="Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.")] = None,
@@ -27947,7 +28675,7 @@ class DefaultApi:
         Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass *True* for all permissions to lift restrictions from a user. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param permissions: (required)
@@ -28744,6 +29472,7 @@ class DefaultApi:
         animation: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent animation in seconds")] = None,
         width: Annotated[Optional[StrictInt], Field(description="Animation width")] = None,
         height: Annotated[Optional[StrictInt], Field(description="Animation height")] = None,
@@ -28757,6 +29486,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -28784,6 +29514,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param duration: Duration of sent animation in seconds
         :type duration: int
         :param width: Animation width
@@ -28810,6 +29542,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -28841,6 +29575,7 @@ class DefaultApi:
             animation=animation,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             duration=duration,
             width=width,
             height=height,
@@ -28854,6 +29589,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -28884,6 +29620,7 @@ class DefaultApi:
         animation: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent animation in seconds")] = None,
         width: Annotated[Optional[StrictInt], Field(description="Animation width")] = None,
         height: Annotated[Optional[StrictInt], Field(description="Animation height")] = None,
@@ -28897,6 +29634,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -28924,6 +29662,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param duration: Duration of sent animation in seconds
         :type duration: int
         :param width: Animation width
@@ -28950,6 +29690,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -28981,6 +29723,7 @@ class DefaultApi:
             animation=animation,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             duration=duration,
             width=width,
             height=height,
@@ -28994,6 +29737,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -29024,6 +29768,7 @@ class DefaultApi:
         animation: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent animation in seconds")] = None,
         width: Annotated[Optional[StrictInt], Field(description="Animation width")] = None,
         height: Annotated[Optional[StrictInt], Field(description="Animation height")] = None,
@@ -29037,6 +29782,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -29064,6 +29810,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param duration: Duration of sent animation in seconds
         :type duration: int
         :param width: Animation width
@@ -29090,6 +29838,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -29121,6 +29871,7 @@ class DefaultApi:
             animation=animation,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             duration=duration,
             width=width,
             height=height,
@@ -29134,6 +29885,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -29159,6 +29911,7 @@ class DefaultApi:
         animation,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         duration,
         width,
         height,
@@ -29172,6 +29925,7 @@ class DefaultApi:
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -29205,6 +29959,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if animation is not None:
             _form_params.append(('animation', animation))
         if duration is not None:
@@ -29233,6 +29989,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -29292,6 +30050,7 @@ class DefaultApi:
         audio: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Audio caption, 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the audio caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -29303,6 +30062,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -29330,6 +30090,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param caption: Audio caption, 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the audio caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -29352,6 +30114,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -29383,6 +30147,7 @@ class DefaultApi:
             audio=audio,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             caption=caption,
             parse_mode=parse_mode,
             caption_entities=caption_entities,
@@ -29394,6 +30159,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -29424,6 +30190,7 @@ class DefaultApi:
         audio: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Audio caption, 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the audio caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -29435,6 +30202,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -29462,6 +30230,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param caption: Audio caption, 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the audio caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -29484,6 +30254,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -29515,6 +30287,7 @@ class DefaultApi:
             audio=audio,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             caption=caption,
             parse_mode=parse_mode,
             caption_entities=caption_entities,
@@ -29526,6 +30299,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -29556,6 +30330,7 @@ class DefaultApi:
         audio: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Audio caption, 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the audio caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -29567,6 +30342,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -29594,6 +30370,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param caption: Audio caption, 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the audio caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -29616,6 +30394,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -29647,6 +30427,7 @@ class DefaultApi:
             audio=audio,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             caption=caption,
             parse_mode=parse_mode,
             caption_entities=caption_entities,
@@ -29658,6 +30439,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -29683,6 +30465,7 @@ class DefaultApi:
         audio,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         caption,
         parse_mode,
         caption_entities,
@@ -29694,6 +30477,7 @@ class DefaultApi:
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -29727,6 +30511,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if audio is not None:
             _form_params.append(('audio', audio))
         if caption is not None:
@@ -29751,6 +30537,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -29806,7 +30594,7 @@ class DefaultApi:
     @validate_call
     async def post_send_chat_action(
         self,
-        chat_id: SendMessageRequestChatId,
+        chat_id: SendChatActionRequestChatId,
         action: Annotated[StrictStr, Field(description="Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote).")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the action will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread; for supergroups only")] = None,
@@ -29828,7 +30616,7 @@ class DefaultApi:
         Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns *True* on success.  Example: The [ImageBot](https://t.me/imagebot) needs some time to process a request and upload the image. Instead of sending a text message along the lines of “Retrieving image, please wait…”, the bot may use [sendChatAction](https://core.telegram.org/bots/api/#sendchataction) with *action* = *upload\\_photo*. The user will see a “sending photo” status for the bot.  We only recommend using this method when a response from the bot will take a **noticeable** amount of time to arrive.
 
         :param chat_id: (required)
-        :type chat_id: SendMessageRequestChatId
+        :type chat_id: SendChatActionRequestChatId
         :param action: Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote). (required)
         :type action: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the action will be sent
@@ -29886,7 +30674,7 @@ class DefaultApi:
     @validate_call
     async def post_send_chat_action_with_http_info(
         self,
-        chat_id: SendMessageRequestChatId,
+        chat_id: SendChatActionRequestChatId,
         action: Annotated[StrictStr, Field(description="Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote).")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the action will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread; for supergroups only")] = None,
@@ -29908,7 +30696,7 @@ class DefaultApi:
         Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns *True* on success.  Example: The [ImageBot](https://t.me/imagebot) needs some time to process a request and upload the image. Instead of sending a text message along the lines of “Retrieving image, please wait…”, the bot may use [sendChatAction](https://core.telegram.org/bots/api/#sendchataction) with *action* = *upload\\_photo*. The user will see a “sending photo” status for the bot.  We only recommend using this method when a response from the bot will take a **noticeable** amount of time to arrive.
 
         :param chat_id: (required)
-        :type chat_id: SendMessageRequestChatId
+        :type chat_id: SendChatActionRequestChatId
         :param action: Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote). (required)
         :type action: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the action will be sent
@@ -29966,7 +30754,7 @@ class DefaultApi:
     @validate_call
     async def post_send_chat_action_without_preload_content(
         self,
-        chat_id: SendMessageRequestChatId,
+        chat_id: SendChatActionRequestChatId,
         action: Annotated[StrictStr, Field(description="Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote).")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the action will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread; for supergroups only")] = None,
@@ -29988,7 +30776,7 @@ class DefaultApi:
         Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns *True* on success.  Example: The [ImageBot](https://t.me/imagebot) needs some time to process a request and upload the image. Instead of sending a text message along the lines of “Retrieving image, please wait…”, the bot may use [sendChatAction](https://core.telegram.org/bots/api/#sendchataction) with *action* = *upload\\_photo*. The user will see a “sending photo” status for the bot.  We only recommend using this method when a response from the bot will take a **noticeable** amount of time to arrive.
 
         :param chat_id: (required)
-        :type chat_id: SendMessageRequestChatId
+        :type chat_id: SendChatActionRequestChatId
         :param action: Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote). (required)
         :type action: str
         :param business_connection_id: Unique identifier of the business connection on behalf of which the action will be sent
@@ -30516,12 +31304,14 @@ class DefaultApi:
         first_name: Annotated[StrictStr, Field(description="Contact's first name")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         last_name: Annotated[Optional[StrictStr], Field(description="Contact's last name")] = None,
         vcard: Annotated[Optional[StrictStr], Field(description="Additional data about the contact in the form of a [vCard](https://en.wikipedia.org/wiki/VCard), 0-2048 bytes")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -30551,6 +31341,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param last_name: Contact's last name
         :type last_name: str
         :param vcard: Additional data about the contact in the form of a [vCard](https://en.wikipedia.org/wiki/VCard), 0-2048 bytes
@@ -30563,6 +31355,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -30595,12 +31389,14 @@ class DefaultApi:
             first_name=first_name,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             last_name=last_name,
             vcard=vcard,
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -30632,12 +31428,14 @@ class DefaultApi:
         first_name: Annotated[StrictStr, Field(description="Contact's first name")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         last_name: Annotated[Optional[StrictStr], Field(description="Contact's last name")] = None,
         vcard: Annotated[Optional[StrictStr], Field(description="Additional data about the contact in the form of a [vCard](https://en.wikipedia.org/wiki/VCard), 0-2048 bytes")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -30667,6 +31465,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param last_name: Contact's last name
         :type last_name: str
         :param vcard: Additional data about the contact in the form of a [vCard](https://en.wikipedia.org/wiki/VCard), 0-2048 bytes
@@ -30679,6 +31479,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -30711,12 +31513,14 @@ class DefaultApi:
             first_name=first_name,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             last_name=last_name,
             vcard=vcard,
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -30748,12 +31552,14 @@ class DefaultApi:
         first_name: Annotated[StrictStr, Field(description="Contact's first name")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         last_name: Annotated[Optional[StrictStr], Field(description="Contact's last name")] = None,
         vcard: Annotated[Optional[StrictStr], Field(description="Additional data about the contact in the form of a [vCard](https://en.wikipedia.org/wiki/VCard), 0-2048 bytes")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -30783,6 +31589,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param last_name: Contact's last name
         :type last_name: str
         :param vcard: Additional data about the contact in the form of a [vCard](https://en.wikipedia.org/wiki/VCard), 0-2048 bytes
@@ -30795,6 +31603,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -30827,12 +31637,14 @@ class DefaultApi:
             first_name=first_name,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             last_name=last_name,
             vcard=vcard,
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -30859,12 +31671,14 @@ class DefaultApi:
         first_name,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         last_name,
         vcard,
         disable_notification,
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -30897,6 +31711,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if phone_number is not None:
             _form_params.append(('phone_number', phone_number))
         if first_name is not None:
@@ -30913,6 +31729,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -30972,11 +31790,13 @@ class DefaultApi:
         chat_id: SendMessageRequestChatId,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         emoji: Annotated[Optional[StrictStr], Field(description="Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -31002,6 +31822,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param emoji: Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”
         :type emoji: str
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
@@ -31012,6 +31834,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -31042,11 +31866,13 @@ class DefaultApi:
             chat_id=chat_id,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             emoji=emoji,
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -31076,11 +31902,13 @@ class DefaultApi:
         chat_id: SendMessageRequestChatId,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         emoji: Annotated[Optional[StrictStr], Field(description="Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -31106,6 +31934,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param emoji: Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”
         :type emoji: str
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
@@ -31116,6 +31946,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -31146,11 +31978,13 @@ class DefaultApi:
             chat_id=chat_id,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             emoji=emoji,
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -31180,11 +32014,13 @@ class DefaultApi:
         chat_id: SendMessageRequestChatId,
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         emoji: Annotated[Optional[StrictStr], Field(description="Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -31210,6 +32046,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param emoji: Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”
         :type emoji: str
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
@@ -31220,6 +32058,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -31250,11 +32090,13 @@ class DefaultApi:
             chat_id=chat_id,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             emoji=emoji,
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -31279,11 +32121,13 @@ class DefaultApi:
         chat_id,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         emoji,
         disable_notification,
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -31316,6 +32160,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if emoji is not None:
             _form_params.append(('emoji', emoji))
         if disable_notification is not None:
@@ -31326,6 +32172,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -31386,6 +32234,7 @@ class DefaultApi:
         document: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         thumbnail: Optional[StrictStr] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the document caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -31395,6 +32244,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -31422,6 +32272,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param thumbnail:
         :type thumbnail: str
         :param caption: Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing
@@ -31440,6 +32292,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -31471,6 +32325,7 @@ class DefaultApi:
             document=document,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             thumbnail=thumbnail,
             caption=caption,
             parse_mode=parse_mode,
@@ -31480,6 +32335,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -31510,6 +32366,7 @@ class DefaultApi:
         document: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         thumbnail: Optional[StrictStr] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the document caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -31519,6 +32376,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -31546,6 +32404,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param thumbnail:
         :type thumbnail: str
         :param caption: Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing
@@ -31564,6 +32424,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -31595,6 +32457,7 @@ class DefaultApi:
             document=document,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             thumbnail=thumbnail,
             caption=caption,
             parse_mode=parse_mode,
@@ -31604,6 +32467,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -31634,6 +32498,7 @@ class DefaultApi:
         document: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         thumbnail: Optional[StrictStr] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the document caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -31643,6 +32508,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -31670,6 +32536,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param thumbnail:
         :type thumbnail: str
         :param caption: Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing
@@ -31688,6 +32556,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -31719,6 +32589,7 @@ class DefaultApi:
             document=document,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             thumbnail=thumbnail,
             caption=caption,
             parse_mode=parse_mode,
@@ -31728,6 +32599,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -31753,6 +32625,7 @@ class DefaultApi:
         document,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         thumbnail,
         caption,
         parse_mode,
@@ -31762,6 +32635,7 @@ class DefaultApi:
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -31795,6 +32669,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if document is not None:
             _form_params.append(('document', document))
         if thumbnail is not None:
@@ -31815,6 +32691,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -31870,7 +32748,7 @@ class DefaultApi:
     @validate_call
     async def post_send_game(
         self,
-        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target chat")],
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats.")],
         game_short_name: Annotated[StrictStr, Field(description="Short name of the game, serves as the unique identifier for the game. Set up your games via [@BotFather](https://t.me/botfather).")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
@@ -31897,7 +32775,7 @@ class DefaultApi:
 
         Use this method to send a game. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
-        :param chat_id: Unique identifier for the target chat (required)
+        :param chat_id: Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats. (required)
         :type chat_id: int
         :param game_short_name: Short name of the game, serves as the unique identifier for the game. Set up your games via [@BotFather](https://t.me/botfather). (required)
         :type game_short_name: str
@@ -31974,7 +32852,7 @@ class DefaultApi:
     @validate_call
     async def post_send_game_with_http_info(
         self,
-        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target chat")],
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats.")],
         game_short_name: Annotated[StrictStr, Field(description="Short name of the game, serves as the unique identifier for the game. Set up your games via [@BotFather](https://t.me/botfather).")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
@@ -32001,7 +32879,7 @@ class DefaultApi:
 
         Use this method to send a game. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
-        :param chat_id: Unique identifier for the target chat (required)
+        :param chat_id: Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats. (required)
         :type chat_id: int
         :param game_short_name: Short name of the game, serves as the unique identifier for the game. Set up your games via [@BotFather](https://t.me/botfather). (required)
         :type game_short_name: str
@@ -32078,7 +32956,7 @@ class DefaultApi:
     @validate_call
     async def post_send_game_without_preload_content(
         self,
-        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target chat")],
+        chat_id: Annotated[StrictInt, Field(description="Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats.")],
         game_short_name: Annotated[StrictStr, Field(description="Short name of the game, serves as the unique identifier for the game. Set up your games via [@BotFather](https://t.me/botfather).")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
@@ -32105,7 +32983,7 @@ class DefaultApi:
 
         Use this method to send a game. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
-        :param chat_id: Unique identifier for the target chat (required)
+        :param chat_id: Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats. (required)
         :type chat_id: int
         :param game_short_name: Short name of the game, serves as the unique identifier for the game. Set up your games via [@BotFather](https://t.me/botfather). (required)
         :type game_short_name: str
@@ -32659,6 +33537,7 @@ class DefaultApi:
         currency: Annotated[StrictStr, Field(description="Three-letter ISO 4217 currency code, see [more on currencies](https://core.telegram.org/bots/payments#supported-currencies). Pass “XTR” for payments in [Telegram Stars](https://t.me/BotNews/90).")],
         prices: Annotated[List[LabeledPrice], Field(description="Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in [Telegram Stars](https://t.me/BotNews/90).")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         provider_token: Annotated[Optional[StrictStr], Field(description="Payment provider token, obtained via [@BotFather](https://t.me/botfather). Pass an empty string for payments in [Telegram Stars](https://t.me/BotNews/90).")] = None,
         max_tip_amount: Annotated[Optional[StrictInt], Field(description="The maximum accepted amount for tips in the *smallest units* of the currency (integer, **not** float/double). For example, for a maximum tip of `US$ 1.45` pass `max_tip_amount = 145`. See the *exp* parameter in [currencies.json](https://core.telegram.org/bots/payments/currencies.json), it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in [Telegram Stars](https://t.me/BotNews/90).")] = None,
         suggested_tip_amounts: Annotated[Optional[List[StrictInt]], Field(description="A JSON-serialized array of suggested amounts of tips in the *smallest units* of the currency (integer, **not** float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed *max\\\\_tip\\\\_amount*.")] = None,
@@ -32679,6 +33558,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
         _request_timeout: Union[
@@ -32712,6 +33592,8 @@ class DefaultApi:
         :type prices: List[LabeledPrice]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param provider_token: Payment provider token, obtained via [@BotFather](https://t.me/botfather). Pass an empty string for payments in [Telegram Stars](https://t.me/BotNews/90).
         :type provider_token: str
         :param max_tip_amount: The maximum accepted amount for tips in the *smallest units* of the currency (integer, **not** float/double). For example, for a maximum tip of `US$ 1.45` pass `max_tip_amount = 145`. See the *exp* parameter in [currencies.json](https://core.telegram.org/bots/payments/currencies.json), it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in [Telegram Stars](https://t.me/BotNews/90).
@@ -32752,6 +33634,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -32786,6 +33670,7 @@ class DefaultApi:
             currency=currency,
             prices=prices,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             provider_token=provider_token,
             max_tip_amount=max_tip_amount,
             suggested_tip_amounts=suggested_tip_amounts,
@@ -32806,6 +33691,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -32839,6 +33725,7 @@ class DefaultApi:
         currency: Annotated[StrictStr, Field(description="Three-letter ISO 4217 currency code, see [more on currencies](https://core.telegram.org/bots/payments#supported-currencies). Pass “XTR” for payments in [Telegram Stars](https://t.me/BotNews/90).")],
         prices: Annotated[List[LabeledPrice], Field(description="Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in [Telegram Stars](https://t.me/BotNews/90).")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         provider_token: Annotated[Optional[StrictStr], Field(description="Payment provider token, obtained via [@BotFather](https://t.me/botfather). Pass an empty string for payments in [Telegram Stars](https://t.me/BotNews/90).")] = None,
         max_tip_amount: Annotated[Optional[StrictInt], Field(description="The maximum accepted amount for tips in the *smallest units* of the currency (integer, **not** float/double). For example, for a maximum tip of `US$ 1.45` pass `max_tip_amount = 145`. See the *exp* parameter in [currencies.json](https://core.telegram.org/bots/payments/currencies.json), it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in [Telegram Stars](https://t.me/BotNews/90).")] = None,
         suggested_tip_amounts: Annotated[Optional[List[StrictInt]], Field(description="A JSON-serialized array of suggested amounts of tips in the *smallest units* of the currency (integer, **not** float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed *max\\\\_tip\\\\_amount*.")] = None,
@@ -32859,6 +33746,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
         _request_timeout: Union[
@@ -32892,6 +33780,8 @@ class DefaultApi:
         :type prices: List[LabeledPrice]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param provider_token: Payment provider token, obtained via [@BotFather](https://t.me/botfather). Pass an empty string for payments in [Telegram Stars](https://t.me/BotNews/90).
         :type provider_token: str
         :param max_tip_amount: The maximum accepted amount for tips in the *smallest units* of the currency (integer, **not** float/double). For example, for a maximum tip of `US$ 1.45` pass `max_tip_amount = 145`. See the *exp* parameter in [currencies.json](https://core.telegram.org/bots/payments/currencies.json), it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in [Telegram Stars](https://t.me/BotNews/90).
@@ -32932,6 +33822,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -32966,6 +33858,7 @@ class DefaultApi:
             currency=currency,
             prices=prices,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             provider_token=provider_token,
             max_tip_amount=max_tip_amount,
             suggested_tip_amounts=suggested_tip_amounts,
@@ -32986,6 +33879,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -33019,6 +33913,7 @@ class DefaultApi:
         currency: Annotated[StrictStr, Field(description="Three-letter ISO 4217 currency code, see [more on currencies](https://core.telegram.org/bots/payments#supported-currencies). Pass “XTR” for payments in [Telegram Stars](https://t.me/BotNews/90).")],
         prices: Annotated[List[LabeledPrice], Field(description="Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in [Telegram Stars](https://t.me/BotNews/90).")],
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         provider_token: Annotated[Optional[StrictStr], Field(description="Payment provider token, obtained via [@BotFather](https://t.me/botfather). Pass an empty string for payments in [Telegram Stars](https://t.me/BotNews/90).")] = None,
         max_tip_amount: Annotated[Optional[StrictInt], Field(description="The maximum accepted amount for tips in the *smallest units* of the currency (integer, **not** float/double). For example, for a maximum tip of `US$ 1.45` pass `max_tip_amount = 145`. See the *exp* parameter in [currencies.json](https://core.telegram.org/bots/payments/currencies.json), it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in [Telegram Stars](https://t.me/BotNews/90).")] = None,
         suggested_tip_amounts: Annotated[Optional[List[StrictInt]], Field(description="A JSON-serialized array of suggested amounts of tips in the *smallest units* of the currency (integer, **not** float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed *max\\\\_tip\\\\_amount*.")] = None,
@@ -33039,6 +33934,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[InlineKeyboardMarkup] = None,
         _request_timeout: Union[
@@ -33072,6 +33968,8 @@ class DefaultApi:
         :type prices: List[LabeledPrice]
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param provider_token: Payment provider token, obtained via [@BotFather](https://t.me/botfather). Pass an empty string for payments in [Telegram Stars](https://t.me/BotNews/90).
         :type provider_token: str
         :param max_tip_amount: The maximum accepted amount for tips in the *smallest units* of the currency (integer, **not** float/double). For example, for a maximum tip of `US$ 1.45` pass `max_tip_amount = 145`. See the *exp* parameter in [currencies.json](https://core.telegram.org/bots/payments/currencies.json), it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in [Telegram Stars](https://t.me/BotNews/90).
@@ -33112,6 +34010,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -33146,6 +34046,7 @@ class DefaultApi:
             currency=currency,
             prices=prices,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             provider_token=provider_token,
             max_tip_amount=max_tip_amount,
             suggested_tip_amounts=suggested_tip_amounts,
@@ -33166,6 +34067,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -33194,6 +34096,7 @@ class DefaultApi:
         currency,
         prices,
         message_thread_id,
+        direct_messages_topic_id,
         provider_token,
         max_tip_amount,
         suggested_tip_amounts,
@@ -33214,6 +34117,7 @@ class DefaultApi:
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -33246,6 +34150,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if title is not None:
             _form_params.append(('title', title))
         if description is not None:
@@ -33296,6 +34202,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -33357,6 +34265,7 @@ class DefaultApi:
         longitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Longitude of the location")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         horizontal_accuracy: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The radius of uncertainty for the location, measured in meters; 0-1500")] = None,
         live_period: Annotated[Optional[StrictInt], Field(description="Period in seconds during which the location will be updated (see [Live Locations](https://telegram.org/blog/live-locations), should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.")] = None,
         heading: Annotated[Optional[StrictInt], Field(description="For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.")] = None,
@@ -33365,6 +34274,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -33394,6 +34304,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param horizontal_accuracy: The radius of uncertainty for the location, measured in meters; 0-1500
         :type horizontal_accuracy: float
         :param live_period: Period in seconds during which the location will be updated (see [Live Locations](https://telegram.org/blog/live-locations), should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
@@ -33410,6 +34322,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -33442,6 +34356,7 @@ class DefaultApi:
             longitude=longitude,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             horizontal_accuracy=horizontal_accuracy,
             live_period=live_period,
             heading=heading,
@@ -33450,6 +34365,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -33481,6 +34397,7 @@ class DefaultApi:
         longitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Longitude of the location")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         horizontal_accuracy: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The radius of uncertainty for the location, measured in meters; 0-1500")] = None,
         live_period: Annotated[Optional[StrictInt], Field(description="Period in seconds during which the location will be updated (see [Live Locations](https://telegram.org/blog/live-locations), should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.")] = None,
         heading: Annotated[Optional[StrictInt], Field(description="For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.")] = None,
@@ -33489,6 +34406,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -33518,6 +34436,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param horizontal_accuracy: The radius of uncertainty for the location, measured in meters; 0-1500
         :type horizontal_accuracy: float
         :param live_period: Period in seconds during which the location will be updated (see [Live Locations](https://telegram.org/blog/live-locations), should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
@@ -33534,6 +34454,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -33566,6 +34488,7 @@ class DefaultApi:
             longitude=longitude,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             horizontal_accuracy=horizontal_accuracy,
             live_period=live_period,
             heading=heading,
@@ -33574,6 +34497,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -33605,6 +34529,7 @@ class DefaultApi:
         longitude: Annotated[Union[StrictFloat, StrictInt], Field(description="Longitude of the location")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         horizontal_accuracy: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The radius of uncertainty for the location, measured in meters; 0-1500")] = None,
         live_period: Annotated[Optional[StrictInt], Field(description="Period in seconds during which the location will be updated (see [Live Locations](https://telegram.org/blog/live-locations), should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.")] = None,
         heading: Annotated[Optional[StrictInt], Field(description="For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.")] = None,
@@ -33613,6 +34538,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -33642,6 +34568,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param horizontal_accuracy: The radius of uncertainty for the location, measured in meters; 0-1500
         :type horizontal_accuracy: float
         :param live_period: Period in seconds during which the location will be updated (see [Live Locations](https://telegram.org/blog/live-locations), should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
@@ -33658,6 +34586,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -33690,6 +34620,7 @@ class DefaultApi:
             longitude=longitude,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             horizontal_accuracy=horizontal_accuracy,
             live_period=live_period,
             heading=heading,
@@ -33698,6 +34629,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -33724,6 +34656,7 @@ class DefaultApi:
         longitude,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         horizontal_accuracy,
         live_period,
         heading,
@@ -33732,6 +34665,7 @@ class DefaultApi:
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -33764,6 +34698,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if latitude is not None:
             _form_params.append(('latitude', latitude))
         if longitude is not None:
@@ -33784,6 +34720,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -33844,6 +34782,7 @@ class DefaultApi:
         media: Annotated[List[SendMediaGroupRequestMediaInner], Field(description="A JSON-serialized array describing messages to be sent, must include 2-10 items")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent messages from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
@@ -33864,7 +34803,7 @@ class DefaultApi:
     ) -> SendMediaGroupResponse:
         """sendMediaGroup
 
-        Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Messages](https://core.telegram.org/bots/api/#message) that were sent is returned.
+        Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Message](https://core.telegram.org/bots/api/#message) objects that were sent is returned.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -33874,6 +34813,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param disable_notification: Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the sent messages from forwarding and saving
@@ -33911,6 +34852,7 @@ class DefaultApi:
             media=media,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
@@ -33944,6 +34886,7 @@ class DefaultApi:
         media: Annotated[List[SendMediaGroupRequestMediaInner], Field(description="A JSON-serialized array describing messages to be sent, must include 2-10 items")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent messages from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
@@ -33964,7 +34907,7 @@ class DefaultApi:
     ) -> ApiResponse[SendMediaGroupResponse]:
         """sendMediaGroup
 
-        Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Messages](https://core.telegram.org/bots/api/#message) that were sent is returned.
+        Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Message](https://core.telegram.org/bots/api/#message) objects that were sent is returned.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -33974,6 +34917,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param disable_notification: Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the sent messages from forwarding and saving
@@ -34011,6 +34956,7 @@ class DefaultApi:
             media=media,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
@@ -34044,6 +34990,7 @@ class DefaultApi:
         media: Annotated[List[SendMediaGroupRequestMediaInner], Field(description="A JSON-serialized array describing messages to be sent, must include 2-10 items")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent messages from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
@@ -34064,7 +35011,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """sendMediaGroup
 
-        Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Messages](https://core.telegram.org/bots/api/#message) that were sent is returned.
+        Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Message](https://core.telegram.org/bots/api/#message) objects that were sent is returned.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -34074,6 +35021,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param disable_notification: Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
         :type disable_notification: bool
         :param protect_content: Protects the contents of the sent messages from forwarding and saving
@@ -34111,6 +35060,7 @@ class DefaultApi:
             media=media,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
@@ -34139,6 +35089,7 @@ class DefaultApi:
         media,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         disable_notification,
         protect_content,
         allow_paid_broadcast,
@@ -34175,6 +35126,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if media is not None:
             _form_params.append(('media', media))
         if disable_notification is not None:
@@ -34242,6 +35195,7 @@ class DefaultApi:
         text: Annotated[str, Field(min_length=1, strict=True, max_length=4096, description="Text of the message to be sent, 1-4096 characters after entities parsing")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the message text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in message text, which can be specified instead of *parse\\\\_mode*")] = None,
         link_preview_options: Optional[LinkPreviewOptions] = None,
@@ -34249,6 +35203,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -34276,6 +35231,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param parse_mode: Mode for parsing entities in the message text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
         :type parse_mode: str
         :param entities: A JSON-serialized list of special entities that appear in message text, which can be specified instead of *parse\\\\_mode*
@@ -34290,6 +35247,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -34321,6 +35280,7 @@ class DefaultApi:
             text=text,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             parse_mode=parse_mode,
             entities=entities,
             link_preview_options=link_preview_options,
@@ -34328,6 +35288,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -34358,6 +35319,7 @@ class DefaultApi:
         text: Annotated[str, Field(min_length=1, strict=True, max_length=4096, description="Text of the message to be sent, 1-4096 characters after entities parsing")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the message text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in message text, which can be specified instead of *parse\\\\_mode*")] = None,
         link_preview_options: Optional[LinkPreviewOptions] = None,
@@ -34365,6 +35327,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -34392,6 +35355,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param parse_mode: Mode for parsing entities in the message text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
         :type parse_mode: str
         :param entities: A JSON-serialized list of special entities that appear in message text, which can be specified instead of *parse\\\\_mode*
@@ -34406,6 +35371,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -34437,6 +35404,7 @@ class DefaultApi:
             text=text,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             parse_mode=parse_mode,
             entities=entities,
             link_preview_options=link_preview_options,
@@ -34444,6 +35412,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -34474,6 +35443,7 @@ class DefaultApi:
         text: Annotated[str, Field(min_length=1, strict=True, max_length=4096, description="Text of the message to be sent, 1-4096 characters after entities parsing")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the message text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in message text, which can be specified instead of *parse\\\\_mode*")] = None,
         link_preview_options: Optional[LinkPreviewOptions] = None,
@@ -34481,6 +35451,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -34508,6 +35479,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param parse_mode: Mode for parsing entities in the message text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
         :type parse_mode: str
         :param entities: A JSON-serialized list of special entities that appear in message text, which can be specified instead of *parse\\\\_mode*
@@ -34522,6 +35495,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -34553,6 +35528,7 @@ class DefaultApi:
             text=text,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             parse_mode=parse_mode,
             entities=entities,
             link_preview_options=link_preview_options,
@@ -34560,6 +35536,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -34585,6 +35562,7 @@ class DefaultApi:
         text,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         parse_mode,
         entities,
         link_preview_options,
@@ -34592,6 +35570,7 @@ class DefaultApi:
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -34625,6 +35604,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if text is not None:
             _form_params.append(('text', text))
         if parse_mode is not None:
@@ -34641,6 +35622,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -34701,6 +35684,8 @@ class DefaultApi:
         star_count: Annotated[StrictInt, Field(description="The number of Telegram Stars that must be paid to buy access to the media; 1-10000")],
         media: Annotated[List[InputPaidMedia], Field(description="A JSON-serialized array describing the media to be sent; up to 10 items")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
+        message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         payload: Annotated[Optional[StrictStr], Field(description="Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Media caption, 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the media caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -34709,6 +35694,7 @@ class DefaultApi:
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -34736,6 +35722,10 @@ class DefaultApi:
         :type media: List[InputPaidMedia]
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
+        :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+        :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param payload: Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.
         :type payload: str
         :param caption: Media caption, 0-1024 characters after entities parsing
@@ -34752,6 +35742,8 @@ class DefaultApi:
         :type protect_content: bool
         :param allow_paid_broadcast: Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
         :type allow_paid_broadcast: bool
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -34783,6 +35775,8 @@ class DefaultApi:
             star_count=star_count,
             media=media,
             business_connection_id=business_connection_id,
+            message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             payload=payload,
             caption=caption,
             parse_mode=parse_mode,
@@ -34791,6 +35785,7 @@ class DefaultApi:
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -34821,6 +35816,8 @@ class DefaultApi:
         star_count: Annotated[StrictInt, Field(description="The number of Telegram Stars that must be paid to buy access to the media; 1-10000")],
         media: Annotated[List[InputPaidMedia], Field(description="A JSON-serialized array describing the media to be sent; up to 10 items")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
+        message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         payload: Annotated[Optional[StrictStr], Field(description="Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Media caption, 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the media caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -34829,6 +35826,7 @@ class DefaultApi:
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -34856,6 +35854,10 @@ class DefaultApi:
         :type media: List[InputPaidMedia]
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
+        :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+        :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param payload: Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.
         :type payload: str
         :param caption: Media caption, 0-1024 characters after entities parsing
@@ -34872,6 +35874,8 @@ class DefaultApi:
         :type protect_content: bool
         :param allow_paid_broadcast: Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
         :type allow_paid_broadcast: bool
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -34903,6 +35907,8 @@ class DefaultApi:
             star_count=star_count,
             media=media,
             business_connection_id=business_connection_id,
+            message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             payload=payload,
             caption=caption,
             parse_mode=parse_mode,
@@ -34911,6 +35917,7 @@ class DefaultApi:
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -34941,6 +35948,8 @@ class DefaultApi:
         star_count: Annotated[StrictInt, Field(description="The number of Telegram Stars that must be paid to buy access to the media; 1-10000")],
         media: Annotated[List[InputPaidMedia], Field(description="A JSON-serialized array describing the media to be sent; up to 10 items")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
+        message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         payload: Annotated[Optional[StrictStr], Field(description="Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Media caption, 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the media caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
@@ -34949,6 +35958,7 @@ class DefaultApi:
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -34976,6 +35986,10 @@ class DefaultApi:
         :type media: List[InputPaidMedia]
         :param business_connection_id: Unique identifier of the business connection on behalf of which the message will be sent
         :type business_connection_id: str
+        :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+        :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param payload: Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.
         :type payload: str
         :param caption: Media caption, 0-1024 characters after entities parsing
@@ -34992,6 +36006,8 @@ class DefaultApi:
         :type protect_content: bool
         :param allow_paid_broadcast: Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
         :type allow_paid_broadcast: bool
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -35023,6 +36039,8 @@ class DefaultApi:
             star_count=star_count,
             media=media,
             business_connection_id=business_connection_id,
+            message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             payload=payload,
             caption=caption,
             parse_mode=parse_mode,
@@ -35031,6 +36049,7 @@ class DefaultApi:
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -35056,6 +36075,8 @@ class DefaultApi:
         star_count,
         media,
         business_connection_id,
+        message_thread_id,
+        direct_messages_topic_id,
         payload,
         caption,
         parse_mode,
@@ -35064,6 +36085,7 @@ class DefaultApi:
         disable_notification,
         protect_content,
         allow_paid_broadcast,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -35096,6 +36118,10 @@ class DefaultApi:
             _form_params.append(('business_connection_id', business_connection_id))
         if chat_id is not None:
             _form_params.append(('chat_id', chat_id))
+        if message_thread_id is not None:
+            _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if star_count is not None:
             _form_params.append(('star_count', star_count))
         if media is not None:
@@ -35116,6 +36142,8 @@ class DefaultApi:
             _form_params.append(('protect_content', protect_content))
         if allow_paid_broadcast is not None:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -35175,6 +36203,7 @@ class DefaultApi:
         photo: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Photo caption (may also be used when resending photos by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the photo caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -35184,6 +36213,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -35211,6 +36241,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param caption: Photo caption (may also be used when resending photos by *file\\\\_id*), 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the photo caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -35229,6 +36261,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -35260,6 +36294,7 @@ class DefaultApi:
             photo=photo,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             caption=caption,
             parse_mode=parse_mode,
             caption_entities=caption_entities,
@@ -35269,6 +36304,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -35299,6 +36335,7 @@ class DefaultApi:
         photo: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Photo caption (may also be used when resending photos by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the photo caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -35308,6 +36345,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -35335,6 +36373,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param caption: Photo caption (may also be used when resending photos by *file\\\\_id*), 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the photo caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -35353,6 +36393,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -35384,6 +36426,7 @@ class DefaultApi:
             photo=photo,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             caption=caption,
             parse_mode=parse_mode,
             caption_entities=caption_entities,
@@ -35393,6 +36436,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -35423,6 +36467,7 @@ class DefaultApi:
         photo: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Photo caption (may also be used when resending photos by *file\\\\_id*), 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the photo caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -35432,6 +36477,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -35459,6 +36505,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param caption: Photo caption (may also be used when resending photos by *file\\\\_id*), 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the photo caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -35477,6 +36525,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -35508,6 +36558,7 @@ class DefaultApi:
             photo=photo,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             caption=caption,
             parse_mode=parse_mode,
             caption_entities=caption_entities,
@@ -35517,6 +36568,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -35542,6 +36594,7 @@ class DefaultApi:
         photo,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         caption,
         parse_mode,
         caption_entities,
@@ -35551,6 +36604,7 @@ class DefaultApi:
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -35584,6 +36638,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if photo is not None:
             _form_params.append(('photo', photo))
         if caption is not None:
@@ -35604,6 +36660,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -35659,7 +36717,7 @@ class DefaultApi:
     @validate_call
     async def post_send_poll(
         self,
-        chat_id: SendMessageRequestChatId,
+        chat_id: SendPollRequestChatId,
         question: Annotated[str, Field(min_length=1, strict=True, max_length=300, description="Poll question, 1-300 characters")],
         options: Annotated[List[InputPollOption], Field(description="A JSON-serialized list of 2-12 answer options")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
@@ -35700,7 +36758,7 @@ class DefaultApi:
         Use this method to send a native poll. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: SendMessageRequestChatId
+        :type chat_id: SendPollRequestChatId
         :param question: Poll question, 1-300 characters (required)
         :type question: str
         :param options: A JSON-serialized list of 2-12 answer options (required)
@@ -35815,7 +36873,7 @@ class DefaultApi:
     @validate_call
     async def post_send_poll_with_http_info(
         self,
-        chat_id: SendMessageRequestChatId,
+        chat_id: SendPollRequestChatId,
         question: Annotated[str, Field(min_length=1, strict=True, max_length=300, description="Poll question, 1-300 characters")],
         options: Annotated[List[InputPollOption], Field(description="A JSON-serialized list of 2-12 answer options")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
@@ -35856,7 +36914,7 @@ class DefaultApi:
         Use this method to send a native poll. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: SendMessageRequestChatId
+        :type chat_id: SendPollRequestChatId
         :param question: Poll question, 1-300 characters (required)
         :type question: str
         :param options: A JSON-serialized list of 2-12 answer options (required)
@@ -35971,7 +37029,7 @@ class DefaultApi:
     @validate_call
     async def post_send_poll_without_preload_content(
         self,
-        chat_id: SendMessageRequestChatId,
+        chat_id: SendPollRequestChatId,
         question: Annotated[str, Field(min_length=1, strict=True, max_length=300, description="Poll question, 1-300 characters")],
         options: Annotated[List[InputPollOption], Field(description="A JSON-serialized list of 2-12 answer options")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
@@ -36012,7 +37070,7 @@ class DefaultApi:
         Use this method to send a native poll. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.
 
         :param chat_id: (required)
-        :type chat_id: SendMessageRequestChatId
+        :type chat_id: SendPollRequestChatId
         :param question: Poll question, 1-300 characters (required)
         :type question: str
         :param options: A JSON-serialized list of 2-12 answer options (required)
@@ -36274,11 +37332,13 @@ class DefaultApi:
         sticker: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         emoji: Annotated[Optional[StrictStr], Field(description="Emoji associated with the sticker; only for just uploaded stickers")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -36306,6 +37366,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param emoji: Emoji associated with the sticker; only for just uploaded stickers
         :type emoji: str
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
@@ -36316,6 +37378,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -36347,11 +37411,13 @@ class DefaultApi:
             sticker=sticker,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             emoji=emoji,
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -36382,11 +37448,13 @@ class DefaultApi:
         sticker: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         emoji: Annotated[Optional[StrictStr], Field(description="Emoji associated with the sticker; only for just uploaded stickers")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -36414,6 +37482,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param emoji: Emoji associated with the sticker; only for just uploaded stickers
         :type emoji: str
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
@@ -36424,6 +37494,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -36455,11 +37527,13 @@ class DefaultApi:
             sticker=sticker,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             emoji=emoji,
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -36490,11 +37564,13 @@ class DefaultApi:
         sticker: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         emoji: Annotated[Optional[StrictStr], Field(description="Emoji associated with the sticker; only for just uploaded stickers")] = None,
         disable_notification: Annotated[Optional[StrictBool], Field(description="Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")] = None,
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -36522,6 +37598,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param emoji: Emoji associated with the sticker; only for just uploaded stickers
         :type emoji: str
         :param disable_notification: Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.
@@ -36532,6 +37610,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -36563,11 +37643,13 @@ class DefaultApi:
             sticker=sticker,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             emoji=emoji,
             disable_notification=disable_notification,
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -36593,11 +37675,13 @@ class DefaultApi:
         sticker,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         emoji,
         disable_notification,
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -36630,6 +37714,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if sticker is not None:
             _form_params.append(('sticker', sticker))
         if emoji is not None:
@@ -36642,6 +37728,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -36704,6 +37792,7 @@ class DefaultApi:
         address: Annotated[StrictStr, Field(description="Address of the venue")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         foursquare_id: Annotated[Optional[StrictStr], Field(description="Foursquare identifier of the venue")] = None,
         foursquare_type: Annotated[Optional[StrictStr], Field(description="Foursquare type of the venue, if known. (For example, “arts\\\\_entertainment/default”, “arts\\\\_entertainment/aquarium” or “food/icecream”.)")] = None,
         google_place_id: Annotated[Optional[StrictStr], Field(description="Google Places identifier of the venue")] = None,
@@ -36712,6 +37801,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -36745,6 +37835,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param foursquare_id: Foursquare identifier of the venue
         :type foursquare_id: str
         :param foursquare_type: Foursquare type of the venue, if known. (For example, “arts\\\\_entertainment/default”, “arts\\\\_entertainment/aquarium” or “food/icecream”.)
@@ -36761,6 +37853,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -36795,6 +37889,7 @@ class DefaultApi:
             address=address,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             foursquare_id=foursquare_id,
             foursquare_type=foursquare_type,
             google_place_id=google_place_id,
@@ -36803,6 +37898,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -36836,6 +37932,7 @@ class DefaultApi:
         address: Annotated[StrictStr, Field(description="Address of the venue")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         foursquare_id: Annotated[Optional[StrictStr], Field(description="Foursquare identifier of the venue")] = None,
         foursquare_type: Annotated[Optional[StrictStr], Field(description="Foursquare type of the venue, if known. (For example, “arts\\\\_entertainment/default”, “arts\\\\_entertainment/aquarium” or “food/icecream”.)")] = None,
         google_place_id: Annotated[Optional[StrictStr], Field(description="Google Places identifier of the venue")] = None,
@@ -36844,6 +37941,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -36877,6 +37975,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param foursquare_id: Foursquare identifier of the venue
         :type foursquare_id: str
         :param foursquare_type: Foursquare type of the venue, if known. (For example, “arts\\\\_entertainment/default”, “arts\\\\_entertainment/aquarium” or “food/icecream”.)
@@ -36893,6 +37993,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -36927,6 +38029,7 @@ class DefaultApi:
             address=address,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             foursquare_id=foursquare_id,
             foursquare_type=foursquare_type,
             google_place_id=google_place_id,
@@ -36935,6 +38038,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -36968,6 +38072,7 @@ class DefaultApi:
         address: Annotated[StrictStr, Field(description="Address of the venue")],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         foursquare_id: Annotated[Optional[StrictStr], Field(description="Foursquare identifier of the venue")] = None,
         foursquare_type: Annotated[Optional[StrictStr], Field(description="Foursquare type of the venue, if known. (For example, “arts\\\\_entertainment/default”, “arts\\\\_entertainment/aquarium” or “food/icecream”.)")] = None,
         google_place_id: Annotated[Optional[StrictStr], Field(description="Google Places identifier of the venue")] = None,
@@ -36976,6 +38081,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -37009,6 +38115,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param foursquare_id: Foursquare identifier of the venue
         :type foursquare_id: str
         :param foursquare_type: Foursquare type of the venue, if known. (For example, “arts\\\\_entertainment/default”, “arts\\\\_entertainment/aquarium” or “food/icecream”.)
@@ -37025,6 +38133,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -37059,6 +38169,7 @@ class DefaultApi:
             address=address,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             foursquare_id=foursquare_id,
             foursquare_type=foursquare_type,
             google_place_id=google_place_id,
@@ -37067,6 +38178,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -37095,6 +38207,7 @@ class DefaultApi:
         address,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         foursquare_id,
         foursquare_type,
         google_place_id,
@@ -37103,6 +38216,7 @@ class DefaultApi:
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -37135,6 +38249,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if latitude is not None:
             _form_params.append(('latitude', latitude))
         if longitude is not None:
@@ -37159,6 +38275,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -37219,6 +38337,7 @@ class DefaultApi:
         video: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent video in seconds")] = None,
         width: Annotated[Optional[StrictInt], Field(description="Video width")] = None,
         height: Annotated[Optional[StrictInt], Field(description="Video height")] = None,
@@ -37235,6 +38354,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -37262,6 +38382,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param duration: Duration of sent video in seconds
         :type duration: int
         :param width: Video width
@@ -37294,6 +38416,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -37325,6 +38449,7 @@ class DefaultApi:
             video=video,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             duration=duration,
             width=width,
             height=height,
@@ -37341,6 +38466,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -37371,6 +38497,7 @@ class DefaultApi:
         video: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent video in seconds")] = None,
         width: Annotated[Optional[StrictInt], Field(description="Video width")] = None,
         height: Annotated[Optional[StrictInt], Field(description="Video height")] = None,
@@ -37387,6 +38514,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -37414,6 +38542,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param duration: Duration of sent video in seconds
         :type duration: int
         :param width: Video width
@@ -37446,6 +38576,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -37477,6 +38609,7 @@ class DefaultApi:
             video=video,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             duration=duration,
             width=width,
             height=height,
@@ -37493,6 +38626,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -37523,6 +38657,7 @@ class DefaultApi:
         video: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent video in seconds")] = None,
         width: Annotated[Optional[StrictInt], Field(description="Video width")] = None,
         height: Annotated[Optional[StrictInt], Field(description="Video height")] = None,
@@ -37539,6 +38674,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -37566,6 +38702,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param duration: Duration of sent video in seconds
         :type duration: int
         :param width: Video width
@@ -37598,6 +38736,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -37629,6 +38769,7 @@ class DefaultApi:
             video=video,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             duration=duration,
             width=width,
             height=height,
@@ -37645,6 +38786,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -37670,6 +38812,7 @@ class DefaultApi:
         video,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         duration,
         width,
         height,
@@ -37686,6 +38829,7 @@ class DefaultApi:
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -37719,6 +38863,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if video is not None:
             _form_params.append(('video', video))
         if duration is not None:
@@ -37753,6 +38899,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -37812,6 +38960,7 @@ class DefaultApi:
         video_note: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent video in seconds")] = None,
         length: Annotated[Optional[StrictInt], Field(description="Video width and height, i.e. diameter of the video message")] = None,
         thumbnail: Optional[StrictStr] = None,
@@ -37819,6 +38968,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -37846,6 +38996,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param duration: Duration of sent video in seconds
         :type duration: int
         :param length: Video width and height, i.e. diameter of the video message
@@ -37860,6 +39012,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -37891,6 +39045,7 @@ class DefaultApi:
             video_note=video_note,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             duration=duration,
             length=length,
             thumbnail=thumbnail,
@@ -37898,6 +39053,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -37928,6 +39084,7 @@ class DefaultApi:
         video_note: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent video in seconds")] = None,
         length: Annotated[Optional[StrictInt], Field(description="Video width and height, i.e. diameter of the video message")] = None,
         thumbnail: Optional[StrictStr] = None,
@@ -37935,6 +39092,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -37962,6 +39120,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param duration: Duration of sent video in seconds
         :type duration: int
         :param length: Video width and height, i.e. diameter of the video message
@@ -37976,6 +39136,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -38007,6 +39169,7 @@ class DefaultApi:
             video_note=video_note,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             duration=duration,
             length=length,
             thumbnail=thumbnail,
@@ -38014,6 +39177,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -38044,6 +39208,7 @@ class DefaultApi:
         video_note: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         duration: Annotated[Optional[StrictInt], Field(description="Duration of sent video in seconds")] = None,
         length: Annotated[Optional[StrictInt], Field(description="Video width and height, i.e. diameter of the video message")] = None,
         thumbnail: Optional[StrictStr] = None,
@@ -38051,6 +39216,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -38078,6 +39244,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param duration: Duration of sent video in seconds
         :type duration: int
         :param length: Video width and height, i.e. diameter of the video message
@@ -38092,6 +39260,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -38123,6 +39293,7 @@ class DefaultApi:
             video_note=video_note,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             duration=duration,
             length=length,
             thumbnail=thumbnail,
@@ -38130,6 +39301,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -38155,6 +39327,7 @@ class DefaultApi:
         video_note,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         duration,
         length,
         thumbnail,
@@ -38162,6 +39335,7 @@ class DefaultApi:
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -38194,6 +39368,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if video_note is not None:
             _form_params.append(('video_note', video_note))
         if duration is not None:
@@ -38210,6 +39386,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -38269,6 +39447,7 @@ class DefaultApi:
         voice: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Voice message caption, 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the voice message caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -38277,6 +39456,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -38304,6 +39484,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param caption: Voice message caption, 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the voice message caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -38320,6 +39502,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -38351,6 +39535,7 @@ class DefaultApi:
             voice=voice,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             caption=caption,
             parse_mode=parse_mode,
             caption_entities=caption_entities,
@@ -38359,6 +39544,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -38389,6 +39575,7 @@ class DefaultApi:
         voice: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Voice message caption, 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the voice message caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -38397,6 +39584,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -38424,6 +39612,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param caption: Voice message caption, 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the voice message caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -38440,6 +39630,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -38471,6 +39663,7 @@ class DefaultApi:
             voice=voice,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             caption=caption,
             parse_mode=parse_mode,
             caption_entities=caption_entities,
@@ -38479,6 +39672,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -38509,6 +39703,7 @@ class DefaultApi:
         voice: Optional[StrictStr],
         business_connection_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the business connection on behalf of which the message will be sent")] = None,
         message_thread_id: Annotated[Optional[StrictInt], Field(description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")] = None,
+        direct_messages_topic_id: Annotated[Optional[StrictInt], Field(description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")] = None,
         caption: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=1024)]], Field(description="Voice message caption, 0-1024 characters after entities parsing")] = None,
         parse_mode: Annotated[Optional[StrictStr], Field(description="Mode for parsing entities in the voice message caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")] = None,
         caption_entities: Annotated[Optional[List[MessageEntity]], Field(description="A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode*")] = None,
@@ -38517,6 +39712,7 @@ class DefaultApi:
         protect_content: Annotated[Optional[StrictBool], Field(description="Protects the contents of the sent message from forwarding and saving")] = None,
         allow_paid_broadcast: Annotated[Optional[StrictBool], Field(description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")] = None,
         message_effect_id: Annotated[Optional[StrictStr], Field(description="Unique identifier of the message effect to be added to the message; for private chats only")] = None,
+        suggested_post_parameters: Optional[SuggestedPostParameters] = None,
         reply_parameters: Optional[ReplyParameters] = None,
         reply_markup: Optional[SendMessageRequestReplyMarkup] = None,
         _request_timeout: Union[
@@ -38544,6 +39740,8 @@ class DefaultApi:
         :type business_connection_id: str
         :param message_thread_id: Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
         :type message_thread_id: int
+        :param direct_messages_topic_id: Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+        :type direct_messages_topic_id: int
         :param caption: Voice message caption, 0-1024 characters after entities parsing
         :type caption: str
         :param parse_mode: Mode for parsing entities in the voice message caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.
@@ -38560,6 +39758,8 @@ class DefaultApi:
         :type allow_paid_broadcast: bool
         :param message_effect_id: Unique identifier of the message effect to be added to the message; for private chats only
         :type message_effect_id: str
+        :param suggested_post_parameters:
+        :type suggested_post_parameters: SuggestedPostParameters
         :param reply_parameters:
         :type reply_parameters: ReplyParameters
         :param reply_markup:
@@ -38591,6 +39791,7 @@ class DefaultApi:
             voice=voice,
             business_connection_id=business_connection_id,
             message_thread_id=message_thread_id,
+            direct_messages_topic_id=direct_messages_topic_id,
             caption=caption,
             parse_mode=parse_mode,
             caption_entities=caption_entities,
@@ -38599,6 +39800,7 @@ class DefaultApi:
             protect_content=protect_content,
             allow_paid_broadcast=allow_paid_broadcast,
             message_effect_id=message_effect_id,
+            suggested_post_parameters=suggested_post_parameters,
             reply_parameters=reply_parameters,
             reply_markup=reply_markup,
             _request_auth=_request_auth,
@@ -38624,6 +39826,7 @@ class DefaultApi:
         voice,
         business_connection_id,
         message_thread_id,
+        direct_messages_topic_id,
         caption,
         parse_mode,
         caption_entities,
@@ -38632,6 +39835,7 @@ class DefaultApi:
         protect_content,
         allow_paid_broadcast,
         message_effect_id,
+        suggested_post_parameters,
         reply_parameters,
         reply_markup,
         _request_auth,
@@ -38665,6 +39869,8 @@ class DefaultApi:
             _form_params.append(('chat_id', chat_id))
         if message_thread_id is not None:
             _form_params.append(('message_thread_id', message_thread_id))
+        if direct_messages_topic_id is not None:
+            _form_params.append(('direct_messages_topic_id', direct_messages_topic_id))
         if voice is not None:
             _form_params.append(('voice', voice))
         if caption is not None:
@@ -38683,6 +39889,8 @@ class DefaultApi:
             _form_params.append(('allow_paid_broadcast', allow_paid_broadcast))
         if message_effect_id is not None:
             _form_params.append(('message_effect_id', message_effect_id))
+        if suggested_post_parameters is not None:
+            _form_params.append(('suggested_post_parameters', suggested_post_parameters))
         if reply_parameters is not None:
             _form_params.append(('reply_parameters', reply_parameters))
         if reply_markup is not None:
@@ -40247,7 +41455,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_administrator_custom_title(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         custom_title: Annotated[str, Field(min_length=0, strict=True, max_length=16, description="New custom title for the administrator; 0-16 characters, emoji are not allowed")],
         _request_timeout: Union[
@@ -40268,7 +41476,7 @@ class DefaultApi:
         Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param custom_title: New custom title for the administrator; 0-16 characters, emoji are not allowed (required)
@@ -40323,7 +41531,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_administrator_custom_title_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         custom_title: Annotated[str, Field(min_length=0, strict=True, max_length=16, description="New custom title for the administrator; 0-16 characters, emoji are not allowed")],
         _request_timeout: Union[
@@ -40344,7 +41552,7 @@ class DefaultApi:
         Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param custom_title: New custom title for the administrator; 0-16 characters, emoji are not allowed (required)
@@ -40399,7 +41607,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_administrator_custom_title_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         user_id: Annotated[StrictInt, Field(description="Unique identifier of the target user")],
         custom_title: Annotated[str, Field(min_length=0, strict=True, max_length=16, description="New custom title for the administrator; 0-16 characters, emoji are not allowed")],
         _request_timeout: Union[
@@ -40420,7 +41628,7 @@ class DefaultApi:
         Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param user_id: Unique identifier of the target user (required)
         :type user_id: int
         :param custom_title: New custom title for the administrator; 0-16 characters, emoji are not allowed (required)
@@ -41141,7 +42349,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_permissions(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         permissions: ChatPermissions,
         use_independent_chat_permissions: Annotated[Optional[StrictBool], Field(description="Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.")] = None,
         _request_timeout: Union[
@@ -41162,7 +42370,7 @@ class DefaultApi:
         Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the *can\\_restrict\\_members* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param permissions: (required)
         :type permissions: ChatPermissions
         :param use_independent_chat_permissions: Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.
@@ -41217,7 +42425,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_permissions_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         permissions: ChatPermissions,
         use_independent_chat_permissions: Annotated[Optional[StrictBool], Field(description="Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.")] = None,
         _request_timeout: Union[
@@ -41238,7 +42446,7 @@ class DefaultApi:
         Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the *can\\_restrict\\_members* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param permissions: (required)
         :type permissions: ChatPermissions
         :param use_independent_chat_permissions: Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.
@@ -41293,7 +42501,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_permissions_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         permissions: ChatPermissions,
         use_independent_chat_permissions: Annotated[Optional[StrictBool], Field(description="Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.")] = None,
         _request_timeout: Union[
@@ -41314,7 +42522,7 @@ class DefaultApi:
         Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the *can\\_restrict\\_members* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param permissions: (required)
         :type permissions: ChatPermissions
         :param use_independent_chat_permissions: Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission.
@@ -41741,7 +42949,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_sticker_set(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         sticker_set_name: Annotated[StrictStr, Field(description="Name of the sticker set to be set as the group sticker set")],
         _request_timeout: Union[
             None,
@@ -41761,7 +42969,7 @@ class DefaultApi:
         Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param sticker_set_name: Name of the sticker set to be set as the group sticker set (required)
         :type sticker_set_name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -41813,7 +43021,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_sticker_set_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         sticker_set_name: Annotated[StrictStr, Field(description="Name of the sticker set to be set as the group sticker set")],
         _request_timeout: Union[
             None,
@@ -41833,7 +43041,7 @@ class DefaultApi:
         Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param sticker_set_name: Name of the sticker set to be set as the group sticker set (required)
         :type sticker_set_name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -41885,7 +43093,7 @@ class DefaultApi:
     @validate_call
     async def post_set_chat_sticker_set_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         sticker_set_name: Annotated[StrictStr, Field(description="Name of the sticker set to be set as the group sticker set")],
         _request_timeout: Union[
             None,
@@ -41905,7 +43113,7 @@ class DefaultApi:
         Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param sticker_set_name: Name of the sticker set to be set as the group sticker set (required)
         :type sticker_set_name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -49430,7 +50638,7 @@ class DefaultApi:
     @validate_call
     async def post_unhide_general_forum_topic(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -49449,7 +50657,7 @@ class DefaultApi:
         Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -49498,7 +50706,7 @@ class DefaultApi:
     @validate_call
     async def post_unhide_general_forum_topic_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -49517,7 +50725,7 @@ class DefaultApi:
         Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -49566,7 +50774,7 @@ class DefaultApi:
     @validate_call
     async def post_unhide_general_forum_topic_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -49585,7 +50793,7 @@ class DefaultApi:
         Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the *can\\_manage\\_topics* administrator rights. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -49724,7 +50932,7 @@ class DefaultApi:
     ) -> UnpinAllChatMessagesResponse:
         """unpinAllChatMessages
 
-        Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
+        Use this method to clear the list of pinned messages in a chat. In private chats and channel direct messages chats, no additional rights are required to unpin all pinned messages. Conversely, the bot must be an administrator with the 'can\\_pin\\_messages' right or the 'can\\_edit\\_messages' right to unpin all pinned messages in groups and channels respectively. Returns *True* on success.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -49792,7 +51000,7 @@ class DefaultApi:
     ) -> ApiResponse[UnpinAllChatMessagesResponse]:
         """unpinAllChatMessages
 
-        Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
+        Use this method to clear the list of pinned messages in a chat. In private chats and channel direct messages chats, no additional rights are required to unpin all pinned messages. Conversely, the bot must be an administrator with the 'can\\_pin\\_messages' right or the 'can\\_edit\\_messages' right to unpin all pinned messages in groups and channels respectively. Returns *True* on success.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -49860,7 +51068,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """unpinAllChatMessages
 
-        Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
+        Use this method to clear the list of pinned messages in a chat. In private chats and channel direct messages chats, no additional rights are required to unpin all pinned messages. Conversely, the bot must be an administrator with the 'can\\_pin\\_messages' right or the 'can\\_edit\\_messages' right to unpin all pinned messages in groups and channels respectively. Returns *True* on success.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -49986,7 +51194,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_forum_topic_messages(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -50006,7 +51214,7 @@ class DefaultApi:
         Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the *can\\_pin\\_messages* administrator right in the supergroup. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -50058,7 +51266,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_forum_topic_messages_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -50078,7 +51286,7 @@ class DefaultApi:
         Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the *can\\_pin\\_messages* administrator right in the supergroup. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -50130,7 +51338,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_forum_topic_messages_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         message_thread_id: Annotated[StrictInt, Field(description="Unique identifier for the target message thread of the forum topic")],
         _request_timeout: Union[
             None,
@@ -50150,7 +51358,7 @@ class DefaultApi:
         Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the *can\\_pin\\_messages* administrator right in the supergroup. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param message_thread_id: Unique identifier for the target message thread of the forum topic (required)
         :type message_thread_id: int
         :param _request_timeout: timeout setting for this request. If one
@@ -50279,7 +51487,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_general_forum_topic_messages(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -50298,7 +51506,7 @@ class DefaultApi:
         Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the *can\\_pin\\_messages* administrator right in the supergroup. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -50347,7 +51555,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_general_forum_topic_messages_with_http_info(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -50366,7 +51574,7 @@ class DefaultApi:
         Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the *can\\_pin\\_messages* administrator right in the supergroup. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -50415,7 +51623,7 @@ class DefaultApi:
     @validate_call
     async def post_unpin_all_general_forum_topic_messages_without_preload_content(
         self,
-        chat_id: BotCommandScopeChatChatId,
+        chat_id: RestrictChatMemberRequestChatId,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -50434,7 +51642,7 @@ class DefaultApi:
         Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the *can\\_pin\\_messages* administrator right in the supergroup. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: BotCommandScopeChatChatId
+        :type chat_id: RestrictChatMemberRequestChatId
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -50575,7 +51783,7 @@ class DefaultApi:
     ) -> UnpinChatMessageResponse:
         """unpinChatMessage
 
-        Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
+        Use this method to remove a message from the list of pinned messages in a chat. In private chats and channel direct messages chats, all messages can be unpinned. Conversely, the bot must be an administrator with the 'can\\_pin\\_messages' right or the 'can\\_edit\\_messages' right to unpin messages in groups and channels respectively. Returns *True* on success.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -50651,7 +51859,7 @@ class DefaultApi:
     ) -> ApiResponse[UnpinChatMessageResponse]:
         """unpinChatMessage
 
-        Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
+        Use this method to remove a message from the list of pinned messages in a chat. In private chats and channel direct messages chats, all messages can be unpinned. Conversely, the bot must be an administrator with the 'can\\_pin\\_messages' right or the 'can\\_edit\\_messages' right to unpin messages in groups and channels respectively. Returns *True* on success.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -50727,7 +51935,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """unpinChatMessage
 
-        Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' administrator right in a supergroup or 'can\\_edit\\_messages' administrator right in a channel. Returns *True* on success.
+        Use this method to remove a message from the list of pinned messages in a chat. In private chats and channel direct messages chats, all messages can be unpinned. Conversely, the bot must be an administrator with the 'can\\_pin\\_messages' right or the 'can\\_edit\\_messages' right to unpin messages in groups and channels respectively. Returns *True* on success.
 
         :param chat_id: (required)
         :type chat_id: SendMessageRequestChatId
@@ -51495,7 +52703,7 @@ class DefaultApi:
     @validate_call
     async def post_verify_chat(
         self,
-        chat_id: SendMessageRequestChatId,
+        chat_id: VerifyChatRequestChatId,
         custom_description: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=70)]], Field(description="Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.")] = None,
         _request_timeout: Union[
             None,
@@ -51515,7 +52723,7 @@ class DefaultApi:
         Verifies a chat [on behalf of the organization](https://telegram.org/verify#third-party-verification) which is represented by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: SendMessageRequestChatId
+        :type chat_id: VerifyChatRequestChatId
         :param custom_description: Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.
         :type custom_description: str
         :param _request_timeout: timeout setting for this request. If one
@@ -51567,7 +52775,7 @@ class DefaultApi:
     @validate_call
     async def post_verify_chat_with_http_info(
         self,
-        chat_id: SendMessageRequestChatId,
+        chat_id: VerifyChatRequestChatId,
         custom_description: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=70)]], Field(description="Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.")] = None,
         _request_timeout: Union[
             None,
@@ -51587,7 +52795,7 @@ class DefaultApi:
         Verifies a chat [on behalf of the organization](https://telegram.org/verify#third-party-verification) which is represented by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: SendMessageRequestChatId
+        :type chat_id: VerifyChatRequestChatId
         :param custom_description: Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.
         :type custom_description: str
         :param _request_timeout: timeout setting for this request. If one
@@ -51639,7 +52847,7 @@ class DefaultApi:
     @validate_call
     async def post_verify_chat_without_preload_content(
         self,
-        chat_id: SendMessageRequestChatId,
+        chat_id: VerifyChatRequestChatId,
         custom_description: Annotated[Optional[Annotated[str, Field(min_length=0, strict=True, max_length=70)]], Field(description="Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.")] = None,
         _request_timeout: Union[
             None,
@@ -51659,7 +52867,7 @@ class DefaultApi:
         Verifies a chat [on behalf of the organization](https://telegram.org/verify#third-party-verification) which is represented by the bot. Returns *True* on success.
 
         :param chat_id: (required)
-        :type chat_id: SendMessageRequestChatId
+        :type chat_id: VerifyChatRequestChatId
         :param custom_description: Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.
         :type custom_description: str
         :param _request_timeout: timeout setting for this request. If one

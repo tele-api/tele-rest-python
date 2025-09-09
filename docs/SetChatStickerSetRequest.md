@@ -6,7 +6,7 @@ Request parameters for setChatStickerSet
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md) |  | 
+**chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md) |  | 
 **sticker_set_name** | **str** | Name of the sticker set to be set as the group sticker set | 
 
 ## Example

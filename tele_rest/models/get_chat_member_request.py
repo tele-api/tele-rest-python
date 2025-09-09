@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -53,7 +53,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List
-from tele_rest.models.leave_chat_request_chat_id import LeaveChatRequestChatId
+from tele_rest.models.get_chat_request_chat_id import GetChatRequestChatId
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -61,7 +61,7 @@ class GetChatMemberRequest(BaseModel):
     """
     Request parameters for getChatMember
     """ # noqa: E501
-    chat_id: LeaveChatRequestChatId
+    chat_id: GetChatRequestChatId
     user_id: StrictInt = Field(description="Unique identifier of the target user")
     __properties: ClassVar[List[str]] = ["chat_id", "user_id"]
 
@@ -124,7 +124,7 @@ class GetChatMemberRequest(BaseModel):
                 raise ValueError("Error due to additional fields (not defined in GetChatMemberRequest) in the input: " + _key)
 
         _obj = cls.model_validate({
-            "chat_id": LeaveChatRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
+            "chat_id": GetChatRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "user_id": obj.get("user_id")
         })
         return _obj

@@ -6,7 +6,7 @@ Request parameters for editGeneralForumTopic
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md) |  | 
+**chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md) |  | 
 **name** | **str** | New topic name, 1-128 characters | 
 
 ## Example

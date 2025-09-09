@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -64,7 +64,7 @@ class InputChecklist(BaseModel):
     Describes a checklist to create.
     """ # noqa: E501
     title: Annotated[str, Field(min_length=1, strict=True, max_length=255)] = Field(description="Title of the checklist; 1-255 characters after entities parsing")
-    parse_mode: Optional[StrictStr] = Field(default=None, description="Optional. Mode for parsing entities in the title. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")
+    parse_mode: Optional[StrictStr] = Field(default=None, description="*Optional*. Mode for parsing entities in the title. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details.")
     title_entities: Optional[List[MessageEntity]] = Field(default=None, description="*Optional*. List of special entities that appear in the title, which can be specified instead of parse\\_mode. Currently, only *bold*, *italic*, *underline*, *strikethrough*, *spoiler*, and *custom\\_emoji* entities are allowed.")
     tasks: List[InputChecklistTask] = Field(description="List of 1-30 tasks in the checklist")
     others_can_add_tasks: Optional[StrictBool] = Field(default=None, description="*Optional*. Pass *True* if other users can add tasks to the checklist")

@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**post_answer_shipping_query**](DefaultApi.md#post_answer_shipping_query) | **POST** /answerShippingQuery | answerShippingQuery
 [**post_answer_web_app_query**](DefaultApi.md#post_answer_web_app_query) | **POST** /answerWebAppQuery | answerWebAppQuery
 [**post_approve_chat_join_request**](DefaultApi.md#post_approve_chat_join_request) | **POST** /approveChatJoinRequest | approveChatJoinRequest
+[**post_approve_suggested_post**](DefaultApi.md#post_approve_suggested_post) | **POST** /approveSuggestedPost | approveSuggestedPost
 [**post_ban_chat_member**](DefaultApi.md#post_ban_chat_member) | **POST** /banChatMember | banChatMember
 [**post_ban_chat_sender_chat**](DefaultApi.md#post_ban_chat_sender_chat) | **POST** /banChatSenderChat | banChatSenderChat
 [**post_close**](DefaultApi.md#post_close) | **POST** /close | close
@@ -25,6 +26,7 @@ Method | HTTP request | Description
 [**post_create_invoice_link**](DefaultApi.md#post_create_invoice_link) | **POST** /createInvoiceLink | createInvoiceLink
 [**post_create_new_sticker_set**](DefaultApi.md#post_create_new_sticker_set) | **POST** /createNewStickerSet | createNewStickerSet
 [**post_decline_chat_join_request**](DefaultApi.md#post_decline_chat_join_request) | **POST** /declineChatJoinRequest | declineChatJoinRequest
+[**post_decline_suggested_post**](DefaultApi.md#post_decline_suggested_post) | **POST** /declineSuggestedPost | declineSuggestedPost
 [**post_delete_business_messages**](DefaultApi.md#post_delete_business_messages) | **POST** /deleteBusinessMessages | deleteBusinessMessages
 [**post_delete_chat_photo**](DefaultApi.md#post_delete_chat_photo) | **POST** /deleteChatPhoto | deleteChatPhoto
 [**post_delete_chat_sticker_set**](DefaultApi.md#post_delete_chat_sticker_set) | **POST** /deleteChatStickerSet | deleteChatStickerSet
@@ -697,6 +699,80 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_approve_suggested_post**
+> ApproveSuggestedPostResponse post_approve_suggested_post(chat_id, message_id, send_date=send_date)
+
+approveSuggestedPost
+
+Use this method to approve a suggested post in a direct messages chat. The bot must have the 'can\_post\_messages' administrator right in the corresponding channel chat. Returns *True* on success.
+
+### Example
+
+
+```python
+import tele_rest
+from tele_rest.models.approve_suggested_post_response import ApproveSuggestedPostResponse
+from tele_rest.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.telegram.org/bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11
+# See configuration.py for a list of all supported configuration parameters.
+configuration = tele_rest.Configuration(
+    host = "https://api.telegram.org/bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11"
+)
+
+
+# Enter a context with an instance of the API client
+async with tele_rest.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = tele_rest.DefaultApi(api_client)
+    chat_id = 56 # int | Unique identifier for the target direct messages chat
+    message_id = 56 # int | Identifier of a suggested post message to approve
+    send_date = 56 # int | Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future (optional)
+
+    try:
+        # approveSuggestedPost
+        api_response = await api_instance.post_approve_suggested_post(chat_id, message_id, send_date=send_date)
+        print("The response of DefaultApi->post_approve_suggested_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->post_approve_suggested_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chat_id** | **int**| Unique identifier for the target direct messages chat | 
+ **message_id** | **int**| Identifier of a suggested post message to approve | 
+ **send_date** | **int**| Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future | [optional] 
+
+### Return type
+
+[**ApproveSuggestedPostResponse**](ApproveSuggestedPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, multipart/form-data, application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**400** | Bad Request |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_ban_chat_member**
 > BanChatMemberResponse post_ban_chat_member(chat_id, user_id, until_date=until_date, revoke_messages=revoke_messages)
 
@@ -925,8 +1001,8 @@ Use this method to close an open topic in a forum supergroup chat. The bot must 
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.close_forum_topic_response import CloseForumTopicResponse
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -941,7 +1017,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
     message_thread_id = 56 # int | Unique identifier for the target message thread of the forum topic
 
     try:
@@ -960,7 +1036,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
  **message_thread_id** | **int**| Unique identifier for the target message thread of the forum topic | 
 
 ### Return type
@@ -998,8 +1074,8 @@ Use this method to close an open 'General' topic in a forum supergroup chat. The
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.close_general_forum_topic_response import CloseGeneralForumTopicResponse
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1014,7 +1090,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
 
     try:
         # closeGeneralForumTopic
@@ -1032,7 +1108,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
 
 ### Return type
 
@@ -1130,7 +1206,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_copy_message**
-> CopyMessageResponse post_copy_message(chat_id, from_chat_id, message_id, message_thread_id=message_thread_id, video_start_timestamp=video_start_timestamp, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> CopyMessageResponse post_copy_message(chat_id, from_chat_id, message_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, video_start_timestamp=video_start_timestamp, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 copyMessage
 
@@ -1147,6 +1223,7 @@ from tele_rest.models.message_entity import MessageEntity
 from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1165,6 +1242,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     from_chat_id = tele_rest.ForwardMessageRequestFromChatId() # ForwardMessageRequestFromChatId | 
     message_id = 56 # int | Message identifier in the chat specified in *from\\\\_chat\\\\_id*
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     video_start_timestamp = 56 # int | New start timestamp for the copied video in the message (optional)
     caption = 'caption_example' # str | New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept (optional)
     parse_mode = 'parse_mode_example' # str | Mode for parsing entities in the new caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. (optional)
@@ -1173,12 +1251,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     disable_notification = True # bool | Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # copyMessage
-        api_response = await api_instance.post_copy_message(chat_id, from_chat_id, message_id, message_thread_id=message_thread_id, video_start_timestamp=video_start_timestamp, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_copy_message(chat_id, from_chat_id, message_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, video_start_timestamp=video_start_timestamp, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_copy_message:\n")
         pprint(api_response)
     except Exception as e:
@@ -1196,6 +1275,7 @@ Name | Type | Description  | Notes
  **from_chat_id** | [**ForwardMessageRequestFromChatId**](ForwardMessageRequestFromChatId.md)|  | 
  **message_id** | **int**| Message identifier in the chat specified in *from\\\\_chat\\\\_id* | 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **video_start_timestamp** | **int**| New start timestamp for the copied video in the message | [optional] 
  **caption** | **str**| New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept | [optional] 
  **parse_mode** | **str**| Mode for parsing entities in the new caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
@@ -1204,6 +1284,7 @@ Name | Type | Description  | Notes
  **disable_notification** | **bool**| Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -1231,7 +1312,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_copy_messages**
-> CopyMessagesResponse post_copy_messages(chat_id, from_chat_id, message_ids, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content, remove_caption=remove_caption)
+> CopyMessagesResponse post_copy_messages(chat_id, from_chat_id, message_ids, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, disable_notification=disable_notification, protect_content=protect_content, remove_caption=remove_caption)
 
 copyMessages
 
@@ -1263,13 +1344,14 @@ async with tele_rest.ApiClient(configuration) as api_client:
     from_chat_id = tele_rest.ForwardMessagesRequestFromChatId() # ForwardMessagesRequestFromChatId | 
     message_ids = [56] # List[int] | A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to copy. The identifiers must be specified in a strictly increasing order.
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat (optional)
     disable_notification = True # bool | Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
     protect_content = True # bool | Protects the contents of the sent messages from forwarding and saving (optional)
     remove_caption = True # bool | Pass *True* to copy the messages without their captions (optional)
 
     try:
         # copyMessages
-        api_response = await api_instance.post_copy_messages(chat_id, from_chat_id, message_ids, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content, remove_caption=remove_caption)
+        api_response = await api_instance.post_copy_messages(chat_id, from_chat_id, message_ids, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, disable_notification=disable_notification, protect_content=protect_content, remove_caption=remove_caption)
         print("The response of DefaultApi->post_copy_messages:\n")
         pprint(api_response)
     except Exception as e:
@@ -1287,6 +1369,7 @@ Name | Type | Description  | Notes
  **from_chat_id** | [**ForwardMessagesRequestFromChatId**](ForwardMessagesRequestFromChatId.md)|  | 
  **message_ids** | [**List[int]**](int.md)| A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to copy. The identifiers must be specified in a strictly increasing order. | 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat | [optional] 
  **disable_notification** | **bool**| Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
  **protect_content** | **bool**| Protects the contents of the sent messages from forwarding and saving | [optional] 
  **remove_caption** | **bool**| Pass *True* to copy the messages without their captions | [optional] 
@@ -1482,8 +1565,8 @@ Use this method to create a topic in a forum supergroup chat. The bot must be an
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.create_forum_topic_response import CreateForumTopicResponse
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1498,7 +1581,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
     name = 'name_example' # str | Topic name, 1-128 characters
     icon_color = 56 # int | Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F) (optional)
     icon_custom_emoji_id = 'icon_custom_emoji_id_example' # str | Unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. (optional)
@@ -1519,7 +1602,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
  **name** | **str**| Topic name, 1-128 characters | 
  **icon_color** | **int**| Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F) | [optional] 
  **icon_custom_emoji_id** | **str**| Unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. | [optional] 
@@ -1814,6 +1897,80 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_decline_suggested_post**
+> DeclineSuggestedPostResponse post_decline_suggested_post(chat_id, message_id, comment=comment)
+
+declineSuggestedPost
+
+Use this method to decline a suggested post in a direct messages chat. The bot must have the 'can\_manage\_direct\_messages' administrator right in the corresponding channel chat. Returns *True* on success.
+
+### Example
+
+
+```python
+import tele_rest
+from tele_rest.models.decline_suggested_post_response import DeclineSuggestedPostResponse
+from tele_rest.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.telegram.org/bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11
+# See configuration.py for a list of all supported configuration parameters.
+configuration = tele_rest.Configuration(
+    host = "https://api.telegram.org/bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11"
+)
+
+
+# Enter a context with an instance of the API client
+async with tele_rest.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = tele_rest.DefaultApi(api_client)
+    chat_id = 56 # int | Unique identifier for the target direct messages chat
+    message_id = 56 # int | Identifier of a suggested post message to decline
+    comment = 'comment_example' # str | Comment for the creator of the suggested post; 0-128 characters (optional)
+
+    try:
+        # declineSuggestedPost
+        api_response = await api_instance.post_decline_suggested_post(chat_id, message_id, comment=comment)
+        print("The response of DefaultApi->post_decline_suggested_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->post_decline_suggested_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chat_id** | **int**| Unique identifier for the target direct messages chat | 
+ **message_id** | **int**| Identifier of a suggested post message to decline | 
+ **comment** | **str**| Comment for the creator of the suggested post; 0-128 characters | [optional] 
+
+### Return type
+
+[**DeclineSuggestedPostResponse**](DeclineSuggestedPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded, multipart/form-data, application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**400** | Bad Request |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_delete_business_messages**
 > DeleteBusinessMessagesResponse post_delete_business_messages(business_connection_id, message_ids)
 
@@ -1969,8 +2126,8 @@ Use this method to delete a group sticker set from a supergroup. The bot must be
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.delete_chat_sticker_set_response import DeleteChatStickerSetResponse
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -1985,7 +2142,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
 
     try:
         # deleteChatStickerSet
@@ -2003,7 +2160,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
 
 ### Return type
 
@@ -2040,8 +2197,8 @@ Use this method to delete a forum topic along with all its messages in a forum s
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.delete_forum_topic_response import DeleteForumTopicResponse
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2056,7 +2213,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
     message_thread_id = 56 # int | Unique identifier for the target message thread of the forum topic
 
     try:
@@ -2075,7 +2232,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
  **message_thread_id** | **int**| Unique identifier for the target message thread of the forum topic | 
 
 ### Return type
@@ -2114,7 +2271,8 @@ Use this method to delete a message, including service messages, with the follow
 \- Bots can delete incoming messages in private chats.  
 \- Bots granted *can\_post\_messages* permissions can delete outgoing messages in channels.  
 \- If the bot is an administrator of a group, it can delete any message there.  
-\- If the bot has *can\_delete\_messages* permission in a supergroup or a channel, it can delete any message there.  
+\- If the bot has *can\_delete\_messages* administrator right in a supergroup or a channel, it can delete any message there.  
+\- If the bot has *can\_manage\_direct\_messages* administrator right in a channel, it can delete any message in the corresponding direct messages chat.  
 Returns *True* on success.
 
 ### Example
@@ -2779,8 +2937,8 @@ Use this method to edit name and icon of a topic in a forum supergroup chat. The
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.edit_forum_topic_response import EditForumTopicResponse
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2795,7 +2953,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
     message_thread_id = 56 # int | Unique identifier for the target message thread of the forum topic
     name = 'name_example' # str | New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept (optional)
     icon_custom_emoji_id = 'icon_custom_emoji_id_example' # str | New unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept (optional)
@@ -2816,7 +2974,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
  **message_thread_id** | **int**| Unique identifier for the target message thread of the forum topic | 
  **name** | **str**| New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept | [optional] 
  **icon_custom_emoji_id** | **str**| New unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept | [optional] 
@@ -2856,8 +3014,8 @@ Use this method to edit the name of the 'General' topic in a forum supergroup ch
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.edit_general_forum_topic_response import EditGeneralForumTopicResponse
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -2872,7 +3030,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
     name = 'name_example' # str | New topic name, 1-128 characters
 
     try:
@@ -2891,7 +3049,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
  **name** | **str**| New topic name, 1-128 characters | 
 
 ### Return type
@@ -3662,7 +3820,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_forward_message**
-> ForwardMessageResponse post_forward_message(chat_id, from_chat_id, message_id, message_thread_id=message_thread_id, video_start_timestamp=video_start_timestamp, disable_notification=disable_notification, protect_content=protect_content)
+> ForwardMessageResponse post_forward_message(chat_id, from_chat_id, message_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, video_start_timestamp=video_start_timestamp, disable_notification=disable_notification, protect_content=protect_content, suggested_post_parameters=suggested_post_parameters)
 
 forwardMessage
 
@@ -3676,6 +3834,7 @@ import tele_rest
 from tele_rest.models.forward_message_request_from_chat_id import ForwardMessageRequestFromChatId
 from tele_rest.models.forward_message_response import ForwardMessageResponse
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -3694,13 +3853,15 @@ async with tele_rest.ApiClient(configuration) as api_client:
     from_chat_id = tele_rest.ForwardMessageRequestFromChatId() # ForwardMessageRequestFromChatId | 
     message_id = 56 # int | Message identifier in the chat specified in *from\\\\_chat\\\\_id*
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat (optional)
     video_start_timestamp = 56 # int | New start timestamp for the forwarded video in the message (optional)
     disable_notification = True # bool | Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
     protect_content = True # bool | Protects the contents of the forwarded message from forwarding and saving (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
 
     try:
         # forwardMessage
-        api_response = await api_instance.post_forward_message(chat_id, from_chat_id, message_id, message_thread_id=message_thread_id, video_start_timestamp=video_start_timestamp, disable_notification=disable_notification, protect_content=protect_content)
+        api_response = await api_instance.post_forward_message(chat_id, from_chat_id, message_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, video_start_timestamp=video_start_timestamp, disable_notification=disable_notification, protect_content=protect_content, suggested_post_parameters=suggested_post_parameters)
         print("The response of DefaultApi->post_forward_message:\n")
         pprint(api_response)
     except Exception as e:
@@ -3718,9 +3879,11 @@ Name | Type | Description  | Notes
  **from_chat_id** | [**ForwardMessageRequestFromChatId**](ForwardMessageRequestFromChatId.md)|  | 
  **message_id** | **int**| Message identifier in the chat specified in *from\\\\_chat\\\\_id* | 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat | [optional] 
  **video_start_timestamp** | **int**| New start timestamp for the forwarded video in the message | [optional] 
  **disable_notification** | **bool**| Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
  **protect_content** | **bool**| Protects the contents of the forwarded message from forwarding and saving | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
 
 ### Return type
 
@@ -3746,7 +3909,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_forward_messages**
-> ForwardMessagesResponse post_forward_messages(chat_id, from_chat_id, message_ids, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content)
+> ForwardMessagesResponse post_forward_messages(chat_id, from_chat_id, message_ids, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, disable_notification=disable_notification, protect_content=protect_content)
 
 forwardMessages
 
@@ -3778,12 +3941,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     from_chat_id = tele_rest.ForwardMessagesRequestFromChatId() # ForwardMessagesRequestFromChatId | 
     message_ids = [56] # List[int] | A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to forward. The identifiers must be specified in a strictly increasing order.
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat (optional)
     disable_notification = True # bool | Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
     protect_content = True # bool | Protects the contents of the forwarded messages from forwarding and saving (optional)
 
     try:
         # forwardMessages
-        api_response = await api_instance.post_forward_messages(chat_id, from_chat_id, message_ids, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content)
+        api_response = await api_instance.post_forward_messages(chat_id, from_chat_id, message_ids, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, disable_notification=disable_notification, protect_content=protect_content)
         print("The response of DefaultApi->post_forward_messages:\n")
         pprint(api_response)
     except Exception as e:
@@ -3801,6 +3965,7 @@ Name | Type | Description  | Notes
  **from_chat_id** | [**ForwardMessagesRequestFromChatId**](ForwardMessagesRequestFromChatId.md)|  | 
  **message_ids** | [**List[int]**](int.md)| A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\\\_chat\\\\_id* to forward. The identifiers must be specified in a strictly increasing order. | 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat | [optional] 
  **disable_notification** | **bool**| Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
  **protect_content** | **bool**| Protects the contents of the forwarded messages from forwarding and saving | [optional] 
 
@@ -4131,8 +4296,8 @@ Use this method to get up-to-date information about the chat. Returns a [ChatFul
 
 ```python
 import tele_rest
+from tele_rest.models.get_chat_request_chat_id import GetChatRequestChatId
 from tele_rest.models.get_chat_response import GetChatResponse
-from tele_rest.models.leave_chat_request_chat_id import LeaveChatRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4147,7 +4312,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.LeaveChatRequestChatId() # LeaveChatRequestChatId | 
+    chat_id = tele_rest.GetChatRequestChatId() # GetChatRequestChatId | 
 
     try:
         # getChat
@@ -4165,7 +4330,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**LeaveChatRequestChatId**](LeaveChatRequestChatId.md)|  | 
+ **chat_id** | [**GetChatRequestChatId**](GetChatRequestChatId.md)|  | 
 
 ### Return type
 
@@ -4203,7 +4368,7 @@ Use this method to get a list of administrators in a chat, which aren't bots. Re
 ```python
 import tele_rest
 from tele_rest.models.get_chat_administrators_response import GetChatAdministratorsResponse
-from tele_rest.models.leave_chat_request_chat_id import LeaveChatRequestChatId
+from tele_rest.models.get_chat_request_chat_id import GetChatRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4218,7 +4383,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.LeaveChatRequestChatId() # LeaveChatRequestChatId | 
+    chat_id = tele_rest.GetChatRequestChatId() # GetChatRequestChatId | 
 
     try:
         # getChatAdministrators
@@ -4236,7 +4401,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**LeaveChatRequestChatId**](LeaveChatRequestChatId.md)|  | 
+ **chat_id** | [**GetChatRequestChatId**](GetChatRequestChatId.md)|  | 
 
 ### Return type
 
@@ -4274,7 +4439,7 @@ Use this method to get information about a member of a chat. The method is only 
 ```python
 import tele_rest
 from tele_rest.models.get_chat_member_response import GetChatMemberResponse
-from tele_rest.models.leave_chat_request_chat_id import LeaveChatRequestChatId
+from tele_rest.models.get_chat_request_chat_id import GetChatRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4289,7 +4454,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.LeaveChatRequestChatId() # LeaveChatRequestChatId | 
+    chat_id = tele_rest.GetChatRequestChatId() # GetChatRequestChatId | 
     user_id = 56 # int | Unique identifier of the target user
 
     try:
@@ -4308,7 +4473,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**LeaveChatRequestChatId**](LeaveChatRequestChatId.md)|  | 
+ **chat_id** | [**GetChatRequestChatId**](GetChatRequestChatId.md)|  | 
  **user_id** | **int**| Unique identifier of the target user | 
 
 ### Return type
@@ -4347,7 +4512,7 @@ Use this method to get the number of members in a chat. Returns *Int* on success
 ```python
 import tele_rest
 from tele_rest.models.get_chat_member_count_response import GetChatMemberCountResponse
-from tele_rest.models.leave_chat_request_chat_id import LeaveChatRequestChatId
+from tele_rest.models.get_chat_request_chat_id import GetChatRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -4362,7 +4527,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.LeaveChatRequestChatId() # LeaveChatRequestChatId | 
+    chat_id = tele_rest.GetChatRequestChatId() # GetChatRequestChatId | 
 
     try:
         # getChatMemberCount
@@ -4380,7 +4545,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**LeaveChatRequestChatId**](LeaveChatRequestChatId.md)|  | 
+ **chat_id** | [**GetChatRequestChatId**](GetChatRequestChatId.md)|  | 
 
 ### Return type
 
@@ -5768,8 +5933,8 @@ Use this method to hide the 'General' topic in a forum supergroup chat. The bot 
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.hide_general_forum_topic_response import HideGeneralForumTopicResponse
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -5784,7 +5949,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
 
     try:
         # hideGeneralForumTopic
@@ -5802,7 +5967,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
 
 ### Return type
 
@@ -5969,7 +6134,7 @@ No authorization required
 
 pinChatMessage
 
-Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\_pin\_messages' administrator right in a supergroup or 'can\_edit\_messages' administrator right in a channel. Returns *True* on success.
+Use this method to add a message to the list of pinned messages in a chat. In private chats and channel direct messages chats, all non-service messages can be pinned. Conversely, the bot must be an administrator with the 'can\_pin\_messages' right or the 'can\_edit\_messages' right to pin messages in groups and channels respectively. Returns *True* on success.
 
 ### Example
 
@@ -6131,7 +6296,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_promote_chat_member**
-> PromoteChatMemberResponse post_promote_chat_member(chat_id, user_id, is_anonymous=is_anonymous, can_manage_chat=can_manage_chat, can_delete_messages=can_delete_messages, can_manage_video_chats=can_manage_video_chats, can_restrict_members=can_restrict_members, can_promote_members=can_promote_members, can_change_info=can_change_info, can_invite_users=can_invite_users, can_post_stories=can_post_stories, can_edit_stories=can_edit_stories, can_delete_stories=can_delete_stories, can_post_messages=can_post_messages, can_edit_messages=can_edit_messages, can_pin_messages=can_pin_messages, can_manage_topics=can_manage_topics)
+> PromoteChatMemberResponse post_promote_chat_member(chat_id, user_id, is_anonymous=is_anonymous, can_manage_chat=can_manage_chat, can_delete_messages=can_delete_messages, can_manage_video_chats=can_manage_video_chats, can_restrict_members=can_restrict_members, can_promote_members=can_promote_members, can_change_info=can_change_info, can_invite_users=can_invite_users, can_post_stories=can_post_stories, can_edit_stories=can_edit_stories, can_delete_stories=can_delete_stories, can_post_messages=can_post_messages, can_edit_messages=can_edit_messages, can_pin_messages=can_pin_messages, can_manage_topics=can_manage_topics, can_manage_direct_messages=can_manage_direct_messages)
 
 promoteChatMember
 
@@ -6175,10 +6340,11 @@ async with tele_rest.ApiClient(configuration) as api_client:
     can_edit_messages = True # bool | Pass *True* if the administrator can edit messages of other users and can pin messages; for channels only (optional)
     can_pin_messages = True # bool | Pass *True* if the administrator can pin messages; for supergroups only (optional)
     can_manage_topics = True # bool | Pass *True* if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only (optional)
+    can_manage_direct_messages = True # bool | Pass *True* if the administrator can manage direct messages within the channel and decline suggested posts; for channels only (optional)
 
     try:
         # promoteChatMember
-        api_response = await api_instance.post_promote_chat_member(chat_id, user_id, is_anonymous=is_anonymous, can_manage_chat=can_manage_chat, can_delete_messages=can_delete_messages, can_manage_video_chats=can_manage_video_chats, can_restrict_members=can_restrict_members, can_promote_members=can_promote_members, can_change_info=can_change_info, can_invite_users=can_invite_users, can_post_stories=can_post_stories, can_edit_stories=can_edit_stories, can_delete_stories=can_delete_stories, can_post_messages=can_post_messages, can_edit_messages=can_edit_messages, can_pin_messages=can_pin_messages, can_manage_topics=can_manage_topics)
+        api_response = await api_instance.post_promote_chat_member(chat_id, user_id, is_anonymous=is_anonymous, can_manage_chat=can_manage_chat, can_delete_messages=can_delete_messages, can_manage_video_chats=can_manage_video_chats, can_restrict_members=can_restrict_members, can_promote_members=can_promote_members, can_change_info=can_change_info, can_invite_users=can_invite_users, can_post_stories=can_post_stories, can_edit_stories=can_edit_stories, can_delete_stories=can_delete_stories, can_post_messages=can_post_messages, can_edit_messages=can_edit_messages, can_pin_messages=can_pin_messages, can_manage_topics=can_manage_topics, can_manage_direct_messages=can_manage_direct_messages)
         print("The response of DefaultApi->post_promote_chat_member:\n")
         pprint(api_response)
     except Exception as e:
@@ -6209,6 +6375,7 @@ Name | Type | Description  | Notes
  **can_edit_messages** | **bool**| Pass *True* if the administrator can edit messages of other users and can pin messages; for channels only | [optional] 
  **can_pin_messages** | **bool**| Pass *True* if the administrator can pin messages; for supergroups only | [optional] 
  **can_manage_topics** | **bool**| Pass *True* if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only | [optional] 
+ **can_manage_direct_messages** | **bool**| Pass *True* if the administrator can manage direct messages within the channel and decline suggested posts; for channels only | [optional] 
 
 ### Return type
 
@@ -6604,8 +6771,8 @@ Use this method to reopen a closed topic in a forum supergroup chat. The bot mus
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.reopen_forum_topic_response import ReopenForumTopicResponse
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6620,7 +6787,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
     message_thread_id = 56 # int | Unique identifier for the target message thread of the forum topic
 
     try:
@@ -6639,7 +6806,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
  **message_thread_id** | **int**| Unique identifier for the target message thread of the forum topic | 
 
 ### Return type
@@ -6677,8 +6844,8 @@ Use this method to reopen a closed 'General' topic in a forum supergroup chat. T
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.reopen_general_forum_topic_response import ReopenGeneralForumTopicResponse
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -6693,7 +6860,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
 
     try:
         # reopenGeneralForumTopic
@@ -6711,7 +6878,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
 
 ### Return type
 
@@ -6825,8 +6992,8 @@ Use this method to restrict a user in a supergroup. The bot must be an administr
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.chat_permissions import ChatPermissions
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.models.restrict_chat_member_response import RestrictChatMemberResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
@@ -6842,7 +7009,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
     user_id = 56 # int | Unique identifier of the target user
     permissions = tele_rest.ChatPermissions() # ChatPermissions | 
     use_independent_chat_permissions = True # bool | Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission. (optional)
@@ -6864,7 +7031,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
  **user_id** | **int**| Unique identifier of the target user | 
  **permissions** | [**ChatPermissions**](ChatPermissions.md)|  | 
  **use_independent_chat_permissions** | **bool**| Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission. | [optional] 
@@ -7048,7 +7215,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_animation**
-> SendAnimationResponse post_send_animation(chat_id, animation, business_connection_id=business_connection_id, message_thread_id=message_thread_id, duration=duration, width=width, height=height, thumbnail=thumbnail, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendAnimationResponse post_send_animation(chat_id, animation, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, duration=duration, width=width, height=height, thumbnail=thumbnail, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendAnimation
 
@@ -7064,6 +7231,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_animation_response import SendAnimationResponse
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7082,6 +7250,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     animation = 'animation_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     duration = 56 # int | Duration of sent animation in seconds (optional)
     width = 56 # int | Animation width (optional)
     height = 56 # int | Animation height (optional)
@@ -7095,12 +7264,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendAnimation
-        api_response = await api_instance.post_send_animation(chat_id, animation, business_connection_id=business_connection_id, message_thread_id=message_thread_id, duration=duration, width=width, height=height, thumbnail=thumbnail, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_animation(chat_id, animation, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, duration=duration, width=width, height=height, thumbnail=thumbnail, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_animation:\n")
         pprint(api_response)
     except Exception as e:
@@ -7118,6 +7288,7 @@ Name | Type | Description  | Notes
  **animation** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **duration** | **int**| Duration of sent animation in seconds | [optional] 
  **width** | **int**| Animation width | [optional] 
  **height** | **int**| Animation height | [optional] 
@@ -7131,6 +7302,7 @@ Name | Type | Description  | Notes
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -7158,7 +7330,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_audio**
-> SendAudioResponse post_send_audio(chat_id, audio, business_connection_id=business_connection_id, message_thread_id=message_thread_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, duration=duration, performer=performer, title=title, thumbnail=thumbnail, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendAudioResponse post_send_audio(chat_id, audio, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, duration=duration, performer=performer, title=title, thumbnail=thumbnail, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendAudio
 
@@ -7176,6 +7348,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_audio_response import SendAudioResponse
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7194,6 +7367,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     audio = 'audio_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     caption = 'caption_example' # str | Audio caption, 0-1024 characters after entities parsing (optional)
     parse_mode = 'parse_mode_example' # str | Mode for parsing entities in the audio caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. (optional)
     caption_entities = [tele_rest.MessageEntity()] # List[MessageEntity] | A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode* (optional)
@@ -7205,12 +7379,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendAudio
-        api_response = await api_instance.post_send_audio(chat_id, audio, business_connection_id=business_connection_id, message_thread_id=message_thread_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, duration=duration, performer=performer, title=title, thumbnail=thumbnail, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_audio(chat_id, audio, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, duration=duration, performer=performer, title=title, thumbnail=thumbnail, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_audio:\n")
         pprint(api_response)
     except Exception as e:
@@ -7228,6 +7403,7 @@ Name | Type | Description  | Notes
  **audio** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **caption** | **str**| Audio caption, 0-1024 characters after entities parsing | [optional] 
  **parse_mode** | **str**| Mode for parsing entities in the audio caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
  **caption_entities** | [**List[MessageEntity]**](MessageEntity.md)| A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode* | [optional] 
@@ -7239,6 +7415,7 @@ Name | Type | Description  | Notes
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -7281,8 +7458,8 @@ We only recommend using this method when a response from the bot will take a **n
 
 ```python
 import tele_rest
+from tele_rest.models.send_chat_action_request_chat_id import SendChatActionRequestChatId
 from tele_rest.models.send_chat_action_response import SendChatActionResponse
-from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7297,7 +7474,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    chat_id = tele_rest.SendChatActionRequestChatId() # SendChatActionRequestChatId | 
     action = 'action_example' # str | Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote).
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the action will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread; for supergroups only (optional)
@@ -7318,7 +7495,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendChatActionRequestChatId**](SendChatActionRequestChatId.md)|  | 
  **action** | **str**| Type of action to broadcast. Choose one, depending on what the user is about to receive: *typing* for [text messages](https://core.telegram.org/bots/api/#sendmessage), *upload\\\\_photo* for [photos](https://core.telegram.org/bots/api/#sendphoto), *record\\\\_video* or *upload\\\\_video* for [videos](https://core.telegram.org/bots/api/#sendvideo), *record\\\\_voice* or *upload\\\\_voice* for [voice notes](https://core.telegram.org/bots/api/#sendvoice), *upload\\\\_document* for [general files](https://core.telegram.org/bots/api/#senddocument), *choose\\\\_sticker* for [stickers](https://core.telegram.org/bots/api/#sendsticker), *find\\\\_location* for [location data](https://core.telegram.org/bots/api/#sendlocation), *record\\\\_video\\\\_note* or *upload\\\\_video\\\\_note* for [video notes](https://core.telegram.org/bots/api/#sendvideonote). | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the action will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread; for supergroups only | [optional] 
@@ -7434,7 +7611,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_contact**
-> SendContactResponse post_send_contact(chat_id, phone_number, first_name, business_connection_id=business_connection_id, message_thread_id=message_thread_id, last_name=last_name, vcard=vcard, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendContactResponse post_send_contact(chat_id, phone_number, first_name, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, last_name=last_name, vcard=vcard, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendContact
 
@@ -7449,6 +7626,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_contact_response import SendContactResponse
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7468,18 +7646,20 @@ async with tele_rest.ApiClient(configuration) as api_client:
     first_name = 'first_name_example' # str | Contact's first name
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     last_name = 'last_name_example' # str | Contact's last name (optional)
     vcard = 'vcard_example' # str | Additional data about the contact in the form of a [vCard](https://en.wikipedia.org/wiki/VCard), 0-2048 bytes (optional)
     disable_notification = True # bool | Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendContact
-        api_response = await api_instance.post_send_contact(chat_id, phone_number, first_name, business_connection_id=business_connection_id, message_thread_id=message_thread_id, last_name=last_name, vcard=vcard, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_contact(chat_id, phone_number, first_name, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, last_name=last_name, vcard=vcard, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_contact:\n")
         pprint(api_response)
     except Exception as e:
@@ -7498,12 +7678,14 @@ Name | Type | Description  | Notes
  **first_name** | **str**| Contact&#39;s first name | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **last_name** | **str**| Contact&#39;s last name | [optional] 
  **vcard** | **str**| Additional data about the contact in the form of a [vCard](https://en.wikipedia.org/wiki/VCard), 0-2048 bytes | [optional] 
  **disable_notification** | **bool**| Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -7531,7 +7713,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_dice**
-> SendDiceResponse post_send_dice(chat_id, business_connection_id=business_connection_id, message_thread_id=message_thread_id, emoji=emoji, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendDiceResponse post_send_dice(chat_id, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, emoji=emoji, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendDice
 
@@ -7546,6 +7728,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_dice_response import SendDiceResponse
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7563,17 +7746,19 @@ async with tele_rest.ApiClient(configuration) as api_client:
     chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     emoji = 🎲 # str | Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲” (optional) (default to 🎲)
     disable_notification = True # bool | Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
     protect_content = True # bool | Protects the contents of the sent message from forwarding (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendDice
-        api_response = await api_instance.post_send_dice(chat_id, business_connection_id=business_connection_id, message_thread_id=message_thread_id, emoji=emoji, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_dice(chat_id, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, emoji=emoji, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_dice:\n")
         pprint(api_response)
     except Exception as e:
@@ -7590,11 +7775,13 @@ Name | Type | Description  | Notes
  **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **emoji** | **str**| Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲” | [optional] [default to 🎲]
  **disable_notification** | **bool**| Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -7622,7 +7809,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_document**
-> SendDocumentResponse post_send_document(chat_id, document, business_connection_id=business_connection_id, message_thread_id=message_thread_id, thumbnail=thumbnail, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, disable_content_type_detection=disable_content_type_detection, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendDocumentResponse post_send_document(chat_id, document, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, thumbnail=thumbnail, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, disable_content_type_detection=disable_content_type_detection, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendDocument
 
@@ -7638,6 +7825,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_document_response import SendDocumentResponse
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7656,6 +7844,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     document = 'document_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     thumbnail = 'thumbnail_example' # str |  (optional)
     caption = 'caption_example' # str | Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing (optional)
     parse_mode = 'parse_mode_example' # str | Mode for parsing entities in the document caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. (optional)
@@ -7665,12 +7854,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendDocument
-        api_response = await api_instance.post_send_document(chat_id, document, business_connection_id=business_connection_id, message_thread_id=message_thread_id, thumbnail=thumbnail, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, disable_content_type_detection=disable_content_type_detection, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_document(chat_id, document, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, thumbnail=thumbnail, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, disable_content_type_detection=disable_content_type_detection, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_document:\n")
         pprint(api_response)
     except Exception as e:
@@ -7688,6 +7878,7 @@ Name | Type | Description  | Notes
  **document** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **thumbnail** | **str**|  | [optional] 
  **caption** | **str**| Document caption (may also be used when resending documents by *file\\\\_id*), 0-1024 characters after entities parsing | [optional] 
  **parse_mode** | **str**| Mode for parsing entities in the document caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
@@ -7697,6 +7888,7 @@ Name | Type | Description  | Notes
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -7752,7 +7944,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = 56 # int | Unique identifier for the target chat
+    chat_id = 56 # int | Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats.
     game_short_name = 'game_short_name_example' # str | Short name of the game, serves as the unique identifier for the game. Set up your games via [@BotFather](https://t.me/botfather).
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
@@ -7779,7 +7971,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | **int**| Unique identifier for the target chat | 
+ **chat_id** | **int**| Unique identifier for the target chat. Games can&#39;t be sent to channel direct messages chats and channel chats. | 
  **game_short_name** | **str**| Short name of the game, serves as the unique identifier for the game. Set up your games via [@BotFather](https://t.me/botfather). | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
@@ -7898,7 +8090,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_invoice**
-> SendInvoiceResponse post_send_invoice(chat_id, title, description, payload, currency, prices, message_thread_id=message_thread_id, provider_token=provider_token, max_tip_amount=max_tip_amount, suggested_tip_amounts=suggested_tip_amounts, start_parameter=start_parameter, provider_data=provider_data, photo_url=photo_url, photo_size=photo_size, photo_width=photo_width, photo_height=photo_height, need_name=need_name, need_phone_number=need_phone_number, need_email=need_email, need_shipping_address=need_shipping_address, send_phone_number_to_provider=send_phone_number_to_provider, send_email_to_provider=send_email_to_provider, is_flexible=is_flexible, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendInvoiceResponse post_send_invoice(chat_id, title, description, payload, currency, prices, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, provider_token=provider_token, max_tip_amount=max_tip_amount, suggested_tip_amounts=suggested_tip_amounts, start_parameter=start_parameter, provider_data=provider_data, photo_url=photo_url, photo_size=photo_size, photo_width=photo_width, photo_height=photo_height, need_name=need_name, need_phone_number=need_phone_number, need_email=need_email, need_shipping_address=need_shipping_address, send_phone_number_to_provider=send_phone_number_to_provider, send_email_to_provider=send_email_to_provider, is_flexible=is_flexible, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendInvoice
 
@@ -7914,6 +8106,7 @@ from tele_rest.models.labeled_price import LabeledPrice
 from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_invoice_response import SendInvoiceResponse
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -7935,6 +8128,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     currency = 'currency_example' # str | Three-letter ISO 4217 currency code, see [more on currencies](https://core.telegram.org/bots/payments#supported-currencies). Pass “XTR” for payments in [Telegram Stars](https://t.me/BotNews/90).
     prices = [tele_rest.LabeledPrice()] # List[LabeledPrice] | Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in [Telegram Stars](https://t.me/BotNews/90).
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     provider_token = 'provider_token_example' # str | Payment provider token, obtained via [@BotFather](https://t.me/botfather). Pass an empty string for payments in [Telegram Stars](https://t.me/BotNews/90). (optional)
     max_tip_amount = 0 # int | The maximum accepted amount for tips in the *smallest units* of the currency (integer, **not** float/double). For example, for a maximum tip of `US$ 1.45` pass `max_tip_amount = 145`. See the *exp* parameter in [currencies.json](https://core.telegram.org/bots/payments/currencies.json), it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in [Telegram Stars](https://t.me/BotNews/90). (optional) (default to 0)
     suggested_tip_amounts = [56] # List[int] | A JSON-serialized array of suggested amounts of tips in the *smallest units* of the currency (integer, **not** float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed *max\\\\_tip\\\\_amount*. (optional)
@@ -7955,12 +8149,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.InlineKeyboardMarkup() # InlineKeyboardMarkup |  (optional)
 
     try:
         # sendInvoice
-        api_response = await api_instance.post_send_invoice(chat_id, title, description, payload, currency, prices, message_thread_id=message_thread_id, provider_token=provider_token, max_tip_amount=max_tip_amount, suggested_tip_amounts=suggested_tip_amounts, start_parameter=start_parameter, provider_data=provider_data, photo_url=photo_url, photo_size=photo_size, photo_width=photo_width, photo_height=photo_height, need_name=need_name, need_phone_number=need_phone_number, need_email=need_email, need_shipping_address=need_shipping_address, send_phone_number_to_provider=send_phone_number_to_provider, send_email_to_provider=send_email_to_provider, is_flexible=is_flexible, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_invoice(chat_id, title, description, payload, currency, prices, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, provider_token=provider_token, max_tip_amount=max_tip_amount, suggested_tip_amounts=suggested_tip_amounts, start_parameter=start_parameter, provider_data=provider_data, photo_url=photo_url, photo_size=photo_size, photo_width=photo_width, photo_height=photo_height, need_name=need_name, need_phone_number=need_phone_number, need_email=need_email, need_shipping_address=need_shipping_address, send_phone_number_to_provider=send_phone_number_to_provider, send_email_to_provider=send_email_to_provider, is_flexible=is_flexible, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_invoice:\n")
         pprint(api_response)
     except Exception as e:
@@ -7981,6 +8176,7 @@ Name | Type | Description  | Notes
  **currency** | **str**| Three-letter ISO 4217 currency code, see [more on currencies](https://core.telegram.org/bots/payments#supported-currencies). Pass “XTR” for payments in [Telegram Stars](https://t.me/BotNews/90). | 
  **prices** | [**List[LabeledPrice]**](LabeledPrice.md)| Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in [Telegram Stars](https://t.me/BotNews/90). | 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **provider_token** | **str**| Payment provider token, obtained via [@BotFather](https://t.me/botfather). Pass an empty string for payments in [Telegram Stars](https://t.me/BotNews/90). | [optional] 
  **max_tip_amount** | **int**| The maximum accepted amount for tips in the *smallest units* of the currency (integer, **not** float/double). For example, for a maximum tip of &#x60;US$ 1.45&#x60; pass &#x60;max_tip_amount &#x3D; 145&#x60;. See the *exp* parameter in [currencies.json](https://core.telegram.org/bots/payments/currencies.json), it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in [Telegram Stars](https://t.me/BotNews/90). | [optional] [default to 0]
  **suggested_tip_amounts** | [**List[int]**](int.md)| A JSON-serialized array of suggested amounts of tips in the *smallest units* of the currency (integer, **not** float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed *max\\\\_tip\\\\_amount*. | [optional] 
@@ -8001,6 +8197,7 @@ Name | Type | Description  | Notes
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**InlineKeyboardMarkup**](InlineKeyboardMarkup.md)|  | [optional] 
 
@@ -8028,7 +8225,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_location**
-> SendLocationResponse post_send_location(chat_id, latitude, longitude, business_connection_id=business_connection_id, message_thread_id=message_thread_id, horizontal_accuracy=horizontal_accuracy, live_period=live_period, heading=heading, proximity_alert_radius=proximity_alert_radius, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendLocationResponse post_send_location(chat_id, latitude, longitude, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, horizontal_accuracy=horizontal_accuracy, live_period=live_period, heading=heading, proximity_alert_radius=proximity_alert_radius, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendLocation
 
@@ -8043,6 +8240,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_location_response import SendLocationResponse
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8062,6 +8260,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     longitude = 3.4 # float | Longitude of the location
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     horizontal_accuracy = 3.4 # float | The radius of uncertainty for the location, measured in meters; 0-1500 (optional)
     live_period = 56 # int | Period in seconds during which the location will be updated (see [Live Locations](https://telegram.org/blog/live-locations), should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely. (optional)
     heading = 56 # int | For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified. (optional)
@@ -8070,12 +8269,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendLocation
-        api_response = await api_instance.post_send_location(chat_id, latitude, longitude, business_connection_id=business_connection_id, message_thread_id=message_thread_id, horizontal_accuracy=horizontal_accuracy, live_period=live_period, heading=heading, proximity_alert_radius=proximity_alert_radius, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_location(chat_id, latitude, longitude, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, horizontal_accuracy=horizontal_accuracy, live_period=live_period, heading=heading, proximity_alert_radius=proximity_alert_radius, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_location:\n")
         pprint(api_response)
     except Exception as e:
@@ -8094,6 +8294,7 @@ Name | Type | Description  | Notes
  **longitude** | **float**| Longitude of the location | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **horizontal_accuracy** | **float**| The radius of uncertainty for the location, measured in meters; 0-1500 | [optional] 
  **live_period** | **int**| Period in seconds during which the location will be updated (see [Live Locations](https://telegram.org/blog/live-locations), should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely. | [optional] 
  **heading** | **int**| For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified. | [optional] 
@@ -8102,6 +8303,7 @@ Name | Type | Description  | Notes
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -8129,11 +8331,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_media_group**
-> SendMediaGroupResponse post_send_media_group(chat_id, media, business_connection_id=business_connection_id, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters)
+> SendMediaGroupResponse post_send_media_group(chat_id, media, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters)
 
 sendMediaGroup
 
-Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Messages](https://core.telegram.org/bots/api/#message) that were sent is returned.
+Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Message](https://core.telegram.org/bots/api/#message) objects that were sent is returned.
 
 ### Example
 
@@ -8162,6 +8364,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     media = [tele_rest.SendMediaGroupRequestMediaInner()] # List[SendMediaGroupRequestMediaInner] | A JSON-serialized array describing messages to be sent, must include 2-10 items
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat (optional)
     disable_notification = True # bool | Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
     protect_content = True # bool | Protects the contents of the sent messages from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
@@ -8170,7 +8373,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
     try:
         # sendMediaGroup
-        api_response = await api_instance.post_send_media_group(chat_id, media, business_connection_id=business_connection_id, message_thread_id=message_thread_id, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters)
+        api_response = await api_instance.post_send_media_group(chat_id, media, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters)
         print("The response of DefaultApi->post_send_media_group:\n")
         pprint(api_response)
     except Exception as e:
@@ -8188,6 +8391,7 @@ Name | Type | Description  | Notes
  **media** | [**List[SendMediaGroupRequestMediaInner]**](SendMediaGroupRequestMediaInner.md)| A JSON-serialized array describing messages to be sent, must include 2-10 items | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat | [optional] 
  **disable_notification** | **bool**| Sends messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
  **protect_content** | **bool**| Protects the contents of the sent messages from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
@@ -8218,7 +8422,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_message**
-> SendMessageResponse post_send_message(chat_id, text, business_connection_id=business_connection_id, message_thread_id=message_thread_id, parse_mode=parse_mode, entities=entities, link_preview_options=link_preview_options, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendMessageResponse post_send_message(chat_id, text, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, parse_mode=parse_mode, entities=entities, link_preview_options=link_preview_options, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendMessage
 
@@ -8235,6 +8439,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.models.send_message_response import SendMessageResponse
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8253,6 +8458,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     text = 'text_example' # str | Text of the message to be sent, 1-4096 characters after entities parsing
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     parse_mode = 'parse_mode_example' # str | Mode for parsing entities in the message text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. (optional)
     entities = [tele_rest.MessageEntity()] # List[MessageEntity] | A JSON-serialized list of special entities that appear in message text, which can be specified instead of *parse\\\\_mode* (optional)
     link_preview_options = tele_rest.LinkPreviewOptions() # LinkPreviewOptions |  (optional)
@@ -8260,12 +8466,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendMessage
-        api_response = await api_instance.post_send_message(chat_id, text, business_connection_id=business_connection_id, message_thread_id=message_thread_id, parse_mode=parse_mode, entities=entities, link_preview_options=link_preview_options, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_message(chat_id, text, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, parse_mode=parse_mode, entities=entities, link_preview_options=link_preview_options, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_message:\n")
         pprint(api_response)
     except Exception as e:
@@ -8283,6 +8490,7 @@ Name | Type | Description  | Notes
  **text** | **str**| Text of the message to be sent, 1-4096 characters after entities parsing | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **parse_mode** | **str**| Mode for parsing entities in the message text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
  **entities** | [**List[MessageEntity]**](MessageEntity.md)| A JSON-serialized list of special entities that appear in message text, which can be specified instead of *parse\\\\_mode* | [optional] 
  **link_preview_options** | [**LinkPreviewOptions**](LinkPreviewOptions.md)|  | [optional] 
@@ -8290,6 +8498,7 @@ Name | Type | Description  | Notes
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -8317,7 +8526,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_paid_media**
-> SendPaidMediaResponse post_send_paid_media(chat_id, star_count, media, business_connection_id=business_connection_id, payload=payload, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendPaidMediaResponse post_send_paid_media(chat_id, star_count, media, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, payload=payload, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendPaidMedia
 
@@ -8334,6 +8543,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.models.send_paid_media_request_chat_id import SendPaidMediaRequestChatId
 from tele_rest.models.send_paid_media_response import SendPaidMediaResponse
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8352,6 +8562,8 @@ async with tele_rest.ApiClient(configuration) as api_client:
     star_count = 56 # int | The number of Telegram Stars that must be paid to buy access to the media; 1-10000
     media = [tele_rest.InputPaidMedia()] # List[InputPaidMedia] | A JSON-serialized array describing the media to be sent; up to 10 items
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
+    message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     payload = 'payload_example' # str | Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes. (optional)
     caption = 'caption_example' # str | Media caption, 0-1024 characters after entities parsing (optional)
     parse_mode = 'parse_mode_example' # str | Mode for parsing entities in the media caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. (optional)
@@ -8360,12 +8572,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     disable_notification = True # bool | Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendPaidMedia
-        api_response = await api_instance.post_send_paid_media(chat_id, star_count, media, business_connection_id=business_connection_id, payload=payload, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_paid_media(chat_id, star_count, media, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, payload=payload, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_paid_media:\n")
         pprint(api_response)
     except Exception as e:
@@ -8383,6 +8596,8 @@ Name | Type | Description  | Notes
  **star_count** | **int**| The number of Telegram Stars that must be paid to buy access to the media; 1-10000 | 
  **media** | [**List[InputPaidMedia]**](InputPaidMedia.md)| A JSON-serialized array describing the media to be sent; up to 10 items | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
+ **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **payload** | **str**| Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes. | [optional] 
  **caption** | **str**| Media caption, 0-1024 characters after entities parsing | [optional] 
  **parse_mode** | **str**| Mode for parsing entities in the media caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
@@ -8391,6 +8606,7 @@ Name | Type | Description  | Notes
  **disable_notification** | **bool**| Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -8418,7 +8634,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_photo**
-> SendPhotoResponse post_send_photo(chat_id, photo, business_connection_id=business_connection_id, message_thread_id=message_thread_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendPhotoResponse post_send_photo(chat_id, photo, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendPhoto
 
@@ -8434,6 +8650,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.models.send_photo_response import SendPhotoResponse
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8452,6 +8669,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     photo = 'photo_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     caption = 'caption_example' # str | Photo caption (may also be used when resending photos by *file\\\\_id*), 0-1024 characters after entities parsing (optional)
     parse_mode = 'parse_mode_example' # str | Mode for parsing entities in the photo caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. (optional)
     caption_entities = [tele_rest.MessageEntity()] # List[MessageEntity] | A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode* (optional)
@@ -8461,12 +8679,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendPhoto
-        api_response = await api_instance.post_send_photo(chat_id, photo, business_connection_id=business_connection_id, message_thread_id=message_thread_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_photo(chat_id, photo, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_photo:\n")
         pprint(api_response)
     except Exception as e:
@@ -8484,6 +8703,7 @@ Name | Type | Description  | Notes
  **photo** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **caption** | **str**| Photo caption (may also be used when resending photos by *file\\\\_id*), 0-1024 characters after entities parsing | [optional] 
  **parse_mode** | **str**| Mode for parsing entities in the photo caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
  **caption_entities** | [**List[MessageEntity]**](MessageEntity.md)| A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode* | [optional] 
@@ -8493,6 +8713,7 @@ Name | Type | Description  | Notes
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -8534,8 +8755,8 @@ import tele_rest
 from tele_rest.models.input_poll_option import InputPollOption
 from tele_rest.models.message_entity import MessageEntity
 from tele_rest.models.reply_parameters import ReplyParameters
-from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.send_poll_request_chat_id import SendPollRequestChatId
 from tele_rest.models.send_poll_response import SendPollResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
@@ -8551,7 +8772,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    chat_id = tele_rest.SendPollRequestChatId() # SendPollRequestChatId | 
     question = 'question_example' # str | Poll question, 1-300 characters
     options = [tele_rest.InputPollOption()] # List[InputPollOption] | A JSON-serialized list of 2-12 answer options
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
@@ -8591,7 +8812,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **chat_id** | [**SendPollRequestChatId**](SendPollRequestChatId.md)|  | 
  **question** | **str**| Poll question, 1-300 characters | 
  **options** | [**List[InputPollOption]**](InputPollOption.md)| A JSON-serialized list of 2-12 answer options | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
@@ -8639,7 +8860,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_sticker**
-> SendStickerResponse post_send_sticker(chat_id, sticker, business_connection_id=business_connection_id, message_thread_id=message_thread_id, emoji=emoji, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendStickerResponse post_send_sticker(chat_id, sticker, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, emoji=emoji, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendSticker
 
@@ -8654,6 +8875,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.models.send_sticker_response import SendStickerResponse
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8672,17 +8894,19 @@ async with tele_rest.ApiClient(configuration) as api_client:
     sticker = 'sticker_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     emoji = 'emoji_example' # str | Emoji associated with the sticker; only for just uploaded stickers (optional)
     disable_notification = True # bool | Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. (optional)
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendSticker
-        api_response = await api_instance.post_send_sticker(chat_id, sticker, business_connection_id=business_connection_id, message_thread_id=message_thread_id, emoji=emoji, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_sticker(chat_id, sticker, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, emoji=emoji, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_sticker:\n")
         pprint(api_response)
     except Exception as e:
@@ -8700,11 +8924,13 @@ Name | Type | Description  | Notes
  **sticker** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **emoji** | **str**| Emoji associated with the sticker; only for just uploaded stickers | [optional] 
  **disable_notification** | **bool**| Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -8732,7 +8958,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_venue**
-> SendVenueResponse post_send_venue(chat_id, latitude, longitude, title, address, business_connection_id=business_connection_id, message_thread_id=message_thread_id, foursquare_id=foursquare_id, foursquare_type=foursquare_type, google_place_id=google_place_id, google_place_type=google_place_type, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendVenueResponse post_send_venue(chat_id, latitude, longitude, title, address, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, foursquare_id=foursquare_id, foursquare_type=foursquare_type, google_place_id=google_place_id, google_place_type=google_place_type, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendVenue
 
@@ -8747,6 +8973,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.models.send_venue_response import SendVenueResponse
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8768,6 +8995,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     address = 'address_example' # str | Address of the venue
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     foursquare_id = 'foursquare_id_example' # str | Foursquare identifier of the venue (optional)
     foursquare_type = 'foursquare_type_example' # str | Foursquare type of the venue, if known. (For example, “arts\\\\_entertainment/default”, “arts\\\\_entertainment/aquarium” or “food/icecream”.) (optional)
     google_place_id = 'google_place_id_example' # str | Google Places identifier of the venue (optional)
@@ -8776,12 +9004,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendVenue
-        api_response = await api_instance.post_send_venue(chat_id, latitude, longitude, title, address, business_connection_id=business_connection_id, message_thread_id=message_thread_id, foursquare_id=foursquare_id, foursquare_type=foursquare_type, google_place_id=google_place_id, google_place_type=google_place_type, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_venue(chat_id, latitude, longitude, title, address, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, foursquare_id=foursquare_id, foursquare_type=foursquare_type, google_place_id=google_place_id, google_place_type=google_place_type, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_venue:\n")
         pprint(api_response)
     except Exception as e:
@@ -8802,6 +9031,7 @@ Name | Type | Description  | Notes
  **address** | **str**| Address of the venue | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **foursquare_id** | **str**| Foursquare identifier of the venue | [optional] 
  **foursquare_type** | **str**| Foursquare type of the venue, if known. (For example, “arts\\\\_entertainment/default”, “arts\\\\_entertainment/aquarium” or “food/icecream”.) | [optional] 
  **google_place_id** | **str**| Google Places identifier of the venue | [optional] 
@@ -8810,6 +9040,7 @@ Name | Type | Description  | Notes
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -8837,7 +9068,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_video**
-> SendVideoResponse post_send_video(chat_id, video, business_connection_id=business_connection_id, message_thread_id=message_thread_id, duration=duration, width=width, height=height, thumbnail=thumbnail, cover=cover, start_timestamp=start_timestamp, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, supports_streaming=supports_streaming, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendVideoResponse post_send_video(chat_id, video, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, duration=duration, width=width, height=height, thumbnail=thumbnail, cover=cover, start_timestamp=start_timestamp, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, supports_streaming=supports_streaming, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendVideo
 
@@ -8853,6 +9084,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.models.send_video_response import SendVideoResponse
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8871,6 +9103,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     video = 'video_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     duration = 56 # int | Duration of sent video in seconds (optional)
     width = 56 # int | Video width (optional)
     height = 56 # int | Video height (optional)
@@ -8887,12 +9120,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendVideo
-        api_response = await api_instance.post_send_video(chat_id, video, business_connection_id=business_connection_id, message_thread_id=message_thread_id, duration=duration, width=width, height=height, thumbnail=thumbnail, cover=cover, start_timestamp=start_timestamp, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, supports_streaming=supports_streaming, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_video(chat_id, video, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, duration=duration, width=width, height=height, thumbnail=thumbnail, cover=cover, start_timestamp=start_timestamp, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, show_caption_above_media=show_caption_above_media, has_spoiler=has_spoiler, supports_streaming=supports_streaming, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_video:\n")
         pprint(api_response)
     except Exception as e:
@@ -8910,6 +9144,7 @@ Name | Type | Description  | Notes
  **video** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **duration** | **int**| Duration of sent video in seconds | [optional] 
  **width** | **int**| Video width | [optional] 
  **height** | **int**| Video height | [optional] 
@@ -8926,6 +9161,7 @@ Name | Type | Description  | Notes
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -8953,7 +9189,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_video_note**
-> SendVideoNoteResponse post_send_video_note(chat_id, video_note, business_connection_id=business_connection_id, message_thread_id=message_thread_id, duration=duration, length=length, thumbnail=thumbnail, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendVideoNoteResponse post_send_video_note(chat_id, video_note, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, duration=duration, length=length, thumbnail=thumbnail, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendVideoNote
 
@@ -8968,6 +9204,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.models.send_video_note_response import SendVideoNoteResponse
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -8986,6 +9223,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     video_note = 'video_note_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     duration = 56 # int | Duration of sent video in seconds (optional)
     length = 56 # int | Video width and height, i.e. diameter of the video message (optional)
     thumbnail = 'thumbnail_example' # str |  (optional)
@@ -8993,12 +9231,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendVideoNote
-        api_response = await api_instance.post_send_video_note(chat_id, video_note, business_connection_id=business_connection_id, message_thread_id=message_thread_id, duration=duration, length=length, thumbnail=thumbnail, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_video_note(chat_id, video_note, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, duration=duration, length=length, thumbnail=thumbnail, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_video_note:\n")
         pprint(api_response)
     except Exception as e:
@@ -9016,6 +9255,7 @@ Name | Type | Description  | Notes
  **video_note** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **duration** | **int**| Duration of sent video in seconds | [optional] 
  **length** | **int**| Video width and height, i.e. diameter of the video message | [optional] 
  **thumbnail** | **str**|  | [optional] 
@@ -9023,6 +9263,7 @@ Name | Type | Description  | Notes
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -9050,7 +9291,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_send_voice**
-> SendVoiceResponse post_send_voice(chat_id, voice, business_connection_id=business_connection_id, message_thread_id=message_thread_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, duration=duration, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+> SendVoiceResponse post_send_voice(chat_id, voice, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, duration=duration, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
 
 sendVoice
 
@@ -9066,6 +9307,7 @@ from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
 from tele_rest.models.send_voice_response import SendVoiceResponse
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from tele_rest.rest import ApiException
 from pprint import pprint
 
@@ -9084,6 +9326,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
     voice = 'voice_example' # str | 
     business_connection_id = 'business_connection_id_example' # str | Unique identifier of the business connection on behalf of which the message will be sent (optional)
     message_thread_id = 56 # int | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only (optional)
+    direct_messages_topic_id = 56 # int | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat (optional)
     caption = 'caption_example' # str | Voice message caption, 0-1024 characters after entities parsing (optional)
     parse_mode = 'parse_mode_example' # str | Mode for parsing entities in the voice message caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. (optional)
     caption_entities = [tele_rest.MessageEntity()] # List[MessageEntity] | A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode* (optional)
@@ -9092,12 +9335,13 @@ async with tele_rest.ApiClient(configuration) as api_client:
     protect_content = True # bool | Protects the contents of the sent message from forwarding and saving (optional)
     allow_paid_broadcast = True # bool | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance (optional)
     message_effect_id = 'message_effect_id_example' # str | Unique identifier of the message effect to be added to the message; for private chats only (optional)
+    suggested_post_parameters = tele_rest.SuggestedPostParameters() # SuggestedPostParameters |  (optional)
     reply_parameters = tele_rest.ReplyParameters() # ReplyParameters |  (optional)
     reply_markup = tele_rest.SendMessageRequestReplyMarkup() # SendMessageRequestReplyMarkup |  (optional)
 
     try:
         # sendVoice
-        api_response = await api_instance.post_send_voice(chat_id, voice, business_connection_id=business_connection_id, message_thread_id=message_thread_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, duration=duration, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, reply_parameters=reply_parameters, reply_markup=reply_markup)
+        api_response = await api_instance.post_send_voice(chat_id, voice, business_connection_id=business_connection_id, message_thread_id=message_thread_id, direct_messages_topic_id=direct_messages_topic_id, caption=caption, parse_mode=parse_mode, caption_entities=caption_entities, duration=duration, disable_notification=disable_notification, protect_content=protect_content, allow_paid_broadcast=allow_paid_broadcast, message_effect_id=message_effect_id, suggested_post_parameters=suggested_post_parameters, reply_parameters=reply_parameters, reply_markup=reply_markup)
         print("The response of DefaultApi->post_send_voice:\n")
         pprint(api_response)
     except Exception as e:
@@ -9115,6 +9359,7 @@ Name | Type | Description  | Notes
  **voice** | **str**|  | 
  **business_connection_id** | **str**| Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
  **message_thread_id** | **int**| Unique identifier for the target message thread (topic) of the forum; for forum supergroups only | [optional] 
+ **direct_messages_topic_id** | **int**| Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
  **caption** | **str**| Voice message caption, 0-1024 characters after entities parsing | [optional] 
  **parse_mode** | **str**| Mode for parsing entities in the voice message caption. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. | [optional] 
  **caption_entities** | [**List[MessageEntity]**](MessageEntity.md)| A JSON-serialized list of special entities that appear in the caption, which can be specified instead of *parse\\\\_mode* | [optional] 
@@ -9123,6 +9368,7 @@ Name | Type | Description  | Notes
  **protect_content** | **bool**| Protects the contents of the sent message from forwarding and saving | [optional] 
  **allow_paid_broadcast** | **bool**| Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
  **message_effect_id** | **str**| Unique identifier of the message effect to be added to the message; for private chats only | [optional] 
+ **suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md)|  | [optional] 
  **reply_parameters** | [**ReplyParameters**](ReplyParameters.md)|  | [optional] 
  **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md)|  | [optional] 
 
@@ -9529,7 +9775,7 @@ Use this method to set a custom title for an administrator in a supergroup promo
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.models.set_chat_administrator_custom_title_response import SetChatAdministratorCustomTitleResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
@@ -9545,7 +9791,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
     user_id = 56 # int | Unique identifier of the target user
     custom_title = 'custom_title_example' # str | New custom title for the administrator; 0-16 characters, emoji are not allowed
 
@@ -9565,7 +9811,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
  **user_id** | **int**| Unique identifier of the target user | 
  **custom_title** | **str**| New custom title for the administrator; 0-16 characters, emoji are not allowed | 
 
@@ -9750,8 +9996,8 @@ Use this method to set default chat permissions for all members. The bot must be
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
 from tele_rest.models.chat_permissions import ChatPermissions
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.models.set_chat_permissions_response import SetChatPermissionsResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
@@ -9767,7 +10013,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
     permissions = tele_rest.ChatPermissions() # ChatPermissions | 
     use_independent_chat_permissions = True # bool | Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission. (optional)
 
@@ -9787,7 +10033,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
  **permissions** | [**ChatPermissions**](ChatPermissions.md)|  | 
  **use_independent_chat_permissions** | **bool**| Pass *True* if chat permissions are set independently. Otherwise, the *can\\\\_send\\\\_other\\\\_messages* and *can\\\\_add\\\\_web\\\\_page\\\\_previews* permissions will imply the *can\\\\_send\\\\_messages*, *can\\\\_send\\\\_audios*, *can\\\\_send\\\\_documents*, *can\\\\_send\\\\_photos*, *can\\\\_send\\\\_videos*, *can\\\\_send\\\\_video\\\\_notes*, and *can\\\\_send\\\\_voice\\\\_notes* permissions; the *can\\\\_send\\\\_polls* permission will imply the *can\\\\_send\\\\_messages* permission. | [optional] 
 
@@ -9899,7 +10145,7 @@ Use this method to set a new group sticker set for a supergroup. The bot must be
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.models.set_chat_sticker_set_response import SetChatStickerSetResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
@@ -9915,7 +10161,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
     sticker_set_name = 'sticker_set_name_example' # str | Name of the sticker set to be set as the group sticker set
 
     try:
@@ -9934,7 +10180,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
  **sticker_set_name** | **str**| Name of the sticker set to be set as the group sticker set | 
 
 ### Return type
@@ -11766,7 +12012,7 @@ Use this method to unhide the 'General' topic in a forum supergroup chat. The bo
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.models.unhide_general_forum_topic_response import UnhideGeneralForumTopicResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
@@ -11782,7 +12028,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
 
     try:
         # unhideGeneralForumTopic
@@ -11800,7 +12046,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
 
 ### Return type
 
@@ -11830,7 +12076,7 @@ No authorization required
 
 unpinAllChatMessages
 
-Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\_pin\_messages' administrator right in a supergroup or 'can\_edit\_messages' administrator right in a channel. Returns *True* on success.
+Use this method to clear the list of pinned messages in a chat. In private chats and channel direct messages chats, no additional rights are required to unpin all pinned messages. Conversely, the bot must be an administrator with the 'can\_pin\_messages' right or the 'can\_edit\_messages' right to unpin all pinned messages in groups and channels respectively. Returns *True* on success.
 
 ### Example
 
@@ -11908,7 +12154,7 @@ Use this method to clear the list of pinned messages in a forum topic. The bot m
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.models.unpin_all_forum_topic_messages_response import UnpinAllForumTopicMessagesResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
@@ -11924,7 +12170,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
     message_thread_id = 56 # int | Unique identifier for the target message thread of the forum topic
 
     try:
@@ -11943,7 +12189,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
  **message_thread_id** | **int**| Unique identifier for the target message thread of the forum topic | 
 
 ### Return type
@@ -11981,7 +12227,7 @@ Use this method to clear the list of pinned messages in a General forum topic. T
 
 ```python
 import tele_rest
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from tele_rest.models.unpin_all_general_forum_topic_messages_response import UnpinAllGeneralForumTopicMessagesResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
@@ -11997,7 +12243,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.BotCommandScopeChatChatId() # BotCommandScopeChatChatId | 
+    chat_id = tele_rest.RestrictChatMemberRequestChatId() # RestrictChatMemberRequestChatId | 
 
     try:
         # unpinAllGeneralForumTopicMessages
@@ -12015,7 +12261,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**BotCommandScopeChatChatId**](BotCommandScopeChatChatId.md)|  | 
+ **chat_id** | [**RestrictChatMemberRequestChatId**](RestrictChatMemberRequestChatId.md)|  | 
 
 ### Return type
 
@@ -12045,7 +12291,7 @@ No authorization required
 
 unpinChatMessage
 
-Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\_pin\_messages' administrator right in a supergroup or 'can\_edit\_messages' administrator right in a channel. Returns *True* on success.
+Use this method to remove a message from the list of pinned messages in a chat. In private chats and channel direct messages chats, all messages can be unpinned. Conversely, the bot must be an administrator with the 'can\_pin\_messages' right or the 'can\_edit\_messages' right to unpin messages in groups and channels respectively. Returns *True* on success.
 
 ### Example
 
@@ -12277,7 +12523,7 @@ Verifies a chat [on behalf of the organization](https://telegram.org/verify#thir
 
 ```python
 import tele_rest
-from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.verify_chat_request_chat_id import VerifyChatRequestChatId
 from tele_rest.models.verify_chat_response import VerifyChatResponse
 from tele_rest.rest import ApiException
 from pprint import pprint
@@ -12293,7 +12539,7 @@ configuration = tele_rest.Configuration(
 async with tele_rest.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tele_rest.DefaultApi(api_client)
-    chat_id = tele_rest.SendMessageRequestChatId() # SendMessageRequestChatId | 
+    chat_id = tele_rest.VerifyChatRequestChatId() # VerifyChatRequestChatId | 
     custom_description = 'custom_description_example' # str | Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description. (optional)
 
     try:
@@ -12312,7 +12558,7 @@ async with tele_rest.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chat_id** | [**SendMessageRequestChatId**](SendMessageRequestChatId.md)|  | 
+ **chat_id** | [**VerifyChatRequestChatId**](VerifyChatRequestChatId.md)|  | 
  **custom_description** | **str**| Custom description for the verification; 0-70 characters. Must be empty if the organization isn&#39;t allowed to provide a custom verification description. | [optional] 
 
 ### Return type

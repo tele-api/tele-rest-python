@@ -6,7 +6,7 @@ Request parameters for getChatMemberCount
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chat_id** | [**LeaveChatRequestChatId**](LeaveChatRequestChatId.md) |  | 
+**chat_id** | [**GetChatRequestChatId**](GetChatRequestChatId.md) |  | 
 
 ## Example
 

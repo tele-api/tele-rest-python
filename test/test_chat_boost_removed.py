@@ -8,8 +8,8 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 - **Copyright**: Copyright (c) 2025 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
+- **Version**: 9.2.0
+- **Modified**: 2025-09-09T23:46:51.548881723Z[Etc/UTC]
 - **Generator Version**: 7.14.0
 
 <details>
@@ -76,7 +76,8 @@ class TestChatBoostRemoved(unittest.TestCase):
                     username = '', 
                     first_name = '', 
                     last_name = '', 
-                    is_forum = True, ),
+                    is_forum = True, 
+                    is_direct_messages = True, ),
                 boost_id = '',
                 remove_date = 56,
                 source = None
@@ -90,7 +91,8 @@ class TestChatBoostRemoved(unittest.TestCase):
                     username = '', 
                     first_name = '', 
                     last_name = '', 
-                    is_forum = True, ),
+                    is_forum = True, 
+                    is_direct_messages = True, ),
                 boost_id = '',
                 remove_date = 56,
                 source = None,
