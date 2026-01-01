@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -44,7 +44,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 </details>
 """  # noqa: E501
-
 
 import datetime
 from dateutil.parser import parse
@@ -124,7 +123,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'OpenAPI-Generator/9.1.0/python'
+        self.user_agent = 'OpenAPI-Generator/9.3.0/python'
         self.client_side_validation = configuration.client_side_validation
 
     async def __aenter__(self):

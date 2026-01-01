@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 import unittest
 
 from tele_rest.models.forward_message_request import ForwardMessageRequest
@@ -71,10 +70,17 @@ class TestForwardMessageRequest(unittest.TestCase):
             return ForwardMessageRequest(
                 chat_id = None,
                 message_thread_id = 56,
+                direct_messages_topic_id = 56,
                 from_chat_id = None,
                 video_start_timestamp = 56,
                 disable_notification = True,
                 protect_content = True,
+                message_effect_id = '',
+                suggested_post_parameters = tele_rest.models.suggested_post_parameters.SuggestedPostParameters(
+                    price = tele_rest.models.suggested_post_price.SuggestedPostPrice(
+                        currency = 'XTR', 
+                        amount = 56, ), 
+                    send_date = 56, ),
                 message_id = 56
             )
         else:

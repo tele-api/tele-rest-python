@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -73,7 +72,8 @@ class User(BaseModel):
     supports_inline_queries: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the bot supports inline queries. Returned only in [getMe](https://core.telegram.org/bots/api/#getme).")
     can_connect_to_business: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the bot can be connected to a Telegram Business account to receive its messages. Returned only in [getMe](https://core.telegram.org/bots/api/#getme).")
     has_main_web_app: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the bot has a main Web App. Returned only in [getMe](https://core.telegram.org/bots/api/#getme).")
-    __properties: ClassVar[List[str]] = ["id", "is_bot", "first_name", "last_name", "username", "language_code", "is_premium", "added_to_attachment_menu", "can_join_groups", "can_read_all_group_messages", "supports_inline_queries", "can_connect_to_business", "has_main_web_app"]
+    has_topics_enabled: Optional[StrictBool] = Field(default=None, description="*Optional*. *True*, if the bot has forum topic mode enabled in private chats. Returned only in [getMe](https://core.telegram.org/bots/api/#getme).")
+    __properties: ClassVar[List[str]] = ["id", "is_bot", "first_name", "last_name", "username", "language_code", "is_premium", "added_to_attachment_menu", "can_join_groups", "can_read_all_group_messages", "supports_inline_queries", "can_connect_to_business", "has_main_web_app", "has_topics_enabled"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -143,7 +143,8 @@ class User(BaseModel):
             "can_read_all_group_messages": obj.get("can_read_all_group_messages"),
             "supports_inline_queries": obj.get("supports_inline_queries"),
             "can_connect_to_business": obj.get("can_connect_to_business"),
-            "has_main_web_app": obj.get("has_main_web_app")
+            "has_main_web_app": obj.get("has_main_web_app"),
+            "has_topics_enabled": obj.get("has_topics_enabled")
         })
         return _obj
 

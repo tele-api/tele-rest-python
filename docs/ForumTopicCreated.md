@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the topic | 
 **icon_color** | **int** | Color of the topic icon in RGB format | 
 **icon_custom_emoji_id** | **str** | *Optional*. Unique identifier of the custom emoji shown as the topic icon | [optional] 
+**is_name_implicit** | **bool** | *Optional*. *True*, if the name of the topic wasn&#39;t specified explicitly by its creator and likely needs to be changed by the bot | [optional] [default to True]
 
 ## Example
 

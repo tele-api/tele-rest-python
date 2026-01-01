@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -69,8 +68,8 @@ class InlineKeyboardButton(BaseModel):
     callback_data: Optional[StrictStr] = Field(default=None, description="*Optional*. Data to be sent in a [callback query](https://core.telegram.org/bots/api/#callbackquery) to the bot when the button is pressed, 1-64 bytes")
     web_app: Optional[WebAppInfo] = None
     login_url: Optional[LoginUrl] = None
-    switch_inline_query: Optional[StrictStr] = Field(default=None, description="*Optional*. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Not supported for messages sent on behalf of a Telegram Business account.")
-    switch_inline_query_current_chat: Optional[StrictStr] = Field(default=None, description="*Optional*. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.    This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options. Not supported in channels and for messages sent on behalf of a Telegram Business account.")
+    switch_inline_query: Optional[StrictStr] = Field(default=None, description="*Optional*. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Not supported for messages sent in channel direct messages chats and on behalf of a Telegram Business account.")
+    switch_inline_query_current_chat: Optional[StrictStr] = Field(default=None, description="*Optional*. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.    This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options. Not supported in channels and for messages sent in channel direct messages chats and on behalf of a Telegram Business account.")
     switch_inline_query_chosen_chat: Optional[SwitchInlineQueryChosenChat] = None
     copy_text: Optional[CopyTextButton] = None
     callback_game: Optional[Any] = None

@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -64,7 +63,8 @@ class AcceptedGiftTypes(BaseModel):
     limited_gifts: StrictBool = Field(description="*True*, if limited regular gifts are accepted")
     unique_gifts: StrictBool = Field(description="*True*, if unique gifts or gifts that can be upgraded to unique for free are accepted")
     premium_subscription: StrictBool = Field(description="*True*, if a Telegram Premium subscription is accepted")
-    __properties: ClassVar[List[str]] = ["unlimited_gifts", "limited_gifts", "unique_gifts", "premium_subscription"]
+    gifts_from_channels: StrictBool = Field(description="*True*, if transfers of unique gifts from channels are accepted")
+    __properties: ClassVar[List[str]] = ["unlimited_gifts", "limited_gifts", "unique_gifts", "premium_subscription", "gifts_from_channels"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -125,7 +125,8 @@ class AcceptedGiftTypes(BaseModel):
             "unlimited_gifts": obj.get("unlimited_gifts"),
             "limited_gifts": obj.get("limited_gifts"),
             "unique_gifts": obj.get("unique_gifts"),
-            "premium_subscription": obj.get("premium_subscription")
+            "premium_subscription": obj.get("premium_subscription"),
+            "gifts_from_channels": obj.get("gifts_from_channels")
         })
         return _obj
 

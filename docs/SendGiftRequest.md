@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_id** | **int** | Required if *chat\\_id* is not specified. Unique identifier of the target user who will receive the gift. | [optional] 
 **chat_id** | [**SendGiftRequestChatId**](SendGiftRequestChatId.md) |  | [optional] 
-**gift_id** | **str** | Identifier of the gift | 
+**gift_id** | **str** | Identifier of the gift; limited gifts can&#39;t be sent to channel chats | 
 **pay_for_upgrade** | **bool** | Pass *True* to pay for the gift upgrade from the bot&#39;s balance, thereby making the upgrade free for the receiver | [optional] 
 **text** | **str** | Text that will be shown along with the gift; 0-128 characters | [optional] 
 **text_parse_mode** | **str** | Mode for parsing entities in the text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom\\_emoji” are ignored. | [optional] 

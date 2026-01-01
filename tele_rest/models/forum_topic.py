@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,13 +45,12 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -64,7 +63,8 @@ class ForumTopic(BaseModel):
     name: StrictStr = Field(description="Name of the topic")
     icon_color: StrictInt = Field(description="Color of the topic icon in RGB format")
     icon_custom_emoji_id: Optional[StrictStr] = Field(default=None, description="*Optional*. Unique identifier of the custom emoji shown as the topic icon")
-    __properties: ClassVar[List[str]] = ["message_thread_id", "name", "icon_color", "icon_custom_emoji_id"]
+    is_name_implicit: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the name of the topic wasn't specified explicitly by its creator and likely needs to be changed by the bot")
+    __properties: ClassVar[List[str]] = ["message_thread_id", "name", "icon_color", "icon_custom_emoji_id", "is_name_implicit"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -125,7 +125,8 @@ class ForumTopic(BaseModel):
             "message_thread_id": obj.get("message_thread_id"),
             "name": obj.get("name"),
             "icon_color": obj.get("icon_color"),
-            "icon_custom_emoji_id": obj.get("icon_custom_emoji_id")
+            "icon_custom_emoji_id": obj.get("icon_custom_emoji_id"),
+            "is_name_implicit": obj.get("is_name_implicit") if obj.get("is_name_implicit") is not None else True
         })
         return _obj
 

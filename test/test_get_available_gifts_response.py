@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -44,7 +44,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 </details>
 """  # noqa: E501
-
 
 import unittest
 
@@ -105,8 +104,26 @@ class TestGetAvailableGiftsResponse(unittest.TestCase):
                                 file_size = 56, ), 
                             star_count = 56, 
                             upgrade_star_count = 56, 
+                            is_premium = True, 
+                            has_colors = True, 
                             total_count = 56, 
-                            remaining_count = 56, )
+                            remaining_count = 56, 
+                            personal_total_count = 56, 
+                            personal_remaining_count = 56, 
+                            background = tele_rest.models.gift_background.GiftBackground(
+                                center_color = 56, 
+                                edge_color = 56, 
+                                text_color = 56, ), 
+                            unique_gift_variant_count = 56, 
+                            publisher_chat = tele_rest.models.chat.Chat(
+                                id = 56, 
+                                type = 'private', 
+                                title = '', 
+                                username = '', 
+                                first_name = '', 
+                                last_name = '', 
+                                is_forum = True, 
+                                is_direct_messages = True, ), )
                         ], )
             )
         else:
@@ -147,8 +164,26 @@ class TestGetAvailableGiftsResponse(unittest.TestCase):
                                 file_size = 56, ), 
                             star_count = 56, 
                             upgrade_star_count = 56, 
+                            is_premium = True, 
+                            has_colors = True, 
                             total_count = 56, 
-                            remaining_count = 56, )
+                            remaining_count = 56, 
+                            personal_total_count = 56, 
+                            personal_remaining_count = 56, 
+                            background = tele_rest.models.gift_background.GiftBackground(
+                                center_color = 56, 
+                                edge_color = 56, 
+                                text_color = 56, ), 
+                            unique_gift_variant_count = 56, 
+                            publisher_chat = tele_rest.models.chat.Chat(
+                                id = 56, 
+                                type = 'private', 
+                                title = '', 
+                                username = '', 
+                                first_name = '', 
+                                last_name = '', 
+                                is_forum = True, 
+                                is_direct_messages = True, ), )
                         ], ),
         )
         """

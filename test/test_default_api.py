@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -44,7 +44,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 </details>
 """  # noqa: E501
-
 
 import unittest
 
@@ -106,6 +105,13 @@ class TestDefaultApi(unittest.IsolatedAsyncioTestCase):
         """Test case for post_approve_chat_join_request
 
         approveChatJoinRequest
+        """
+        pass
+
+    async def test_post_approve_suggested_post(self) -> None:
+        """Test case for post_approve_suggested_post
+
+        approveSuggestedPost
         """
         pass
 
@@ -204,6 +210,13 @@ class TestDefaultApi(unittest.IsolatedAsyncioTestCase):
         """Test case for post_decline_chat_join_request
 
         declineChatJoinRequest
+        """
+        pass
+
+    async def test_post_decline_suggested_post(self) -> None:
+        """Test case for post_decline_suggested_post
+
+        declineSuggestedPost
         """
         pass
 
@@ -431,6 +444,13 @@ class TestDefaultApi(unittest.IsolatedAsyncioTestCase):
         """
         pass
 
+    async def test_post_get_chat_gifts(self) -> None:
+        """Test case for post_get_chat_gifts
+
+        getChatGifts
+        """
+        pass
+
     async def test_post_get_chat_member(self) -> None:
         """Test case for post_get_chat_member
 
@@ -557,6 +577,13 @@ class TestDefaultApi(unittest.IsolatedAsyncioTestCase):
         """
         pass
 
+    async def test_post_get_user_gifts(self) -> None:
+        """Test case for post_get_user_gifts
+
+        getUserGifts
+        """
+        pass
+
     async def test_post_get_user_profile_photos(self) -> None:
         """Test case for post_get_user_profile_photos
 
@@ -676,6 +703,13 @@ class TestDefaultApi(unittest.IsolatedAsyncioTestCase):
         """
         pass
 
+    async def test_post_repost_story(self) -> None:
+        """Test case for post_repost_story
+
+        repostStory
+        """
+        pass
+
     async def test_post_restrict_chat_member(self) -> None:
         """Test case for post_restrict_chat_member
 
@@ -785,6 +819,13 @@ class TestDefaultApi(unittest.IsolatedAsyncioTestCase):
         """Test case for post_send_message
 
         sendMessage
+        """
+        pass
+
+    async def test_post_send_message_draft(self) -> None:
+        """Test case for post_send_message_draft
+
+        sendMessageDraft
         """
         pass
 

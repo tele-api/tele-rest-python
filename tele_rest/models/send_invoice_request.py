@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -58,6 +57,7 @@ from tele_rest.models.inline_keyboard_markup import InlineKeyboardMarkup
 from tele_rest.models.labeled_price import LabeledPrice
 from tele_rest.models.reply_parameters import ReplyParameters
 from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.suggested_post_parameters import SuggestedPostParameters
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -66,7 +66,8 @@ class SendInvoiceRequest(BaseModel):
     Request parameters for sendInvoice
     """ # noqa: E501
     chat_id: SendMessageRequestChatId
-    message_thread_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")
+    message_thread_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only")
+    direct_messages_topic_id: Optional[StrictInt] = Field(default=None, description="Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat")
     title: Annotated[str, Field(min_length=1, strict=True, max_length=32)] = Field(description="Product name, 1-32 characters")
     description: Annotated[str, Field(min_length=1, strict=True, max_length=255)] = Field(description="Product description, 1-255 characters")
     payload: StrictStr = Field(description="Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes.")
@@ -92,9 +93,10 @@ class SendInvoiceRequest(BaseModel):
     protect_content: Optional[StrictBool] = Field(default=None, description="Protects the contents of the sent message from forwarding and saving")
     allow_paid_broadcast: Optional[StrictBool] = Field(default=None, description="Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance")
     message_effect_id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the message effect to be added to the message; for private chats only")
+    suggested_post_parameters: Optional[SuggestedPostParameters] = None
     reply_parameters: Optional[ReplyParameters] = None
     reply_markup: Optional[InlineKeyboardMarkup] = None
-    __properties: ClassVar[List[str]] = ["chat_id", "message_thread_id", "title", "description", "payload", "provider_token", "currency", "prices", "max_tip_amount", "suggested_tip_amounts", "start_parameter", "provider_data", "photo_url", "photo_size", "photo_width", "photo_height", "need_name", "need_phone_number", "need_email", "need_shipping_address", "send_phone_number_to_provider", "send_email_to_provider", "is_flexible", "disable_notification", "protect_content", "allow_paid_broadcast", "message_effect_id", "reply_parameters", "reply_markup"]
+    __properties: ClassVar[List[str]] = ["chat_id", "message_thread_id", "direct_messages_topic_id", "title", "description", "payload", "provider_token", "currency", "prices", "max_tip_amount", "suggested_tip_amounts", "start_parameter", "provider_data", "photo_url", "photo_size", "photo_width", "photo_height", "need_name", "need_phone_number", "need_email", "need_shipping_address", "send_phone_number_to_provider", "send_email_to_provider", "is_flexible", "disable_notification", "protect_content", "allow_paid_broadcast", "message_effect_id", "suggested_post_parameters", "reply_parameters", "reply_markup"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -145,6 +147,9 @@ class SendInvoiceRequest(BaseModel):
                 if _item_prices:
                     _items.append(_item_prices.to_dict())
             _dict['prices'] = _items
+        # override the default output from pydantic by calling `to_dict()` of suggested_post_parameters
+        if self.suggested_post_parameters:
+            _dict['suggested_post_parameters'] = self.suggested_post_parameters.to_dict()
         # override the default output from pydantic by calling `to_dict()` of reply_parameters
         if self.reply_parameters:
             _dict['reply_parameters'] = self.reply_parameters.to_dict()
@@ -170,6 +175,7 @@ class SendInvoiceRequest(BaseModel):
         _obj = cls.model_validate({
             "chat_id": SendMessageRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "message_thread_id": obj.get("message_thread_id"),
+            "direct_messages_topic_id": obj.get("direct_messages_topic_id"),
             "title": obj.get("title"),
             "description": obj.get("description"),
             "payload": obj.get("payload"),
@@ -195,6 +201,7 @@ class SendInvoiceRequest(BaseModel):
             "protect_content": obj.get("protect_content"),
             "allow_paid_broadcast": obj.get("allow_paid_broadcast"),
             "message_effect_id": obj.get("message_effect_id"),
+            "suggested_post_parameters": SuggestedPostParameters.from_dict(obj["suggested_post_parameters"]) if obj.get("suggested_post_parameters") is not None else None,
             "reply_parameters": ReplyParameters.from_dict(obj["reply_parameters"]) if obj.get("reply_parameters") is not None else None,
             "reply_markup": InlineKeyboardMarkup.from_dict(obj["reply_markup"]) if obj.get("reply_markup") is not None else None
         })

@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **can_edit_messages** | **bool** | *Optional*. *True*, if the administrator can edit messages of other users and can pin messages; for channels only | [optional] 
 **can_pin_messages** | **bool** | *True*, if the user is allowed to pin messages | 
 **can_manage_topics** | **bool** | *True*, if the user is allowed to create forum topics | 
+**can_manage_direct_messages** | **bool** | *Optional*. *True*, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only | [optional] 
 **until_date** | **int** | Date when restrictions will be lifted for this user; Unix time. If 0, then the user is banned forever | 
 **is_member** | **bool** | *True*, if the user is a member of the chat at the moment of the request | 
 **can_send_messages** | **bool** | *True*, if the user is allowed to send text messages, contacts, giveaways, giveaway winners, invoices, locations and venues | 
