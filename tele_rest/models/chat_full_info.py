@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -64,6 +63,8 @@ from tele_rest.models.chat_permissions import ChatPermissions
 from tele_rest.models.chat_photo import ChatPhoto
 from tele_rest.models.message import Message
 from tele_rest.models.reaction_type import ReactionType
+from tele_rest.models.unique_gift_colors import UniqueGiftColors
+from tele_rest.models.user_rating import UserRating
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -78,6 +79,7 @@ class ChatFullInfo(BaseModel):
     first_name: Optional[StrictStr] = Field(default=None, description="*Optional*. First name of the other party in a private chat")
     last_name: Optional[StrictStr] = Field(default=None, description="*Optional*. Last name of the other party in a private chat")
     is_forum: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the supergroup chat is a forum (has [topics](https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups) enabled)")
+    is_direct_messages: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the chat is the direct messages chat of a channel")
     accent_color_id: StrictInt = Field(description="Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header, and link preview. See [accent colors](https://core.telegram.org/bots/api/#accent-colors) for more details.")
     max_reaction_count: StrictInt = Field(description="The maximum number of reactions that can be set on a message in the chat")
     photo: Optional[ChatPhoto] = None
@@ -87,6 +89,7 @@ class ChatFullInfo(BaseModel):
     business_location: Optional[BusinessLocation] = None
     business_opening_hours: Optional[BusinessOpeningHours] = None
     personal_chat: Optional[Chat] = None
+    parent_chat: Optional[Chat] = None
     available_reactions: Optional[List[ReactionType]] = Field(default=None, description="*Optional*. List of available reactions allowed in the chat. If omitted, then all [emoji reactions](https://core.telegram.org/bots/api/#reactiontypeemoji) are allowed.")
     background_custom_emoji_id: Optional[StrictStr] = Field(default=None, description="*Optional*. Custom emoji identifier of the emoji chosen by the chat for the reply header and link preview background")
     profile_accent_color_id: Optional[StrictInt] = Field(default=None, description="*Optional*. Identifier of the accent color for the chat's profile background. See [profile accent colors](https://core.telegram.org/bots/api/#profile-accent-colors) for more details.")
@@ -116,7 +119,10 @@ class ChatFullInfo(BaseModel):
     custom_emoji_sticker_set_name: Optional[StrictStr] = Field(default=None, description="*Optional*. For supergroups, the name of the group's custom emoji sticker set. Custom emoji from this set can be used by all users and bots in the group.")
     linked_chat_id: Optional[StrictInt] = Field(default=None, description="*Optional*. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier.")
     location: Optional[ChatLocation] = None
-    __properties: ClassVar[List[str]] = ["id", "type", "title", "username", "first_name", "last_name", "is_forum", "accent_color_id", "max_reaction_count", "photo", "active_usernames", "birthdate", "business_intro", "business_location", "business_opening_hours", "personal_chat", "available_reactions", "background_custom_emoji_id", "profile_accent_color_id", "profile_background_custom_emoji_id", "emoji_status_custom_emoji_id", "emoji_status_expiration_date", "bio", "has_private_forwards", "has_restricted_voice_and_video_messages", "join_to_send_messages", "join_by_request", "description", "invite_link", "pinned_message", "permissions", "accepted_gift_types", "can_send_paid_media", "slow_mode_delay", "unrestrict_boost_count", "message_auto_delete_time", "has_aggressive_anti_spam_enabled", "has_hidden_members", "has_protected_content", "has_visible_history", "sticker_set_name", "can_set_sticker_set", "custom_emoji_sticker_set_name", "linked_chat_id", "location"]
+    rating: Optional[UserRating] = None
+    unique_gift_colors: Optional[UniqueGiftColors] = None
+    paid_message_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The number of Telegram Stars a general user have to pay to send a message to the chat")
+    __properties: ClassVar[List[str]] = ["id", "type", "title", "username", "first_name", "last_name", "is_forum", "is_direct_messages", "accent_color_id", "max_reaction_count", "photo", "active_usernames", "birthdate", "business_intro", "business_location", "business_opening_hours", "personal_chat", "parent_chat", "available_reactions", "background_custom_emoji_id", "profile_accent_color_id", "profile_background_custom_emoji_id", "emoji_status_custom_emoji_id", "emoji_status_expiration_date", "bio", "has_private_forwards", "has_restricted_voice_and_video_messages", "join_to_send_messages", "join_by_request", "description", "invite_link", "pinned_message", "permissions", "accepted_gift_types", "can_send_paid_media", "slow_mode_delay", "unrestrict_boost_count", "message_auto_delete_time", "has_aggressive_anti_spam_enabled", "has_hidden_members", "has_protected_content", "has_visible_history", "sticker_set_name", "can_set_sticker_set", "custom_emoji_sticker_set_name", "linked_chat_id", "location", "rating", "unique_gift_colors", "paid_message_star_count"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -182,6 +188,9 @@ class ChatFullInfo(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of personal_chat
         if self.personal_chat:
             _dict['personal_chat'] = self.personal_chat.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of parent_chat
+        if self.parent_chat:
+            _dict['parent_chat'] = self.parent_chat.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in available_reactions (list)
         _items = []
         if self.available_reactions:
@@ -201,6 +210,12 @@ class ChatFullInfo(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of location
         if self.location:
             _dict['location'] = self.location.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of rating
+        if self.rating:
+            _dict['rating'] = self.rating.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of unique_gift_colors
+        if self.unique_gift_colors:
+            _dict['unique_gift_colors'] = self.unique_gift_colors.to_dict()
         return _dict
 
     @classmethod
@@ -225,6 +240,7 @@ class ChatFullInfo(BaseModel):
             "first_name": obj.get("first_name"),
             "last_name": obj.get("last_name"),
             "is_forum": obj.get("is_forum") if obj.get("is_forum") is not None else True,
+            "is_direct_messages": obj.get("is_direct_messages") if obj.get("is_direct_messages") is not None else True,
             "accent_color_id": obj.get("accent_color_id"),
             "max_reaction_count": obj.get("max_reaction_count"),
             "photo": ChatPhoto.from_dict(obj["photo"]) if obj.get("photo") is not None else None,
@@ -234,6 +250,7 @@ class ChatFullInfo(BaseModel):
             "business_location": BusinessLocation.from_dict(obj["business_location"]) if obj.get("business_location") is not None else None,
             "business_opening_hours": BusinessOpeningHours.from_dict(obj["business_opening_hours"]) if obj.get("business_opening_hours") is not None else None,
             "personal_chat": Chat.from_dict(obj["personal_chat"]) if obj.get("personal_chat") is not None else None,
+            "parent_chat": Chat.from_dict(obj["parent_chat"]) if obj.get("parent_chat") is not None else None,
             "available_reactions": [ReactionType.from_dict(_item) for _item in obj["available_reactions"]] if obj.get("available_reactions") is not None else None,
             "background_custom_emoji_id": obj.get("background_custom_emoji_id"),
             "profile_accent_color_id": obj.get("profile_accent_color_id"),
@@ -262,7 +279,10 @@ class ChatFullInfo(BaseModel):
             "can_set_sticker_set": obj.get("can_set_sticker_set") if obj.get("can_set_sticker_set") is not None else True,
             "custom_emoji_sticker_set_name": obj.get("custom_emoji_sticker_set_name"),
             "linked_chat_id": obj.get("linked_chat_id"),
-            "location": ChatLocation.from_dict(obj["location"]) if obj.get("location") is not None else None
+            "location": ChatLocation.from_dict(obj["location"]) if obj.get("location") is not None else None,
+            "rating": UserRating.from_dict(obj["rating"]) if obj.get("rating") is not None else None,
+            "unique_gift_colors": UniqueGiftColors.from_dict(obj["unique_gift_colors"]) if obj.get("unique_gift_colors") is not None else None,
+            "paid_message_star_count": obj.get("paid_message_star_count")
         })
         return _obj
 

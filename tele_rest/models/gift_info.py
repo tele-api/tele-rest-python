@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -65,12 +64,14 @@ class GiftInfo(BaseModel):
     gift: Gift
     owned_gift_id: Optional[StrictStr] = Field(default=None, description="*Optional*. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts")
     convert_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that can be claimed by the receiver by converting the gift; omitted if conversion to Telegram Stars is impossible")
-    prepaid_upgrade_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that were prepaid by the sender for the ability to upgrade the gift")
+    prepaid_upgrade_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that were prepaid for the ability to upgrade the gift")
+    is_upgrade_separate: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift's upgrade was purchased after the gift was sent")
     can_be_upgraded: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift can be upgraded to a unique gift")
     text: Optional[StrictStr] = Field(default=None, description="*Optional*. Text of the message that was added to the gift")
     entities: Optional[List[MessageEntity]] = Field(default=None, description="*Optional*. Special entities that appear in the text")
     is_private: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them")
-    __properties: ClassVar[List[str]] = ["gift", "owned_gift_id", "convert_star_count", "prepaid_upgrade_star_count", "can_be_upgraded", "text", "entities", "is_private"]
+    unique_gift_number: Optional[StrictInt] = Field(default=None, description="*Optional*. Unique number reserved for this gift when upgraded. See the *number* field in [UniqueGift](https://core.telegram.org/bots/api/#uniquegift)")
+    __properties: ClassVar[List[str]] = ["gift", "owned_gift_id", "convert_star_count", "prepaid_upgrade_star_count", "is_upgrade_separate", "can_be_upgraded", "text", "entities", "is_private", "unique_gift_number"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -142,10 +143,12 @@ class GiftInfo(BaseModel):
             "owned_gift_id": obj.get("owned_gift_id"),
             "convert_star_count": obj.get("convert_star_count"),
             "prepaid_upgrade_star_count": obj.get("prepaid_upgrade_star_count"),
+            "is_upgrade_separate": obj.get("is_upgrade_separate") if obj.get("is_upgrade_separate") is not None else True,
             "can_be_upgraded": obj.get("can_be_upgraded") if obj.get("can_be_upgraded") is not None else True,
             "text": obj.get("text"),
             "entities": [MessageEntity.from_dict(_item) for _item in obj["entities"]] if obj.get("entities") is not None else None,
-            "is_private": obj.get("is_private") if obj.get("is_private") is not None else True
+            "is_private": obj.get("is_private") if obj.get("is_private") is not None else True,
+            "unique_gift_number": obj.get("unique_gift_number")
         })
         return _obj
 

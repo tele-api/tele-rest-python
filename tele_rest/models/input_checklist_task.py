@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -64,7 +63,7 @@ class InputChecklistTask(BaseModel):
     """ # noqa: E501
     id: StrictInt = Field(description="Unique identifier of the task; must be positive and unique among all task identifiers currently present in the checklist")
     text: Annotated[str, Field(min_length=1, strict=True, max_length=100)] = Field(description="Text of the task; 1-100 characters after entities parsing")
-    parse_mode: Optional[StrictStr] = Field(default=None, description="Optional. Mode for parsing entities in the text. See [formatting options](https://core.telegram.org/bots/api#formatting-options) for more details.")
+    parse_mode: Optional[StrictStr] = Field(default=None, description="*Optional*. Mode for parsing entities in the text. See [formatting options](https://core.telegram.org/bots/api#formatting-options) for more details.")
     text_entities: Optional[List[MessageEntity]] = Field(default=None, description="*Optional*. List of special entities that appear in the text, which can be specified instead of parse\\_mode. Currently, only *bold*, *italic*, *underline*, *strikethrough*, *spoiler*, and *custom\\_emoji* entities are allowed.")
     __properties: ClassVar[List[str]] = ["id", "text", "parse_mode", "text_entities"]
 

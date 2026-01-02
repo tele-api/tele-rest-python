@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 import unittest
 
 from tele_rest.models.owned_gift_unique import OwnedGiftUnique
@@ -71,6 +70,7 @@ class TestOwnedGiftUnique(unittest.TestCase):
             return OwnedGiftUnique(
                 type = 'unique',
                 gift = tele_rest.models.unique_gift.UniqueGift(
+                    gift_id = '', 
                     base_name = '', 
                     name = '', 
                     number = 56, 
@@ -129,7 +129,29 @@ class TestOwnedGiftUnique(unittest.TestCase):
                             edge_color = 56, 
                             symbol_color = 56, 
                             text_color = 56, ), 
-                        rarity_per_mille = 56, ), ),
+                        rarity_per_mille = 56, ), 
+                    is_premium = True, 
+                    is_from_blockchain = True, 
+                    colors = tele_rest.models.unique_gift_colors.UniqueGiftColors(
+                        model_custom_emoji_id = '', 
+                        symbol_custom_emoji_id = '', 
+                        light_theme_main_color = 56, 
+                        light_theme_other_colors = [
+                            56
+                            ], 
+                        dark_theme_main_color = 56, 
+                        dark_theme_other_colors = [
+                            56
+                            ], ), 
+                    publisher_chat = tele_rest.models.chat.Chat(
+                        id = 56, 
+                        type = 'private', 
+                        title = '', 
+                        username = '', 
+                        first_name = '', 
+                        last_name = '', 
+                        is_forum = True, 
+                        is_direct_messages = True, ), ),
                 owned_gift_id = '',
                 sender_user = tele_rest.models.user.User(
                     id = 56, 
@@ -144,7 +166,8 @@ class TestOwnedGiftUnique(unittest.TestCase):
                     can_read_all_group_messages = True, 
                     supports_inline_queries = True, 
                     can_connect_to_business = True, 
-                    has_main_web_app = True, ),
+                    has_main_web_app = True, 
+                    has_topics_enabled = True, ),
                 send_date = 56,
                 is_saved = True,
                 can_be_transferred = True,
@@ -155,6 +178,7 @@ class TestOwnedGiftUnique(unittest.TestCase):
             return OwnedGiftUnique(
                 type = 'unique',
                 gift = tele_rest.models.unique_gift.UniqueGift(
+                    gift_id = '', 
                     base_name = '', 
                     name = '', 
                     number = 56, 
@@ -213,7 +237,29 @@ class TestOwnedGiftUnique(unittest.TestCase):
                             edge_color = 56, 
                             symbol_color = 56, 
                             text_color = 56, ), 
-                        rarity_per_mille = 56, ), ),
+                        rarity_per_mille = 56, ), 
+                    is_premium = True, 
+                    is_from_blockchain = True, 
+                    colors = tele_rest.models.unique_gift_colors.UniqueGiftColors(
+                        model_custom_emoji_id = '', 
+                        symbol_custom_emoji_id = '', 
+                        light_theme_main_color = 56, 
+                        light_theme_other_colors = [
+                            56
+                            ], 
+                        dark_theme_main_color = 56, 
+                        dark_theme_other_colors = [
+                            56
+                            ], ), 
+                    publisher_chat = tele_rest.models.chat.Chat(
+                        id = 56, 
+                        type = 'private', 
+                        title = '', 
+                        username = '', 
+                        first_name = '', 
+                        last_name = '', 
+                        is_forum = True, 
+                        is_direct_messages = True, ), ),
                 send_date = 56,
         )
         """

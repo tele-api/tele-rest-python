@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -74,9 +73,11 @@ class OwnedGiftRegular(BaseModel):
     is_saved: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift is displayed on the account's profile page; for gifts received on behalf of business accounts only")
     can_be_upgraded: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift can be upgraded to a unique gift; for gifts received on behalf of business accounts only")
     was_refunded: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift was refunded and isn't available anymore")
-    convert_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that can be claimed by the receiver instead of the gift; omitted if the gift cannot be converted to Telegram Stars")
-    prepaid_upgrade_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that were paid by the sender for the ability to upgrade the gift")
-    __properties: ClassVar[List[str]] = ["type", "gift", "owned_gift_id", "sender_user", "send_date", "text", "entities", "is_private", "is_saved", "can_be_upgraded", "was_refunded", "convert_star_count", "prepaid_upgrade_star_count"]
+    convert_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that can be claimed by the receiver instead of the gift; omitted if the gift cannot be converted to Telegram Stars; for gifts received on behalf of business accounts only")
+    prepaid_upgrade_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that were paid for the ability to upgrade the gift")
+    is_upgrade_separate: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift's upgrade was purchased after the gift was sent; for gifts received on behalf of business accounts only")
+    unique_gift_number: Optional[StrictInt] = Field(default=None, description="*Optional*. Unique number reserved for this gift when upgraded. See the *number* field in [UniqueGift](https://core.telegram.org/bots/api/#uniquegift)")
+    __properties: ClassVar[List[str]] = ["type", "gift", "owned_gift_id", "sender_user", "send_date", "text", "entities", "is_private", "is_saved", "can_be_upgraded", "was_refunded", "convert_star_count", "prepaid_upgrade_star_count", "is_upgrade_separate", "unique_gift_number"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -159,7 +160,9 @@ class OwnedGiftRegular(BaseModel):
             "can_be_upgraded": obj.get("can_be_upgraded") if obj.get("can_be_upgraded") is not None else True,
             "was_refunded": obj.get("was_refunded") if obj.get("was_refunded") is not None else True,
             "convert_star_count": obj.get("convert_star_count"),
-            "prepaid_upgrade_star_count": obj.get("prepaid_upgrade_star_count")
+            "prepaid_upgrade_star_count": obj.get("prepaid_upgrade_star_count"),
+            "is_upgrade_separate": obj.get("is_upgrade_separate") if obj.get("is_upgrade_separate") is not None else True,
+            "unique_gift_number": obj.get("unique_gift_number")
         })
         return _obj
 

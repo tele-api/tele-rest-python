@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -53,7 +52,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -61,7 +60,7 @@ class DeleteForumTopicRequest(BaseModel):
     """
     Request parameters for deleteForumTopic
     """ # noqa: E501
-    chat_id: BotCommandScopeChatChatId
+    chat_id: RestrictChatMemberRequestChatId
     message_thread_id: StrictInt = Field(description="Unique identifier for the target message thread of the forum topic")
     __properties: ClassVar[List[str]] = ["chat_id", "message_thread_id"]
 
@@ -124,7 +123,7 @@ class DeleteForumTopicRequest(BaseModel):
                 raise ValueError("Error due to additional fields (not defined in DeleteForumTopicRequest) in the input: " + _key)
 
         _obj = cls.model_validate({
-            "chat_id": BotCommandScopeChatChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
+            "chat_id": RestrictChatMemberRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "message_thread_id": obj.get("message_thread_id")
         })
         return _obj

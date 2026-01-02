@@ -6,12 +6,17 @@ This object describes a unique gift that was upgraded from a regular gift.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**gift_id** | **str** | Identifier of the regular gift from which the gift was upgraded | 
 **base_name** | **str** | Human-readable name of the regular gift from which this unique gift was upgraded | 
 **name** | **str** | Unique name of the gift. This name can be used in &#x60;https://t.me/nft/...&#x60; links and story areas | 
 **number** | **int** | Unique number of the upgraded gift among gifts upgraded from the same regular gift | 
 **model** | [**UniqueGiftModel**](UniqueGiftModel.md) |  | 
 **symbol** | [**UniqueGiftSymbol**](UniqueGiftSymbol.md) |  | 
 **backdrop** | [**UniqueGiftBackdrop**](UniqueGiftBackdrop.md) |  | 
+**is_premium** | **bool** | *Optional*. *True*, if the original regular gift was exclusively purchaseable by Telegram Premium subscribers | [optional] [default to True]
+**is_from_blockchain** | **bool** | *Optional*. *True*, if the gift is assigned from the TON blockchain and can&#39;t be resold or transferred in Telegram | [optional] [default to True]
+**colors** | [**UniqueGiftColors**](UniqueGiftColors.md) |  | [optional] 
+**publisher_chat** | [**Chat**](Chat.md) |  | [optional] 
 
 ## Example
 

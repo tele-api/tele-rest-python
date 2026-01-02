@@ -8,7 +8,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **business_connection_id** | **str** | Unique identifier of the business connection on behalf of which the message will be sent | [optional] 
 **chat_id** | [**SendPaidMediaRequestChatId**](SendPaidMediaRequestChatId.md) |  | 
-**star_count** | **int** | The number of Telegram Stars that must be paid to buy access to the media; 1-10000 | 
+**message_thread_id** | **int** | Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only | [optional] 
+**direct_messages_topic_id** | **int** | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat | [optional] 
+**star_count** | **int** | The number of Telegram Stars that must be paid to buy access to the media; 1-25000 | 
 **media** | [**List[InputPaidMedia]**](InputPaidMedia.md) | A JSON-serialized array describing the media to be sent; up to 10 items | 
 **payload** | **str** | Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes. | [optional] 
 **caption** | **str** | Media caption, 0-1024 characters after entities parsing | [optional] 
@@ -18,6 +20,7 @@ Name | Type | Description | Notes
 **disable_notification** | **bool** | Sends the message [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound. | [optional] 
 **protect_content** | **bool** | Protects the contents of the sent message from forwarding and saving | [optional] 
 **allow_paid_broadcast** | **bool** | Pass *True* to allow up to 1000 messages per second, ignoring [broadcasting limits](https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once) for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot&#39;s balance | [optional] 
+**suggested_post_parameters** | [**SuggestedPostParameters**](SuggestedPostParameters.md) |  | [optional] 
 **reply_parameters** | [**ReplyParameters**](ReplyParameters.md) |  | [optional] 
 **reply_markup** | [**SendMessageRequestReplyMarkup**](SendMessageRequestReplyMarkup.md) |  | [optional] 
 

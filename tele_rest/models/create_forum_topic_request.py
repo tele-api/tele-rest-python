@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -54,7 +53,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from tele_rest.models.bot_command_scope_chat_chat_id import BotCommandScopeChatChatId
+from tele_rest.models.restrict_chat_member_request_chat_id import RestrictChatMemberRequestChatId
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -62,7 +61,7 @@ class CreateForumTopicRequest(BaseModel):
     """
     Request parameters for createForumTopic
     """ # noqa: E501
-    chat_id: BotCommandScopeChatChatId
+    chat_id: RestrictChatMemberRequestChatId
     name: Annotated[str, Field(min_length=1, strict=True, max_length=128)] = Field(description="Topic name, 1-128 characters")
     icon_color: Optional[StrictInt] = Field(default=None, description="Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)")
     icon_custom_emoji_id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the custom emoji shown as the topic icon. Use [getForumTopicIconStickers](https://core.telegram.org/bots/api/#getforumtopiciconstickers) to get all allowed custom emoji identifiers.")
@@ -137,7 +136,7 @@ class CreateForumTopicRequest(BaseModel):
                 raise ValueError("Error due to additional fields (not defined in CreateForumTopicRequest) in the input: " + _key)
 
         _obj = cls.model_validate({
-            "chat_id": BotCommandScopeChatChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
+            "chat_id": RestrictChatMemberRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "name": obj.get("name"),
             "icon_color": obj.get("icon_color"),
             "icon_custom_emoji_id": obj.get("icon_custom_emoji_id")

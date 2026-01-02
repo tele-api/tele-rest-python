@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -54,7 +53,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
+from tele_rest.models.verify_chat_request_chat_id import VerifyChatRequestChatId
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -62,7 +61,7 @@ class VerifyChatRequest(BaseModel):
     """
     Request parameters for verifyChat
     """ # noqa: E501
-    chat_id: SendMessageRequestChatId
+    chat_id: VerifyChatRequestChatId
     custom_description: Optional[Annotated[str, Field(min_length=0, strict=True, max_length=70)]] = Field(default=None, description="Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.")
     __properties: ClassVar[List[str]] = ["chat_id", "custom_description"]
 
@@ -125,7 +124,7 @@ class VerifyChatRequest(BaseModel):
                 raise ValueError("Error due to additional fields (not defined in VerifyChatRequest) in the input: " + _key)
 
         _obj = cls.model_validate({
-            "chat_id": SendMessageRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
+            "chat_id": VerifyChatRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "custom_description": obj.get("custom_description")
         })
         return _obj

@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -65,7 +64,7 @@ class SendGiftRequest(BaseModel):
     """ # noqa: E501
     user_id: Optional[StrictInt] = Field(default=None, description="Required if *chat\\_id* is not specified. Unique identifier of the target user who will receive the gift.")
     chat_id: Optional[SendGiftRequestChatId] = None
-    gift_id: StrictStr = Field(description="Identifier of the gift")
+    gift_id: StrictStr = Field(description="Identifier of the gift; limited gifts can't be sent to channel chats")
     pay_for_upgrade: Optional[StrictBool] = Field(default=None, description="Pass *True* to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver")
     text: Optional[Annotated[str, Field(min_length=0, strict=True, max_length=128)]] = Field(default=None, description="Text that will be shown along with the gift; 0-128 characters")
     text_parse_mode: Optional[StrictStr] = Field(default=None, description="Mode for parsing entities in the text. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom\\_emoji” are ignored.")

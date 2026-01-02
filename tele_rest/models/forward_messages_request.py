@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -63,12 +62,13 @@ class ForwardMessagesRequest(BaseModel):
     Request parameters for forwardMessages
     """ # noqa: E501
     chat_id: SendMessageRequestChatId
-    message_thread_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")
+    message_thread_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only")
+    direct_messages_topic_id: Optional[StrictInt] = Field(default=None, description="Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat")
     from_chat_id: ForwardMessagesRequestFromChatId
     message_ids: List[StrictInt] = Field(description="A JSON-serialized list of 1-100 identifiers of messages in the chat *from\\_chat\\_id* to forward. The identifiers must be specified in a strictly increasing order.")
     disable_notification: Optional[StrictBool] = Field(default=None, description="Sends the messages [silently](https://telegram.org/blog/channels-2-0#silent-messages). Users will receive a notification with no sound.")
     protect_content: Optional[StrictBool] = Field(default=None, description="Protects the contents of the forwarded messages from forwarding and saving")
-    __properties: ClassVar[List[str]] = ["chat_id", "message_thread_id", "from_chat_id", "message_ids", "disable_notification", "protect_content"]
+    __properties: ClassVar[List[str]] = ["chat_id", "message_thread_id", "direct_messages_topic_id", "from_chat_id", "message_ids", "disable_notification", "protect_content"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -134,6 +134,7 @@ class ForwardMessagesRequest(BaseModel):
         _obj = cls.model_validate({
             "chat_id": SendMessageRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "message_thread_id": obj.get("message_thread_id"),
+            "direct_messages_topic_id": obj.get("direct_messages_topic_id"),
             "from_chat_id": ForwardMessagesRequestFromChatId.from_dict(obj["from_chat_id"]) if obj.get("from_chat_id") is not None else None,
             "message_ids": obj.get("message_ids"),
             "disable_notification": obj.get("disable_notification"),

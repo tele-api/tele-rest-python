@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **supports_inline_queries** | **bool** | *Optional*. *True*, if the bot supports inline queries. Returned only in [getMe](https://core.telegram.org/bots/api/#getme). | [optional] 
 **can_connect_to_business** | **bool** | *Optional*. *True*, if the bot can be connected to a Telegram Business account to receive its messages. Returned only in [getMe](https://core.telegram.org/bots/api/#getme). | [optional] 
 **has_main_web_app** | **bool** | *Optional*. *True*, if the bot has a main Web App. Returned only in [getMe](https://core.telegram.org/bots/api/#getme). | [optional] 
+**has_topics_enabled** | **bool** | *Optional*. *True*, if the bot has forum topic mode enabled in private chats. Returned only in [getMe](https://core.telegram.org/bots/api/#getme). | [optional] 
 
 ## Example
 

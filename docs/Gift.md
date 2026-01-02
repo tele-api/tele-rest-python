@@ -10,8 +10,15 @@ Name | Type | Description | Notes
 **sticker** | [**Sticker**](Sticker.md) |  | 
 **star_count** | **int** | The number of Telegram Stars that must be paid to send the sticker | 
 **upgrade_star_count** | **int** | *Optional*. The number of Telegram Stars that must be paid to upgrade the gift to a unique one | [optional] 
-**total_count** | **int** | *Optional*. The total number of the gifts of this type that can be sent; for limited gifts only | [optional] 
-**remaining_count** | **int** | *Optional*. The number of remaining gifts of this type that can be sent; for limited gifts only | [optional] 
+**is_premium** | **bool** | *Optional*. *True*, if the gift can only be purchased by Telegram Premium subscribers | [optional] [default to True]
+**has_colors** | **bool** | *Optional*. *True*, if the gift can be used (after being upgraded) to customize a user&#39;s appearance | [optional] [default to True]
+**total_count** | **int** | *Optional*. The total number of gifts of this type that can be sent by all users; for limited gifts only | [optional] 
+**remaining_count** | **int** | *Optional*. The number of remaining gifts of this type that can be sent by all users; for limited gifts only | [optional] 
+**personal_total_count** | **int** | *Optional*. The total number of gifts of this type that can be sent by the bot; for limited gifts only | [optional] 
+**personal_remaining_count** | **int** | *Optional*. The number of remaining gifts of this type that can be sent by the bot; for limited gifts only | [optional] 
+**background** | [**GiftBackground**](GiftBackground.md) |  | [optional] 
+**unique_gift_variant_count** | **int** | *Optional*. The total number of different unique gifts that can be obtained by upgrading the gift | [optional] 
+**publisher_chat** | [**Chat**](Chat.md) |  | [optional] 
 
 ## Example
 

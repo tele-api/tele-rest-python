@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -53,6 +52,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from tele_rest.models.chat import Chat
 from tele_rest.models.message_entity import MessageEntity
 from tele_rest.models.user import User
 from typing import Optional, Set
@@ -66,8 +66,9 @@ class ChecklistTask(BaseModel):
     text: StrictStr = Field(description="Text of the task")
     text_entities: Optional[List[MessageEntity]] = Field(default=None, description="*Optional*. Special entities that appear in the task text")
     completed_by_user: Optional[User] = None
+    completed_by_chat: Optional[Chat] = None
     completion_date: Optional[StrictInt] = Field(default=None, description="*Optional*. Point in time (Unix timestamp) when the task was completed; 0 if the task wasn't completed")
-    __properties: ClassVar[List[str]] = ["id", "text", "text_entities", "completed_by_user", "completion_date"]
+    __properties: ClassVar[List[str]] = ["id", "text", "text_entities", "completed_by_user", "completed_by_chat", "completion_date"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -118,6 +119,9 @@ class ChecklistTask(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of completed_by_user
         if self.completed_by_user:
             _dict['completed_by_user'] = self.completed_by_user.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of completed_by_chat
+        if self.completed_by_chat:
+            _dict['completed_by_chat'] = self.completed_by_chat.to_dict()
         return _dict
 
     @classmethod
@@ -139,6 +143,7 @@ class ChecklistTask(BaseModel):
             "text": obj.get("text"),
             "text_entities": [MessageEntity.from_dict(_item) for _item in obj["text_entities"]] if obj.get("text_entities") is not None else None,
             "completed_by_user": User.from_dict(obj["completed_by_user"]) if obj.get("completed_by_user") is not None else None,
+            "completed_by_chat": Chat.from_dict(obj["completed_by_chat"]) if obj.get("completed_by_chat") is not None else None,
             "completion_date": obj.get("completion_date")
         })
         return _obj

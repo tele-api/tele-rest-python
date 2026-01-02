@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 import unittest
 
 from tele_rest.models.send_location_request import SendLocationRequest
@@ -72,6 +71,7 @@ class TestSendLocationRequest(unittest.TestCase):
                 business_connection_id = '',
                 chat_id = None,
                 message_thread_id = 56,
+                direct_messages_topic_id = 56,
                 latitude = 1.337,
                 longitude = 1.337,
                 horizontal_accuracy = 1.337,
@@ -82,6 +82,11 @@ class TestSendLocationRequest(unittest.TestCase):
                 protect_content = True,
                 allow_paid_broadcast = True,
                 message_effect_id = '',
+                suggested_post_parameters = tele_rest.models.suggested_post_parameters.SuggestedPostParameters(
+                    price = tele_rest.models.suggested_post_price.SuggestedPostPrice(
+                        currency = 'XTR', 
+                        amount = 56, ), 
+                    send_date = 56, ),
                 reply_parameters = tele_rest.models.reply_parameters.ReplyParameters(
                     message_id = 56, 
                     chat_id = null, 
@@ -107,11 +112,13 @@ class TestSendLocationRequest(unittest.TestCase):
                                 can_read_all_group_messages = True, 
                                 supports_inline_queries = True, 
                                 can_connect_to_business = True, 
-                                has_main_web_app = True, ), 
+                                has_main_web_app = True, 
+                                has_topics_enabled = True, ), 
                             language = '', 
                             custom_emoji_id = '', )
                         ], 
-                    quote_position = 56, ),
+                    quote_position = 56, 
+                    checklist_task_id = 56, ),
                 reply_markup = None
             )
         else:

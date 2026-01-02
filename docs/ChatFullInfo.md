@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **first_name** | **str** | *Optional*. First name of the other party in a private chat | [optional] 
 **last_name** | **str** | *Optional*. Last name of the other party in a private chat | [optional] 
 **is_forum** | **bool** | *Optional*. *True*, if the supergroup chat is a forum (has [topics](https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups) enabled) | [optional] [default to True]
+**is_direct_messages** | **bool** | *Optional*. *True*, if the chat is the direct messages chat of a channel | [optional] [default to True]
 **accent_color_id** | **int** | Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header, and link preview. See [accent colors](https://core.telegram.org/bots/api/#accent-colors) for more details. | 
 **max_reaction_count** | **int** | The maximum number of reactions that can be set on a message in the chat | 
 **photo** | [**ChatPhoto**](ChatPhoto.md) |  | [optional] 
@@ -22,6 +23,7 @@ Name | Type | Description | Notes
 **business_location** | [**BusinessLocation**](BusinessLocation.md) |  | [optional] 
 **business_opening_hours** | [**BusinessOpeningHours**](BusinessOpeningHours.md) |  | [optional] 
 **personal_chat** | [**Chat**](Chat.md) |  | [optional] 
+**parent_chat** | [**Chat**](Chat.md) |  | [optional] 
 **available_reactions** | [**List[ReactionType]**](ReactionType.md) | *Optional*. List of available reactions allowed in the chat. If omitted, then all [emoji reactions](https://core.telegram.org/bots/api/#reactiontypeemoji) are allowed. | [optional] 
 **background_custom_emoji_id** | **str** | *Optional*. Custom emoji identifier of the emoji chosen by the chat for the reply header and link preview background | [optional] 
 **profile_accent_color_id** | **int** | *Optional*. Identifier of the accent color for the chat&#39;s profile background. See [profile accent colors](https://core.telegram.org/bots/api/#profile-accent-colors) for more details. | [optional] 
@@ -51,6 +53,9 @@ Name | Type | Description | Notes
 **custom_emoji_sticker_set_name** | **str** | *Optional*. For supergroups, the name of the group&#39;s custom emoji sticker set. Custom emoji from this set can be used by all users and bots in the group. | [optional] 
 **linked_chat_id** | **int** | *Optional*. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier. | [optional] 
 **location** | [**ChatLocation**](ChatLocation.md) |  | [optional] 
+**rating** | [**UserRating**](UserRating.md) |  | [optional] 
+**unique_gift_colors** | [**UniqueGiftColors**](UniqueGiftColors.md) |  | [optional] 
+**paid_message_star_count** | **int** | *Optional*. The number of Telegram Stars a general user have to pay to send a message to the chat | [optional] 
 
 ## Example
 

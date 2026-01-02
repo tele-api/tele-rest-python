@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **text** | **str** | Text of the task | 
 **text_entities** | [**List[MessageEntity]**](MessageEntity.md) | *Optional*. Special entities that appear in the task text | [optional] 
 **completed_by_user** | [**User**](User.md) |  | [optional] 
+**completed_by_chat** | [**Chat**](Chat.md) |  | [optional] 
 **completion_date** | **int** | *Optional*. Point in time (Unix timestamp) when the task was completed; 0 if the task wasn&#39;t completed | [optional] 
 
 ## Example

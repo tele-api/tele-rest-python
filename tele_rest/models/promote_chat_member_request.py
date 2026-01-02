@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -67,7 +66,7 @@ class PromoteChatMemberRequest(BaseModel):
     can_manage_chat: Optional[StrictBool] = Field(default=None, description="Pass *True* if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.")
     can_delete_messages: Optional[StrictBool] = Field(default=None, description="Pass *True* if the administrator can delete messages of other users")
     can_manage_video_chats: Optional[StrictBool] = Field(default=None, description="Pass *True* if the administrator can manage video chats")
-    can_restrict_members: Optional[StrictBool] = Field(default=None, description="Pass *True* if the administrator can restrict, ban or unban chat members, or access supergroup statistics")
+    can_restrict_members: Optional[StrictBool] = Field(default=None, description="Pass *True* if the administrator can restrict, ban or unban chat members, or access supergroup statistics. For backward compatibility, defaults to *True* for promotions of channel administrators")
     can_promote_members: Optional[StrictBool] = Field(default=None, description="Pass *True* if the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by him)")
     can_change_info: Optional[StrictBool] = Field(default=None, description="Pass *True* if the administrator can change chat title, photo and other settings")
     can_invite_users: Optional[StrictBool] = Field(default=None, description="Pass *True* if the administrator can invite new users to the chat")
@@ -78,7 +77,8 @@ class PromoteChatMemberRequest(BaseModel):
     can_edit_messages: Optional[StrictBool] = Field(default=None, description="Pass *True* if the administrator can edit messages of other users and can pin messages; for channels only")
     can_pin_messages: Optional[StrictBool] = Field(default=None, description="Pass *True* if the administrator can pin messages; for supergroups only")
     can_manage_topics: Optional[StrictBool] = Field(default=None, description="Pass *True* if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only")
-    __properties: ClassVar[List[str]] = ["chat_id", "user_id", "is_anonymous", "can_manage_chat", "can_delete_messages", "can_manage_video_chats", "can_restrict_members", "can_promote_members", "can_change_info", "can_invite_users", "can_post_stories", "can_edit_stories", "can_delete_stories", "can_post_messages", "can_edit_messages", "can_pin_messages", "can_manage_topics"]
+    can_manage_direct_messages: Optional[StrictBool] = Field(default=None, description="Pass *True* if the administrator can manage direct messages within the channel and decline suggested posts; for channels only")
+    __properties: ClassVar[List[str]] = ["chat_id", "user_id", "is_anonymous", "can_manage_chat", "can_delete_messages", "can_manage_video_chats", "can_restrict_members", "can_promote_members", "can_change_info", "can_invite_users", "can_post_stories", "can_edit_stories", "can_delete_stories", "can_post_messages", "can_edit_messages", "can_pin_messages", "can_manage_topics", "can_manage_direct_messages"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -155,7 +155,8 @@ class PromoteChatMemberRequest(BaseModel):
             "can_post_messages": obj.get("can_post_messages"),
             "can_edit_messages": obj.get("can_edit_messages"),
             "can_pin_messages": obj.get("can_pin_messages"),
-            "can_manage_topics": obj.get("can_manage_topics")
+            "can_manage_topics": obj.get("can_manage_topics"),
+            "can_manage_direct_messages": obj.get("can_manage_direct_messages")
         })
         return _obj
 

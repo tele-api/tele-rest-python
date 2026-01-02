@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -62,18 +61,29 @@ class UniqueGiftInfo(BaseModel):
     Describes a service message about a unique gift that was sent or received.
     """ # noqa: E501
     gift: UniqueGift
-    origin: StrictStr = Field(description="Origin of the gift. Currently, either “upgrade” for gifts upgraded from regular gifts, “transfer” for gifts transferred from other users or channels, or “resale” for gifts bought from other users")
-    last_resale_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. For gifts bought from other users, the price paid for the gift")
+    origin: StrictStr = Field(description="Origin of the gift. Currently, either “upgrade” for gifts upgraded from regular gifts, “transfer” for gifts transferred from other users or channels, “resale” for gifts bought from other users, “gifted\\_upgrade” for upgrades purchased after the gift was sent, or “offer” for gifts bought or sold through gift purchase offers")
+    last_resale_currency: Optional[StrictStr] = Field(default=None, description="*Optional*. For gifts bought from other users, the currency in which the payment for the gift was done. Currently, one of “XTR” for Telegram Stars or “TON” for toncoins.")
+    last_resale_amount: Optional[StrictInt] = Field(default=None, description="*Optional*. For gifts bought from other users, the price paid for the gift in either Telegram Stars or nanotoncoins")
     owned_gift_id: Optional[StrictStr] = Field(default=None, description="*Optional*. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts")
     transfer_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift")
     next_transfer_date: Optional[StrictInt] = Field(default=None, description="*Optional*. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now")
-    __properties: ClassVar[List[str]] = ["gift", "origin", "last_resale_star_count", "owned_gift_id", "transfer_star_count", "next_transfer_date"]
+    __properties: ClassVar[List[str]] = ["gift", "origin", "last_resale_currency", "last_resale_amount", "owned_gift_id", "transfer_star_count", "next_transfer_date"]
 
     @field_validator('origin')
     def origin_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['upgrade', 'transfer', 'resale']):
-            raise ValueError("must be one of enum values ('upgrade', 'transfer', 'resale')")
+        if value not in set(['upgrade', 'transfer', 'resale', 'gifted_upgrade', 'offer']):
+            raise ValueError("must be one of enum values ('upgrade', 'transfer', 'resale', 'gifted_upgrade', 'offer')")
+        return value
+
+    @field_validator('last_resale_currency')
+    def last_resale_currency_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['XTR', 'TON']):
+            raise ValueError("must be one of enum values ('XTR', 'TON')")
         return value
 
     model_config = ConfigDict(
@@ -137,7 +147,8 @@ class UniqueGiftInfo(BaseModel):
         _obj = cls.model_validate({
             "gift": UniqueGift.from_dict(obj["gift"]) if obj.get("gift") is not None else None,
             "origin": obj.get("origin"),
-            "last_resale_star_count": obj.get("last_resale_star_count"),
+            "last_resale_currency": obj.get("last_resale_currency"),
+            "last_resale_amount": obj.get("last_resale_amount"),
             "owned_gift_id": obj.get("owned_gift_id"),
             "transfer_star_count": obj.get("transfer_star_count"),
             "next_transfer_date": obj.get("next_transfer_date")

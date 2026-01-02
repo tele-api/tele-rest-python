@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -57,8 +56,8 @@ from typing_extensions import Annotated
 from tele_rest.models.input_poll_option import InputPollOption
 from tele_rest.models.message_entity import MessageEntity
 from tele_rest.models.reply_parameters import ReplyParameters
-from tele_rest.models.send_message_request_chat_id import SendMessageRequestChatId
 from tele_rest.models.send_message_request_reply_markup import SendMessageRequestReplyMarkup
+from tele_rest.models.send_poll_request_chat_id import SendPollRequestChatId
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -67,8 +66,8 @@ class SendPollRequest(BaseModel):
     Request parameters for sendPoll
     """ # noqa: E501
     business_connection_id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the business connection on behalf of which the message will be sent")
-    chat_id: SendMessageRequestChatId
-    message_thread_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for the target message thread (topic) of the forum; for forum supergroups only")
+    chat_id: SendPollRequestChatId
+    message_thread_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only")
     question: Annotated[str, Field(min_length=1, strict=True, max_length=300)] = Field(description="Poll question, 1-300 characters")
     question_parse_mode: Optional[StrictStr] = Field(default=None, description="Mode for parsing entities in the question. See [formatting options](https://core.telegram.org/bots/api/#formatting-options) for more details. Currently, only custom emoji entities are allowed")
     question_entities: Optional[List[MessageEntity]] = Field(default=None, description="A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of *question\\_parse\\_mode*")
@@ -188,7 +187,7 @@ class SendPollRequest(BaseModel):
 
         _obj = cls.model_validate({
             "business_connection_id": obj.get("business_connection_id"),
-            "chat_id": SendMessageRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
+            "chat_id": SendPollRequestChatId.from_dict(obj["chat_id"]) if obj.get("chat_id") is not None else None,
             "message_thread_id": obj.get("message_thread_id"),
             "question": obj.get("question"),
             "question_parse_mode": obj.get("question_parse_mode"),

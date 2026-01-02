@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,14 +45,15 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from tele_rest.models.chat import Chat
+from tele_rest.models.gift_background import GiftBackground
 from tele_rest.models.sticker import Sticker
 from typing import Optional, Set
 from typing_extensions import Self
@@ -65,9 +66,16 @@ class Gift(BaseModel):
     sticker: Sticker
     star_count: StrictInt = Field(description="The number of Telegram Stars that must be paid to send the sticker")
     upgrade_star_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The number of Telegram Stars that must be paid to upgrade the gift to a unique one")
-    total_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The total number of the gifts of this type that can be sent; for limited gifts only")
-    remaining_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The number of remaining gifts of this type that can be sent; for limited gifts only")
-    __properties: ClassVar[List[str]] = ["id", "sticker", "star_count", "upgrade_star_count", "total_count", "remaining_count"]
+    is_premium: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift can only be purchased by Telegram Premium subscribers")
+    has_colors: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the gift can be used (after being upgraded) to customize a user's appearance")
+    total_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The total number of gifts of this type that can be sent by all users; for limited gifts only")
+    remaining_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The number of remaining gifts of this type that can be sent by all users; for limited gifts only")
+    personal_total_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The total number of gifts of this type that can be sent by the bot; for limited gifts only")
+    personal_remaining_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The number of remaining gifts of this type that can be sent by the bot; for limited gifts only")
+    background: Optional[GiftBackground] = None
+    unique_gift_variant_count: Optional[StrictInt] = Field(default=None, description="*Optional*. The total number of different unique gifts that can be obtained by upgrading the gift")
+    publisher_chat: Optional[Chat] = None
+    __properties: ClassVar[List[str]] = ["id", "sticker", "star_count", "upgrade_star_count", "is_premium", "has_colors", "total_count", "remaining_count", "personal_total_count", "personal_remaining_count", "background", "unique_gift_variant_count", "publisher_chat"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -111,6 +119,12 @@ class Gift(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of sticker
         if self.sticker:
             _dict['sticker'] = self.sticker.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of background
+        if self.background:
+            _dict['background'] = self.background.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of publisher_chat
+        if self.publisher_chat:
+            _dict['publisher_chat'] = self.publisher_chat.to_dict()
         return _dict
 
     @classmethod
@@ -132,8 +146,15 @@ class Gift(BaseModel):
             "sticker": Sticker.from_dict(obj["sticker"]) if obj.get("sticker") is not None else None,
             "star_count": obj.get("star_count"),
             "upgrade_star_count": obj.get("upgrade_star_count"),
+            "is_premium": obj.get("is_premium") if obj.get("is_premium") is not None else True,
+            "has_colors": obj.get("has_colors") if obj.get("has_colors") is not None else True,
             "total_count": obj.get("total_count"),
-            "remaining_count": obj.get("remaining_count")
+            "remaining_count": obj.get("remaining_count"),
+            "personal_total_count": obj.get("personal_total_count"),
+            "personal_remaining_count": obj.get("personal_remaining_count"),
+            "background": GiftBackground.from_dict(obj["background"]) if obj.get("background") is not None else None,
+            "unique_gift_variant_count": obj.get("unique_gift_variant_count"),
+            "publisher_chat": Chat.from_dict(obj["publisher_chat"]) if obj.get("publisher_chat") is not None else None
         })
         return _obj
 

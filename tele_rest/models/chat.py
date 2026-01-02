@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -67,7 +66,8 @@ class Chat(BaseModel):
     first_name: Optional[StrictStr] = Field(default=None, description="*Optional*. First name of the other party in a private chat")
     last_name: Optional[StrictStr] = Field(default=None, description="*Optional*. Last name of the other party in a private chat")
     is_forum: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the supergroup chat is a forum (has [topics](https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups) enabled)")
-    __properties: ClassVar[List[str]] = ["id", "type", "title", "username", "first_name", "last_name", "is_forum"]
+    is_direct_messages: Optional[StrictBool] = Field(default=True, description="*Optional*. *True*, if the chat is the direct messages chat of a channel")
+    __properties: ClassVar[List[str]] = ["id", "type", "title", "username", "first_name", "last_name", "is_forum", "is_direct_messages"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -138,7 +138,8 @@ class Chat(BaseModel):
             "username": obj.get("username"),
             "first_name": obj.get("first_name"),
             "last_name": obj.get("last_name"),
-            "is_forum": obj.get("is_forum") if obj.get("is_forum") is not None else True
+            "is_forum": obj.get("is_forum") if obj.get("is_forum") is not None else True,
+            "is_direct_messages": obj.get("is_direct_messages") if obj.get("is_direct_messages") is not None else True
         })
         return _obj
 

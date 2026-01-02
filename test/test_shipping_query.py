@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -44,7 +44,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 </details>
 """  # noqa: E501
-
 
 import unittest
 
@@ -83,7 +82,8 @@ class TestShippingQuery(unittest.TestCase):
                     can_read_all_group_messages = True, 
                     supports_inline_queries = True, 
                     can_connect_to_business = True, 
-                    has_main_web_app = True, ),
+                    has_main_web_app = True, 
+                    has_topics_enabled = True, ),
                 invoice_payload = '',
                 shipping_address = tele_rest.models.shipping_address.ShippingAddress(
                     country_code = '', 
@@ -109,7 +109,8 @@ class TestShippingQuery(unittest.TestCase):
                     can_read_all_group_messages = True, 
                     supports_inline_queries = True, 
                     can_connect_to_business = True, 
-                    has_main_web_app = True, ),
+                    has_main_web_app = True, 
+                    has_topics_enabled = True, ),
                 invoice_payload = '',
                 shipping_address = tele_rest.models.shipping_address.ShippingAddress(
                     country_code = '', 

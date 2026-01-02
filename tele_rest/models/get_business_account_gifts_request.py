@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -64,12 +63,14 @@ class GetBusinessAccountGiftsRequest(BaseModel):
     exclude_unsaved: Optional[StrictBool] = Field(default=None, description="Pass *True* to exclude gifts that aren't saved to the account's profile page")
     exclude_saved: Optional[StrictBool] = Field(default=None, description="Pass *True* to exclude gifts that are saved to the account's profile page")
     exclude_unlimited: Optional[StrictBool] = Field(default=None, description="Pass *True* to exclude gifts that can be purchased an unlimited number of times")
-    exclude_limited: Optional[StrictBool] = Field(default=None, description="Pass *True* to exclude gifts that can be purchased a limited number of times")
+    exclude_limited_upgradable: Optional[StrictBool] = Field(default=None, description="Pass *True* to exclude gifts that can be purchased a limited number of times and can be upgraded to unique")
+    exclude_limited_non_upgradable: Optional[StrictBool] = Field(default=None, description="Pass *True* to exclude gifts that can be purchased a limited number of times and can't be upgraded to unique")
     exclude_unique: Optional[StrictBool] = Field(default=None, description="Pass *True* to exclude unique gifts")
+    exclude_from_blockchain: Optional[StrictBool] = Field(default=None, description="Pass *True* to exclude gifts that were assigned from the TON blockchain and can't be resold or transferred in Telegram")
     sort_by_price: Optional[StrictBool] = Field(default=None, description="Pass *True* to sort results by gift price instead of send date. Sorting is applied before pagination.")
     offset: Optional[StrictStr] = Field(default=None, description="Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results")
     limit: Optional[StrictInt] = Field(default=100, description="The maximum number of gifts to be returned; 1-100. Defaults to 100")
-    __properties: ClassVar[List[str]] = ["business_connection_id", "exclude_unsaved", "exclude_saved", "exclude_unlimited", "exclude_limited", "exclude_unique", "sort_by_price", "offset", "limit"]
+    __properties: ClassVar[List[str]] = ["business_connection_id", "exclude_unsaved", "exclude_saved", "exclude_unlimited", "exclude_limited_upgradable", "exclude_limited_non_upgradable", "exclude_unique", "exclude_from_blockchain", "sort_by_price", "offset", "limit"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -131,8 +132,10 @@ class GetBusinessAccountGiftsRequest(BaseModel):
             "exclude_unsaved": obj.get("exclude_unsaved"),
             "exclude_saved": obj.get("exclude_saved"),
             "exclude_unlimited": obj.get("exclude_unlimited"),
-            "exclude_limited": obj.get("exclude_limited"),
+            "exclude_limited_upgradable": obj.get("exclude_limited_upgradable"),
+            "exclude_limited_non_upgradable": obj.get("exclude_limited_non_upgradable"),
             "exclude_unique": obj.get("exclude_unique"),
+            "exclude_from_blockchain": obj.get("exclude_from_blockchain"),
             "sort_by_price": obj.get("sort_by_price"),
             "offset": obj.get("offset"),
             "limit": obj.get("limit") if obj.get("limit") is not None else 100

@@ -6,11 +6,11 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 
 ## Metadata
 
-- **Copyright**: Copyright (c) 2025 Qntx
+- **Copyright**: Copyright (c) 2026 Qntx
 - **Author**: ΣX <gitctrlx@gmail.com>
-- **Version**: 9.1.0
-- **Modified**: 2025-07-05T02:41:43.458230827Z[Etc/UTC]
-- **Generator Version**: 7.14.0
+- **Version**: 9.3.0
+- **Modified**: 2026-01-01T02:06:09.762570119Z[Etc/UTC]
+- **Generator Version**: 7.18.0
 
 <details>
 <summary><strong>⚠️ Important Disclaimer & Limitation of Liability</strong></summary>
@@ -45,7 +45,6 @@ The Bot API is an HTTP-based interface created for developers keen on building b
 </details>
 """  # noqa: E501
 
-
 import unittest
 
 from tele_rest.models.forum_topic_created import ForumTopicCreated
@@ -71,7 +70,8 @@ class TestForumTopicCreated(unittest.TestCase):
             return ForumTopicCreated(
                 name = '',
                 icon_color = 56,
-                icon_custom_emoji_id = ''
+                icon_custom_emoji_id = '',
+                is_name_implicit = True
             )
         else:
             return ForumTopicCreated(
